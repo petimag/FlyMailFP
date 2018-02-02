@@ -8,49 +8,89 @@ namespace FlyMail
 {
     public class Mail
     {
-        string _de;
-        string _para;
+        string _remitente;
+        List<CasillaCorreo> _destinatario = new List<CasillaCorreo>();
         string _asunto;
+        List<CasillaCorreo> _cc = new List<CasillaCorreo>();
+        List<CasillaCorreo> _cco = new List<CasillaCorreo>();
         DateTime _fecha;
         string _mensaje;
- 
-       public Mail(string pDe, string pPara, string pAsunto, DateTime pFecha, string pMensaje)
+        
+       /// <summary>
+       /// Representa un E-Mail con sus respectivos campos.
+       /// </summary>
+       /// <param name="pRemitente">Dirección del remitente</param>
+       /// <param name="pDestinatario">Dirección del/los destinatario/s</param>
+       /// <param name="pAsunto">Título o cabecera del mensaje</param>
+       /// <param name="pCC">Destinatarios en copia</param>
+       /// <param name="pCCO">Destinatarios en copia oculta</param>
+       /// <param name="pFecha">Fecha y hora del mensaje</param>
+       /// <param name="pMensaje">Cuerpo del mensaje en texto plano</param>
+       public Mail(string pRemitente, List<CasillaCorreo> pDestinatario, string pAsunto, List<CasillaCorreo> pCC, List<CasillaCorreo> pCCO, DateTime pFecha, string pMensaje)
         {
-            _de = pDe;
-            _para = pPara;
+            _remitente = pRemitente;
+            _destinatario = pDestinatario;
             _asunto = pAsunto;
+            _cc = pCC;
+            _cco = pCCO;
             _fecha = pFecha;
             _mensaje = pMensaje;
         }
 
-        public string De
+        /// <summary>
+        /// Dirección de Correo del remitente.
+        /// </summary>
+        public string Remitente
         {
-            get { return _de; }
-            set { _de = value; }
+            get { return _remitente; }
         }
 
-        public string Para
+        /// <summary>
+        /// Dirección del/los destinatario/s.
+        /// </summary>
+        public List<CasillaCorreo> Destinatario
         {
-            get { return _para; }
-            set { _para = value; }
+            get { return _destinatario; }
         }
 
+        /// <summary>
+        /// Título o cabecera del mensaje.
+        /// </summary>
         public string Asunto
         {
             get { return _asunto; }
-            set { _asunto = value; }
         }
 
+        /// <summary>
+        /// Dirección del/los destinatarios en copia.
+        /// </summary>
+        public List<CasillaCorreo> CC
+        {
+            get { return _cc; }
+        }
+
+        /// <summary>
+        /// Dirección del/los destinatarios en copia oculta.
+        /// </summary>
+        public List<CasillaCorreo> CCO
+        {
+            get { return _cco; }
+        }
+
+        /// <summary>
+        /// Fecha y hora del mensaje.
+        /// </summary>
         public DateTime Fecha
         {
             get { return _fecha; }
-            set { _fecha = value; }
         }
 
+        /// <summary>
+        /// Cuerpo del mensaje en texto plano.
+        /// </summary>
         public string Mensaje
         {
             get { return _mensaje; }
-            set { _mensaje = value; }
         }
     }
 }
