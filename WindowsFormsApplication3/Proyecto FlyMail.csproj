@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1613F33E-421D-40DE-8978-AC11C2C315A7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WindowsFormsApplication3</RootNamespace>
+    <AssemblyName>WindowsFormsApplication3</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Npgsql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.3.1.0\lib\net45\Npgsql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccesoDatos\DAOFactory.cs" />
+    <Compile Include="AccesoDatos\ICasillaDAO.cs" />
+    <Compile Include="AccesoDatos\ICuentaDAO.cs" />
+    <Compile Include="AccesoDatos\IMailDAO.cs" />
+    <Compile Include="AccesoDatos\PostgreSQL\DAOException.cs" />
+    <Compile Include="AccesoDatos\PostgreSQL\PostgresCasillaDAO.cs" />
+    <Compile Include="AccesoDatos\PostgreSQL\PostgresCuentaDAO.cs" />
+    <Compile Include="AccesoDatos\PostgreSQL\PostgresDAOFactory.cs" />
+    <Compile Include="AccesoDatos\PostgreSQL\PostgresMailDAO.cs" />
+    <Compile Include="Entidades\CasillaCorreo.cs" />
+    <Compile Include="Entidades\Mail.cs" />
+    <Compile Include="Entidades\Servicio.cs" />
+    <Compile Include="LogicaNegocio\Fachada.cs" />
+    <Compile Include="LogicaNegocio\Utilidades.cs" />
+    <Compile Include="UI\v_correo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\v_correo.Designer.cs">
+      <DependentUpon>v_correo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\v_login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\v_login.Designer.cs">
+      <DependentUpon>v_login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\v_principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\v_principal.Designer.cs">
+      <DependentUpon>v_principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\v_mail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\v_mail.Designer.cs">
+      <DependentUpon>v_mail.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\v_correo.resx">
+      <DependentUpon>v_correo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\v_login.resx">
+      <DependentUpon>v_login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\v_mail.resx">
+      <DependentUpon>v_mail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\v_principal.resx">
+      <DependentUpon>v_principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Entidades\Cuenta.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup />
+</Project>
