@@ -90,7 +90,7 @@ namespace FlyMail
         }
 
         /// <summary>
-        /// Elimina el mail de la lista
+        /// Eliminar el mail de la lista
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -115,7 +115,7 @@ namespace FlyMail
         }
 
         /// <summary>
-        /// Actualiza la lista de los mail
+        /// Actualizar la lista de los mail
         /// </summary>
         private void refrescarDataGrid()
         {
@@ -123,44 +123,84 @@ namespace FlyMail
             dataGridView1.Refresh();
         }
 
+        /// <summary>
+        /// Modificar la cuenta del usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void modificarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Eliminar la cuenta de usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void eliminarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Agregar una nueva casilla de correo a la cuenta
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.i_correo.Text = "Nuevo correo";
             this.i_correo.ShowDialog(this);
         }
 
+        /// <summary>
+        /// Modificar los datos de la casilla de correo
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.i_correo.Text = "Modificar correo";
             this.i_correo.ShowDialog(this);
         }
 
+        /// <summary>
+        /// Eliminar una casilla de correo de la cuenta 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Cerrar Sesión de la cuenta abierta
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //            this.Close();
             //            this.i_login.ShowDialog(this);
         }
 
+        /// <summary>
+        /// Salir de la aplicación
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Información de la aplicación
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void informaciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Los íconos fueron tomados de http://dryicons.com");
