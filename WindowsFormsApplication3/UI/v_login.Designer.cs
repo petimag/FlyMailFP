@@ -64,8 +64,8 @@
             // label_iniciar_nombre
             // 
             this.label_iniciar_nombre.AutoSize = true;
-            this.label_iniciar_nombre.BackColor = System.Drawing.Color.Linen;
-            this.label_iniciar_nombre.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.label_iniciar_nombre.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label_iniciar_nombre.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.label_iniciar_nombre.Location = new System.Drawing.Point(11, 29);
             this.label_iniciar_nombre.Name = "label_iniciar_nombre";
             this.label_iniciar_nombre.Size = new System.Drawing.Size(47, 13);
@@ -75,8 +75,8 @@
             // label_iniciar_contraseña
             // 
             this.label_iniciar_contraseña.AutoSize = true;
-            this.label_iniciar_contraseña.BackColor = System.Drawing.Color.Linen;
-            this.label_iniciar_contraseña.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.label_iniciar_contraseña.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label_iniciar_contraseña.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.label_iniciar_contraseña.Location = new System.Drawing.Point(11, 55);
             this.label_iniciar_contraseña.Name = "label_iniciar_contraseña";
             this.label_iniciar_contraseña.Size = new System.Drawing.Size(64, 13);
@@ -85,13 +85,13 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.SeaShell;
+            this.groupBox1.BackColor = System.Drawing.SystemColors.GrayText;
             this.groupBox1.Controls.Add(this.label_iniciar_contraseña);
             this.groupBox1.Controls.Add(this.button_iniciar);
             this.groupBox1.Controls.Add(this.label_iniciar_nombre);
             this.groupBox1.Controls.Add(this.textBox_iniciar_contraseña);
             this.groupBox1.Controls.Add(this.textBox_iniciar_nombre);
-            this.groupBox1.ForeColor = System.Drawing.Color.Maroon;
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.groupBox1.Location = new System.Drawing.Point(7, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(300, 117);
@@ -101,7 +101,8 @@
             // 
             // button_iniciar
             // 
-            this.button_iniciar.BackColor = System.Drawing.Color.AliceBlue;
+            this.button_iniciar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button_iniciar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button_iniciar.Location = new System.Drawing.Point(216, 78);
             this.button_iniciar.Name = "button_iniciar";
             this.button_iniciar.Size = new System.Drawing.Size(75, 23);
@@ -112,23 +113,24 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.AliceBlue;
+            this.groupBox2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.groupBox2.Controls.Add(this.button_crear);
             this.groupBox2.Controls.Add(this.textBox_crear_repetir);
             this.groupBox2.Controls.Add(this.textBox_crear_contraseña);
             this.groupBox2.Controls.Add(this.textBox_crear_nombre);
-            this.groupBox2.ForeColor = System.Drawing.Color.Maroon;
-            this.groupBox2.Location = new System.Drawing.Point(80, 133);
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.groupBox2.Location = new System.Drawing.Point(102, 128);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(227, 131);
+            this.groupBox2.Size = new System.Drawing.Size(205, 132);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Crear Cuenta";
             // 
             // button_crear
             // 
-            this.button_crear.BackColor = System.Drawing.Color.Linen;
-            this.button_crear.Location = new System.Drawing.Point(143, 101);
+            this.button_crear.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button_crear.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button_crear.Location = new System.Drawing.Point(121, 101);
             this.button_crear.Name = "button_crear";
             this.button_crear.Size = new System.Drawing.Size(75, 23);
             this.button_crear.TabIndex = 7;
@@ -141,7 +143,7 @@
             this.textBox_crear_repetir.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.textBox_crear_repetir.Location = new System.Drawing.Point(6, 75);
             this.textBox_crear_repetir.Name = "textBox_crear_repetir";
-            this.textBox_crear_repetir.Size = new System.Drawing.Size(212, 20);
+            this.textBox_crear_repetir.Size = new System.Drawing.Size(190, 20);
             this.textBox_crear_repetir.TabIndex = 4;
             this.textBox_crear_repetir.Text = "Repetir Contraseña";
             this.textBox_crear_repetir.Click += new System.EventHandler(this.textBox_repetir_Click);
@@ -151,7 +153,7 @@
             this.textBox_crear_contraseña.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.textBox_crear_contraseña.Location = new System.Drawing.Point(6, 45);
             this.textBox_crear_contraseña.Name = "textBox_crear_contraseña";
-            this.textBox_crear_contraseña.Size = new System.Drawing.Size(212, 20);
+            this.textBox_crear_contraseña.Size = new System.Drawing.Size(190, 20);
             this.textBox_crear_contraseña.TabIndex = 3;
             this.textBox_crear_contraseña.Text = "Contraseña";
             this.textBox_crear_contraseña.Click += new System.EventHandler(this.textBox_Contraseña_Click);
@@ -161,7 +163,7 @@
             this.textBox_crear_nombre.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.textBox_crear_nombre.Location = new System.Drawing.Point(6, 19);
             this.textBox_crear_nombre.Name = "textBox_crear_nombre";
-            this.textBox_crear_nombre.Size = new System.Drawing.Size(212, 20);
+            this.textBox_crear_nombre.Size = new System.Drawing.Size(190, 20);
             this.textBox_crear_nombre.TabIndex = 2;
             this.textBox_crear_nombre.Text = "Nombre";
             this.textBox_crear_nombre.Click += new System.EventHandler(this.textBox_Click);
@@ -169,9 +171,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(6, 136);
+            this.pictureBox1.Location = new System.Drawing.Point(7, 136);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(68, 110);
+            this.pictureBox1.Size = new System.Drawing.Size(90, 124);
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
@@ -180,7 +182,7 @@
             this.AcceptButton = this.button_iniciar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCyan;
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(315, 272);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox2);
@@ -189,6 +191,7 @@
             this.MaximumSize = new System.Drawing.Size(331, 311);
             this.MinimumSize = new System.Drawing.Size(331, 311);
             this.Name = "v_login";
+            this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FlyMail";
             this.groupBox1.ResumeLayout(false);
