@@ -77,8 +77,8 @@
             // 
             // button_recibidos
             // 
-            this.button_recibidos.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.button_recibidos.ForeColor = System.Drawing.Color.MediumBlue;
+            this.button_recibidos.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button_recibidos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_recibidos.Image = ((System.Drawing.Image)(resources.GetObject("button_recibidos.Image")));
             this.button_recibidos.Location = new System.Drawing.Point(12, 89);
             this.button_recibidos.Name = "button_recibidos";
@@ -92,8 +92,8 @@
             // 
             // button_enviados
             // 
-            this.button_enviados.BackColor = System.Drawing.Color.PowderBlue;
-            this.button_enviados.ForeColor = System.Drawing.Color.MediumBlue;
+            this.button_enviados.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button_enviados.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_enviados.Image = ((System.Drawing.Image)(resources.GetObject("button_enviados.Image")));
             this.button_enviados.Location = new System.Drawing.Point(12, 125);
             this.button_enviados.Name = "button_enviados";
@@ -110,7 +110,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlText;
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Location = new System.Drawing.Point(133, 89);
             this.panel1.Name = "panel1";
@@ -125,7 +125,7 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.LightCyan;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlDark;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -168,8 +168,8 @@
             // 
             // button_papelera
             // 
-            this.button_papelera.BackColor = System.Drawing.Color.PowderBlue;
-            this.button_papelera.ForeColor = System.Drawing.Color.MediumBlue;
+            this.button_papelera.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button_papelera.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_papelera.Image = ((System.Drawing.Image)(resources.GetObject("button_papelera.Image")));
             this.button_papelera.Location = new System.Drawing.Point(12, 161);
             this.button_papelera.Name = "button_papelera";
@@ -183,8 +183,8 @@
             // 
             // button_enviar
             // 
-            this.button_enviar.BackColor = System.Drawing.Color.Linen;
-            this.button_enviar.ForeColor = System.Drawing.Color.Brown;
+            this.button_enviar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button_enviar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_enviar.Image = ((System.Drawing.Image)(resources.GetObject("button_enviar.Image")));
             this.button_enviar.Location = new System.Drawing.Point(206, 32);
             this.button_enviar.Name = "button_enviar";
@@ -198,9 +198,9 @@
             // 
             // button_eliminar
             // 
-            this.button_eliminar.BackColor = System.Drawing.Color.Linen;
+            this.button_eliminar.BackColor = System.Drawing.SystemColors.ControlDark;
             this.button_eliminar.Enabled = false;
-            this.button_eliminar.ForeColor = System.Drawing.Color.Brown;
+            this.button_eliminar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("button_eliminar.Image")));
             this.button_eliminar.Location = new System.Drawing.Point(278, 32);
             this.button_eliminar.Name = "button_eliminar";
@@ -214,8 +214,8 @@
             // 
             // button_actualizar
             // 
-            this.button_actualizar.BackColor = System.Drawing.Color.Linen;
-            this.button_actualizar.ForeColor = System.Drawing.Color.Brown;
+            this.button_actualizar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button_actualizar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_actualizar.Image = ((System.Drawing.Image)(resources.GetObject("button_actualizar.Image")));
             this.button_actualizar.Location = new System.Drawing.Point(133, 32);
             this.button_actualizar.Name = "button_actualizar";
@@ -229,9 +229,9 @@
             // 
             // button_responder
             // 
-            this.button_responder.BackColor = System.Drawing.Color.Linen;
+            this.button_responder.BackColor = System.Drawing.SystemColors.ControlDark;
             this.button_responder.Enabled = false;
-            this.button_responder.ForeColor = System.Drawing.Color.Brown;
+            this.button_responder.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_responder.Image = ((System.Drawing.Image)(resources.GetObject("button_responder.Image")));
             this.button_responder.Location = new System.Drawing.Point(351, 32);
             this.button_responder.Name = "button_responder";
@@ -245,7 +245,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menúToolStripMenuItem,
@@ -286,7 +286,7 @@
             this.modificarToolStripMenuItem1.ForeColor = System.Drawing.Color.MediumBlue;
             this.modificarToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("modificarToolStripMenuItem1.Image")));
             this.modificarToolStripMenuItem1.Name = "modificarToolStripMenuItem1";
-            this.modificarToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.modificarToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
             this.modificarToolStripMenuItem1.Text = "Modificar";
             this.modificarToolStripMenuItem1.Click += new System.EventHandler(this.modificarToolStripMenuItem1_Click);
             // 
@@ -296,7 +296,7 @@
             this.eliminarToolStripMenuItem1.ForeColor = System.Drawing.Color.MediumBlue;
             this.eliminarToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("eliminarToolStripMenuItem1.Image")));
             this.eliminarToolStripMenuItem1.Name = "eliminarToolStripMenuItem1";
-            this.eliminarToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.eliminarToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
             this.eliminarToolStripMenuItem1.Text = "Eliminar";
             this.eliminarToolStripMenuItem1.Click += new System.EventHandler(this.eliminarToolStripMenuItem1_Click);
             // 
@@ -339,7 +339,7 @@
             this.eliminarToolStripMenuItem.ForeColor = System.Drawing.Color.MediumBlue;
             this.eliminarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("eliminarToolStripMenuItem.Image")));
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
@@ -385,6 +385,8 @@
             // comboBox1
             // 
             this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.comboBox1.ForeColor = System.Drawing.SystemColors.Window;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(663, 48);
             this.comboBox1.Name = "comboBox1";
@@ -395,11 +397,11 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DarkRed;
-            this.label1.Location = new System.Drawing.Point(521, 48);
+            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(542, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 23);
+            this.label1.Size = new System.Drawing.Size(121, 16);
             this.label1.TabIndex = 12;
             this.label1.Text = "Mostrar correos de:";
             // 
@@ -407,7 +409,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCyan;
+            this.BackColor = System.Drawing.SystemColors.GrayText;
             this.ClientSize = new System.Drawing.Size(926, 491);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
