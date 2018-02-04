@@ -38,7 +38,7 @@ namespace FlyMail
         public bool nombreExistente(string pNombre)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
-            comando.CommandText = "SELECT * FROM \"Cuenta\" WHERE nombre = '" + pNombre + "'";
+            comando.CommandText = "SELECT * FROM \"Usuario\" WHERE nombre = '" + pNombre + "'";
             NpgsqlDataReader reader = comando.ExecuteReader();
             if (reader.Read())
                 return true;
@@ -49,7 +49,7 @@ namespace FlyMail
         public int verificarCuenta(string pNombre, string pContraseña)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
-            comando.CommandText = "SELECT \"idCuenta\" FROM \"Cuenta\" WHERE \"nombre\" = '" + pNombre + "' and contraseña = '" + pContraseña + "'";
+            comando.CommandText = "SELECT \"idUsuario\" FROM \"Usuario\" WHERE \"nombre\" = '" + pNombre + "' and contrasena = '" + pContraseña + "'";
             NpgsqlDataReader reader = comando.ExecuteReader();
             //Console.WriteLine(Int32.Parse(reader[0].ToString()));
             if (reader.Read())
