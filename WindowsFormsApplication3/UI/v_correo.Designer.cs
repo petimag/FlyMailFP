@@ -60,6 +60,7 @@
             this.button_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.button_guardar, "Guardar correo");
             this.button_guardar.UseVisualStyleBackColor = false;
+            this.button_guardar.Click += new System.EventHandler(this.button_guardar_Click);
             // 
             // button_verificar
             // 

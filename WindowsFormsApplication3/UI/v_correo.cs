@@ -84,5 +84,10 @@ namespace FlyMail
             this.Width = 300;
             this.Height = 279;
         }
+
+        private void button_guardar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

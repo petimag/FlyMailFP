@@ -19,7 +19,7 @@ namespace FlyMail
         public bool nombreExistente(string pNombre, int idCuenta)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
-            comando.CommandText = "SELECT * FROM \"CasillaCorreo\" WHERE nombre = '" + pNombre + "' and \"idCuenta\" = '" + pNombre + "'";
+            comando.CommandText = "SELECT * FROM \"CasillaEmail\" WHERE nombre = '" + pNombre + "' and usuario = '" + idCuenta + "'";
             NpgsqlDataReader reader = comando.ExecuteReader();
             if (reader.Read())
                 return true;
