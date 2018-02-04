@@ -108,5 +108,25 @@ namespace FlyMail
                 factory.FinalizarConexion();
             }
         }
+
+        public void agregarCasilla(CasillaCorreo pCasilla, Servicio pServicio)
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+
+            try
+            {
+                factory.IniciarConexion();
+                ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
+                _casillaDAO.agregar(pCasilla,pServicio, _idCuentaLogeado);
+            }
+            catch (DAOException)
+            {
+                factory.RollBack();
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
     }
 }

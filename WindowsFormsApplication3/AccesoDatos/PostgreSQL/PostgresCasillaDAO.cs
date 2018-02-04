@@ -26,5 +26,27 @@ namespace FlyMail
             else
                 return false;
         }
+
+        public void agregar(CasillaCorreo pCasilla, Servicio pServicio, int pUsuario)
+        {
+            using (NpgsqlTransaction transaccion = this._conexion.BeginTransaction())
+            {
+
+                NpgsqlCommand comando = this._conexion.CreateCommand();
+
+                comando.Transaction = transaccion;
+
+                comando.CommandText = "INSERT INTO \"CasillaEmail\"(nombre,contrasenaEmail,servicio,usuario,direccionEmail) VALUES(@nombre,@contrasenaEmail,@servicio,@usuario,@direccionEmail)";
+                comando.Parameters.AddWithValue("@nombre", pCasilla.Nombre);
+                comando.Parameters.AddWithValue("@contrasenaEmail", pCasilla.Contraseña);
+                comando.Parameters.AddWithValue("@servicio", pServicio.Nombre);
+                comando.Parameters.AddWithValue("@usuario", pUsuario);
+                comando.Parameters.AddWithValue("@direccionEmail", pCasilla.Direccion);
+
+                comando.ExecuteNonQuery();
+
+                transaccion.Commit();
+            }
+        }
     }
 }
