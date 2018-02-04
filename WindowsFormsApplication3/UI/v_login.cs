@@ -23,14 +23,40 @@ namespace FlyMail
         }
 
         /// <summary>
+        /// Cambia el foco del botón Iniciar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBox_iniciar_Focus(object sender, EventArgs e)
+        {
+            this.AcceptButton = this.button_iniciar;
+        }
+
+        /// <summary>
         /// Asigna formato al campo "Nombre" para crear usuario
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void textBox_Click(object sender, EventArgs e)
+        private void textBox_crear_nombre_Focus(object sender, EventArgs e)
         {
             this.textBox_crear_nombre.Text = "";
             this.textBox_crear_nombre.ForeColor = Color.Black;
+            this.AcceptButton = this.button_crear;
+        }
+
+        /// <summary>
+        /// Asigna formato al campo "Nombre" cuando se pierde el foco
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBox_crear_nombre_noFocus(object sender, EventArgs e)
+        {
+            if (this.textBox_crear_nombre.Text == "")
+            {
+                this.textBox_crear_nombre.Text = "Nombre";
+                this.textBox_crear_nombre.ForeColor = Color.LightGray;
+            }
+
         }
 
         /// <summary>
@@ -38,11 +64,26 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void textBox_Contraseña_Click(object sender, EventArgs e)
+        private void textBox_Contraseña_Focus(object sender, EventArgs e)
         {
             this.textBox_crear_contraseña.Text = "";
             this.textBox_crear_contraseña.ForeColor = Color.Black;
-            this.textBox_crear_contraseña.UseSystemPasswordChar = true;
+            this.textBox_crear_contraseña.PasswordChar = '♦';
+        }
+
+        /// <summary>
+        /// Asigna formato al campo "Contraseña" cuando se pierde el foco
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBox_Contraseña_noFocus(object sender, EventArgs e)
+        {
+            if (this.textBox_crear_contraseña.Text == "")
+            {
+                this.textBox_crear_contraseña.PasswordChar = '\0';
+                this.textBox_crear_contraseña.Text = "Contraseña";
+                this.textBox_crear_contraseña.ForeColor = Color.LightGray;
+            }
         }
 
         /// <summary>
@@ -50,11 +91,26 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void textBox_repetir_Click(object sender, EventArgs e)
+        private void textBox_repetir_Focus(object sender, EventArgs e)
         {
             this.textBox_crear_repetir.Text = "";
             this.textBox_crear_repetir.ForeColor = Color.Black;
-            this.textBox_crear_repetir.UseSystemPasswordChar = true;
+            this.textBox_crear_repetir.PasswordChar = '♦';
+        }
+
+        /// <summary>
+        /// Asigna formato al campo "Repetir" cuando se pierde el foco
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBox_repetir_noFocus(object sender, EventArgs e)
+        {
+            if (this.textBox_crear_repetir.Text == "")
+            {
+                this.textBox_crear_repetir.PasswordChar = '\0';
+                this.textBox_crear_repetir.Text = "Repetir Contraseña";
+                this.textBox_crear_repetir.ForeColor = Color.LightGray;
+            }
         }
 
         /// <summary>
@@ -170,6 +226,36 @@ namespace FlyMail
                 Application.Exit();
             }
 
+        }
+
+        /// <summary>
+        /// Cambia el foco del botón Iniciar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBox_iniciar_Click(object sender, EventArgs e)
+        {
+            this.AcceptButton = this.button_iniciar;
+        }
+
+        /// <summary>
+        /// Cambia el foco al botón crear
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBox_crear_contraseña_TextChanged(object sender, EventArgs e)
+        {
+            this.AcceptButton = this.button_crear;
+        }
+
+        /// <summary>
+        /// Cambia el foco al botón crear
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBox_crear_repetir_TextChanged(object sender, EventArgs e)
+        {
+            this.AcceptButton = this.button_crear;
         }
     }
 }

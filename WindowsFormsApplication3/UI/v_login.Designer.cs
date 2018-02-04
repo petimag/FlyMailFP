@@ -52,14 +52,16 @@
             this.textBox_iniciar_nombre.Name = "textBox_iniciar_nombre";
             this.textBox_iniciar_nombre.Size = new System.Drawing.Size(212, 20);
             this.textBox_iniciar_nombre.TabIndex = 0;
+            this.textBox_iniciar_nombre.GotFocus += new System.EventHandler(this.textBox_iniciar_Focus);
             // 
             // textBox_iniciar_contraseña
             // 
             this.textBox_iniciar_contraseña.Location = new System.Drawing.Point(79, 52);
             this.textBox_iniciar_contraseña.Name = "textBox_iniciar_contraseña";
+            this.textBox_iniciar_contraseña.PasswordChar = '♦';
             this.textBox_iniciar_contraseña.Size = new System.Drawing.Size(212, 20);
             this.textBox_iniciar_contraseña.TabIndex = 1;
-            this.textBox_iniciar_contraseña.UseSystemPasswordChar = true;
+            this.textBox_iniciar_contraseña.Click += new System.EventHandler(this.textBox_iniciar_Click);
             // 
             // label_iniciar_nombre
             // 
@@ -92,7 +94,7 @@
             this.groupBox1.Controls.Add(this.textBox_iniciar_contraseña);
             this.groupBox1.Controls.Add(this.textBox_iniciar_nombre);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.groupBox1.Location = new System.Drawing.Point(7, 5);
+            this.groupBox1.Location = new System.Drawing.Point(7, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(300, 117);
             this.groupBox1.TabIndex = 4;
@@ -102,11 +104,12 @@
             // button_iniciar
             // 
             this.button_iniciar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button_iniciar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_iniciar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button_iniciar.Location = new System.Drawing.Point(216, 78);
             this.button_iniciar.Name = "button_iniciar";
             this.button_iniciar.Size = new System.Drawing.Size(75, 23);
-            this.button_iniciar.TabIndex = 6;
+            this.button_iniciar.TabIndex = 2;
             this.button_iniciar.Text = "Iniciar";
             this.button_iniciar.UseVisualStyleBackColor = false;
             this.button_iniciar.Click += new System.EventHandler(this.button_iniciar_Click);
@@ -119,7 +122,7 @@
             this.groupBox2.Controls.Add(this.textBox_crear_contraseña);
             this.groupBox2.Controls.Add(this.textBox_crear_nombre);
             this.groupBox2.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.groupBox2.Location = new System.Drawing.Point(102, 128);
+            this.groupBox2.Location = new System.Drawing.Point(103, 136);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(205, 132);
             this.groupBox2.TabIndex = 5;
@@ -129,51 +132,58 @@
             // button_crear
             // 
             this.button_crear.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button_crear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_crear.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button_crear.Location = new System.Drawing.Point(121, 101);
             this.button_crear.Name = "button_crear";
             this.button_crear.Size = new System.Drawing.Size(75, 23);
-            this.button_crear.TabIndex = 7;
+            this.button_crear.TabIndex = 6;
             this.button_crear.Text = "Crear";
             this.button_crear.UseVisualStyleBackColor = false;
             this.button_crear.Click += new System.EventHandler(this.button_crear_Click);
             // 
             // textBox_crear_repetir
             // 
-            this.textBox_crear_repetir.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox_crear_repetir.Location = new System.Drawing.Point(6, 75);
+            this.textBox_crear_repetir.ForeColor = System.Drawing.Color.LightGray;
+            this.textBox_crear_repetir.Location = new System.Drawing.Point(6, 71);
             this.textBox_crear_repetir.Name = "textBox_crear_repetir";
-            this.textBox_crear_repetir.Size = new System.Drawing.Size(190, 20);
-            this.textBox_crear_repetir.TabIndex = 4;
+            this.textBox_crear_repetir.Size = new System.Drawing.Size(189, 20);
+            this.textBox_crear_repetir.TabIndex = 5;
             this.textBox_crear_repetir.Text = "Repetir Contraseña";
-            this.textBox_crear_repetir.Click += new System.EventHandler(this.textBox_repetir_Click);
+            this.textBox_crear_repetir.TextChanged += new System.EventHandler(this.textBox_crear_repetir_TextChanged);
+            this.textBox_crear_repetir.GotFocus += new System.EventHandler(this.textBox_repetir_Focus);
+            this.textBox_crear_repetir.LostFocus += new System.EventHandler(this.textBox_repetir_noFocus);
             // 
             // textBox_crear_contraseña
             // 
-            this.textBox_crear_contraseña.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBox_crear_contraseña.ForeColor = System.Drawing.Color.LightGray;
             this.textBox_crear_contraseña.Location = new System.Drawing.Point(6, 45);
             this.textBox_crear_contraseña.Name = "textBox_crear_contraseña";
-            this.textBox_crear_contraseña.Size = new System.Drawing.Size(190, 20);
-            this.textBox_crear_contraseña.TabIndex = 3;
+            this.textBox_crear_contraseña.Size = new System.Drawing.Size(189, 20);
+            this.textBox_crear_contraseña.TabIndex = 4;
             this.textBox_crear_contraseña.Text = "Contraseña";
-            this.textBox_crear_contraseña.Click += new System.EventHandler(this.textBox_Contraseña_Click);
+            this.textBox_crear_contraseña.TextChanged += new System.EventHandler(this.textBox_crear_contraseña_TextChanged);
+            this.textBox_crear_contraseña.GotFocus += new System.EventHandler(this.textBox_Contraseña_Focus);
+            this.textBox_crear_contraseña.LostFocus += new System.EventHandler(this.textBox_Contraseña_noFocus);
             // 
             // textBox_crear_nombre
             // 
-            this.textBox_crear_nombre.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBox_crear_nombre.ForeColor = System.Drawing.Color.LightGray;
             this.textBox_crear_nombre.Location = new System.Drawing.Point(6, 19);
             this.textBox_crear_nombre.Name = "textBox_crear_nombre";
-            this.textBox_crear_nombre.Size = new System.Drawing.Size(190, 20);
-            this.textBox_crear_nombre.TabIndex = 2;
+            this.textBox_crear_nombre.Size = new System.Drawing.Size(189, 20);
+            this.textBox_crear_nombre.TabIndex = 3;
             this.textBox_crear_nombre.Text = "Nombre";
-            this.textBox_crear_nombre.Click += new System.EventHandler(this.textBox_Click);
+            this.textBox_crear_nombre.GotFocus += new System.EventHandler(this.textBox_crear_nombre_Focus);
+            this.textBox_crear_nombre.LostFocus += new System.EventHandler(this.textBox_crear_nombre_noFocus);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(7, 136);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(90, 124);
+            this.pictureBox1.Size = new System.Drawing.Size(94, 130);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
@@ -200,6 +210,7 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
