@@ -87,7 +87,9 @@ namespace FlyMail
 
         private void button_guardar_Click(object sender, EventArgs e)
         {
-
+            CasillaCorreo _casilla = new CasillaCorreo(textBox1.Text,textBox_direccion.Text);
+            Servicio _servicio = new Servicio(comboBox_servicio.Text,"",0);
+            _controlador.agregarCasilla(_casilla, _servicio);
         }
     }
 }
