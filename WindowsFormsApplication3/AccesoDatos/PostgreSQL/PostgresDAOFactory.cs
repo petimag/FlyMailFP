@@ -10,7 +10,7 @@ namespace FlyMail
 {
     public class PostgresDAOFactory : DAOFactory
     {
-        private String STRING_CONEXION = "Host=localhost;Username=postgres;Password=123;Database=FlyMail";
+        private String STRING_CONEXION = "Host=localhost;Username=postgres;Password=1234;Database=postgres";
 
         private NpgsqlConnection _conexion = null;
         private NpgsqlTransaction _transaction = null;

@@ -25,9 +25,9 @@ namespace FlyMail
 
                 comando.Transaction = transaccion;
 
-                comando.CommandText = "INSERT INTO \"Cuenta\"(nombre,password) VALUES(@nombre,@pass)";
+                comando.CommandText = "INSERT INTO \"Usuario\"(nombre,contrasena) VALUES(@nombre,@contrasena)";
                 comando.Parameters.AddWithValue("@nombre", pNombre);
-                comando.Parameters.AddWithValue("@pass", pContraseña);
+                comando.Parameters.AddWithValue("@contrasena", pContraseña);
 
                 comando.ExecuteNonQuery();
 
