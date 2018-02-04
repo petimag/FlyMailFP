@@ -22,12 +22,22 @@ namespace FlyMail
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UI_iniciarFormClosed);
         }
 
+        /// <summary>
+        /// Asigna formato al campo "Nombre" para crear usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBox_Click(object sender, EventArgs e)
         {
             this.textBox_crear_nombre.Text = "";
             this.textBox_crear_nombre.ForeColor = Color.Black;
         }
 
+        /// <summary>
+        /// Asigna formato al campo "Contraseña" para crear usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBox_Contraseña_Click(object sender, EventArgs e)
         {
             this.textBox_crear_contraseña.Text = "";
@@ -35,6 +45,11 @@ namespace FlyMail
             this.textBox_crear_contraseña.UseSystemPasswordChar = true;
         }
 
+        /// <summary>
+        /// Asigna formato al campo "Repetir contraseña" para crear usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBox_repetir_Click(object sender, EventArgs e)
         {
             this.textBox_crear_repetir.Text = "";
@@ -42,14 +57,21 @@ namespace FlyMail
             this.textBox_crear_repetir.UseSystemPasswordChar = true;
         }
 
+        /// <summary>
+        /// Permite el inicio de la aplicación
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_iniciar_Click(object sender, EventArgs e)
         {
+            //Verifica que se ingrese nombre de usuario
             if (this.textBox_iniciar_contraseña.Text == "") 
             {
                 MessageBox.Show("Falta ingresar Nombre");
             }
             else
             {
+                //Verifica que se ingrese contraseña
                 if (this.textBox_iniciar_nombre.Text == "")
                 {
                     MessageBox.Show("Falta ingresar Contraseña");
@@ -58,6 +80,7 @@ namespace FlyMail
                 {
                     string hash = Utilidades.Encriptar(string.Concat(this.textBox_iniciar_nombre.Text, this.textBox_iniciar_contraseña.Text));
                     Console.WriteLine(hash);
+
                     //Verifica si el usuario esta en la bd
                     if (_controlador.verificarCuenta(this.textBox_iniciar_nombre.Text, hash) != -1)
                     {
@@ -75,26 +98,35 @@ namespace FlyMail
             }
         }
 
+        /// <summary>
+        /// Permite crear una nueva cuenta de usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_crear_Click(object sender, EventArgs e)
         {
+            //Comprueba que se ingrese nombre de usuario
             if ((this.textBox_crear_nombre.Text == "") || (this.textBox_crear_nombre.Text == "Nombre"))
             {
                 MessageBox.Show("Falta ingresar Nombre");
             }
             else
             {
+                //Comprueba que se ingresa contraseña
                 if ((this.textBox_crear_contraseña.Text == "") || (this.textBox_crear_contraseña.Text == "Contraseña"))
                 {
                     MessageBox.Show("Falta ingresar Contraseña");
                 }
                 else
                 {
+                    //Comprueba que se ingresa la reiteración de la contraseña
                     if ((this.textBox_crear_repetir.Text == "") || (this.textBox_crear_repetir.Text == "Repetir Contraseña"))
                     {
                         MessageBox.Show("Falta ingresar Repetir Contraseña");
                     }
                     else
                     {
+                        //Verifica que la contraseña y repetición sean iguales
                         if (this.textBox_crear_contraseña.Text != this.textBox_crear_repetir.Text)
                         {
                             MessageBox.Show("Contraseña incorrecta");
@@ -122,6 +154,11 @@ namespace FlyMail
             }
         }
 
+        /// <summary>
+        /// Iniciar la ventana principal o cerrar la aplicación
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UI_iniciarFormClosed(object sender, FormClosedEventArgs e)
         {
             if (this.app_access)

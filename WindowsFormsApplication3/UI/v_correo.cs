@@ -19,6 +19,11 @@ namespace FlyMail
 
         private Fachada _controlador = Fachada.Instancia;
 
+        /// <summary>
+        /// Método que le da formato a los campos de la ventana
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void v_correo_Load(object sender, EventArgs e)
         {
             this.comboBox_servicio.Text = "Seleccionar";
@@ -44,13 +49,16 @@ namespace FlyMail
             }
         }
 
+        /// <summary>
+        /// Verifica si el nombre de correo aun no existe para dicha cuenta, habilitando los demás campos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_verificar_Click(object sender, EventArgs e)
         {
-
             //Verifica que el nombre del correo no existe ya en esta cuenta
             if (!_controlador.nombreExistenteCasilla(this.textBox1.Text))
             {
-
                 this.comboBox_servicio.Enabled = true;
                 this.textBox_direccion.Enabled = true;
                 this.textBox_contraseña.Enabled = true;
@@ -63,6 +71,11 @@ namespace FlyMail
             
         }
 
+        /// <summary>
+        /// Asigna los estados por defecto a la ventana
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void v_correo_FormClosing(object sender, FormClosingEventArgs e)
         {
             comboBox_servicio.Enabled = false;

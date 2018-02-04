@@ -24,7 +24,7 @@ namespace FlyMail
 
         private v_correo i_correo = new v_correo();
 
-        //        private v_login i_login = new v_login();
+        //private v_login i_login = new v_login();
 
         private void UI_ventaEntradaFormClosed(object sender, FormClosedEventArgs e)
         {
@@ -32,73 +32,105 @@ namespace FlyMail
                 Application.Exit();
         }
 
+        /// <summary>
+        /// Lista los mail "Recibidos"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_recibidos_Click(object sender, EventArgs e)
         {
             button_recibidos.BackColor = Color.LightSkyBlue;
-            button_borradores.BackColor = Color.PowderBlue;
             button_enviados.BackColor = Color.PowderBlue;
             button_papelera.BackColor = Color.PowderBlue;
         }
 
-        private void button_borradores_Click(object sender, EventArgs e)
-        {
-            button_recibidos.BackColor = Color.PowderBlue;
-            button_borradores.BackColor = Color.LightSkyBlue;
-            button_enviados.BackColor = Color.PowderBlue;
-            button_papelera.BackColor = Color.PowderBlue;
-        }
-
+        /// <summary>
+        /// Lista los mail "Enviados"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_enviados_Click(object sender, EventArgs e)
         {
             button_recibidos.BackColor = Color.PowderBlue;
-            button_borradores.BackColor = Color.PowderBlue;
             button_enviados.BackColor = Color.LightSkyBlue;
             button_papelera.BackColor = Color.PowderBlue;
         }
 
+        /// <summary>
+        /// Lista los mail de la papelera
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_papelera_Click(object sender, EventArgs e)
         {
             button_recibidos.BackColor = Color.PowderBlue;
-            button_borradores.BackColor = Color.PowderBlue;
             button_enviados.BackColor = Color.PowderBlue;
             button_papelera.BackColor = Color.LightSkyBlue;
         }
 
-        private void informaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Actualiza y descarga los mails
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_actualizar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Los íconos fueron tomados de http://dryicons.com");
+            this.refrescarDataGrid();
         }
 
+        /// <summary>
+        /// Permite redactar un nuevo mail
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_enviar_Click(object sender, EventArgs e)
         {
             this.i_mail.Text = "Enviar Mail";
             this.i_mail.ShowDialog(this);
         }
 
+        /// <summary>
+        /// Elimina el mail de la lista
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button_eliminar_Click(object sender, EventArgs e)
+        {
+            this.i_mail.Text = "Leer Mail";
+            this.i_mail.ShowDialog(this);
+            //    string pISBN = ((Libro)dataGridView1.CurrentRow.DataBoundItem).ISBN;
+            //    this.iBiblioteca.BajaLibro(pISBN);
+            //    this.refrescarDataGrid();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_responder_Click(object sender, EventArgs e)
         {
             this.i_mail.Text = "Enviar Mail";
             this.i_mail.ShowDialog(this);
         }
 
+        /// <summary>
+        /// Actualiza la lista de los mail
+        /// </summary>
         private void refrescarDataGrid()
         {
   //          dataGridView1.DataSource = this.iCorreo.Libros;
             dataGridView1.Refresh();
         }
 
-        private void button_eliminar_Click(object sender, EventArgs e)
+        private void modificarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            this.i_mail.Text = "Leer Mail";
-            this.i_mail.ShowDialog(this);
-        //    string pISBN = ((Libro)dataGridView1.CurrentRow.DataBoundItem).ISBN;
-        //    this.iBiblioteca.BajaLibro(pISBN);
-        //    this.refrescarDataGrid();
+
         }
 
-        private void button_actualizar_Click(object sender, EventArgs e)
+        private void eliminarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            this.refrescarDataGrid();
+
         }
 
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -113,21 +145,36 @@ namespace FlyMail
             this.i_correo.ShowDialog(this);
         }
 
-        private void v_principal_FormClosing(object sender, FormClosingEventArgs e)
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Width = 942;
-            this.Height = 529;
+
         }
 
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-//            this.Close();
-//            this.i_login.ShowDialog(this);
+            //            this.Close();
+            //            this.i_login.ShowDialog(this);
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void informaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Los íconos fueron tomados de http://dryicons.com");
+        }
+
+        /// <summary>
+        /// Al cerrrar la ventana asigna los valores por defecto a la misma
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void v_principal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Width = 942;
+            this.Height = 529;
         }
     }
 }

@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(v_principal));
             this.picture_main = new System.Windows.Forms.PictureBox();
             this.button_recibidos = new System.Windows.Forms.Button();
-            this.button_borradores = new System.Windows.Forms.Button();
             this.button_enviados = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -90,21 +89,6 @@
             this.toolTip1.SetToolTip(this.button_recibidos, "Mails Recibidos");
             this.button_recibidos.UseVisualStyleBackColor = false;
             this.button_recibidos.Click += new System.EventHandler(this.button_recibidos_Click);
-            // 
-            // button_borradores
-            // 
-            this.button_borradores.BackColor = System.Drawing.Color.PowderBlue;
-            this.button_borradores.ForeColor = System.Drawing.Color.MediumBlue;
-            this.button_borradores.Image = ((System.Drawing.Image)(resources.GetObject("button_borradores.Image")));
-            this.button_borradores.Location = new System.Drawing.Point(12, 161);
-            this.button_borradores.Name = "button_borradores";
-            this.button_borradores.Size = new System.Drawing.Size(115, 30);
-            this.button_borradores.TabIndex = 2;
-            this.button_borradores.Text = "Borradores";
-            this.button_borradores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip1.SetToolTip(this.button_borradores, "Borradores");
-            this.button_borradores.UseVisualStyleBackColor = false;
-            this.button_borradores.Click += new System.EventHandler(this.button_borradores_Click);
             // 
             // button_enviados
             // 
@@ -187,7 +171,7 @@
             this.button_papelera.BackColor = System.Drawing.Color.PowderBlue;
             this.button_papelera.ForeColor = System.Drawing.Color.MediumBlue;
             this.button_papelera.Image = ((System.Drawing.Image)(resources.GetObject("button_papelera.Image")));
-            this.button_papelera.Location = new System.Drawing.Point(12, 197);
+            this.button_papelera.Location = new System.Drawing.Point(12, 161);
             this.button_papelera.Name = "button_papelera";
             this.button_papelera.Size = new System.Drawing.Size(115, 30);
             this.button_papelera.TabIndex = 5;
@@ -302,8 +286,9 @@
             this.modificarToolStripMenuItem1.ForeColor = System.Drawing.Color.MediumBlue;
             this.modificarToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("modificarToolStripMenuItem1.Image")));
             this.modificarToolStripMenuItem1.Name = "modificarToolStripMenuItem1";
-            this.modificarToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
+            this.modificarToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.modificarToolStripMenuItem1.Text = "Modificar";
+            this.modificarToolStripMenuItem1.Click += new System.EventHandler(this.modificarToolStripMenuItem1_Click);
             // 
             // eliminarToolStripMenuItem1
             // 
@@ -311,8 +296,9 @@
             this.eliminarToolStripMenuItem1.ForeColor = System.Drawing.Color.MediumBlue;
             this.eliminarToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("eliminarToolStripMenuItem1.Image")));
             this.eliminarToolStripMenuItem1.Name = "eliminarToolStripMenuItem1";
-            this.eliminarToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
+            this.eliminarToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.eliminarToolStripMenuItem1.Text = "Eliminar";
+            this.eliminarToolStripMenuItem1.Click += new System.EventHandler(this.eliminarToolStripMenuItem1_Click);
             // 
             // agregarCorreoToolStripMenuItem
             // 
@@ -353,8 +339,9 @@
             this.eliminarToolStripMenuItem.ForeColor = System.Drawing.Color.MediumBlue;
             this.eliminarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("eliminarToolStripMenuItem.Image")));
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
             // cerrarSesiónToolStripMenuItem
             // 
@@ -432,7 +419,6 @@
             this.Controls.Add(this.button_papelera);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button_enviados);
-            this.Controls.Add(this.button_borradores);
             this.Controls.Add(this.button_recibidos);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -456,7 +442,6 @@
 
         private System.Windows.Forms.PictureBox picture_main;
         private System.Windows.Forms.Button button_recibidos;
-        private System.Windows.Forms.Button button_borradores;
         private System.Windows.Forms.Button button_enviados;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button_papelera;
