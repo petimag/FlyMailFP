@@ -109,7 +109,7 @@ namespace FlyMail
             }
         }
 
-        public void agregarCasilla(CasillaCorreo pCasilla, Servicio pServicio)
+        public void agregarCasilla(CasillaCorreo pCasilla, int pServicio)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -122,6 +122,27 @@ namespace FlyMail
             catch (DAOException)
             {
                 factory.RollBack();
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
+
+        public int obtenerIdServicio(string pProveedor)
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+
+            try
+            {
+                factory.IniciarConexion();
+                IServicioDAO _servicioDAO = factory.servicioDAO;
+                //Console.WriteLine(_cuentaDAO.verificarCuenta(pNombre, pContraseña));
+                return _servicioDAO.obtenerId(pProveedor);
+            }
+            catch (Exception)
+            {
+                return -1;
             }
             finally
             {

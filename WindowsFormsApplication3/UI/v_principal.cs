@@ -150,7 +150,7 @@ namespace FlyMail
         /// <param name="e"></param>
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.i_correo.Text = "Nuevo correo";
+            this.i_correo.Text = "Nueva Casilla";
             this.i_correo.ShowDialog(this);
         }
 
@@ -161,7 +161,7 @@ namespace FlyMail
         /// <param name="e"></param>
         private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.i_correo.Text = "Modificar correo";
+            this.i_correo.Text = "Modificar Casilla";
             this.i_correo.ShowDialog(this);
         }
 

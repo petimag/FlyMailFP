@@ -27,7 +27,7 @@ namespace FlyMail
                 return false;
         }
 
-        public void agregar(CasillaCorreo pCasilla, Servicio pServicio, int pUsuario)
+        public void agregar(CasillaCorreo pCasilla, int pServicio, int pUsuario)
         {
             using (NpgsqlTransaction transaccion = this._conexion.BeginTransaction())
             {
@@ -36,10 +36,10 @@ namespace FlyMail
 
                 comando.Transaction = transaccion;
 
-                comando.CommandText = "INSERT INTO \"CasillaEmail\"(nombre,contrasenaEmail,servicio,usuario,direccionEmail) VALUES(@nombre,@contrasenaEmail,@servicio,@usuario,@direccionEmail)";
+                comando.CommandText = "INSERT INTO \"CasillaEmail\"(nombre,\"contrasenaEmail\",servicio,usuario,\"direccionEmail\") VALUES(@nombre,@contrasenaEmail,@servicio,@usuario,@direccionEmail)";
                 comando.Parameters.AddWithValue("@nombre", pCasilla.Nombre);
                 comando.Parameters.AddWithValue("@contrasenaEmail", pCasilla.Contraseña);
-                comando.Parameters.AddWithValue("@servicio", pServicio.Nombre);
+                comando.Parameters.AddWithValue("@servicio", pServicio);
                 comando.Parameters.AddWithValue("@usuario", pUsuario);
                 comando.Parameters.AddWithValue("@direccionEmail", pCasilla.Direccion);
 

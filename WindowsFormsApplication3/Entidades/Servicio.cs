@@ -8,30 +8,42 @@ namespace FlyMail
 {
     public class Servicio
     {
-        string _nombre;
+        string _proveedor;
+        string _dominio;
         string _ip;
         int _puerto;
+
 
         /// <summary>
         /// Representa un Servicio de Correo Electrónico, como ser Gmail o Yahoo.
         /// </summary>
-        /// <param name="pNombre">Nombre del servicio</param>
+        /// <param name="pProveedor">Nombre del servicio</param>
         /// <param name="pIp">Dirección IP del servidor de Correo Electrónico</param>
         /// <param name="pPuerto">Puerto donde atiende el servidor de Correo Electrónico</param>
-        public Servicio(string pNombre, string pIp, int pPuerto)
+        public Servicio(string pProveedor, string pDominio, string pIp, int pPuerto)
         {
-            _nombre = pNombre;
+            _proveedor = pProveedor;
+            _dominio = pDominio;
             _ip = pIp;
             _puerto = pPuerto;
         }
 
         /// <summary>
-        /// Nombre del servicio.
+        /// Proveedor del servicio.
         /// </summary>
-        public string Nombre
+        public string Proveedor
         {
-            get { return _nombre; }
-            set { _nombre = value; }
+            get { return _proveedor; }
+            set { _proveedor = value; }
+        }
+
+        /// <summary>
+        /// Dominio del servicio
+        /// </summary>
+        public string Dominio
+        {
+            get { return _dominio; }
+            set { _dominio = value; }
         }
 
         /// <summary>

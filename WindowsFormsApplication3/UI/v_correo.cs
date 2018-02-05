@@ -57,7 +57,7 @@ namespace FlyMail
         private void button_verificar_Click(object sender, EventArgs e)
         {
             //Verifica que el nombre del correo no existe ya en esta cuenta
-            if (!_controlador.nombreExistenteCasilla(this.textBox1.Text))
+            if (!_controlador.nombreExistenteCasilla(this.textBox_nombre.Text))
             {
                 this.comboBox_servicio.Enabled = true;
                 this.textBox_direccion.Enabled = true;
@@ -87,9 +87,10 @@ namespace FlyMail
 
         private void button_guardar_Click(object sender, EventArgs e)
         {
-            CasillaCorreo _casilla = new CasillaCorreo(textBox1.Text,textBox_direccion.Text);
-            Servicio _servicio = new Servicio(comboBox_servicio.Text,"",0);
-            _controlador.agregarCasilla(_casilla, _servicio);
+            Console.WriteLine(textBox_direccion.Text);
+            CasillaCorreo _casilla = new CasillaCorreo(textBox_nombre.Text,textBox_direccion.Text,textBox_contraseña.Text);
+            int idServicio = _controlador.obtenerIdServicio(comboBox_servicio.Text);
+            _controlador.agregarCasilla(_casilla, idServicio);
         }
     }
 }

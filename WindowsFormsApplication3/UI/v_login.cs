@@ -135,7 +135,6 @@ namespace FlyMail
                 else
                 {
                     string hash = Utilidades.Encriptar(string.Concat(this.textBox_iniciar_nombre.Text, this.textBox_iniciar_contraseña.Text));
-                    Console.WriteLine(hash);
 
                     //Verifica si el usuario esta en la bd
                     if (_controlador.verificarCuenta(this.textBox_iniciar_nombre.Text, hash) != -1)

@@ -9,6 +9,6 @@ namespace FlyMail
     public interface ICasillaDAO
     {
         bool nombreExistente(string pNombre, int idCuenta);
-        void agregar(CasillaCorreo pCasilla, Servicio pServicio, int pUsuario);
+        void agregar(CasillaCorreo pCasilla, int pServicio, int pUsuario);
     }
 }

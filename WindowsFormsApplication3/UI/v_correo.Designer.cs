@@ -36,7 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_nombre = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox_contraseña = new System.Windows.Forms.TextBox();
@@ -48,9 +48,9 @@
             // 
             // button_guardar
             // 
-            this.button_guardar.BackColor = System.Drawing.Color.Linen;
+            this.button_guardar.BackColor = System.Drawing.SystemColors.ControlDark;
             this.button_guardar.Enabled = false;
-            this.button_guardar.ForeColor = System.Drawing.Color.Maroon;
+            this.button_guardar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_guardar.Image = ((System.Drawing.Image)(resources.GetObject("button_guardar.Image")));
             this.button_guardar.Location = new System.Drawing.Point(188, 210);
             this.button_guardar.Name = "button_guardar";
@@ -64,8 +64,8 @@
             // 
             // button_verificar
             // 
-            this.button_verificar.BackColor = System.Drawing.Color.Linen;
-            this.button_verificar.ForeColor = System.Drawing.Color.DarkRed;
+            this.button_verificar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button_verificar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_verificar.Image = ((System.Drawing.Image)(resources.GetObject("button_verificar.Image")));
             this.button_verificar.Location = new System.Drawing.Point(178, 48);
             this.button_verificar.Name = "button_verificar";
@@ -80,6 +80,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.Window;
             this.label2.Location = new System.Drawing.Point(9, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
@@ -89,6 +90,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.Window;
             this.label3.Location = new System.Drawing.Point(9, 21);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 13);
@@ -97,9 +99,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.BackColor = System.Drawing.SystemColors.GrayText;
+            this.groupBox1.Controls.Add(this.textBox_nombre);
             this.groupBox1.Controls.Add(this.button_verificar);
-            this.groupBox1.ForeColor = System.Drawing.Color.DarkRed;
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.groupBox1.Location = new System.Drawing.Point(10, 19);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(259, 78);
@@ -107,16 +110,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nombre Correo";
             // 
-            // textBox1
+            // textBox_nombre
             // 
-            this.textBox1.Location = new System.Drawing.Point(9, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(244, 20);
-            this.textBox1.TabIndex = 5;
+            this.textBox_nombre.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.textBox_nombre.ForeColor = System.Drawing.SystemColors.Window;
+            this.textBox_nombre.Location = new System.Drawing.Point(9, 22);
+            this.textBox_nombre.Name = "textBox_nombre";
+            this.textBox_nombre.Size = new System.Drawing.Size(244, 20);
+            this.textBox_nombre.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.Window;
             this.label4.Location = new System.Drawing.Point(9, 76);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 13);
@@ -125,13 +131,14 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.GrayText;
             this.groupBox2.Controls.Add(this.textBox_contraseña);
             this.groupBox2.Controls.Add(this.textBox_direccion);
             this.groupBox2.Controls.Add(this.comboBox_servicio);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.ForeColor = System.Drawing.Color.DarkRed;
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.groupBox2.Location = new System.Drawing.Point(10, 103);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(259, 101);
@@ -141,7 +148,9 @@
             // 
             // textBox_contraseña
             // 
+            this.textBox_contraseña.BackColor = System.Drawing.SystemColors.ControlDark;
             this.textBox_contraseña.Enabled = false;
+            this.textBox_contraseña.ForeColor = System.Drawing.SystemColors.Window;
             this.textBox_contraseña.Location = new System.Drawing.Point(90, 73);
             this.textBox_contraseña.Name = "textBox_contraseña";
             this.textBox_contraseña.Size = new System.Drawing.Size(163, 20);
@@ -149,7 +158,9 @@
             // 
             // textBox_direccion
             // 
+            this.textBox_direccion.BackColor = System.Drawing.SystemColors.ControlDark;
             this.textBox_direccion.Enabled = false;
+            this.textBox_direccion.ForeColor = System.Drawing.SystemColors.Window;
             this.textBox_direccion.Location = new System.Drawing.Point(90, 45);
             this.textBox_direccion.Name = "textBox_direccion";
             this.textBox_direccion.Size = new System.Drawing.Size(162, 20);
@@ -157,7 +168,9 @@
             // 
             // comboBox_servicio
             // 
+            this.comboBox_servicio.BackColor = System.Drawing.SystemColors.ControlDark;
             this.comboBox_servicio.Enabled = false;
+            this.comboBox_servicio.ForeColor = System.Drawing.SystemColors.Window;
             this.comboBox_servicio.FormattingEnabled = true;
             this.comboBox_servicio.Items.AddRange(new object[] {
             "Gmail",
@@ -171,7 +184,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCyan;
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(284, 241);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -199,10 +212,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button_verificar;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_nombre;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox comboBox_servicio;
         private System.Windows.Forms.TextBox textBox_contraseña;
         private System.Windows.Forms.TextBox textBox_direccion;
+        private System.Windows.Forms.ComboBox comboBox_servicio;
     }
 }

@@ -12,6 +12,7 @@ namespace FlyMail
         public abstract ICuentaDAO cuentaDAO { get; }
         public abstract ICasillaDAO casillaCorreoDAO { get; }
         public abstract IMailDAO mailDAO { get; }
+        public abstract IServicioDAO servicioDAO { get; }
 
         public static PostgresDAOFactory Instancia()
         {

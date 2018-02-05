@@ -35,6 +35,11 @@ namespace FlyMail
             get { return new PostgresMailDAO(_conexion); }
         }
 
+        public override IServicioDAO servicioDAO
+        {
+            get { return new PostgresServicioDAO(_conexion); }
+        }
+
         public override void Commit()
         {
             if (_transaction != null)
