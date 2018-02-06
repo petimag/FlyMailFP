@@ -15,10 +15,6 @@ namespace WindowsFormsApplication3.UI
         public v_cuenta()
         {
             InitializeComponent();
-            // Algo de codigo comentado para ver si me deja hacer commit
-            if (1 == 1)
-            { }
-
         }
     }
 }
