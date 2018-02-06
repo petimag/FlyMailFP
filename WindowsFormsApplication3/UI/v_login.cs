@@ -137,9 +137,10 @@ namespace FlyMail
                     string hash = Utilidades.Encriptar(string.Concat(this.textBox_iniciar_nombre.Text, this.textBox_iniciar_contraseña.Text));
 
                     //Verifica si el usuario esta en la bd
-                    if (_controlador.verificarCuenta(this.textBox_iniciar_nombre.Text, hash) != -1)
+                    Cuenta _cuenta = new Cuenta(this.textBox_iniciar_nombre.Text, hash);
+                    if (_controlador.verificarCuenta(_cuenta) != -1)
                     {
-                        _controlador.IDCuentaLogeado = _controlador.verificarCuenta(this.textBox_iniciar_nombre.Text, hash);
+                        _controlador.IDCuentaLogeado = _controlador.verificarCuenta(_cuenta);
                         app_access = true;
                         this.Close();
                     }
@@ -196,8 +197,10 @@ namespace FlyMail
                                 string hash = Utilidades.Encriptar(string.Concat(this.textBox_crear_nombre.Text, this.textBox_crear_contraseña.Text));
 
                                 //Agregar usuario
-                                _controlador.agregarCuenta(this.textBox_crear_nombre.Text, hash);
-                                _controlador.IDCuentaLogeado = _controlador.verificarCuenta(this.textBox_crear_nombre.Text, hash);
+                                Cuenta _cuenta = new Cuenta(this.textBox_crear_nombre.Text, hash);
+                                _controlador.agregarCuenta(_cuenta);
+
+                                _controlador.IDCuentaLogeado = _controlador.verificarCuenta(_cuenta);
                                 app_access = true;
                                 this.Close();
                             }

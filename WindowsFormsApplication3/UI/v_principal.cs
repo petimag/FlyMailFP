@@ -26,6 +26,8 @@ namespace FlyMail
 
         //private v_login i_login = new v_login();
 
+        private v_cuenta i_cuenta = new v_cuenta();
+
         private void UI_ventaEntradaFormClosed(object sender, FormClosedEventArgs e)
         {
             if (this._salir)
@@ -124,23 +126,25 @@ namespace FlyMail
         }
 
         /// <summary>
-        /// Modificar la cuenta del usuario
+        /// Modificar el nombre de la cuenta
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void modificarToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void modificarNombreToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            this.i_cuenta.Text = "Modificar Nombre";
+            this.i_cuenta.ShowDialog(this);
         }
 
         /// <summary>
-        /// Eliminar la cuenta de usuario
+        /// Modificar la contraseña de la cuenta
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void eliminarToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void modificarContraseñaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            this.i_cuenta.Text = "Modificar Contraseña";
+            this.i_cuenta.ShowDialog(this);
         }
 
         /// <summary>

@@ -8,8 +8,13 @@ namespace FlyMail
 {
     public interface ICuentaDAO
     {
-        void agregar(string pNombre, string pContraseña);
+        void agregar(Cuenta pCuenta);
         bool nombreExistente(string pNombre);
-        int verificarCuenta(string pNombre, string pContraseña);
+        int verificarCuenta(Cuenta pCuenta);
+        string obtenerNombreCuenta(int idUsuario);
+        string obtenerContraseñaCuenta(int idUsuario);
+        bool verificarContraseña(int idUsuario, string pContraseña);
+        void modificarNombre(int idUsuario, Cuenta pCuenta);
+        void modificarContraseña(int idUsuario, string pContraseña);
     }
 }

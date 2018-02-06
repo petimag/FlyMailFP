@@ -28,7 +28,7 @@ namespace FlyMail
             set { _idCuentaLogeado = value; }
         }
 
-        public void agregarCuenta(string pNombre, string pContraseña)
+        public void agregarCuenta(Cuenta pCuenta)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -36,7 +36,7 @@ namespace FlyMail
             {
                 factory.IniciarConexion();
                 ICuentaDAO _cuentaDAO = factory.cuentaDAO;
-                _cuentaDAO.agregar(pNombre,pContraseña);
+                _cuentaDAO.agregar(pCuenta);
             }
             catch (DAOException)
             {
@@ -68,7 +68,7 @@ namespace FlyMail
             }
         }
 
-        public int verificarCuenta(string pNombre, string pContraseña)
+        public int verificarCuenta(Cuenta pCuenta)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -77,11 +77,111 @@ namespace FlyMail
                 factory.IniciarConexion();
                 ICuentaDAO _cuentaDAO = factory.cuentaDAO;
                 //Console.WriteLine(_cuentaDAO.verificarCuenta(pNombre, pContraseña));
-                return _cuentaDAO.verificarCuenta(pNombre, pContraseña);
+                return _cuentaDAO.verificarCuenta(pCuenta);
             }
             catch (Exception)
             {
                 return -1;
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
+
+        public bool verificarContraseña(String pContraseña)
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+
+            try
+            {
+                factory.IniciarConexion();
+                ICuentaDAO _cuentaDAO = factory.cuentaDAO;
+                return _cuentaDAO.verificarContraseña(this.IDCuentaLogeado,pContraseña);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
+
+        public string obtenerNombreCuenta()
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+
+            try
+            {
+                factory.IniciarConexion();
+                ICuentaDAO _cuentaDAO = factory.cuentaDAO;
+                return _cuentaDAO.obtenerNombreCuenta(this.IDCuentaLogeado);
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
+
+        public string obtenerContrasenaCuenta()
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+
+            try
+            {
+                factory.IniciarConexion();
+                ICuentaDAO _cuentaDAO = factory.cuentaDAO;
+                return _cuentaDAO.obtenerContraseñaCuenta(this.IDCuentaLogeado);
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
+
+        public void modificarNombreCuenta(Cuenta pCuenta)
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+
+            try
+            {
+                factory.IniciarConexion();
+                ICuentaDAO _cuentaDAO = factory.cuentaDAO;
+                _cuentaDAO.modificarNombre(this.IDCuentaLogeado, pCuenta);
+            }
+            catch (DAOException)
+            {
+                factory.RollBack();
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
+
+        public void modificarContraseñaCuenta(string pContraseña)
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+
+            try
+            {
+                factory.IniciarConexion();
+                ICuentaDAO _cuentaDAO = factory.cuentaDAO;
+                _cuentaDAO.modificarContraseña(this.IDCuentaLogeado,pContraseña);
+            }
+            catch (DAOException)
+            {
+                factory.RollBack();
             }
             finally
             {

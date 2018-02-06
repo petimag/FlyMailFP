@@ -47,8 +47,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menúToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarNombreToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarContraseñaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarCorreoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,6 +79,7 @@
             // button_recibidos
             // 
             this.button_recibidos.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button_recibidos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_recibidos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_recibidos.Image = ((System.Drawing.Image)(resources.GetObject("button_recibidos.Image")));
             this.button_recibidos.Location = new System.Drawing.Point(12, 89);
@@ -94,6 +95,7 @@
             // button_enviados
             // 
             this.button_enviados.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button_enviados.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_enviados.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_enviados.Image = ((System.Drawing.Image)(resources.GetObject("button_enviados.Image")));
             this.button_enviados.Location = new System.Drawing.Point(12, 125);
@@ -170,6 +172,7 @@
             // button_papelera
             // 
             this.button_papelera.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button_papelera.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_papelera.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_papelera.Image = ((System.Drawing.Image)(resources.GetObject("button_papelera.Image")));
             this.button_papelera.Location = new System.Drawing.Point(12, 161);
@@ -185,6 +188,7 @@
             // button_enviar
             // 
             this.button_enviar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button_enviar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_enviar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_enviar.Image = ((System.Drawing.Image)(resources.GetObject("button_enviar.Image")));
             this.button_enviar.Location = new System.Drawing.Point(206, 32);
@@ -201,6 +205,7 @@
             // 
             this.button_eliminar.BackColor = System.Drawing.SystemColors.ControlDark;
             this.button_eliminar.Enabled = false;
+            this.button_eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_eliminar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("button_eliminar.Image")));
             this.button_eliminar.Location = new System.Drawing.Point(278, 32);
@@ -216,6 +221,7 @@
             // button_actualizar
             // 
             this.button_actualizar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button_actualizar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_actualizar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_actualizar.Image = ((System.Drawing.Image)(resources.GetObject("button_actualizar.Image")));
             this.button_actualizar.Location = new System.Drawing.Point(133, 32);
@@ -232,6 +238,7 @@
             // 
             this.button_responder.BackColor = System.Drawing.SystemColors.ControlDark;
             this.button_responder.Enabled = false;
+            this.button_responder.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_responder.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_responder.Image = ((System.Drawing.Image)(resources.GetObject("button_responder.Image")));
             this.button_responder.Location = new System.Drawing.Point(351, 32);
@@ -274,33 +281,33 @@
             // 
             this.cuentasToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDark;
             this.cuentasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.modificarToolStripMenuItem1,
-            this.eliminarToolStripMenuItem1});
+            this.modificarNombreToolStripMenuItem1,
+            this.modificarContraseñaToolStripMenuItem1});
             this.cuentasToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.cuentasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cuentasToolStripMenuItem.Image")));
             this.cuentasToolStripMenuItem.Name = "cuentasToolStripMenuItem";
             this.cuentasToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.cuentasToolStripMenuItem.Text = "Cuentas";
             // 
-            // modificarToolStripMenuItem1
+            // modificarNombreToolStripMenuItem1
             // 
-            this.modificarToolStripMenuItem1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.modificarToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.modificarToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("modificarToolStripMenuItem1.Image")));
-            this.modificarToolStripMenuItem1.Name = "modificarToolStripMenuItem1";
-            this.modificarToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
-            this.modificarToolStripMenuItem1.Text = "Modificar";
-            this.modificarToolStripMenuItem1.Click += new System.EventHandler(this.modificarToolStripMenuItem1_Click);
+            this.modificarNombreToolStripMenuItem1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.modificarNombreToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.modificarNombreToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("modificarNombreToolStripMenuItem1.Image")));
+            this.modificarNombreToolStripMenuItem1.Name = "modificarNombreToolStripMenuItem1";
+            this.modificarNombreToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.modificarNombreToolStripMenuItem1.Text = "Modificar Nombre";
+            this.modificarNombreToolStripMenuItem1.Click += new System.EventHandler(this.modificarNombreToolStripMenuItem1_Click);
             // 
-            // eliminarToolStripMenuItem1
+            // modificarContraseñaToolStripMenuItem1
             // 
-            this.eliminarToolStripMenuItem1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.eliminarToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.eliminarToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("eliminarToolStripMenuItem1.Image")));
-            this.eliminarToolStripMenuItem1.Name = "eliminarToolStripMenuItem1";
-            this.eliminarToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
-            this.eliminarToolStripMenuItem1.Text = "Eliminar";
-            this.eliminarToolStripMenuItem1.Click += new System.EventHandler(this.eliminarToolStripMenuItem1_Click);
+            this.modificarContraseñaToolStripMenuItem1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.modificarContraseñaToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.modificarContraseñaToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("modificarContraseñaToolStripMenuItem1.Image")));
+            this.modificarContraseñaToolStripMenuItem1.Name = "modificarContraseñaToolStripMenuItem1";
+            this.modificarContraseñaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.modificarContraseñaToolStripMenuItem1.Text = "Modificar Contraseña";
+            this.modificarContraseñaToolStripMenuItem1.Click += new System.EventHandler(this.modificarContraseñaToolStripMenuItem1_Click);
             // 
             // agregarCorreoToolStripMenuItem
             // 
@@ -430,6 +437,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(850, 270);
             this.Name = "v_principal";
+            this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FlyMail";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.v_principal_FormClosing);
@@ -465,8 +473,8 @@
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cuentasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem modificarNombreToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem modificarContraseñaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesiónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBox1;

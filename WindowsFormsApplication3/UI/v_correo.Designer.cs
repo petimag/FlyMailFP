@@ -50,6 +50,7 @@
             // 
             this.button_guardar.BackColor = System.Drawing.SystemColors.ControlDark;
             this.button_guardar.Enabled = false;
+            this.button_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_guardar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_guardar.Image = ((System.Drawing.Image)(resources.GetObject("button_guardar.Image")));
             this.button_guardar.Location = new System.Drawing.Point(188, 210);
@@ -65,6 +66,7 @@
             // button_verificar
             // 
             this.button_verificar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button_verificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_verificar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_verificar.Image = ((System.Drawing.Image)(resources.GetObject("button_verificar.Image")));
             this.button_verificar.Location = new System.Drawing.Point(178, 48);
@@ -191,6 +193,7 @@
             this.Controls.Add(this.button_guardar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "v_correo";
+            this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Correo";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.v_correo_FormClosing);
