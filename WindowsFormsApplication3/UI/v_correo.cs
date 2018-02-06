@@ -87,7 +87,6 @@ namespace FlyMail
 
         private void button_guardar_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(textBox_direccion.Text);
             CasillaCorreo _casilla = new CasillaCorreo(textBox_nombre.Text,textBox_direccion.Text,textBox_contraseña.Text);
             int idServicio = _controlador.obtenerIdServicio(comboBox_servicio.Text);
             _controlador.agregarCasilla(_casilla, idServicio);

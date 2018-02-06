@@ -35,7 +35,6 @@ namespace FlyMail
                 NpgsqlCommand comando = this._conexion.CreateCommand();
 
                 comando.Transaction = transaccion;
-
                 comando.CommandText = "INSERT INTO \"CasillaEmail\"(nombre,\"contrasenaEmail\",servicio,usuario,\"direccionEmail\") VALUES(@nombre,@contrasenaEmail,@servicio,@usuario,@direccionEmail)";
                 comando.Parameters.AddWithValue("@nombre", pCasilla.Nombre);
                 comando.Parameters.AddWithValue("@contrasenaEmail", pCasilla.Contraseña);

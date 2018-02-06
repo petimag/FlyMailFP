@@ -19,9 +19,8 @@ namespace FlyMail
         public int obtenerId(string pProveedor)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
-            comando.CommandText = "SELECT * FROM \"Serivicio\" WHERE \"proveedor\" = '" + pProveedor + "'";
+            comando.CommandText = "SELECT \"idServicio\" FROM \"Servicio\" WHERE \"proveedor\" = '" + pProveedor + "'";
             NpgsqlDataReader reader = comando.ExecuteReader();
-            //Console.WriteLine(Int32.Parse(reader[0].ToString()));
             if (reader.Read())
                 return Int32.Parse(reader[0].ToString());
             else

@@ -51,7 +51,6 @@ namespace FlyMail
             NpgsqlCommand comando = this._conexion.CreateCommand();
             comando.CommandText = "SELECT \"idUsuario\" FROM \"Usuario\" WHERE \"nombre\" = '" + pNombre + "' and contrasena = '" + pContraseña + "'";
             NpgsqlDataReader reader = comando.ExecuteReader();
-            //Console.WriteLine(Int32.Parse(reader[0].ToString()));
             if (reader.Read())
                 return Int32.Parse(reader[0].ToString());
             else

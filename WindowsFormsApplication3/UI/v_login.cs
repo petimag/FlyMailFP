@@ -194,7 +194,7 @@ namespace FlyMail
                                 this.DialogResult = DialogResult.Yes;
 
                                 string hash = Utilidades.Encriptar(string.Concat(this.textBox_crear_nombre.Text, this.textBox_crear_contraseña.Text));
-                                Console.WriteLine(hash);
+
                                 //Agregar usuario
                                 _controlador.agregarCuenta(this.textBox_crear_nombre.Text, hash);
                                 _controlador.IDCuentaLogeado = _controlador.verificarCuenta(this.textBox_crear_nombre.Text, hash);

@@ -137,7 +137,6 @@ namespace FlyMail
             {
                 factory.IniciarConexion();
                 IServicioDAO _servicioDAO = factory.servicioDAO;
-                //Console.WriteLine(_cuentaDAO.verificarCuenta(pNombre, pContraseña));
                 return _servicioDAO.obtenerId(pProveedor);
             }
             catch (Exception)

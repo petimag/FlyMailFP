@@ -21,7 +21,7 @@ namespace FlyMail
         public CasillaCorreo(string pNombre, string pDireccion)
         {
             _nombre = pNombre;
-            _nombre = pDireccion;
+            _direccion = pDireccion;
             _contraseña = String.Empty;
         }
 
@@ -34,7 +34,7 @@ namespace FlyMail
         public CasillaCorreo(string pNombre, string pDireccion, string pPassword)
         {
             _nombre = pNombre;
-            _nombre = pDireccion;
+            _direccion = pDireccion;
             _contraseña = pPassword;
         }
 
