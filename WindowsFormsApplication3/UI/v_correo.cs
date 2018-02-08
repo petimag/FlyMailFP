@@ -26,6 +26,8 @@ namespace FlyMail
         /// <param name="e"></param>
         private void v_correo_Load(object sender, EventArgs e)
         {
+            this.textBox_nombre.Text = "";
+            this.comboBox1_nombre.Text = "";
             this.textBox_contraseña.Text = "";
             this.textBox_direccion.Text = "";
             if (this.Text == "Agregar Casilla")
@@ -43,6 +45,7 @@ namespace FlyMail
                 this.comboBox1_nombre.Visible = true;
                 this.comboBox1_nombre.Text = "";
                 this.textBox_nombre.Visible = false;
+                this.comboBox_servicio.Text = "";
                 this.button_verificar.Text = "Buscar";
                 this.comboBox_servicio.Enabled = false;
                 this.textBox_direccion.Enabled = false;
@@ -74,10 +77,37 @@ namespace FlyMail
             }
             if (button_verificar.Text == "Buscar")
             {
-
+                if (_controlador.obtenerDireccionCasilla(this.comboBox1_nombre.Text) != String.Empty)
+                {
+                    this.textBox_direccion.Enabled = true;
+                    this.textBox_direccion.Text =_controlador.obtenerDireccionCasilla(this.comboBox1_nombre.Text);
+                    this.textBox_contraseña.Enabled = true;
+                    this.textBox_contraseña.Text = "Si desea realizar cambios";
+                    this.button_guardar.Enabled = true;
+                }
             }
 
 
+        }
+
+        private void textBox_contraseña_Focus(object sender, EventArgs e)
+        {
+            if (this.Text == "Modificar Casilla")
+            {
+                this.textBox_contraseña.Text = "";
+                this.textBox_contraseña.ForeColor = Color.Black;
+                this.textBox_contraseña.PasswordChar = '♦';
+            }
+        }
+
+        private void textBox_contraseña_noFocus(object sender, EventArgs e)
+        {
+            if ((this.textBox_contraseña.Text == "") && (this.Text == "Modificar Casilla"))
+            {
+                this.textBox_contraseña.PasswordChar = '\0';
+                this.textBox_contraseña.Text = "Si desea realizar cambios";
+                this.textBox_contraseña.ForeColor = Color.LightGray;
+            }
         }
 
         /// <summary>
@@ -96,9 +126,22 @@ namespace FlyMail
 
         private void button_guardar_Click(object sender, EventArgs e)
         {
-            CasillaCorreo _casilla = new CasillaCorreo(textBox_nombre.Text,textBox_direccion.Text,textBox_contraseña.Text);
-            int idServicio = _controlador.obtenerIdServicio(comboBox_servicio.Text);
-            _controlador.agregarCasilla(_casilla, idServicio);
+            if (this.Text == "Agregar Casilla")
+            {
+                CasillaCorreo _casilla = new CasillaCorreo(this.textBox_nombre.Text,this.textBox_direccion.Text, this.textBox_contraseña.Text);
+                int idServicio = _controlador.obtenerIdServicio(comboBox_servicio.Text);
+                _controlador.agregarCasilla(_casilla, idServicio);
+            }
+
+            if (this.Text=="Modificar Casilla")
+            {
+                CasillaCorreo _casilla = new CasillaCorreo(this.comboBox1_nombre.Text, this.textBox_direccion.Text, this.textBox_contraseña.Text);
+                if (this.textBox_contraseña.Text=="Si desea realizar cambios")
+                {
+                    _casilla.Contraseña = String.Empty;
+                }
+                _controlador.modificarCasilla(_casilla);
+            }
             this.Close();
         }
     }

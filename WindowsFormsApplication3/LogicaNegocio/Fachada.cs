@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FlyMail
 {
@@ -209,7 +210,26 @@ namespace FlyMail
             }
         }
 
-        //public 
+        public string obtenerDireccionCasilla(string pNombreCasilla)
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+
+            try
+            {
+                factory.IniciarConexion();
+                ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
+                return _casillaDAO.buscarDireccion(pNombreCasilla);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return string.Empty;
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
 
         public void agregarCasilla(CasillaCorreo pCasilla, int pServicio)
         {
@@ -220,6 +240,26 @@ namespace FlyMail
                 factory.IniciarConexion();
                 ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
                 _casillaDAO.agregar(pCasilla,pServicio, _idCuentaLogeado);
+            }
+            catch (DAOException)
+            {
+                factory.RollBack();
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
+
+        public void modificarCasilla(CasillaCorreo pCasilla)
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+
+            try
+            {
+                factory.IniciarConexion();
+                ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
+                _casillaDAO.modificar(pCasilla);
             }
             catch (DAOException)
             {

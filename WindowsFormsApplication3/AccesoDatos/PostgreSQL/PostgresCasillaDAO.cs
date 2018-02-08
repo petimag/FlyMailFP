@@ -27,7 +27,7 @@ namespace FlyMail
                 return false;
         }
 
-        List<string> listaNombres(int idCuenta)
+        /*List<string> listaNombres(int idCuenta)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
             comando.CommandText = "SELECT * FROM \"CasillaEmail\" WHERE usuario = '" + idCuenta + "'";
@@ -36,29 +36,20 @@ namespace FlyMail
                 return true;
             else
                 return false;
-        }
-        CasillaCorreo buscarCasilla(int idCasilla)
+        }*/
+        public string buscarDireccion(string pNombre)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
-            comando.CommandText = "SELECT * FROM \"CasillaEmail\" WHERE \"idCasillaEmail\" = '" + idCasilla + "'";
+            comando.CommandText = "SELECT \"direccionEmail\" FROM \"CasillaEmail\" WHERE nombre = '" + pNombre + "'";
             NpgsqlDataReader reader = comando.ExecuteReader();
-            DataTable schemaTable = reader.GetSchemaTable();
             if (reader.Read())
-                return ;
-            else
-                return false;
-
-            /*SqlDataReader reader = command.ExecuteReader();
-        DataTable schemaTable = reader.GetSchemaTable();
-
-        foreach (DataRow row in schemaTable.Rows)
-        {
-            foreach (DataColumn column in schemaTable.Columns)
             {
-                Console.WriteLine(String.Format("{0} = {1}",
-                   column.ColumnName, row[column]));
+                return reader[0].ToString();
             }
-        }*/
+            else
+            {
+                throw new DAOException("Nombre de Casilla no encontrado");
+            }
         }
 
         public void agregar(CasillaCorreo pCasilla, int pServicio, int pUsuario)
@@ -80,6 +71,19 @@ namespace FlyMail
 
                 transaccion.Commit();
             }
+        }
+
+        public void modificar(CasillaCorreo pCasilla)
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion, \"contrasenaEmail\" = @contrasena WHERE nombre = '" + pCasilla.Nombre + "'";
+
+            comando.Parameters.AddWithValue("@direccion", pCasilla.Direccion);
+            if (pCasilla.Contraseña != string.Empty)
+            {
+                comando.Parameters.AddWithValue("@contrasena", pCasilla.Contraseña);
+            }
+            comando.ExecuteNonQuery();
         }
     }
 }

@@ -159,6 +159,8 @@
             this.textBox_contraseña.Name = "textBox_contraseña";
             this.textBox_contraseña.Size = new System.Drawing.Size(163, 20);
             this.textBox_contraseña.TabIndex = 8;
+            this.textBox_contraseña.GotFocus += new System.EventHandler(this.textBox_contraseña_Focus);
+            this.textBox_contraseña.LostFocus += new System.EventHandler(this.textBox_contraseña_noFocus);
             // 
             // textBox_direccion
             // 
