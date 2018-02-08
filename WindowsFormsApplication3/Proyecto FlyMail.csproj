@@ -64,11 +64,11 @@
     <Compile Include="Entidades\Servicio.cs" />
     <Compile Include="LogicaNegocio\Fachada.cs" />
     <Compile Include="LogicaNegocio\Utilidades.cs" />
-    <Compile Include="UI\v_casilla.cs">
+    <Compile Include="UI\v_correo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\v_casilla.Designer.cs">
-      <DependentUpon>v_casilla.cs</DependentUpon>
+    <Compile Include="UI\v_correo.Designer.cs">
+      <DependentUpon>v_correo.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\v_cuenta.cs">
       <SubType>Form</SubType>
@@ -105,8 +105,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\v_casilla.resx">
-      <DependentUpon>v_casilla.cs</DependentUpon>
+    <EmbeddedResource Include="UI\v_correo.resx">
+      <DependentUpon>v_correo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\v_cuenta.resx">
       <DependentUpon>v_cuenta.cs</DependentUpon>
