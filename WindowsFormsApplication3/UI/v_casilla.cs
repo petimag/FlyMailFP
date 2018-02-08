@@ -26,26 +26,27 @@ namespace FlyMail
         /// <param name="e"></param>
         private void v_correo_Load(object sender, EventArgs e)
         {
-            this.comboBox_servicio.Text = "Seleccionar";
             this.textBox_contraseña.Text = "";
             this.textBox_direccion.Text = "";
-            if (this.Text == "Agregar Correo")
+            if (this.Text == "Agregar Casilla")
             {
+                this.comboBox1_nombre.Visible = false;
+                this.textBox_nombre.Visible = true;
+                this.button_verificar.Text = "Verificar";
+                this.comboBox_servicio.Text = "Seleccionar";
                 this.comboBox_servicio.Enabled = false;
                 this.textBox_direccion.Enabled = false;
                 this.textBox_contraseña.Enabled = false;
             }
-            if (this.Text == "Nuevo Correo")
+            if (this.Text == "Modificar Casilla")
             {
+                this.comboBox1_nombre.Visible = true;
+                this.comboBox1_nombre.Text = "";
+                this.textBox_nombre.Visible = false;
+                this.button_verificar.Text = "Buscar";
                 this.comboBox_servicio.Enabled = false;
                 this.textBox_direccion.Enabled = false;
                 this.textBox_contraseña.Enabled = false;
-            }
-            if (this.Text == "Modificar correo")
-            {
-                this.comboBox_servicio.Enabled = true;
-                this.textBox_direccion.Enabled = true;
-                this.textBox_contraseña.Enabled = true;
             }
         }
 
@@ -57,18 +58,26 @@ namespace FlyMail
         private void button_verificar_Click(object sender, EventArgs e)
         {
             //Verifica que el nombre del correo no existe ya en esta cuenta
-            if (!_controlador.nombreExistenteCasilla(this.textBox_nombre.Text))
+            if (button_verificar.Text=="Verificar")
             {
-                this.comboBox_servicio.Enabled = true;
-                this.textBox_direccion.Enabled = true;
-                this.textBox_contraseña.Enabled = true;
-                this.button_guardar.Enabled = true;
+                if (!_controlador.nombreExistenteCasilla(this.textBox_nombre.Text))
+                {
+                    this.comboBox_servicio.Enabled = true;
+                    this.textBox_direccion.Enabled = true;
+                    this.textBox_contraseña.Enabled = true;
+                    this.button_guardar.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Nombre de Casilla ya existente");
+                }
             }
-            else
+            if (button_verificar.Text == "Buscar")
             {
-                MessageBox.Show("Nombre de Casilla ya existente");
+
             }
-            
+
+
         }
 
         /// <summary>

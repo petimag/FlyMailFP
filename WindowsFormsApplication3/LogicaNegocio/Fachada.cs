@@ -209,6 +209,8 @@ namespace FlyMail
             }
         }
 
+        //public 
+
         public void agregarCasilla(CasillaCorreo pCasilla, int pServicio)
         {
             DAOFactory factory = DAOFactory.Instancia();

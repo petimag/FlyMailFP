@@ -42,6 +42,7 @@
             this.textBox_contraseña = new System.Windows.Forms.TextBox();
             this.textBox_direccion = new System.Windows.Forms.TextBox();
             this.comboBox_servicio = new System.Windows.Forms.ComboBox();
+            this.comboBox1_nombre = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -102,6 +103,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.GrayText;
+            this.groupBox1.Controls.Add(this.comboBox1_nombre);
             this.groupBox1.Controls.Add(this.textBox_nombre);
             this.groupBox1.Controls.Add(this.button_verificar);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.HighlightText;
@@ -110,7 +112,7 @@
             this.groupBox1.Size = new System.Drawing.Size(259, 78);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Nombre Correo";
+            this.groupBox1.Text = "Nombre de Casilla";
             // 
             // textBox_nombre
             // 
@@ -182,6 +184,16 @@
             this.comboBox_servicio.Size = new System.Drawing.Size(163, 21);
             this.comboBox_servicio.TabIndex = 6;
             // 
+            // comboBox1_nombre
+            // 
+            this.comboBox1_nombre.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.comboBox1_nombre.ForeColor = System.Drawing.SystemColors.Window;
+            this.comboBox1_nombre.FormattingEnabled = true;
+            this.comboBox1_nombre.Location = new System.Drawing.Point(9, 22);
+            this.comboBox1_nombre.Name = "comboBox1_nombre";
+            this.comboBox1_nombre.Size = new System.Drawing.Size(243, 21);
+            this.comboBox1_nombre.TabIndex = 0;
+            // 
             // v_correo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,5 +232,6 @@
         private System.Windows.Forms.TextBox textBox_contraseña;
         private System.Windows.Forms.TextBox textBox_direccion;
         private System.Windows.Forms.ComboBox comboBox_servicio;
+        private System.Windows.Forms.ComboBox comboBox1_nombre;
     }
 }

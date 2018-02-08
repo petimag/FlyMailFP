@@ -154,7 +154,7 @@ namespace FlyMail
         /// <param name="e"></param>
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.i_correo.Text = "Nueva Casilla";
+            this.i_correo.Text = "Agregar Casilla";
             this.i_correo.ShowDialog(this);
         }
 

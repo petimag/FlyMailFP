@@ -27,6 +27,40 @@ namespace FlyMail
                 return false;
         }
 
+        List<string> listaNombres(int idCuenta)
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "SELECT * FROM \"CasillaEmail\" WHERE usuario = '" + idCuenta + "'";
+            NpgsqlDataReader reader = comando.ExecuteReader();
+            if (reader.Read())
+                return true;
+            else
+                return false;
+        }
+        CasillaCorreo buscarCasilla(int idCasilla)
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "SELECT * FROM \"CasillaEmail\" WHERE \"idCasillaEmail\" = '" + idCasilla + "'";
+            NpgsqlDataReader reader = comando.ExecuteReader();
+            DataTable schemaTable = reader.GetSchemaTable();
+            if (reader.Read())
+                return ;
+            else
+                return false;
+
+            /*SqlDataReader reader = command.ExecuteReader();
+        DataTable schemaTable = reader.GetSchemaTable();
+
+        foreach (DataRow row in schemaTable.Rows)
+        {
+            foreach (DataColumn column in schemaTable.Columns)
+            {
+                Console.WriteLine(String.Format("{0} = {1}",
+                   column.ColumnName, row[column]));
+            }
+        }*/
+        }
+
         public void agregar(CasillaCorreo pCasilla, int pServicio, int pUsuario)
         {
             using (NpgsqlTransaction transaccion = this._conexion.BeginTransaction())
