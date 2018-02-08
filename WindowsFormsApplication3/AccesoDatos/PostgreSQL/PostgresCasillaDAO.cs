@@ -80,9 +80,16 @@ namespace FlyMail
 
             comando.Parameters.AddWithValue("@direccion", pCasilla.Direccion);
             if (pCasilla.Contraseña != string.Empty)
-            {
-                comando.Parameters.AddWithValue("@contrasena", pCasilla.Contraseña);
-            }
+            comando.Parameters.AddWithValue("@contrasena", pCasilla.Contraseña);
+            comando.ExecuteNonQuery();
+        }
+
+        public void modificarDireccion(CasillaCorreo pCasilla)
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion WHERE nombre = '" + pCasilla.Nombre + "'";
+
+            comando.Parameters.AddWithValue("@direccion", pCasilla.Direccion);
             comando.ExecuteNonQuery();
         }
     }

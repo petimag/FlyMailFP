@@ -82,6 +82,7 @@ namespace FlyMail
                     this.textBox_direccion.Enabled = true;
                     this.textBox_direccion.Text =_controlador.obtenerDireccionCasilla(this.comboBox1_nombre.Text);
                     this.textBox_contraseña.Enabled = true;
+                    this.textBox_contraseña.PasswordChar = '\0';
                     this.textBox_contraseña.Text = "Si desea realizar cambios";
                     this.button_guardar.Enabled = true;
                 }

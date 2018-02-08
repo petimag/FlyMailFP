@@ -13,5 +13,6 @@ namespace FlyMail
         string buscarDireccion(string pNombre);
         void agregar(CasillaCorreo pCasilla, int pServicio, int pUsuario);
         void modificar(CasillaCorreo pCasilla);
+        void modificarDireccion(CasillaCorreo pCasilla);
     }
 }

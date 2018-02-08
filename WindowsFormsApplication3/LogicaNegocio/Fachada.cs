@@ -259,7 +259,15 @@ namespace FlyMail
             {
                 factory.IniciarConexion();
                 ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
-                _casillaDAO.modificar(pCasilla);
+                if (pCasilla.Contraseña != string.Empty)
+                {
+                    _casillaDAO.modificar(pCasilla);
+                }
+                else
+                {
+                    _casillaDAO.modificarDireccion(pCasilla);
+                }
+                
             }
             catch (DAOException)
             {
