@@ -36,13 +36,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox1_nombre = new System.Windows.Forms.ComboBox();
             this.textBox_nombre = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox_contraseña = new System.Windows.Forms.TextBox();
             this.textBox_direccion = new System.Windows.Forms.TextBox();
             this.comboBox_servicio = new System.Windows.Forms.ComboBox();
-            this.comboBox1_nombre = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -114,6 +114,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nombre de Casilla";
             // 
+            // comboBox1_nombre
+            // 
+            this.comboBox1_nombre.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.comboBox1_nombre.ForeColor = System.Drawing.SystemColors.Window;
+            this.comboBox1_nombre.FormattingEnabled = true;
+            this.comboBox1_nombre.Location = new System.Drawing.Point(9, 22);
+            this.comboBox1_nombre.Name = "comboBox1_nombre";
+            this.comboBox1_nombre.Size = new System.Drawing.Size(243, 21);
+            this.comboBox1_nombre.TabIndex = 0;
+            // 
             // textBox_nombre
             // 
             this.textBox_nombre.BackColor = System.Drawing.SystemColors.ControlDark;
@@ -159,6 +169,7 @@
             this.textBox_contraseña.Name = "textBox_contraseña";
             this.textBox_contraseña.Size = new System.Drawing.Size(163, 20);
             this.textBox_contraseña.TabIndex = 8;
+            this.textBox_contraseña.TextChanged += new System.EventHandler(this.textBox_contraseña_TextChanged);
             this.textBox_contraseña.GotFocus += new System.EventHandler(this.textBox_contraseña_Focus);
             this.textBox_contraseña.LostFocus += new System.EventHandler(this.textBox_contraseña_noFocus);
             // 
@@ -171,6 +182,7 @@
             this.textBox_direccion.Name = "textBox_direccion";
             this.textBox_direccion.Size = new System.Drawing.Size(162, 20);
             this.textBox_direccion.TabIndex = 7;
+            this.textBox_direccion.TextChanged += new System.EventHandler(this.textBox_direccion_TextChanged);
             // 
             // comboBox_servicio
             // 
@@ -186,18 +198,9 @@
             this.comboBox_servicio.Size = new System.Drawing.Size(163, 21);
             this.comboBox_servicio.TabIndex = 6;
             // 
-            // comboBox1_nombre
-            // 
-            this.comboBox1_nombre.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.comboBox1_nombre.ForeColor = System.Drawing.SystemColors.Window;
-            this.comboBox1_nombre.FormattingEnabled = true;
-            this.comboBox1_nombre.Location = new System.Drawing.Point(9, 22);
-            this.comboBox1_nombre.Name = "comboBox1_nombre";
-            this.comboBox1_nombre.Size = new System.Drawing.Size(243, 21);
-            this.comboBox1_nombre.TabIndex = 0;
-            // 
             // v_correo
             // 
+            this.AcceptButton = this.button_verificar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
@@ -206,6 +209,8 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button_guardar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(300, 280);
+            this.MinimumSize = new System.Drawing.Size(300, 280);
             this.Name = "v_correo";
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

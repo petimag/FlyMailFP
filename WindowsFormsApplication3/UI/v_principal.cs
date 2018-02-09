@@ -176,7 +176,8 @@ namespace FlyMail
         /// <param name="e"></param>
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.i_correo.Text = "Eliminar Casilla";
+            this.i_correo.ShowDialog(this);
         }
 
         /// <summary>

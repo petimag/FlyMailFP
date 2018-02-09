@@ -32,6 +32,8 @@ namespace FlyMail
             this.textBox_direccion.Text = "";
             if (this.Text == "Agregar Casilla")
             {
+                this.label3.Visible = true;
+                this.label2.Visible = true;
                 this.comboBox1_nombre.Visible = false;
                 this.textBox_nombre.Visible = true;
                 this.button_verificar.Text = "Verificar";
@@ -39,9 +41,13 @@ namespace FlyMail
                 this.comboBox_servicio.Enabled = false;
                 this.textBox_direccion.Enabled = false;
                 this.textBox_contraseña.Enabled = false;
+                this.comboBox_servicio.Visible = true;
+                this.textBox_direccion.Visible = true;
             }
             if (this.Text == "Modificar Casilla")
             {
+                this.label3.Visible = true;
+                this.label2.Visible = true;
                 this.comboBox1_nombre.Visible = true;
                 this.comboBox1_nombre.Text = "";
                 this.textBox_nombre.Visible = false;
@@ -49,6 +55,21 @@ namespace FlyMail
                 this.button_verificar.Text = "Buscar";
                 this.comboBox_servicio.Enabled = false;
                 this.textBox_direccion.Enabled = false;
+                this.textBox_contraseña.Enabled = false;
+                this.comboBox_servicio.Visible = true;
+                this.textBox_direccion.Visible = true;
+            }
+            if(this.Text == "Eliminar Casilla")
+            {
+                this.label3.Visible = false;
+                this.label2.Visible = false;
+                this.comboBox1_nombre.Visible = true;
+                this.comboBox1_nombre.Text = "";
+                this.textBox_nombre.Visible = false;
+                this.comboBox_servicio.Text = "";
+                this.button_verificar.Text = "Buscar";
+                this.comboBox_servicio.Visible = false;
+                this.textBox_direccion.Visible = false;
                 this.textBox_contraseña.Enabled = false;
             }
         }
@@ -79,12 +100,23 @@ namespace FlyMail
             {
                 if (_controlador.obtenerDireccionCasilla(this.comboBox1_nombre.Text) != String.Empty)
                 {
-                    this.textBox_direccion.Enabled = true;
-                    this.textBox_direccion.Text =_controlador.obtenerDireccionCasilla(this.comboBox1_nombre.Text);
-                    this.textBox_contraseña.Enabled = true;
-                    this.textBox_contraseña.PasswordChar = '\0';
-                    this.textBox_contraseña.Text = "Si desea realizar cambios";
-                    this.button_guardar.Enabled = true;
+                    if (this.Text=="Agregar Casilla")
+                    {
+                        this.textBox_direccion.Enabled = true;
+                        this.textBox_direccion.Text = _controlador.obtenerDireccionCasilla(this.comboBox1_nombre.Text);
+                        this.textBox_contraseña.Enabled = true;
+                        this.textBox_contraseña.PasswordChar = '\0';
+                        this.textBox_contraseña.Text = "Si desea realizar cambios";
+                        this.button_guardar.Enabled = true;
+                    }
+                    if (this.Text == "Eliminar Casilla")
+                    {
+                        this.textBox_contraseña.Enabled = true;
+                        this.textBox_contraseña.Text = "";
+                        this.textBox_contraseña.PasswordChar = '♦';
+                        this.button_guardar.Enabled = true;
+                    }
+                    
                 }
             }
 
@@ -144,6 +176,16 @@ namespace FlyMail
                 _controlador.modificarCasilla(_casilla);
             }
             this.Close();
+        }
+
+        private void textBox_direccion_TextChanged(object sender, EventArgs e)
+        {
+            this.AcceptButton = this.button_guardar;
+        }
+
+        private void textBox_contraseña_TextChanged(object sender, EventArgs e)
+        {
+            this.AcceptButton = this.button_guardar;
         }
     }
 }
