@@ -100,22 +100,12 @@ namespace FlyMail
             {
                 if (_controlador.obtenerDireccionCasilla(this.comboBox1_nombre.Text) != String.Empty)
                 {
-                    if (this.Text=="Agregar Casilla")
-                    {
-                        this.textBox_direccion.Enabled = true;
-                        this.textBox_direccion.Text = _controlador.obtenerDireccionCasilla(this.comboBox1_nombre.Text);
-                        this.textBox_contraseña.Enabled = true;
-                        this.textBox_contraseña.PasswordChar = '\0';
-                        this.textBox_contraseña.Text = "Si desea realizar cambios";
-                        this.button_guardar.Enabled = true;
-                    }
-                    if (this.Text == "Eliminar Casilla")
-                    {
-                        this.textBox_contraseña.Enabled = true;
-                        this.textBox_contraseña.Text = "";
-                        this.textBox_contraseña.PasswordChar = '♦';
-                        this.button_guardar.Enabled = true;
-                    }
+                    this.textBox_direccion.Enabled = true;
+                    this.textBox_direccion.Text = _controlador.obtenerDireccionCasilla(this.comboBox1_nombre.Text);
+                    this.textBox_contraseña.Enabled = true;
+                    this.textBox_contraseña.PasswordChar = '\0';
+                    this.textBox_contraseña.Text = "Si desea realizar cambios";
+                    this.button_guardar.Enabled = true;
                     
                 }
             }
@@ -186,6 +176,16 @@ namespace FlyMail
         private void textBox_contraseña_TextChanged(object sender, EventArgs e)
         {
             this.AcceptButton = this.button_guardar;
+        }
+
+        private void comboBox1_nombre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

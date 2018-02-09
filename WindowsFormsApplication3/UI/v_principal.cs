@@ -28,6 +28,8 @@ namespace FlyMail
 
         private v_cuenta i_cuenta = new v_cuenta();
 
+        private v_eliminarCasilla i_eliminarCasilla = new v_eliminarCasilla();
+
         private void UI_ventaEntradaFormClosed(object sender, FormClosedEventArgs e)
         {
             if (this._salir)
@@ -176,8 +178,8 @@ namespace FlyMail
         /// <param name="e"></param>
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.i_correo.Text = "Eliminar Casilla";
-            this.i_correo.ShowDialog(this);
+            this.i_eliminarCasilla.Text = "Eliminar Casilla";
+            this.i_eliminarCasilla.ShowDialog(this);
         }
 
         /// <summary>

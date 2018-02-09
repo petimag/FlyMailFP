@@ -113,6 +113,7 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nombre de Casilla";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // comboBox1_nombre
             // 
@@ -123,6 +124,7 @@
             this.comboBox1_nombre.Name = "comboBox1_nombre";
             this.comboBox1_nombre.Size = new System.Drawing.Size(243, 21);
             this.comboBox1_nombre.TabIndex = 0;
+            this.comboBox1_nombre.SelectedIndexChanged += new System.EventHandler(this.comboBox1_nombre_SelectedIndexChanged);
             // 
             // textBox_nombre
             // 
