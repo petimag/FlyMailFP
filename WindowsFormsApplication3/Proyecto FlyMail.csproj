@@ -76,6 +76,12 @@
     <Compile Include="UI\v_cuenta.Designer.cs">
       <DependentUpon>v_cuenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\v_eliminarCasilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\v_eliminarCasilla.Designer.cs">
+      <DependentUpon>v_eliminarCasilla.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\v_login.cs">
       <SubType>Form</SubType>
     </Compile>
