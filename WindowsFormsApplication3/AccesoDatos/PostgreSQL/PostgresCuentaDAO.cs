@@ -9,8 +9,15 @@ namespace FlyMail
 {
     public class PostgresCuentaDAO : ICuentaDAO
     {
+        /// <summary>
+        /// Conexión con la Base de Datos
+        /// </summary>
         private NpgsqlConnection _conexion;
 
+        /// <summary>
+        /// Nueva CuentaDAO
+        /// </summary>
+        /// <param name="pConexion"></param>
         public PostgresCuentaDAO(NpgsqlConnection pConexion)
         {
             _conexion = pConexion;

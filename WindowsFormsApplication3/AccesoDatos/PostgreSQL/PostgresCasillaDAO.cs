@@ -78,9 +78,9 @@ namespace FlyMail
         /// <param name="pServicio">Servicio de Correo (GMAIL, YAHOO)</param>
         /// <param name="pUsuario">Número de Usuario</param>
         public void agregar(CasillaCorreo pCasilla, int pServicio, int pUsuario)
-        {
+        {/*
             try
-            {
+            {*/
                 using (NpgsqlTransaction transaccion = this._conexion.BeginTransaction())
                 {
 
@@ -97,12 +97,12 @@ namespace FlyMail
                     comando.ExecuteNonQuery();
 
                     transaccion.Commit();
-                }
+                }/*
             }
             catch (Exception e)
             {
                 throw new DAOException("No se pudo agregar la Casilla", e);
-            }
+            }*/
             
         }
 
