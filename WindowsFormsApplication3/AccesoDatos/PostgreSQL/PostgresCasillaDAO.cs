@@ -9,13 +9,26 @@ namespace FlyMail
 {
     class PostgresCasillaDAO : ICasillaDAO
     {
+        /// <summary>
+        /// Conexión con la Base de Datos
+        /// </summary>
         private NpgsqlConnection _conexion;
 
+        /// <summary>
+        /// Nueva CasillaDAO
+        /// </summary>
+        /// <param name="pConexion"></param>
         public PostgresCasillaDAO(NpgsqlConnection pConexion)
         {
             _conexion = pConexion;
         }
 
+        /// <summary>
+        /// Determina si existe o no el nombre de la Casilla. Se utiliza para comprobar que no existan dos nombres iguales
+        /// </summary>
+        /// <param name="pNombre">Nombre a buscar</param>
+        /// <param name="idCuenta">ID de la Cuenta</param>
+        /// <returns></returns>
         public bool nombreExistente(string pNombre, int idCuenta)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
@@ -37,6 +50,12 @@ namespace FlyMail
             else
                 return false;
         }*/
+
+        /// <summary>
+        /// Busca y devuelve un Dirección de Correo a través del nombre
+        /// </summary>
+        /// <param name="pNombre"></param>
+        /// <returns></returns>
         public string buscarDireccion(string pNombre)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
@@ -52,45 +71,80 @@ namespace FlyMail
             }
         }
 
+        /// <summary>
+        /// Agrega una Nueva Casilla de Correo
+        /// </summary>
+        /// <param name="pCasilla">Casilla de Correo</param>
+        /// <param name="pServicio">Servicio de Correo (GMAIL, YAHOO)</param>
+        /// <param name="pUsuario">Número de Usuario</param>
         public void agregar(CasillaCorreo pCasilla, int pServicio, int pUsuario)
         {
-            using (NpgsqlTransaction transaccion = this._conexion.BeginTransaction())
+            try
             {
+                using (NpgsqlTransaction transaccion = this._conexion.BeginTransaction())
+                {
 
+                    NpgsqlCommand comando = this._conexion.CreateCommand();
+
+                    comando.Transaction = transaccion;
+                    comando.CommandText = "INSERT INTO \"CasillaEmail\"(nombre,\"contrasenaEmail\",servicio,usuario,\"direccionEmail\") VALUES(@nombre,@contrasenaEmail,@servicio,@usuario,@direccionEmail)";
+                    comando.Parameters.AddWithValue("@nombre", pCasilla.Nombre);
+                    comando.Parameters.AddWithValue("@contrasenaEmail", pCasilla.Contraseña);
+                    comando.Parameters.AddWithValue("@servicio", pServicio);
+                    comando.Parameters.AddWithValue("@usuario", pUsuario);
+                    comando.Parameters.AddWithValue("@direccionEmail", pCasilla.Direccion);
+
+                    comando.ExecuteNonQuery();
+
+                    transaccion.Commit();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DAOException("No se pudo agregar la Casilla", e);
+            }
+            
+        }
+
+        /// <summary>
+        /// Modifica la dirección y la contraseña de la Casilla de Correo
+        /// </summary>
+        /// <param name="pCasilla"></param>
+        public void modificar(CasillaCorreo pCasilla)
+        {
+            try
+            {
                 NpgsqlCommand comando = this._conexion.CreateCommand();
+                comando.CommandText = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion, \"contrasenaEmail\" = @contrasena WHERE nombre = '" + pCasilla.Nombre + "'";
 
-                comando.Transaction = transaccion;
-                comando.CommandText = "INSERT INTO \"CasillaEmail\"(nombre,\"contrasenaEmail\",servicio,usuario,\"direccionEmail\") VALUES(@nombre,@contrasenaEmail,@servicio,@usuario,@direccionEmail)";
-                comando.Parameters.AddWithValue("@nombre", pCasilla.Nombre);
-                comando.Parameters.AddWithValue("@contrasenaEmail", pCasilla.Contraseña);
-                comando.Parameters.AddWithValue("@servicio", pServicio);
-                comando.Parameters.AddWithValue("@usuario", pUsuario);
-                comando.Parameters.AddWithValue("@direccionEmail", pCasilla.Direccion);
-
+                comando.Parameters.AddWithValue("@direccion", pCasilla.Direccion);
+                comando.Parameters.AddWithValue("@contrasena", pCasilla.Contraseña);
                 comando.ExecuteNonQuery();
-
-                transaccion.Commit();
+            }
+            catch (Exception e)
+            {
+                throw new DAOException("No se pudo modificar la Casilla", e);
             }
         }
 
-        public void modificar(CasillaCorreo pCasilla)
-        {
-            NpgsqlCommand comando = this._conexion.CreateCommand();
-            comando.CommandText = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion, \"contrasenaEmail\" = @contrasena WHERE nombre = '" + pCasilla.Nombre + "'";
-
-            comando.Parameters.AddWithValue("@direccion", pCasilla.Direccion);
-            if (pCasilla.Contraseña != string.Empty)
-            comando.Parameters.AddWithValue("@contrasena", pCasilla.Contraseña);
-            comando.ExecuteNonQuery();
-        }
-
+        /// <summary>
+        /// Modifica la dirección de la Casilla de Correo
+        /// </summary>
+        /// <param name="pCasilla"></param>
         public void modificarDireccion(CasillaCorreo pCasilla)
         {
-            NpgsqlCommand comando = this._conexion.CreateCommand();
-            comando.CommandText = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion WHERE nombre = '" + pCasilla.Nombre + "'";
+            try
+            {
+                NpgsqlCommand comando = this._conexion.CreateCommand();
+                comando.CommandText = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion WHERE nombre = '" + pCasilla.Nombre + "'";
 
-            comando.Parameters.AddWithValue("@direccion", pCasilla.Direccion);
-            comando.ExecuteNonQuery();
+                comando.Parameters.AddWithValue("@direccion", pCasilla.Direccion);
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw new DAOException("No se pudo modificar la Casilla", e);
+            }
         }
     }
 }
