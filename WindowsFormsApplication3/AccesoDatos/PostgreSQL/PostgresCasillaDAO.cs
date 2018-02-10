@@ -46,7 +46,6 @@ namespace FlyMail
             comando.CommandText = "SELECT nombre FROM \"CasillaEmail\" WHERE usuario = '" + idCuenta + "'";
             NpgsqlDataReader reader = comando.ExecuteReader();
             List<string> _listaNombre = new List<string>();
-                //_listaNombre.Add(reader[0].ToString());
             while (reader.Read())
             {
                 _listaNombre.Add(reader[0].ToString());

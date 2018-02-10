@@ -88,17 +88,25 @@ namespace FlyMail
             //Verifica que el nombre del correo no existe ya en esta cuenta
             if (button_verificar.Text=="Verificar")
             {
-                if (!_controlador.nombreExistenteCasilla(this.textBox_nombre.Text))
+                if (this.textBox_nombre.Text != "")
                 {
-                    this.comboBox_servicio.Enabled = true;
-                    this.textBox_direccion.Enabled = true;
-                    this.textBox_contraseña.Enabled = true;
-                    this.button_guardar.Enabled = true;
+                    if (!_controlador.nombreExistenteCasilla(this.textBox_nombre.Text))
+                    {
+                        this.comboBox_servicio.Enabled = true;
+                        List<string> _listaServicio = new List<string>();
+                        _listaServicio = _controlador.obtenerProveedorServicio();
+                        for (int i = 0; i < _listaServicio.Count; i++)
+                            this.comboBox_servicio.Items.Add(_listaServicio[i]);
+                        this.textBox_direccion.Enabled = true;
+                        this.textBox_contraseña.Enabled = true;
+                        this.button_guardar.Enabled = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nombre de Casilla ya existente");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Nombre de Casilla ya existente");
-                }
+                
             }
             if (button_verificar.Text == "Buscar")
             {

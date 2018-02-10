@@ -43,6 +43,7 @@ namespace FlyMail
                 DialogResult result = MessageBox.Show("¿Seguro que desea eliminar?", "Confirmación", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
+
                     this.Close();
                 }
             }

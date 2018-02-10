@@ -294,7 +294,6 @@ namespace FlyMail
             }
             catch (Exception e)
             {
-                Console.WriteLine("entro");
                 return _listaNombres;
             }
             finally
@@ -316,6 +315,29 @@ namespace FlyMail
             catch (Exception)
             {
                 return -1;
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
+
+        public List<string> obtenerProveedorServicio()
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+            List<string> _listaProveedor = new List<string>();
+
+            try
+            {
+
+                factory.IniciarConexion();
+                IServicioDAO _servicioDAO = factory.servicioDAO;
+                _listaProveedor = _servicioDAO.listaServicio();
+                return _listaProveedor;
+            }
+            catch (Exception e)
+            {
+                return _listaProveedor;
             }
             finally
             {

@@ -9,5 +9,6 @@ namespace FlyMail
     public interface IServicioDAO
     {
         int obtenerId(string pProveedor);
+        List<string> listaServicio();
     }
 }

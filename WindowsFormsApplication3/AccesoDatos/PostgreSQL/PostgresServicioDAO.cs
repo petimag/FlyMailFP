@@ -26,6 +26,19 @@ namespace FlyMail
             else
                 return -1;
         }
+
+        public List<string> listaServicio()
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "SELECT proveedor FROM \"Servicio\"";
+            NpgsqlDataReader reader = comando.ExecuteReader();
+            List<string> _listaServicio = new List<string>();
+            while (reader.Read())
+            {
+                _listaServicio.Add(reader[0].ToString());
+            }
+            return _listaServicio;
+        }
     }
 }
 

@@ -192,9 +192,6 @@
             this.comboBox_servicio.Enabled = false;
             this.comboBox_servicio.ForeColor = System.Drawing.SystemColors.Window;
             this.comboBox_servicio.FormattingEnabled = true;
-            this.comboBox_servicio.Items.AddRange(new object[] {
-            "GMAIL",
-            "YAHOO"});
             this.comboBox_servicio.Location = new System.Drawing.Point(90, 18);
             this.comboBox_servicio.Name = "comboBox_servicio";
             this.comboBox_servicio.Size = new System.Drawing.Size(163, 21);
