@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(v_eliminarCasilla));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBox1_nombre = new System.Windows.Forms.ComboBox();
-            this.textBox_nombre = new System.Windows.Forms.TextBox();
             this.button_guardar = new System.Windows.Forms.Button();
+            this.textBox_nombre = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,15 +60,6 @@
             this.comboBox1_nombre.Size = new System.Drawing.Size(243, 21);
             this.comboBox1_nombre.TabIndex = 0;
             // 
-            // textBox_nombre
-            // 
-            this.textBox_nombre.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.textBox_nombre.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBox_nombre.Location = new System.Drawing.Point(9, 22);
-            this.textBox_nombre.Name = "textBox_nombre";
-            this.textBox_nombre.Size = new System.Drawing.Size(244, 20);
-            this.textBox_nombre.TabIndex = 5;
-            // 
             // button_guardar
             // 
             this.button_guardar.BackColor = System.Drawing.SystemColors.ControlDark;
@@ -84,6 +75,15 @@
             this.button_guardar.UseVisualStyleBackColor = false;
             this.button_guardar.Click += new System.EventHandler(this.button_guardar_Click);
             // 
+            // textBox_nombre
+            // 
+            this.textBox_nombre.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.textBox_nombre.ForeColor = System.Drawing.SystemColors.Window;
+            this.textBox_nombre.Location = new System.Drawing.Point(9, 22);
+            this.textBox_nombre.Name = "textBox_nombre";
+            this.textBox_nombre.Size = new System.Drawing.Size(244, 20);
+            this.textBox_nombre.TabIndex = 5;
+            // 
             // v_eliminarCasilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -93,8 +93,10 @@
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "v_eliminarCasilla";
+            this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "v_eliminarCasilla";
+            this.Load += new System.EventHandler(this.v_eliminarCasilla_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

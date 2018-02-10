@@ -18,6 +18,8 @@ namespace FlyMail
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UI_ventaEntradaFormClosed);
         }
 
+        private Fachada _controlador = Fachada.Instancia;
+
         private bool _salir = true;
 
         private v_mail i_mail = new v_mail();
@@ -167,8 +169,18 @@ namespace FlyMail
         /// <param name="e"></param>
         private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.i_correo.Text = "Modificar Casilla";
-            this.i_correo.ShowDialog(this);
+            List<string> _listaNombres = new List<string>();
+            _listaNombres = _controlador.obtenerNombreCasillas();
+            if (_listaNombres.Count == 0)
+            {
+                MessageBox.Show("No tiene Casilla de Correo agregadas");
+            }
+            else
+            {
+                this.i_correo.Text = "Modificar Casilla";
+                this.i_correo.ShowDialog(this);
+            }
+            
         }
 
         /// <summary>
@@ -178,8 +190,18 @@ namespace FlyMail
         /// <param name="e"></param>
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.i_eliminarCasilla.Text = "Eliminar Casilla";
-            this.i_eliminarCasilla.ShowDialog(this);
+            List<string> _listaNombres = new List<string>();
+            _listaNombres = _controlador.obtenerNombreCasillas();
+            if (_listaNombres.Count == 0)
+            {
+                MessageBox.Show("No tiene Casilla de Correo agregadas");
+            }
+            else
+            {
+                this.i_eliminarCasilla.Text = "Eliminar Casilla";
+                this.i_eliminarCasilla.ShowDialog(this);
+            }
+            
         }
 
         /// <summary>

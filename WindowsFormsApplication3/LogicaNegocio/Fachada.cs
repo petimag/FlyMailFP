@@ -279,6 +279,30 @@ namespace FlyMail
             }
         }
 
+        public List<string> obtenerNombreCasillas()
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+            List<string> _listaNombres = new List<string>();
+
+            try
+            {
+                
+                factory.IniciarConexion();
+                ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
+                _listaNombres = _casillaDAO.listaNombres(this.IDCuentaLogeado);
+                return _listaNombres;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("entro");
+                return _listaNombres;
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
+
         public int obtenerIdServicio(string pProveedor)
         {
             DAOFactory factory = DAOFactory.Instancia();

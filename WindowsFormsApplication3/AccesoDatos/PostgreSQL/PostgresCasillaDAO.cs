@@ -40,16 +40,19 @@ namespace FlyMail
                 return false;
         }
 
-        /*List<string> listaNombres(int idCuenta)
+        public List<string> listaNombres(int idCuenta)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
-            comando.CommandText = "SELECT * FROM \"CasillaEmail\" WHERE usuario = '" + idCuenta + "'";
+            comando.CommandText = "SELECT nombre FROM \"CasillaEmail\" WHERE usuario = '" + idCuenta + "'";
             NpgsqlDataReader reader = comando.ExecuteReader();
-            if (reader.Read())
-                return true;
-            else
-                return false;
-        }*/
+            List<string> _listaNombre = new List<string>();
+                //_listaNombre.Add(reader[0].ToString());
+            while (reader.Read())
+            {
+                _listaNombre.Add(reader[0].ToString());
+            }   
+            return _listaNombre;
+        }
 
         /// <summary>
         /// Busca y devuelve un Dirección de Correo a través del nombre

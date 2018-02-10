@@ -50,6 +50,10 @@ namespace FlyMail
                 this.label2.Visible = true;
                 this.comboBox1_nombre.Visible = true;
                 this.comboBox1_nombre.Text = "";
+                List<string> _listaNombres = new List<string>();
+                _listaNombres = _controlador.obtenerNombreCasillas();
+                for (int i = 0; i < _listaNombres.Count; i++)
+                    this.comboBox1_nombre.Items.Add(_listaNombres[i]);
                 this.textBox_nombre.Visible = false;
                 this.comboBox_servicio.Text = "";
                 this.button_verificar.Text = "Buscar";

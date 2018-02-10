@@ -12,9 +12,28 @@ namespace FlyMail
 {
     public partial class v_eliminarCasilla : Form
     {
+
+        private Fachada _controlador = Fachada.Instancia;
+
         public v_eliminarCasilla()
         {
             InitializeComponent();
+        }
+
+        private void v_eliminarCasilla_Load(object sender, EventArgs e)
+        {
+            List<string> _listaNombres = new List<string>();
+            _listaNombres = _controlador.obtenerNombreCasillas();
+            if (_listaNombres.Count == 0)
+            {
+                MessageBox.Show("No tiene Casilla de Correo agregadas");
+            }
+            else
+            {
+                for (int i = 0; i < _listaNombres.Count; i++)
+                    this.comboBox1_nombre.Items.Add(_listaNombres[i]);
+            }
+            
         }
 
         private void button_guardar_Click(object sender, EventArgs e)
