@@ -30,6 +30,9 @@ namespace FlyMail
             this.comboBox1_nombre.Text = "";
             this.textBox_contraseña.Text = "";
             this.textBox_direccion.Text = "";
+            this.comboBox_servicio.Text = "Seleccionar";
+            this.comboBox_servicio.Items.Clear();
+            this.comboBox1_nombre.Items.Clear();
             if (this.Text == "Agregar Casilla")
             {
                 this.label3.Visible = true;
@@ -37,7 +40,6 @@ namespace FlyMail
                 this.comboBox1_nombre.Visible = false;
                 this.textBox_nombre.Visible = true;
                 this.button_verificar.Text = "Verificar";
-                this.comboBox_servicio.Text = "Seleccionar";
                 this.comboBox_servicio.Enabled = false;
                 this.textBox_direccion.Enabled = false;
                 this.textBox_contraseña.Enabled = false;
@@ -49,7 +51,6 @@ namespace FlyMail
                 this.label3.Visible = true;
                 this.label2.Visible = true;
                 this.comboBox1_nombre.Visible = true;
-                this.comboBox1_nombre.Text = "";
                 List<string> _listaNombres = new List<string>();
                 _listaNombres = _controlador.obtenerNombreCasillas();
                 for (int i = 0; i < _listaNombres.Count; i++)

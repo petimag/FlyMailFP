@@ -148,5 +148,14 @@ namespace FlyMail
                 throw new DAOException("No se pudo modificar la Casilla", e);
             }
         }
+
+        public void BorrarCasilla(int pIdCasilla)
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+
+            comando.CommandText = @"DELETE FROM \"CasillaEmail\" WHERE \"idCasillaEmail\" = @Id"'";
+            comando.Parameters.AddWithValue("@Id", pIdCasilla);
+            comando.ExecuteNonQuery();
+        }
     }
 }
