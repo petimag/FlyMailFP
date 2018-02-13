@@ -229,31 +229,7 @@ namespace FlyMail
                 factory.FinalizarConexion();
             }
         }
-
-        public List<string> obtenerDireccionesCasillas()
-        {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            List<string> _listaDirecciones = new List<string>();
-            try
-            {
-
-                factory.IniciarConexion();
-                ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
-                _listaDirecciones = _casillaDAO.obtenerDirecciones(this.IDCuentaLogeado);
-                return _listaDirecciones;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-                return _listaDirecciones;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
-        }
-
+        
         public void agregarCasilla(CasillaCorreo pCasilla, int pServicio)
         {
             DAOFactory factory = DAOFactory.Instancia();

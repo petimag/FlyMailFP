@@ -40,6 +40,11 @@ namespace FlyMail
                 return false;
         }
 
+        /// <summary>
+        /// Devuelve una lista de nombre de casillas de un usuario
+        /// </summary>
+        /// <param name="idCuenta">Id de la cuenta de usuario</param>
+        /// <returns>Lista de nombre de casillas</returns>
         public List<string> listaNombres(int idCuenta)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
@@ -73,18 +78,6 @@ namespace FlyMail
             }
         }
 
-        public List<string> obtenerDirecciones(int idCuenta)
-        {
-            NpgsqlCommand comando = this._conexion.CreateCommand();
-            comando.CommandText = "SELECT \"direccionEmail\" FROM \"CasillaEmail\" WHERE usuario = '" + idCuenta + "'";
-            NpgsqlDataReader reader = comando.ExecuteReader();
-            List<string> _listaDirecciones = new List<string>();
-            while (reader.Read())
-            {
-                _listaDirecciones.Add(reader[0].ToString());
-            }
-            return _listaDirecciones;
-        }
 
         /// <summary>
         /// Agrega una Nueva Casilla de Correo

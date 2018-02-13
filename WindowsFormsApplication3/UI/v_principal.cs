@@ -34,10 +34,10 @@ namespace FlyMail
         private void v_principal_Load(object sender, EventArgs e)
         {
             this.comboBox1.Items.Clear();
-            this.comboBox1.Text = "Todos";
+            this.comboBox1.Text = "Seleccionar";
             this.comboBox1.Items.Add("Todos");
             List<string> _listaDirecciones = new List<string>();
-            _listaDirecciones = _controlador.obtenerDireccionesCasillas();
+            _listaDirecciones = _controlador.obtenerNombreCasillas();
             for (int i = 0; i < _listaDirecciones.Count; i++)
                 this.comboBox1.Items.Add(_listaDirecciones[i]);
         }
@@ -259,6 +259,10 @@ namespace FlyMail
             if (this._cerrarSesion)
             {
                 (new v_login()).Show();
+            }
+            else
+            {
+                Application.Exit();
             }
             this.Width = 942;
             this.Height = 529;
