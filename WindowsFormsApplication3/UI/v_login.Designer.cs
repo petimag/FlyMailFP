@@ -58,7 +58,7 @@
             // 
             this.textBox_iniciar_contraseña.Location = new System.Drawing.Point(79, 52);
             this.textBox_iniciar_contraseña.Name = "textBox_iniciar_contraseña";
-            this.textBox_iniciar_contraseña.PasswordChar = '♦';
+            this.textBox_iniciar_contraseña.PasswordChar = '•';
             this.textBox_iniciar_contraseña.Size = new System.Drawing.Size(212, 20);
             this.textBox_iniciar_contraseña.TabIndex = 1;
             this.textBox_iniciar_contraseña.Click += new System.EventHandler(this.textBox_iniciar_Click);

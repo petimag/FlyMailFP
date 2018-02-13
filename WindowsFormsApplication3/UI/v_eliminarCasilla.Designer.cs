@@ -92,6 +92,8 @@
             this.ClientSize = new System.Drawing.Size(284, 103);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(300, 142);
+            this.MinimumSize = new System.Drawing.Size(300, 142);
             this.Name = "v_eliminarCasilla";
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -251,7 +251,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="pCasilla"></param>
         /// <param name="pServicio"></param>
-        public void AgregarCasilla(CasillaCorreo pCasilla, int pServicio)
+        public bool AgregarCasilla(CasillaCorreo pCasilla, int pServicio)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -260,10 +260,18 @@ namespace FlyMail
                 factory.IniciarConexion();
                 ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
                 _casillaDAO.Agregar(pCasilla,pServicio, _idCuentaLogeado);
+                return true;
             }
             catch (DAOException)
             {
                 factory.RollBack();
+                return false;
+            }
+            catch(Npgsql.PostgresException)
+            {
+                factory.RollBack();
+                MessageBox.Show("La dirección de Correo Electrónico tiene un formato incorrecto");
+                return false;
             }
             finally
             {
@@ -316,11 +324,11 @@ namespace FlyMail
             }
             catch(DAOException e)
             {
-
+                MessageBox.Show(e.Message);
             }
             catch(Exception e)
             {
-
+                MessageBox.Show(e.Message);
             }
             finally
             {
@@ -345,7 +353,7 @@ namespace FlyMail
                 _listaNombres = _casillaDAO.ListaNombres(this.IDCuentaLogeado);
                 return _listaNombres;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 _listaNombres.Clear();
                 return _listaNombres;
@@ -390,7 +398,7 @@ namespace FlyMail
                 _listaProveedor = _servicioDAO.listaServicio();
                 return _listaProveedor;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return _listaProveedor;
             }

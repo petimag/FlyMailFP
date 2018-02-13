@@ -68,7 +68,7 @@ namespace FlyMail
         {
             this.textBox_crear_contraseña.Text = "";
             this.textBox_crear_contraseña.ForeColor = Color.Black;
-            this.textBox_crear_contraseña.PasswordChar = '♦';
+            this.textBox_crear_contraseña.PasswordChar = '•';
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace FlyMail
         {
             this.textBox_crear_repetir.Text = "";
             this.textBox_crear_repetir.ForeColor = Color.Black;
-            this.textBox_crear_repetir.PasswordChar = '♦';
+            this.textBox_crear_repetir.PasswordChar = '•';
         }
 
         /// <summary>

@@ -87,6 +87,7 @@ namespace FlyMail
                             this.comboBox_servicio.Items.Add(_listaServicio[i]);
                         this.textBox_direccion.Enabled = true;
                         this.textBox_contraseña.Enabled = true;
+                        this.textBox_contraseña.PasswordChar = '•';
                         this.button_guardar.Enabled = true;
                     }
                     else
@@ -119,7 +120,7 @@ namespace FlyMail
             {
                 this.textBox_contraseña.Text = "";
                 this.textBox_contraseña.ForeColor = Color.Black;
-                this.textBox_contraseña.PasswordChar = '♦';
+                this.textBox_contraseña.PasswordChar = '•';
             }
         }
 
@@ -153,7 +154,8 @@ namespace FlyMail
             {
                 CasillaCorreo _casilla = new CasillaCorreo(this.textBox_nombre.Text,this.textBox_direccion.Text, this.textBox_contraseña.Text);
                 int idServicio = _controlador.obtenerIdServicio(comboBox_servicio.Text);
-                _controlador.AgregarCasilla(_casilla, idServicio);
+                if (_controlador.AgregarCasilla(_casilla, idServicio))
+                    this.Close();
             }
 
             if (this.Text=="Modificar Casilla")
@@ -164,8 +166,9 @@ namespace FlyMail
                     _casilla.Contraseña = String.Empty;
                 }
                 _controlador.ModificarCasilla(_casilla);
+                this.Close();
             }
-            this.Close();
+            
         }
 
         private void textBox_direccion_TextChanged(object sender, EventArgs e)

@@ -37,7 +37,7 @@ namespace FlyMail
             this.comboBox1.Text = "Seleccionar";
             this.comboBox1.Items.Add("Todos");
             List<string> _listaDirecciones = new List<string>();
-            _listaDirecciones = _controlador.obtenerNombreCasillas();
+            _listaDirecciones = _controlador.ObtenerNombreCasillas();
             for (int i = 0; i < _listaDirecciones.Count; i++)
                 this.comboBox1.Items.Add(_listaDirecciones[i]);
         }
