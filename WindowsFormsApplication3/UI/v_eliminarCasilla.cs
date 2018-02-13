@@ -43,7 +43,7 @@ namespace FlyMail
                 DialogResult result = MessageBox.Show("¿Seguro que desea eliminar?", "Confirmación", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-
+                    _controlador.eliminarCasilla(this.comboBox1_nombre.Text);
                     this.Close();
                 }
             }

@@ -40,6 +40,7 @@ namespace FlyMail
                 return false;
         }
 
+
         public List<string> listaNombres(int idCuenta)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();

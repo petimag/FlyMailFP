@@ -279,6 +279,30 @@ namespace FlyMail
             }
         }
 
+        public void eliminarCasilla(string pNombreCasilla)
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+
+            try
+            {
+                factory.IniciarConexion();
+                ICasillaDAO casillaDAO = factory.casillaCorreoDAO;
+                casillaDAO.
+            }
+            catch(DAOException e)
+            {
+
+            }
+            catch(Exception e)
+            {
+
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
+
         public List<string> obtenerNombreCasillas()
         {
             DAOFactory factory = DAOFactory.Instancia();

@@ -64,19 +64,6 @@ namespace FlyMail
                 this.comboBox_servicio.Visible = true;
                 this.textBox_direccion.Visible = true;
             }
-            if(this.Text == "Eliminar Casilla")
-            {
-                this.label3.Visible = false;
-                this.label2.Visible = false;
-                this.comboBox1_nombre.Visible = true;
-                this.comboBox1_nombre.Text = "";
-                this.textBox_nombre.Visible = false;
-                this.comboBox_servicio.Text = "";
-                this.button_verificar.Text = "Buscar";
-                this.comboBox_servicio.Visible = false;
-                this.textBox_direccion.Visible = false;
-                this.textBox_contraseña.Enabled = false;
-            }
         }
 
         /// <summary>
