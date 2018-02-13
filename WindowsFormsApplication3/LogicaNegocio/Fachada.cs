@@ -9,6 +9,7 @@ namespace FlyMail
 {
     public class Fachada
     {
+        #region Definición
         private static Fachada instancia;
 
         private int _idCuentaLogeado;
@@ -28,7 +29,8 @@ namespace FlyMail
             get { return _idCuentaLogeado; }
             set { _idCuentaLogeado = value; }
         }
-
+        #endregion
+        #region Métodos para Cuenta
         public void agregarCuenta(Cuenta pCuenta)
         {
             DAOFactory factory = DAOFactory.Instancia();
@@ -77,6 +79,7 @@ namespace FlyMail
             {
                 factory.IniciarConexion();
                 ICuentaDAO _cuentaDAO = factory.cuentaDAO;
+                //Console.WriteLine(_cuentaDAO.verificarCuenta(pNombre, pContraseña));
                 return _cuentaDAO.verificarCuenta(pCuenta);
             }
             catch (Exception)
@@ -188,8 +191,15 @@ namespace FlyMail
                 factory.FinalizarConexion();
             }
         }
+        #endregion
+        #region Métodos para Casilla
 
-        public bool nombreExistenteCasilla(string pNombre)
+        /// <summary>
+        /// Determina si existe o no un nombre de Casilla para un usuario (Cuenta) logeado
+        /// </summary>
+        /// <param name="pNombre">Nombre de la Casilla de correo</param>
+        /// <returns>true si el nombre existe, false en caso contrario. Devuelve false y un aviso en caso de error</returns>
+        public bool NombreExistenteCasilla(string pNombre)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -197,10 +207,11 @@ namespace FlyMail
             {
                 factory.IniciarConexion();
                 ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
-                return _casillaDAO.nombreExistente(pNombre,this.IDCuentaLogeado);
+                return _casillaDAO.NombreExistente(pNombre,this.IDCuentaLogeado);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                MessageBox.Show(e.Message);
                 return false;
             }
             finally
@@ -209,7 +220,12 @@ namespace FlyMail
             }
         }
 
-        public string obtenerDireccionCasilla(string pNombreCasilla)
+        /// <summary>
+        /// Devuelve la dirección de correo electrónico a partir del nombre de la Casilla. Se recomienda primero determinar si existe el nombre.
+        /// </summary>
+        /// <param name="pNombreCasilla"></param>
+        /// <returns>String conteniendo la dirección buscada. Cadena vacía en caso de error</returns>
+        public string ObtenerDireccionCasilla(string pNombreCasilla)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -217,7 +233,7 @@ namespace FlyMail
             {
                 factory.IniciarConexion();
                 ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
-                return _casillaDAO.buscarDireccion(pNombreCasilla);
+                return _casillaDAO.BuscarDireccion(pNombreCasilla);
             }
             catch (Exception e)
             {
@@ -229,8 +245,13 @@ namespace FlyMail
                 factory.FinalizarConexion();
             }
         }
-        
-        public void agregarCasilla(CasillaCorreo pCasilla, int pServicio)
+
+        /// <summary>
+        /// Inserta una nueva Casilla en la base de datos, para el usuario actual
+        /// </summary>
+        /// <param name="pCasilla"></param>
+        /// <param name="pServicio"></param>
+        public void AgregarCasilla(CasillaCorreo pCasilla, int pServicio)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -238,7 +259,7 @@ namespace FlyMail
             {
                 factory.IniciarConexion();
                 ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
-                _casillaDAO.agregar(pCasilla,pServicio, _idCuentaLogeado);
+                _casillaDAO.Agregar(pCasilla,pServicio, _idCuentaLogeado);
             }
             catch (DAOException)
             {
@@ -250,7 +271,11 @@ namespace FlyMail
             }
         }
 
-        public void modificarCasilla(CasillaCorreo pCasilla)
+        /// <summary>
+        /// Modifica una Casilla de correo. El campo Contraseña es opcional y puede dejarse vacio para no modificarla
+        /// </summary>
+        /// <param name="pCasilla"></param>
+        public void ModificarCasilla(CasillaCorreo pCasilla)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -258,19 +283,16 @@ namespace FlyMail
             {
                 factory.IniciarConexion();
                 ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
-                if (pCasilla.Contraseña != string.Empty)
-                {
-                    _casillaDAO.modificar(pCasilla);
-                }
-                else
-                {
-                    _casillaDAO.modificarDireccion(pCasilla);
-                }
-                
+                _casillaDAO.Modificar(pCasilla, this.IDCuentaLogeado);
             }
             catch (DAOException)
             {
                 factory.RollBack();
+            }
+            catch (Exception e)
+            {
+                factory.RollBack();
+                MessageBox.Show(e.Message);
             }
             finally
             {
@@ -278,7 +300,39 @@ namespace FlyMail
             }
         }
 
-        public List<string> obtenerNombreCasillas()
+        /// <summary>
+        /// Elimina una Casilla de Correo del usuario logeado, a través de su nombre
+        /// </summary>
+        /// <param name="pNombreCasilla"></param>
+        public void EliminarCasilla(string pNombreCasilla)
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+
+            try
+            {
+                factory.IniciarConexion();
+                ICasillaDAO casillaDAO = factory.casillaCorreoDAO;
+                casillaDAO.Eliminar(pNombreCasilla, this.IDCuentaLogeado);
+            }
+            catch(DAOException e)
+            {
+
+            }
+            catch(Exception e)
+            {
+
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
+
+        /// <summary>
+        /// Obtiene todos los nombres de Casillas del usuario logeado
+        /// </summary>
+        /// <returns></returns>
+        public List<string> ObtenerNombreCasillas()
         {
             DAOFactory factory = DAOFactory.Instancia();
             List<string> _listaNombres = new List<string>();
@@ -288,11 +342,12 @@ namespace FlyMail
                 
                 factory.IniciarConexion();
                 ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
-                _listaNombres = _casillaDAO.listaNombres(this.IDCuentaLogeado);
+                _listaNombres = _casillaDAO.ListaNombres(this.IDCuentaLogeado);
                 return _listaNombres;
             }
             catch (Exception e)
             {
+                _listaNombres.Clear();
                 return _listaNombres;
             }
             finally
@@ -300,7 +355,8 @@ namespace FlyMail
                 factory.FinalizarConexion();
             }
         }
-
+        #endregion
+        #region Métodos para Servicio
         public int obtenerIdServicio(string pProveedor)
         {
             DAOFactory factory = DAOFactory.Instancia();
@@ -343,5 +399,6 @@ namespace FlyMail
                 factory.FinalizarConexion();
             }
         }
+        #endregion
     }
 }

@@ -174,10 +174,10 @@ namespace FlyMail
         private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             List<string> _listaNombres = new List<string>();
-            _listaNombres = _controlador.obtenerNombreCasillas();
+            _listaNombres = _controlador.ObtenerNombreCasillas();
             if (_listaNombres.Count == 0)
             {
-                MessageBox.Show("No tiene Casilla de Correo agregadas");
+                MessageBox.Show("No tiene Casillas de Correo agregadas");
             }
             else
             {
@@ -195,7 +195,7 @@ namespace FlyMail
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             List<string> _listaNombres = new List<string>();
-            _listaNombres = _controlador.obtenerNombreCasillas();
+            _listaNombres = _controlador.ObtenerNombreCasillas();
             if (_listaNombres.Count == 0)
             {
                 MessageBox.Show("No tiene Casilla de Correo agregadas");

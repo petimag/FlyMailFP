@@ -8,11 +8,11 @@ namespace FlyMail
 {
     public interface ICasillaDAO
     {
-        bool nombreExistente(string pNombre, int idCuenta);
-        List<string> listaNombres(int idCuenta);
-        string buscarDireccion(string pNombre);
-        void agregar(CasillaCorreo pCasilla, int pServicio, int pUsuario);
-        void modificar(CasillaCorreo pCasilla);
-        void modificarDireccion(CasillaCorreo pCasilla);
+        bool NombreExistente(string pNombre, int idCuenta);
+        List<string> ListaNombres(int idCuenta);
+        string BuscarDireccion(string pNombre);
+        void Agregar(CasillaCorreo pCasilla, int pServicio, int pUsuario);
+        void Modificar(CasillaCorreo pCasilla, int pIDUsuario);
+        void Eliminar(string pNombreCsailla, int pIDUsaruio);
     }
 }
