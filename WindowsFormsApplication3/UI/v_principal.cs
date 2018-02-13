@@ -267,5 +267,10 @@ namespace FlyMail
             this.Width = 942;
             this.Height = 529;
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

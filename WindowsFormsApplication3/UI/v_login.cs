@@ -204,7 +204,7 @@ namespace FlyMail
                                 this.Close();
                             }
                             else
-                                 MessageBox.Show("Nombre de usuario ya existente");
+                                 MessageBox.Show("El nombre de usuario ya existe");
                         }
                     }                 
                 }
