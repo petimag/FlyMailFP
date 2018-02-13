@@ -40,8 +40,7 @@ namespace FlyMail
                 return false;
         }
 
-
-        public List<string> ListaNombres(int idCuenta)
+        public List<string> listaNombres(int idCuenta)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
             comando.CommandText = "SELECT nombre FROM \"CasillaEmail\" WHERE usuario = '" + idCuenta + "'";
@@ -73,6 +72,7 @@ namespace FlyMail
                 throw new DAOException("Nombre de Casilla no encontrado");
             }
         }
+
 
         /// <summary>
         /// Agrega una Nueva Casilla de Correo
