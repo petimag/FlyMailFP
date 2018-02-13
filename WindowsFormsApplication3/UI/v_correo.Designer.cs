@@ -214,7 +214,7 @@
             this.Name = "v_correo";
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Correo";
+            this.Text = "Casilla de Correo";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.v_correo_FormClosing);
             this.Load += new System.EventHandler(this.v_correo_Load);
             this.groupBox1.ResumeLayout(false);

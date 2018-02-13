@@ -20,6 +20,11 @@ namespace FlyMail
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Inicializa la ventana, agregando los Nombres de Casilla del usuario al ComboBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void v_eliminarCasilla_Load(object sender, EventArgs e)
         {
             List<string> _listaNombres = new List<string>();
@@ -37,6 +42,11 @@ namespace FlyMail
             
         }
 
+        /// <summary>
+        /// Elimina una Casilla de Correo al hacer click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_guardar_Click(object sender, EventArgs e)
         {
             if (this.comboBox1_nombre.Text != String.Empty)
@@ -44,8 +54,12 @@ namespace FlyMail
                 DialogResult result = MessageBox.Show("¿Seguro que desea eliminar?", "Confirmación", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    _controlador.EliminarCasilla(this.comboBox1_nombre.Text);
-                    this.Close();
+                    if (_controlador.EliminarCasilla(this.comboBox1_nombre.Text))
+                    {
+                        MessageBox.Show("Casilla eliminada con éxito", "FlyMail");
+                        this.Close();
+                    }
+                    
                 }
             }
         }

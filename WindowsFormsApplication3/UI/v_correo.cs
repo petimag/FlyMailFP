@@ -154,8 +154,14 @@ namespace FlyMail
             {
                 CasillaCorreo _casilla = new CasillaCorreo(this.textBox_nombre.Text,this.textBox_direccion.Text, this.textBox_contraseña.Text);
                 int idServicio = _controlador.obtenerIdServicio(comboBox_servicio.Text);
+
+                // éxito
                 if (_controlador.AgregarCasilla(_casilla, idServicio))
+                {
+                    MessageBox.Show("Casilla agregada con éxito", "FlyMail");
                     this.Close();
+                }
+                    
             }
 
             if (this.Text=="Modificar Casilla")
@@ -165,8 +171,14 @@ namespace FlyMail
                 {
                     _casilla.Contraseña = String.Empty;
                 }
-                _controlador.ModificarCasilla(_casilla);
-                this.Close();
+
+                // éxito
+                if (_controlador.ModificarCasilla(_casilla))
+                {
+                    MessageBox.Show("Casilla modificada con éxito", "FlyMail");
+                    this.Close();
+                }
+                
             }
             
         }

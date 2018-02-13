@@ -56,5 +56,10 @@ namespace FlyMail
                 this.Close();
 
         }
+
+        private void button_responder_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

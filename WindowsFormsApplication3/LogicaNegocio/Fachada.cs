@@ -283,7 +283,7 @@ namespace FlyMail
         /// Modifica una Casilla de correo. El campo Contraseña es opcional y puede dejarse vacio para no modificarla
         /// </summary>
         /// <param name="pCasilla"></param>
-        public void ModificarCasilla(CasillaCorreo pCasilla)
+        public bool ModificarCasilla(CasillaCorreo pCasilla)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -292,15 +292,18 @@ namespace FlyMail
                 factory.IniciarConexion();
                 ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
                 _casillaDAO.Modificar(pCasilla, this.IDCuentaLogeado);
+                return true;
             }
             catch (DAOException)
             {
                 factory.RollBack();
+                return false;
             }
             catch (Exception e)
             {
                 factory.RollBack();
                 MessageBox.Show(e.Message);
+                return false;
             }
             finally
             {
@@ -312,7 +315,7 @@ namespace FlyMail
         /// Elimina una Casilla de Correo del usuario logeado, a través de su nombre
         /// </summary>
         /// <param name="pNombreCasilla"></param>
-        public void EliminarCasilla(string pNombreCasilla)
+        public bool EliminarCasilla(string pNombreCasilla)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -321,14 +324,17 @@ namespace FlyMail
                 factory.IniciarConexion();
                 ICasillaDAO casillaDAO = factory.casillaCorreoDAO;
                 casillaDAO.Eliminar(pNombreCasilla, this.IDCuentaLogeado);
+                return true;
             }
             catch(DAOException e)
             {
                 MessageBox.Show(e.Message);
+                return false;
             }
             catch(Exception e)
             {
                 MessageBox.Show(e.Message);
+                return false;
             }
             finally
             {
