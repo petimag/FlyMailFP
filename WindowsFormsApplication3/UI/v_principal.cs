@@ -32,6 +32,17 @@ namespace FlyMail
 
         private v_eliminarCasilla i_eliminarCasilla = new v_eliminarCasilla();
 
+        private void v_principal_Load(object sender, EventArgs e)
+        {
+            /*
+            this.comboBox1.Items.Add("Todos");
+            List<string> _listaDirecciones = new List<string>();
+            _listaDirecciones = _controlador.obtenerDireccionesCasillas();
+            for (int i = 0; i < _listaDirecciones.Count; i++)
+                this.comboBox1.Items.Add(_listaDirecciones[i]);
+            */
+        }
+
         private void UI_ventaEntradaFormClosed(object sender, FormClosedEventArgs e)
         {
             if (this._salir)

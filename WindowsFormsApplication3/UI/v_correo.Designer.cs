@@ -169,6 +169,7 @@
             this.textBox_contraseña.ForeColor = System.Drawing.SystemColors.Window;
             this.textBox_contraseña.Location = new System.Drawing.Point(90, 73);
             this.textBox_contraseña.Name = "textBox_contraseña";
+            this.textBox_contraseña.PasswordChar = '♦';
             this.textBox_contraseña.Size = new System.Drawing.Size(163, 20);
             this.textBox_contraseña.TabIndex = 8;
             this.textBox_contraseña.TextChanged += new System.EventHandler(this.textBox_contraseña_TextChanged);
