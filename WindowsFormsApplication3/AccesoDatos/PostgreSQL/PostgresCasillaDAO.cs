@@ -73,6 +73,19 @@ namespace FlyMail
             }
         }
 
+        public List<string> obtenerDirecciones(int idCuenta)
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "SELECT \"direccionEmail\" FROM \"CasillaEmail\" WHERE usuario = '" + idCuenta + "'";
+            NpgsqlDataReader reader = comando.ExecuteReader();
+            List<string> _listaDirecciones = new List<string>();
+            while (reader.Read())
+            {
+                _listaDirecciones.Add(reader[0].ToString());
+            }
+            return _listaDirecciones;
+        }
+
         /// <summary>
         /// Agrega una Nueva Casilla de Correo
         /// </summary>

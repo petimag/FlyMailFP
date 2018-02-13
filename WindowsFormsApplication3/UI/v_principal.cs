@@ -15,18 +15,17 @@ namespace FlyMail
         public v_principal()
         {
             InitializeComponent();
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UI_ventaEntradaFormClosed);
         }
 
         private Fachada _controlador = Fachada.Instancia;
 
-        private bool _salir = true;
+        private bool _cerrarSesion = false;
 
         private v_mail i_mail = new v_mail();
 
         private v_correo i_correo = new v_correo();
 
-        //private v_login i_login = new v_login();
+        private v_login i_login = new v_login();
 
         private v_cuenta i_cuenta = new v_cuenta();
 
@@ -34,19 +33,13 @@ namespace FlyMail
 
         private void v_principal_Load(object sender, EventArgs e)
         {
-            /*
+            this.comboBox1.Items.Clear();
+            this.comboBox1.Text = "Todos";
             this.comboBox1.Items.Add("Todos");
             List<string> _listaDirecciones = new List<string>();
             _listaDirecciones = _controlador.obtenerDireccionesCasillas();
             for (int i = 0; i < _listaDirecciones.Count; i++)
                 this.comboBox1.Items.Add(_listaDirecciones[i]);
-            */
-        }
-
-        private void UI_ventaEntradaFormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (this._salir)
-                Application.Exit();
         }
 
         /// <summary>
@@ -222,8 +215,14 @@ namespace FlyMail
         /// <param name="e"></param>
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //            this.Close();
-            //            this.i_login.ShowDialog(this);
+            DialogResult result = MessageBox.Show("¿Seguro que desea Cerrar Sesión?", "Confirmación", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                this._cerrarSesion = true;
+                this.Close();
+            }
+            
+            
         }
 
         /// <summary>
@@ -233,7 +232,11 @@ namespace FlyMail
         /// <param name="e"></param>
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("¿Seguro que desea Salir?", "Confirmación", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         /// <summary>
@@ -253,6 +256,10 @@ namespace FlyMail
         /// <param name="e"></param>
         private void v_principal_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (this._cerrarSesion)
+            {
+                (new v_login()).Show();
+            }
             this.Width = 942;
             this.Height = 529;
         }

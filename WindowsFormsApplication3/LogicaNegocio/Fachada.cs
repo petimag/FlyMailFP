@@ -77,7 +77,6 @@ namespace FlyMail
             {
                 factory.IniciarConexion();
                 ICuentaDAO _cuentaDAO = factory.cuentaDAO;
-                //Console.WriteLine(_cuentaDAO.verificarCuenta(pNombre, pContraseña));
                 return _cuentaDAO.verificarCuenta(pCuenta);
             }
             catch (Exception)
@@ -224,6 +223,30 @@ namespace FlyMail
             {
                 MessageBox.Show(e.Message);
                 return string.Empty;
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
+
+        public List<string> obtenerDireccionesCasillas()
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+
+            List<string> _listaDirecciones = new List<string>();
+            try
+            {
+
+                factory.IniciarConexion();
+                ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
+                _listaDirecciones = _casillaDAO.obtenerDirecciones(this.IDCuentaLogeado);
+                return _listaDirecciones;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return _listaDirecciones;
             }
             finally
             {

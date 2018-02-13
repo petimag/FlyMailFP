@@ -146,7 +146,6 @@ namespace FlyMail
                     }
                     else
                     {
-                       // Console.WriteLine(_controlador.verificarCuenta(this.textBox_iniciar_nombre.Text, hash));
                         MessageBox.Show("Usuario o contraseña incorrecta");
                     }
                         

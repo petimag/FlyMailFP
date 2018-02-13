@@ -11,6 +11,7 @@ namespace FlyMail
         bool nombreExistente(string pNombre, int idCuenta);
         List<string> listaNombres(int idCuenta);
         string buscarDireccion(string pNombre);
+        List<string> obtenerDirecciones(int idCuenta);
         void agregar(CasillaCorreo pCasilla, int pServicio, int pUsuario);
         void modificar(CasillaCorreo pCasilla);
         void modificarDireccion(CasillaCorreo pCasilla);
