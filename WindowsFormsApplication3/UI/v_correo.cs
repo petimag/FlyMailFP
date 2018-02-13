@@ -52,7 +52,7 @@ namespace FlyMail
                 this.label2.Visible = true;
                 this.comboBox1_nombre.Visible = true;
                 List<string> _listaNombres = new List<string>();
-                _listaNombres = _controlador.obtenerNombreCasillas();
+                _listaNombres = _controlador.ObtenerNombreCasillas();
                 for (int i = 0; i < _listaNombres.Count; i++)
                     this.comboBox1_nombre.Items.Add(_listaNombres[i]);
                 this.textBox_nombre.Visible = false;
@@ -78,7 +78,7 @@ namespace FlyMail
             {
                 if (this.textBox_nombre.Text != "")
                 {
-                    if (!_controlador.nombreExistenteCasilla(this.textBox_nombre.Text))
+                    if (!_controlador.NombreExistenteCasilla(this.textBox_nombre.Text))
                     {
                         this.comboBox_servicio.Enabled = true;
                         List<string> _listaServicio = new List<string>();
@@ -98,10 +98,10 @@ namespace FlyMail
             }
             if (button_verificar.Text == "Buscar")
             {
-                if (_controlador.obtenerDireccionCasilla(this.comboBox1_nombre.Text) != String.Empty)
+                if (_controlador.ObtenerDireccionCasilla(this.comboBox1_nombre.Text) != String.Empty)
                 {
                     this.textBox_direccion.Enabled = true;
-                    this.textBox_direccion.Text = _controlador.obtenerDireccionCasilla(this.comboBox1_nombre.Text);
+                    this.textBox_direccion.Text = _controlador.ObtenerDireccionCasilla(this.comboBox1_nombre.Text);
                     this.textBox_contraseña.Enabled = true;
                     this.textBox_contraseña.PasswordChar = '\0';
                     this.textBox_contraseña.Text = "Si desea realizar cambios";
@@ -153,7 +153,7 @@ namespace FlyMail
             {
                 CasillaCorreo _casilla = new CasillaCorreo(this.textBox_nombre.Text,this.textBox_direccion.Text, this.textBox_contraseña.Text);
                 int idServicio = _controlador.obtenerIdServicio(comboBox_servicio.Text);
-                _controlador.agregarCasilla(_casilla, idServicio);
+                _controlador.AgregarCasilla(_casilla, idServicio);
             }
 
             if (this.Text=="Modificar Casilla")
@@ -163,7 +163,7 @@ namespace FlyMail
                 {
                     _casilla.Contraseña = String.Empty;
                 }
-                _controlador.modificarCasilla(_casilla);
+                _controlador.ModificarCasilla(_casilla);
             }
             this.Close();
         }

@@ -29,7 +29,7 @@ namespace FlyMail
         /// <param name="pNombre">Nombre a buscar</param>
         /// <param name="idCuenta">ID de la Cuenta</param>
         /// <returns></returns>
-        public bool nombreExistente(string pNombre, int idCuenta)
+        public bool NombreExistente(string pNombre, int idCuenta)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
             comando.CommandText = "SELECT * FROM \"CasillaEmail\" WHERE nombre = '" + pNombre + "' and usuario = '" + idCuenta + "'";
@@ -41,7 +41,7 @@ namespace FlyMail
         }
 
 
-        public List<string> listaNombres(int idCuenta)
+        public List<string> ListaNombres(int idCuenta)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
             comando.CommandText = "SELECT nombre FROM \"CasillaEmail\" WHERE usuario = '" + idCuenta + "'";
@@ -59,7 +59,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="pNombre"></param>
         /// <returns></returns>
-        public string buscarDireccion(string pNombre)
+        public string BuscarDireccion(string pNombre)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
             comando.CommandText = "SELECT \"direccionEmail\" FROM \"CasillaEmail\" WHERE nombre = '" + pNombre + "'";
@@ -80,7 +80,7 @@ namespace FlyMail
         /// <param name="pCasilla">Casilla de Correo</param>
         /// <param name="pServicio">Servicio de Correo (GMAIL, YAHOO)</param>
         /// <param name="pUsuario">Número de Usuario</param>
-        public void agregar(CasillaCorreo pCasilla, int pServicio, int pUsuario)
+        public void Agregar(CasillaCorreo pCasilla, int pServicio, int pUsuario)
         {
             using (NpgsqlTransaction transaccion = this._conexion.BeginTransaction())
             {
@@ -113,10 +113,16 @@ namespace FlyMail
         /// Modifica la dirección y la contraseña de la Casilla de Correo
         /// </summary>
         /// <param name="pCasilla"></param>
-        public void modificar(CasillaCorreo pCasilla)
+        public void Modificar(CasillaCorreo pCasilla, int pIDUSuario)
         {
+            string cmd = String.Empty;
+            if (pCasilla.Contraseña == String.Empty)
+                cmd = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion WHERE nombre = '" + pCasilla.Nombre + "' and usuario = '" + pIDUSuario + "'";
+            else
+                cmd = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion, \"contrasenaEmail\" = @contrasena WHERE nombre = '" + pCasilla.Nombre + "' and usuario = '" + pIDUSuario + "'";
+
             NpgsqlCommand comando = this._conexion.CreateCommand();
-            comando.CommandText = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion, \"contrasenaEmail\" = @contrasena WHERE nombre = '" + pCasilla.Nombre + "'";
+            comando.CommandText = cmd;
 
             comando.Parameters.AddWithValue("@direccion", pCasilla.Direccion);
             comando.Parameters.AddWithValue("@contrasena", pCasilla.Contraseña);
@@ -128,6 +134,7 @@ namespace FlyMail
             }
         }
 
+        /* ELIMIAR SI NO SE ENCUENTRAN FALLOS EN MODIFICAR
         /// <summary>
         /// Modifica la dirección de la Casilla de Correo
         /// </summary>
@@ -145,13 +152,20 @@ namespace FlyMail
                 throw new DAOException("No se pudieron actualizar los valores");
             }
         }
+        */
 
-        public void BorrarCasilla(int pIdCasilla)
+        /// <summary>
+        /// Elimina una Casilla de Correo
+        /// </summary>
+        /// <param name="pNombreCasilla">Nombre de la Casilla</param>
+        /// <param name="pIDUsuario">ID de la Cuenta de usuario</param>
+        public void Eliminar(string pNombreCasilla, int pIDUsuario)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
 
-            comando.CommandText = "DELETE FROM \"CasillaEmail\" WHERE \"idCasillaEmail\" = @Id";
-            comando.Parameters.AddWithValue("@Id", pIdCasilla);
+            comando.CommandText = "DELETE FROM \"CasillaEmail\" WHERE nombre = @nombre and usuario = @usuario";
+            comando.Parameters.AddWithValue("@nombre", pNombreCasilla);
+            comando.Parameters.AddWithValue("@usuario", pIDUsuario);
 
             // ExecuteNonQuery = -1 si no se modificaron filas
             if (comando.ExecuteNonQuery() == -1)
