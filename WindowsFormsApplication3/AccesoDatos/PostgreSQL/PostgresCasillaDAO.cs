@@ -120,8 +120,8 @@ namespace FlyMail
             comando.Parameters.AddWithValue("@direccion", pCasilla.Direccion);
             comando.Parameters.AddWithValue("@contrasena", pCasilla.Contraseña);
 
-            // ExecuteNonQuery = 1 si se modificó 1 fila en la tabla.
-            if (comando.ExecuteNonQuery() != 1)
+            // ExecuteNonQuery = -1 si no se modificaron filas
+            if (comando.ExecuteNonQuery() == -1)
             {
                 throw new DAOException("No se pudieron actualizar los valores");
             }
@@ -138,8 +138,8 @@ namespace FlyMail
 
             comando.Parameters.AddWithValue("@direccion", pCasilla.Direccion);
 
-            // ExecuteNonQuery = 1 si se modificó 1 fila en la tabla.
-            if (comando.ExecuteNonQuery() != 1)
+            // ExecuteNonQuery = -1 si no se modificaron filas
+            if (comando.ExecuteNonQuery() == -1)
             {
                 throw new DAOException("No se pudieron actualizar los valores");
             }
@@ -152,8 +152,8 @@ namespace FlyMail
             comando.CommandText = "DELETE FROM \"CasillaEmail\" WHERE \"idCasillaEmail\" = @Id";
             comando.Parameters.AddWithValue("@Id", pIdCasilla);
 
-            // ExecuteNonQuery = 1 si se modificó 1 fila en la tabla.
-            if (comando.ExecuteNonQuery() != 1)
+            // ExecuteNonQuery = -1 si no se modificaron filas
+            if (comando.ExecuteNonQuery() == -1)
             {
                 throw new DAOException("No se pudo eliminar la Casilla, intentelo nuevamente");
             }
