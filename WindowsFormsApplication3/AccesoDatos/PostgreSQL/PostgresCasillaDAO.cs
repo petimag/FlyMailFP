@@ -80,31 +80,31 @@ namespace FlyMail
         /// <param name="pServicio">Servicio de Correo (GMAIL, YAHOO)</param>
         /// <param name="pUsuario">Número de Usuario</param>
         public void agregar(CasillaCorreo pCasilla, int pServicio, int pUsuario)
-        {/*
-            try
-            {*/
-                using (NpgsqlTransaction transaccion = this._conexion.BeginTransaction())
-                {
-
-                    NpgsqlCommand comando = this._conexion.CreateCommand();
-
-                    comando.Transaction = transaccion;
-                    comando.CommandText = "INSERT INTO \"CasillaEmail\"(nombre,\"contrasenaEmail\",servicio,usuario,\"direccionEmail\") VALUES(@nombre,@contrasenaEmail,@servicio,@usuario,@direccionEmail)";
-                    comando.Parameters.AddWithValue("@nombre", pCasilla.Nombre);
-                    comando.Parameters.AddWithValue("@contrasenaEmail", pCasilla.Contraseña);
-                    comando.Parameters.AddWithValue("@servicio", pServicio);
-                    comando.Parameters.AddWithValue("@usuario", pUsuario);
-                    comando.Parameters.AddWithValue("@direccionEmail", pCasilla.Direccion);
-
-                    comando.ExecuteNonQuery();
-
-                    transaccion.Commit();
-                }/*
-            }
-            catch (Exception e)
+        {
+            using (NpgsqlTransaction transaccion = this._conexion.BeginTransaction())
             {
-                throw new DAOException("No se pudo agregar la Casilla", e);
-            }*/
+
+                NpgsqlCommand comando = this._conexion.CreateCommand();
+
+                comando.Transaction = transaccion;
+                comando.CommandText = "INSERT INTO \"CasillaEmail\"(nombre,\"contrasenaEmail\",servicio,usuario,\"direccionEmail\") VALUES(@nombre,@contrasenaEmail,@servicio,@usuario,@direccionEmail)";
+                comando.Parameters.AddWithValue("@nombre", pCasilla.Nombre);
+                comando.Parameters.AddWithValue("@contrasenaEmail", pCasilla.Contraseña);
+                comando.Parameters.AddWithValue("@servicio", pServicio);
+                comando.Parameters.AddWithValue("@usuario", pUsuario);
+                comando.Parameters.AddWithValue("@direccionEmail", pCasilla.Direccion);
+
+                // ExecuteNonQuery = 1 si se modificó 1 fila en la tabla.
+                if (comando.ExecuteNonQuery() != 1)
+                {
+                    //Deshacer la operación
+                    transaccion.Rollback();
+                    throw new DAOException("No se pudieron insertar los valores");
+                }
+                
+                //Confirmar la operación
+                transaccion.Commit();
+            }
             
         }
 
@@ -114,18 +114,16 @@ namespace FlyMail
         /// <param name="pCasilla"></param>
         public void modificar(CasillaCorreo pCasilla)
         {
-            try
-            {
-                NpgsqlCommand comando = this._conexion.CreateCommand();
-                comando.CommandText = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion, \"contrasenaEmail\" = @contrasena WHERE nombre = '" + pCasilla.Nombre + "'";
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion, \"contrasenaEmail\" = @contrasena WHERE nombre = '" + pCasilla.Nombre + "'";
 
-                comando.Parameters.AddWithValue("@direccion", pCasilla.Direccion);
-                comando.Parameters.AddWithValue("@contrasena", pCasilla.Contraseña);
-                comando.ExecuteNonQuery();
-            }
-            catch (Exception e)
+            comando.Parameters.AddWithValue("@direccion", pCasilla.Direccion);
+            comando.Parameters.AddWithValue("@contrasena", pCasilla.Contraseña);
+
+            // ExecuteNonQuery = 1 si se modificó 1 fila en la tabla.
+            if (comando.ExecuteNonQuery() != 1)
             {
-                throw new DAOException("No se pudo modificar la Casilla", e);
+                throw new DAOException("No se pudieron actualizar los valores");
             }
         }
 
@@ -135,17 +133,15 @@ namespace FlyMail
         /// <param name="pCasilla"></param>
         public void modificarDireccion(CasillaCorreo pCasilla)
         {
-            try
-            {
-                NpgsqlCommand comando = this._conexion.CreateCommand();
-                comando.CommandText = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion WHERE nombre = '" + pCasilla.Nombre + "'";
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion WHERE nombre = '" + pCasilla.Nombre + "'";
 
-                comando.Parameters.AddWithValue("@direccion", pCasilla.Direccion);
-                comando.ExecuteNonQuery();
-            }
-            catch (Exception e)
+            comando.Parameters.AddWithValue("@direccion", pCasilla.Direccion);
+
+            // ExecuteNonQuery = 1 si se modificó 1 fila en la tabla.
+            if (comando.ExecuteNonQuery() != 1)
             {
-                throw new DAOException("No se pudo modificar la Casilla", e);
+                throw new DAOException("No se pudieron actualizar los valores");
             }
         }
 
@@ -153,9 +149,14 @@ namespace FlyMail
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
 
-            comando.CommandText = @"DELETE FROM \"CasillaEmail\" WHERE \"idCasillaEmail\" = @Id"'";
+            comando.CommandText = "DELETE FROM \"CasillaEmail\" WHERE \"idCasillaEmail\" = @Id";
             comando.Parameters.AddWithValue("@Id", pIdCasilla);
-            comando.ExecuteNonQuery();
+
+            // ExecuteNonQuery = 1 si se modificó 1 fila en la tabla.
+            if (comando.ExecuteNonQuery() != 1)
+            {
+                throw new DAOException("No se pudo eliminar la Casilla, intentelo nuevamente");
+            }
         }
     }
 }
