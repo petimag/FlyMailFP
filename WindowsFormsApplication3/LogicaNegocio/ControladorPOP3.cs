@@ -10,8 +10,6 @@ namespace FlyMail
 {
     public class ControladorPOP3
     {
-        private Pop3 pop3;
-
         public List<Message> obtenerMensajes(Pop3 pop3)
         {
             try
@@ -21,7 +19,7 @@ namespace FlyMail
                 using (Pop3Client client = new Pop3Client())
                 {
                     // conectamos al servidor
-                    client.Connect(pop3.Usuario, pop3.Puerto, pop3.SSL);
+                    client.Connect(pop3.Ip, pop3.Puerto, pop3.SSL);
 
                     // Autentificación
                     client.Authenticate(pop3.Usuario, pop3.Contraseña);

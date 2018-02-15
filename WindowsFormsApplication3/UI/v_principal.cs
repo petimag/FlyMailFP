@@ -280,8 +280,10 @@ namespace FlyMail
                 string _contraseña = _controlador.ObtenerContraseñaCasilla(this.comboBox1.Text);
 
                 Pop3 _pop3 = new Pop3(_direccion,_contraseña, 995, "pop.gmail.com", true);
-                List<OpenPop.Mime.Message> _listaMensajes = _controlador.ObtenerMail(_pop3);
-                //this.comboBox1.Text = _listaMensajes[0].Headers.To.ToString();
+                List<OpenPop.Mime.Message> _listaMensajes = new List<OpenPop.Mime.Message>();
+                _listaMensajes = _controlador.ObtenerMail(_pop3);
+                Console.WriteLine(_listaMensajes.Count.ToString());
+                Console.WriteLine(_listaMensajes[0].Headers.To);
                 //dataGridView1.DataSource = _listaMensajes;
             }
         }
