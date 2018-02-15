@@ -282,9 +282,17 @@ namespace FlyMail
                 Pop3 _pop3 = new Pop3(_direccion,_contraseña, 995, "pop.gmail.com", true);
                 List<OpenPop.Mime.Message> _listaMensajes = new List<OpenPop.Mime.Message>();
                 _listaMensajes = _controlador.ObtenerMail(_pop3);
-                Console.WriteLine(_listaMensajes.Count.ToString());
-                Console.WriteLine(_listaMensajes[0].Headers.To);
+                if (_listaMensajes.Count >= 1)
+                {
+                    Console.WriteLine(_listaMensajes[0].Headers.To);
+                }
+                else
+                {
+                    Console.WriteLine("No hay mensajes. Count: " + _listaMensajes.Count.ToString());
+                }
+                
                 //dataGridView1.DataSource = _listaMensajes;
+                
             }
         }
     }
