@@ -276,14 +276,25 @@ namespace FlyMail
             }
             else
             {
+                int _idCasilla = _controlador.ObtenerIdCasilla(this.comboBox1.Text);
                 string _direccion = _controlador.ObtenerDireccionCasilla(this.comboBox1.Text);
                 string _contraseña = _controlador.ObtenerContraseñaCasilla(this.comboBox1.Text);
 
                 Pop3 _pop3 = new Pop3(_direccion,_contraseña, 995, "pop.gmail.com", true);
                 List<OpenPop.Mime.Message> _listaMensajes = new List<OpenPop.Mime.Message>();
                 _listaMensajes = _controlador.ObtenerMail(_pop3);
-                Console.WriteLine(_listaMensajes.Count.ToString());
-                Console.WriteLine(_listaMensajes[0].Headers.To);
+                for (int i = 0; i < _listaMensajes.Count; i++)
+                {
+                    Console.WriteLine(_listaMensajes[i].Headers.From.ToString());
+                    Console.WriteLine(_listaMensajes[i].Headers.To.ToString());//System.Collections.Generic.List`1[OpenPop.Mime.Header.RfcMailAddress]
+                    Console.WriteLine(_listaMensajes[i].Headers.Date.ToString());
+                    Console.WriteLine(_listaMensajes[i].Headers.Cc.ToString()); //System.Collections.Generic.List`1[OpenPop.Mime.Header.RfcMailAddress]
+                    Console.WriteLine(_listaMensajes[i].Headers.Bcc.ToString()); //System.Collections.Generic.List`1[OpenPop.Mime.Header.RfcMailAddress]
+                    Console.WriteLine(_listaMensajes[i].MessagePart.Body.ToString());
+                    Console.WriteLine(_listaMensajes[i].Headers.Subject.ToString());
+                    _controlador.GuardarMail(_listaMensajes[i], _idCasilla);
+                }
+                    
                 //dataGridView1.DataSource = _listaMensajes;
             }
         }

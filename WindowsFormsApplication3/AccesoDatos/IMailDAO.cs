@@ -8,6 +8,6 @@ namespace FlyMail
 {
     public interface IMailDAO
     {
-        
+        void Guardar(OpenPop.Mime.Message pMail,int idCasilla);
     }
 }

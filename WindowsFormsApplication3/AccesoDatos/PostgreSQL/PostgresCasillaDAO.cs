@@ -40,6 +40,11 @@ namespace FlyMail
                 return false;
         }
 
+        /// <summary>
+        /// Busca los nombres de las casillas asociadas
+        /// </summary>
+        /// <param name="idCuenta">ID de Cuenta</param>
+        /// <returns>Lista de Nombres</returns>
         public List<string> ListaNombres(int idCuenta)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
@@ -54,10 +59,32 @@ namespace FlyMail
         }
 
         /// <summary>
+        /// Busca y devuelve un Id de Correo a través del nombre
+        /// </summary>
+        /// <param name="pNombre">Nombre de casilla</param>
+        /// <param name="pIdUsuario">Id de cuenta</param>
+        /// <returns>Id de casilla</returns>
+        public int BuscarId(string pNombre, int pIdUsuario)
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "SELECT \"idCasillaEmail\" FROM \"CasillaEmail\" WHERE nombre = '" + pNombre + "' and usuario = '" + pIdUsuario + "'";
+            NpgsqlDataReader reader = comando.ExecuteReader();
+            if (reader.Read())
+            {
+                return Int32.Parse(reader[0].ToString());
+            }
+            else
+            {
+                throw new DAOException("Nombre de Casilla no encontrado");
+            }
+        }
+
+        /// <summary>
         /// Busca y devuelve un Dirección de Correo a través del nombre
         /// </summary>
-        /// <param name="pNombre"></param>
-        /// <returns></returns>
+        /// <param name="pNombre">Nombre de Casilla</param>
+        /// <param name="pIdUsuario">Id Casilla</param>
+        /// <returns>Direccion de la Casilla</returns>
         public string BuscarDireccion(string pNombre, int pIdUsuario)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();

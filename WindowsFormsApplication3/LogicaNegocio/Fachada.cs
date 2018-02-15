@@ -30,6 +30,7 @@ namespace FlyMail
             set { _idCuentaLogeado = value; }
         }
         #endregion
+
         #region Métodos para Cuenta
         public void agregarCuenta(Cuenta pCuenta)
         {
@@ -192,6 +193,7 @@ namespace FlyMail
             }
         }
         #endregion
+
         #region Métodos para Casilla
 
         /// <summary>
@@ -221,9 +223,37 @@ namespace FlyMail
         }
 
         /// <summary>
+        /// Devuelve el id del correo electrónico a partir del nombre de la Casilla
+        /// </summary>
+        /// <param name="pNombreCasilla">Nombre de Casilla</param>
+        /// <returns>Id de casilla. -1 en caso de error</returns>
+        public int ObtenerIdCasilla(string pNombreCasilla)
+        {
+            {
+                DAOFactory factory = DAOFactory.Instancia();
+
+                try
+                {
+                    factory.IniciarConexion();
+                    ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
+                    return _casillaDAO.BuscarId(pNombreCasilla, this.IDCuentaLogeado);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                    return -1;
+                }
+                finally
+                {
+                    factory.FinalizarConexion();
+                }
+            }
+        }
+
+        /// <summary>
         /// Devuelve la dirección de correo electrónico a partir del nombre de la Casilla. Se recomienda primero determinar si existe el nombre.
         /// </summary>
-        /// <param name="pNombreCasilla"></param>
+        /// <param name="pNombreCasilla">Nombre de Casilla</param>
         /// <returns>String conteniendo la dirección buscada. Cadena vacía en caso de error</returns>
         public string ObtenerDireccionCasilla(string pNombreCasilla)
         {
@@ -405,6 +435,7 @@ namespace FlyMail
             }
         }
         #endregion
+
         #region Métodos para Servicio
         public int obtenerIdServicio(string pProveedor)
         {
@@ -450,10 +481,38 @@ namespace FlyMail
         }
         #endregion
 
+        #region Metodos para Mail
+        public bool GuardarMail(OpenPop.Mime.Message pMail, int idCasilla)
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+
+            try
+            {
+                factory.IniciarConexion();
+                IMailDAO _mailDAO = factory.mailDAO;
+                _mailDAO.Guardar(pMail, idCasilla);
+                return true;
+            }
+            catch (DAOException)
+            {
+                factory.RollBack();
+                return false;
+            }
+            catch (Npgsql.PostgresException)
+            {
+                factory.RollBack();
+                MessageBox.Show("La dirección de Correo Electrónico tiene un formato incorrecto");
+                return false;
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
+        #endregion
         public List<OpenPop.Mime.Message> ObtenerMail(Pop3 pPop3)
         {
             Pop3 _POP3 = new Pop3(pPop3.Usuario, pPop3.Contraseña, pPop3.Puerto, pPop3.Ip, pPop3.SSL);
-            Console.WriteLine(pPop3.Usuario + "  " + pPop3.Puerto+"  "+pPop3.SSL);
             ControladorPOP3 _controladorPop3 = new ControladorPOP3();
             List<OpenPop.Mime.Message> lista = new List<OpenPop.Mime.Message>();
             lista = _controladorPop3.obtenerMensajes(_POP3);
