@@ -283,16 +283,23 @@ namespace FlyMail
                 Pop3 _pop3 = new Pop3(_direccion,_contraseña, 995, "pop.gmail.com", true);
                 List<OpenPop.Mime.Message> _listaMensajes = new List<OpenPop.Mime.Message>();
                 _listaMensajes = _controlador.ObtenerMail(_pop3);
-                for (int i = 0; i < _listaMensajes.Count; i++)
+                if (_listaMensajes.Count>=1)
                 {
-                    Console.WriteLine(_listaMensajes[i].Headers.From.ToString());
-                    Console.WriteLine(_listaMensajes[i].Headers.To.ToString());//System.Collections.Generic.List`1[OpenPop.Mime.Header.RfcMailAddress]
-                    Console.WriteLine(_listaMensajes[i].Headers.Date.ToString());
-                    Console.WriteLine(_listaMensajes[i].Headers.Cc.ToString()); //System.Collections.Generic.List`1[OpenPop.Mime.Header.RfcMailAddress]
-                    Console.WriteLine(_listaMensajes[i].Headers.Bcc.ToString()); //System.Collections.Generic.List`1[OpenPop.Mime.Header.RfcMailAddress]
-                    Console.WriteLine(_listaMensajes[i].MessagePart.Body.ToString());
-                    Console.WriteLine(_listaMensajes[i].Headers.Subject.ToString());
-                    _controlador.GuardarMail(_listaMensajes[i], _idCasilla);
+                    for (int i = 0; i < _listaMensajes.Count; i++)
+                    {
+                        Console.WriteLine(_listaMensajes[i].Headers.From.ToString());
+                        Console.WriteLine(_listaMensajes[i].Headers.To.ToString());//System.Collections.Generic.List`1[OpenPop.Mime.Header.RfcMailAddress]
+                        Console.WriteLine(_listaMensajes[i].Headers.Date.ToString());
+                        Console.WriteLine(_listaMensajes[i].Headers.Cc.ToString()); //System.Collections.Generic.List`1[OpenPop.Mime.Header.RfcMailAddress]
+                        Console.WriteLine(_listaMensajes[i].Headers.Bcc.ToString()); //System.Collections.Generic.List`1[OpenPop.Mime.Header.RfcMailAddress]
+                        Console.WriteLine(_listaMensajes[i].MessagePart.Body.ToString());
+                        Console.WriteLine(_listaMensajes[i].Headers.Subject.ToString());
+                        _controlador.GuardarMail(_listaMensajes[i], _idCasilla);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No contiene Mail");
                 }
                     
                 //dataGridView1.DataSource = _listaMensajes;
