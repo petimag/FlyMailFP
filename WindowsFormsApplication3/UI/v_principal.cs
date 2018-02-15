@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OpenPop.Mime;
+using OpenPop.Pop3;
 
 namespace FlyMail
 {
@@ -184,7 +186,6 @@ namespace FlyMail
                 this.i_correo.Text = "Modificar Casilla";
                 this.i_correo.ShowDialog(this);
             }
-            
         }
 
         /// <summary>
@@ -221,8 +222,6 @@ namespace FlyMail
                 this._cerrarSesion = true;
                 this.Close();
             }
-            
-            
         }
 
         /// <summary>
@@ -271,6 +270,20 @@ namespace FlyMail
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+            if(_controlador.ObtenerContraseñaCasilla(comboBox1.Text)=="vacia")
+            {
+                //No tiene contraseña almacenada
+            }
+            else
+            {
+                string _direccion = _controlador.ObtenerDireccionCasilla(this.comboBox1.Text);
+                string _contraseña = _controlador.ObtenerContraseñaCasilla(this.comboBox1.Text);
+
+                Pop3 _pop3 = new Pop3(_direccion,_contraseña, 995, "pop.gmail.com", true);
+                List<OpenPop.Mime.Message> _listaMensajes = _controlador.ObtenerMail(_pop3);
+                //this.comboBox1.Text = _listaMensajes[0].Headers.To.ToString();
+                //dataGridView1.DataSource = _listaMensajes;
+            }
         }
     }
 }

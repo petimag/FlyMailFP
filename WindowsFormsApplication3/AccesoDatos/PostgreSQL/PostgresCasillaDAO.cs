@@ -58,10 +58,10 @@ namespace FlyMail
         /// </summary>
         /// <param name="pNombre"></param>
         /// <returns></returns>
-        public string BuscarDireccion(string pNombre)
+        public string BuscarDireccion(string pNombre, int pIdUsuario)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
-            comando.CommandText = "SELECT \"direccionEmail\" FROM \"CasillaEmail\" WHERE nombre = '" + pNombre + "'";
+            comando.CommandText = "SELECT \"direccionEmail\" FROM \"CasillaEmail\" WHERE nombre = '" + pNombre + "' and usuario = '" + pIdUsuario + "'";
             NpgsqlDataReader reader = comando.ExecuteReader();
             if (reader.Read())
             {
@@ -73,6 +73,26 @@ namespace FlyMail
             }
         }
 
+        /// <summary>
+        /// Busca y devuelve un Dirección de Correo a través del nombre
+        /// </summary>
+        /// <param name="pNombre">Nombre de casilla</param>
+        /// <param name="pIdUsuario">Id de Usuario</param>
+        /// <returns>Contraseña de Casilla</returns>
+        public string BuscarContraseña(string pNombre, int pIdUsuario)
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "SELECT \"contrasenaEmail\" FROM \"CasillaEmail\" WHERE nombre = '" + pNombre + "' and usuario = '" + pIdUsuario + "'";
+            NpgsqlDataReader reader = comando.ExecuteReader();
+            if (reader.Read())
+            {
+                return reader[0].ToString();
+            }
+            else
+            {
+                throw new DAOException("Nombre de Casilla no encontrado");
+            }
+        }
 
         /// <summary>
         /// Agrega una Nueva Casilla de Correo
@@ -112,14 +132,15 @@ namespace FlyMail
         /// <summary>
         /// Modifica la dirección y la contraseña de la Casilla de Correo
         /// </summary>
-        /// <param name="pCasilla"></param>
-        public void Modificar(CasillaCorreo pCasilla, int pIDUSuario)
+        /// <param name="pCasilla">Casilla de correo que se desea modificar</param>
+        /// <param name="pIDUsuario">Id de Usuario</param>
+        public void Modificar(CasillaCorreo pCasilla, int pIDUsuario)
         {
             string cmd = String.Empty;
             if (pCasilla.Contraseña == String.Empty)
-                cmd = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion WHERE nombre = '" + pCasilla.Nombre + "' and usuario = '" + pIDUSuario + "'";
+                cmd = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion WHERE nombre = '" + pCasilla.Nombre + "' and usuario = '" + pIDUsuario + "'";
             else
-                cmd = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion, \"contrasenaEmail\" = @contrasena WHERE nombre = '" + pCasilla.Nombre + "' and usuario = '" + pIDUSuario + "'";
+                cmd = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion, \"contrasenaEmail\" = @contrasena WHERE nombre = '" + pCasilla.Nombre + "' and usuario = '" + pIDUsuario + "'";
 
             NpgsqlCommand comando = this._conexion.CreateCommand();
             comando.CommandText = cmd;
@@ -133,26 +154,6 @@ namespace FlyMail
                 throw new DAOException("No se pudieron actualizar los valores");
             }
         }
-
-        /* ELIMIAR SI NO SE ENCUENTRAN FALLOS EN MODIFICAR
-        /// <summary>
-        /// Modifica la dirección de la Casilla de Correo
-        /// </summary>
-        /// <param name="pCasilla"></param>
-        public void modificarDireccion(CasillaCorreo pCasilla)
-        {
-            NpgsqlCommand comando = this._conexion.CreateCommand();
-            comando.CommandText = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion WHERE nombre = '" + pCasilla.Nombre + "'";
-
-            comando.Parameters.AddWithValue("@direccion", pCasilla.Direccion);
-
-            // ExecuteNonQuery = -1 si no se modificaron filas
-            if (comando.ExecuteNonQuery() == -1)
-            {
-                throw new DAOException("No se pudieron actualizar los valores");
-            }
-        }
-        */
 
         /// <summary>
         /// Elimina una Casilla de Correo

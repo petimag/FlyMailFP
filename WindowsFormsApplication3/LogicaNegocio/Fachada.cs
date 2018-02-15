@@ -233,7 +233,42 @@ namespace FlyMail
             {
                 factory.IniciarConexion();
                 ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
-                return _casillaDAO.BuscarDireccion(pNombreCasilla);
+                return _casillaDAO.BuscarDireccion(pNombreCasilla,this.IDCuentaLogeado);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return string.Empty;
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
+
+        /// <summary>
+        /// Devuelve la contraseña de correo electrónico a partir del nombre de la Casilla. Se recomienda primero determinar si existe el nombre.
+        /// </summary>
+        /// <param name="pNombreCasilla"></param>
+        /// <returns>String conteniendo la contraseña buscada. Cadena vacía en caso de error o no estar almacenada</returns>
+        public string ObtenerContraseñaCasilla(string pNombreCasilla)
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+
+            try
+            {
+                factory.IniciarConexion();
+                ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
+                string _contraseña = _casillaDAO.BuscarContraseña(pNombreCasilla, this.IDCuentaLogeado);
+                if (_contraseña == "")
+                {
+                    return "vacia";
+                }
+                else
+                {
+                    return _contraseña;
+                }
+                 
             }
             catch (Exception e)
             {
@@ -414,5 +449,12 @@ namespace FlyMail
             }
         }
         #endregion
+
+        public List<OpenPop.Mime.Message> ObtenerMail(Pop3 pPop3)
+        {
+            Pop3 _POP3 = new Pop3(pPop3.Usuario, pPop3.Contraseña, pPop3.Puerto, pPop3.Ip, pPop3.SSL);
+            ControladorPOP3 _controladorPop3 = new ControladorPOP3();
+            return _controladorPop3.obtenerMensajes(_POP3);
+        }
     }
 }
