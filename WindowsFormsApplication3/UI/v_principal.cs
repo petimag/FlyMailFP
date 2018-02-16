@@ -131,7 +131,7 @@ namespace FlyMail
         /// </summary>
         private void refrescarDataGrid()
         {
-  //          dataGridView1.DataSource = this.iCorreo.Libros;
+            //          dataGridView1.DataSource = this.iCorreo.Libros;
             dataGridView1.Refresh();
         }
 
@@ -206,7 +206,7 @@ namespace FlyMail
                 this.i_eliminarCasilla.Text = "Eliminar Casilla";
                 this.i_eliminarCasilla.ShowDialog(this);
             }
-            
+
         }
 
         /// <summary>
@@ -270,7 +270,7 @@ namespace FlyMail
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if(_controlador.ObtenerContraseñaCasilla(comboBox1.Text)=="vacia")
+            if (_controlador.ObtenerContraseñaCasilla(comboBox1.Text) == "vacia")
             {
                 //No tiene contraseña almacenada
             }
@@ -280,30 +280,79 @@ namespace FlyMail
                 string _direccion = _controlador.ObtenerDireccionCasilla(this.comboBox1.Text);
                 string _contraseña = _controlador.ObtenerContraseñaCasilla(this.comboBox1.Text);
 
-                Pop3 _pop3 = new Pop3(_direccion,_contraseña, 995, "pop.gmail.com", true);
+                Pop3 _pop3 = new Pop3(_direccion, _contraseña, 995, "pop.gmail.com", true);
                 List<OpenPop.Mime.Message> _listaMensajes = new List<OpenPop.Mime.Message>();
                 _listaMensajes = _controlador.ObtenerMail(_pop3);
-                if (_listaMensajes.Count>=1)
+                if (_listaMensajes.Count >= 1)
                 {
                     for (int i = 0; i < _listaMensajes.Count; i++)
                     {
-                        Console.WriteLine(_listaMensajes[i].Headers.From.ToString());
-                        Console.WriteLine(_listaMensajes[i].Headers.To.ToString());//System.Collections.Generic.List`1[OpenPop.Mime.Header.RfcMailAddress]
-                        Console.WriteLine(_listaMensajes[i].Headers.Date.ToString());
-                        Console.WriteLine(_listaMensajes[i].Headers.Cc.ToString()); //System.Collections.Generic.List`1[OpenPop.Mime.Header.RfcMailAddress]
-                        Console.WriteLine(_listaMensajes[i].Headers.Bcc.ToString()); //System.Collections.Generic.List`1[OpenPop.Mime.Header.RfcMailAddress]
-                        Console.WriteLine(_listaMensajes[i].MessagePart.Body.ToString());
-                        Console.WriteLine(_listaMensajes[i].Headers.Subject.ToString());
-                        _controlador.GuardarMail(_listaMensajes[i], _idCasilla);
+                        Mail _mail = CrearMail(_listaMensajes[i]);
+                        _controlador.GuardarMail(_mail, _idCasilla);
                     }
                 }
                 else
                 {
                     MessageBox.Show("No contiene Mail");
                 }
-                    
+
                 //dataGridView1.DataSource = _listaMensajes;
             }
+        }
+
+        private Mail CrearMail(OpenPop.Mime.Message pMensaje)
+        {
+            //Remiente del Mail
+            string _remitente = pMensaje.Headers.From.Address;
+            string _destinatario = String.Empty;
+            //Si hay 1 o mas destinatarios
+            if (pMensaje.Headers.To.Count >= 1)
+            {
+                //Recorre la lista para ir agregando los destinatarios separados por una coma
+                for (int j = 0; j < pMensaje.Headers.To.Count; j++)
+                    _destinatario += pMensaje.Headers.To[j].Address + ",";
+            }
+
+            //Fecha del Mail
+             string _fecha = pMensaje.Headers.Date.ToString();
+
+            string _cc = string.Empty;
+            //Si hay 1 o mas CC
+            if (pMensaje.Headers.Cc.Count >= 1)
+            {
+                //Recorre la lista para ir agregando los CC separados por una coma
+                for (int j = 0; j < pMensaje.Headers.Cc.Count; j++)
+                    _cc = pMensaje.Headers.Cc[j].Address+",";
+            }
+
+            string _cco = string.Empty;
+            //Si hay 1 o mas CCO
+            if (pMensaje.Headers.Bcc.Count >= 1)
+            {
+                //Recorre la lista para ir agregando los CCO separados por una coma
+                for (int j = 0; j < pMensaje.Headers.Bcc.Count; j++)
+                    _cco = pMensaje.Headers.Bcc[j].Address+",";
+            }
+
+            string _mensaje = string.Empty;
+            //Verifica si el Mail tiene mas de una parte
+            if (pMensaje.MessagePart.IsMultiPart)
+            {
+                foreach (MessagePart _msgPart in pMensaje.MessagePart.MessageParts)
+                    _mensaje += _msgPart.GetBodyAsText();
+            }
+            else if (pMensaje.MessagePart.IsText)
+            {
+                foreach (MessagePart _msgPart in pMensaje.MessagePart.MessageParts)
+                    _mensaje += _msgPart.GetBodyAsText();
+            }
+            
+
+            //Asunto del mail
+            string _asunto = pMensaje.Headers.Subject;
+            string _mailBox = Convert.ToString(MailBox.Recibidos);
+            Mail _mail = new Mail(_remitente, _destinatario,_asunto,_cc,_cco,_fecha,_mensaje,_mailBox);
+            return _mail;
         }
     }
 }

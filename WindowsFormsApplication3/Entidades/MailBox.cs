@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace FlyMail
 {
-    public interface IMailDAO
+    public enum MailBox
     {
-        void Guardar(Mail pMail,int idCasilla);
+        Recibidos,
+        Enviados,
+        Papelera,
+        Borradores
     }
 }

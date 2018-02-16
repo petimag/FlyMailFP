@@ -66,6 +66,7 @@
     <Compile Include="AccesoDatos\PostgreSQL\PostgresMailDAO.cs" />
     <Compile Include="Entidades\CasillaCorreo.cs" />
     <Compile Include="Entidades\Mail.cs" />
+    <Compile Include="Entidades\MailBox.cs" />
     <Compile Include="Entidades\Servicio.cs" />
     <Compile Include="LogicaNegocio\ControladorPOP3.cs" />
     <Compile Include="LogicaNegocio\ControladorSMTP.cs" />

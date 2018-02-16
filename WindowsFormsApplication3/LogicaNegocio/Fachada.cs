@@ -482,7 +482,7 @@ namespace FlyMail
         #endregion
 
         #region Metodos para Mail
-        public bool GuardarMail(OpenPop.Mime.Message pMail, int idCasilla)
+        public bool GuardarMail(Mail pMail, int idCasilla)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
