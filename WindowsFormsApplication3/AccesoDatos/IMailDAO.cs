@@ -9,5 +9,6 @@ namespace FlyMail
     public interface IMailDAO
     {
         void Guardar(Mail pMail,int idCasilla);
+        List<Mail> ListarMail(int idCasilla,string pMailBox);
     }
 }

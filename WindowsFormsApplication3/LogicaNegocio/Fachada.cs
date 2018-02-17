@@ -509,6 +509,31 @@ namespace FlyMail
                 factory.FinalizarConexion();
             }
         }
+
+        public List<Mail> ListarMail(int idCasilla,String pMailBox)
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+            List<Mail> _listaMails = new List<Mail>();
+
+            try
+            {
+
+                factory.IniciarConexion();
+                IMailDAO _mailDAO = factory.mailDAO;
+                _listaMails = _mailDAO.ListarMail(idCasilla, pMailBox);
+                return _listaMails;
+            }
+            catch (Exception)
+            {
+                _listaMails.Clear();
+                return _listaMails;
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
+
         #endregion
         public List<OpenPop.Mime.Message> ObtenerMail(Pop3 pPop3)
         {

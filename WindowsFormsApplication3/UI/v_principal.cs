@@ -67,6 +67,9 @@ namespace FlyMail
             button_recibidos.BackColor = Color.LightSkyBlue;
             button_enviados.BackColor = Color.PowderBlue;
             button_papelera.BackColor = Color.PowderBlue;
+
+            //listar en el dataGridView1 los mail recibidos
+            refrescarDataGrid(ConvertirMailBox(MailBox.Recibidos));
         }
 
         /// <summary>
@@ -79,6 +82,9 @@ namespace FlyMail
             button_recibidos.BackColor = Color.PowderBlue;
             button_enviados.BackColor = Color.LightSkyBlue;
             button_papelera.BackColor = Color.PowderBlue;
+
+            //listar en el dataGridView1 los mail enviados
+            refrescarDataGrid(ConvertirMailBox(MailBox.Enviados));
         }
 
         /// <summary>
@@ -91,6 +97,9 @@ namespace FlyMail
             button_recibidos.BackColor = Color.PowderBlue;
             button_enviados.BackColor = Color.PowderBlue;
             button_papelera.BackColor = Color.LightSkyBlue;
+
+            //listar en el dataGridView1 los mail de la papelera
+            refrescarDataGrid(ConvertirMailBox(MailBox.Papelera));
         }
 
         /// <summary>
@@ -100,7 +109,14 @@ namespace FlyMail
         /// <param name="e"></param>
         private void button_actualizar_Click(object sender, EventArgs e)
         {
-            this.refrescarDataGrid();
+            string tipoMailBox = "";
+            if (button_recibidos.BackColor == Color.LightSkyBlue)
+                tipoMailBox = ConvertirMailBox(MailBox.Recibidos);
+            else if (button_enviados.BackColor == Color.LightSkyBlue)
+                tipoMailBox = ConvertirMailBox(MailBox.Enviados);
+            else if (button_papelera.BackColor == Color.LightSkyBlue)
+                tipoMailBox = ConvertirMailBox(MailBox.Papelera);
+            this.refrescarDataGrid(tipoMailBox);
         }
 
         /// <summary>
@@ -142,10 +158,35 @@ namespace FlyMail
         /// <summary>
         /// Actualizar la lista de los mail
         /// </summary>
-        private void refrescarDataGrid()
+        private void refrescarDataGrid(string pMailBox)
         {
-            //          dataGridView1.DataSource = this.iCorreo.Libros;
-            dataGridView1.Refresh();
+            if (this.comboBox1.Text == "Seleccionar")
+            {
+                MessageBox.Show("Debe seleccionar una casilla de correos");
+            }
+            else
+            {
+                if (this.comboBox1.Text == "Todos")
+                {
+
+                }
+                else
+                {
+                    int _idCasilla = _controlador.ObtenerIdCasilla(this.comboBox1.Text);
+                    List<Mail> _listaMail = _controlador.ListarMail(_idCasilla, pMailBox);
+                    for (int i = 0; i < _listaMail.Count; i++)
+                    {
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {
+                            dataGridView1.Rows[i].Cells[0].Value = _listaMail[i].Destinatario;
+                            dataGridView1.Rows[i].Cells[1].Value = _listaMail[i].Remitente;
+                            dataGridView1.Rows[i].Cells[2].Value = _listaMail[i].Asunto;
+                            dataGridView1.Rows[i].Cells[3].Value = _listaMail[i].Fecha;
+                        }
+                    }
+                }
+                dataGridView1.Refresh();
+            }
         }
 
         /// <summary>
@@ -379,9 +420,29 @@ namespace FlyMail
 
             //Asunto del mail
             string _asunto = pMensaje.Headers.Subject;
-            string _mailBox = Convert.ToString(MailBox.Recibidos);
+            string _mailBox = ConvertirMailBox(MailBox.Recibidos);
             Mail _mail = new Mail(_remitente, _destinatario,_asunto,_cc,_cco,_fecha,_mensaje,_mailBox);
             return _mail;
+        }
+
+        private string ConvertirMailBox(MailBox pMailBox)
+        {
+            if (pMailBox == MailBox.Recibidos)
+            {
+                return Convert.ToString(MailBox.Recibidos);
+            }
+            else if(pMailBox == MailBox.Enviados)
+            {
+                return Convert.ToString(MailBox.Enviados);
+            }
+            else if (pMailBox == MailBox.Borradores)
+            {
+                return Convert.ToString(MailBox.Borradores);
+            }
+            else
+            {
+                return Convert.ToString(MailBox.Papelera);
+            }
         }
     }
 }

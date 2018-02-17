@@ -52,5 +52,26 @@ namespace FlyMail
             }
         }
 
+        public List<Mail> ListarMail(int idCasilla, string pMailBox)
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "SELECT * FROM \"Email\" WHERE casilla = '" + idCasilla + "' and mailbox = '"+ pMailBox + "'";
+            NpgsqlDataReader reader = comando.ExecuteReader();
+            List<Mail> _listaMail = new List<Mail>();
+            while (reader.Read())
+            {
+                string _col1 = (string)reader["cabRemitente"];
+                string _col2 = (string)reader["cabDestinatario"];
+                string _col3 = (string)reader["asunto"];
+                string _col4 = (string)reader["cabCC"];
+                string _col5 = (string)reader["cabCCO"];
+                string _col6 = (string)reader["cabFecha"];
+                string _col7 = (string)reader["cuerpo"];
+
+                Mail _mail = new Mail(_col1, _col2, _col3, _col4, _col5, _col6, _col7,pMailBox);
+                _listaMail.Add(_mail);
+            }
+            return _listaMail;
+        }
     }
 }
