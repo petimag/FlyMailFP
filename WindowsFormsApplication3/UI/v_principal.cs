@@ -33,6 +33,9 @@ namespace FlyMail
 
         private v_eliminarCasilla i_eliminarCasilla = new v_eliminarCasilla();
 
+        private string i_passwordCasilla = string.Empty;
+        private bool i_guardarPasswordCasilla = false;
+
         private void v_principal_Load(object sender, EventArgs e)
         {
             this.comboBox1.Items.Clear();
@@ -42,6 +45,16 @@ namespace FlyMail
             _listaDirecciones = _controlador.ObtenerNombreCasillas();
             for (int i = 0; i < _listaDirecciones.Count; i++)
                 this.comboBox1.Items.Add(_listaDirecciones[i]);
+        }
+
+        public string PasswordCasilla
+        {
+            set { this.i_passwordCasilla = value; }
+        }
+
+        public bool GuardarPasswordCasilla
+        {
+            set { this.i_guardarPasswordCasilla = value; }
         }
 
         /// <summary>
@@ -269,16 +282,23 @@ namespace FlyMail
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string _user = this.comboBox1.Text;
+            if (_user != "Todos")
+            {
+                int _idCasilla = _controlador.ObtenerIdCasilla(_user);
+                string _direccion = _controlador.ObtenerDireccionCasilla(_user);
+                string _contraseña = _controlador.ObtenerContraseñaCasilla(_user);
 
-            if (_controlador.ObtenerContraseñaCasilla(comboBox1.Text) == "vacia")
-            {
-                //No tiene contraseña almacenada
-            }
-            else
-            {
-                int _idCasilla = _controlador.ObtenerIdCasilla(this.comboBox1.Text);
-                string _direccion = _controlador.ObtenerDireccionCasilla(this.comboBox1.Text);
-                string _contraseña = _controlador.ObtenerContraseñaCasilla(this.comboBox1.Text);
+                if (_contraseña == "vacia")
+                {
+                    (new v_ingresarPasswordCasilla()).ShowDialog(this);
+                    _contraseña = this.i_passwordCasilla;
+                    if (this.i_guardarPasswordCasilla)
+                        this.AlmacenarPasswordCasilla(_user, _contraseña);
+
+                    this.i_passwordCasilla = string.Empty;
+                    this.i_guardarPasswordCasilla = false;
+                }
 
                 Pop3 _pop3 = new Pop3(_direccion, _contraseña, 995, "pop.gmail.com", true);
                 List<OpenPop.Mime.Message> _listaMensajes = new List<OpenPop.Mime.Message>();
@@ -291,13 +311,22 @@ namespace FlyMail
                         _controlador.GuardarMail(_mail, _idCasilla);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("No contiene Mail");
-                }
+
 
                 //dataGridView1.DataSource = _listaMensajes;
             }
+            else // Obtener Todos los mails
+            {
+
+            }
+
+        }
+
+        private void AlmacenarPasswordCasilla(string user, string pass)
+        {
+            string dir = _controlador.ObtenerDireccionCasilla(user);
+            CasillaCorreo _casilla = new CasillaCorreo(user, dir, pass);
+            _controlador.ModificarCasilla(_casilla);
         }
 
         private Mail CrearMail(OpenPop.Mime.Message pMensaje)
