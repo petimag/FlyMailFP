@@ -353,7 +353,7 @@ namespace FlyMail
                     }
                 }
 
-
+                refrescarDataGrid(ConvertirMailBox(MailBox.Recibidos));
                 //dataGridView1.DataSource = _listaMensajes;
             }
             else // Obtener Todos los mails
