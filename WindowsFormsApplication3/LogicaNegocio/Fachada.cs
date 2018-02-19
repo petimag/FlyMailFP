@@ -526,6 +526,7 @@ namespace FlyMail
             catch (Exception)
             {
                 _listaMails.Clear();
+                Console.WriteLine("entra aca");
                 return _listaMails;
             }
             finally

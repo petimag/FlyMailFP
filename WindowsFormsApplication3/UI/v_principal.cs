@@ -137,8 +137,6 @@ namespace FlyMail
         /// <param name="e"></param>
         private void button_eliminar_Click(object sender, EventArgs e)
         {
-            this.i_mail.Text = "Leer Mail";
-            this.i_mail.ShowDialog(this);
             //    string pISBN = ((Libro)dataGridView1.CurrentRow.DataBoundItem).ISBN;
             //    this.iBiblioteca.BajaLibro(pISBN);
             //    this.refrescarDataGrid();
@@ -160,6 +158,7 @@ namespace FlyMail
         /// </summary>
         private void refrescarDataGrid(string pMailBox)
         {
+            this.dataGridView1.Rows.Clear();
             if (this.comboBox1.Text == "Seleccionar")
             {
                 MessageBox.Show("Debe seleccionar una casilla de correos");
@@ -174,19 +173,18 @@ namespace FlyMail
                 {
                     int _idCasilla = _controlador.ObtenerIdCasilla(this.comboBox1.Text);
                     List<Mail> _listaMail = _controlador.ListarMail(_idCasilla, pMailBox);
-                    
                     this.dataGridView1.ColumnHeadersVisible = true;
                     DataGridViewCellStyle columnHeaderStyle = new DataGridViewCellStyle();
 
-                    columnHeaderStyle.BackColor = Color.Beige;
+                    /*columnHeaderStyle.BackColor = Color.Beige;
                     columnHeaderStyle.Font = new Font("Verdana", 10, FontStyle.Bold);
-                    this.dataGridView1.ColumnHeadersDefaultCellStyle = columnHeaderStyle;
+                    this.dataGridView1.ColumnHeadersDefaultCellStyle = columnHeaderStyle;*/
 
                     foreach (var _mail in  _listaMail)
                     {
                         if (_mail != null)
                         {
-                            String[] row = new String[] { "fernando", "gomez", "albornoz" };// _mail.Remitente, _mail.Asunto, _mail.Fecha };
+                            String[] row = new String[] {Convert.ToString(false), _mail.Remitente, _mail.Asunto, _mail.Fecha };
                             this.dataGridView1.Rows.Add(row);
                         }
                     }
