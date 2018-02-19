@@ -174,14 +174,20 @@ namespace FlyMail
                 {
                     int _idCasilla = _controlador.ObtenerIdCasilla(this.comboBox1.Text);
                     List<Mail> _listaMail = _controlador.ListarMail(_idCasilla, pMailBox);
-                    for (int i = 0; i < _listaMail.Count; i++)
+                    
+                    this.dataGridView1.ColumnHeadersVisible = true;
+                    DataGridViewCellStyle columnHeaderStyle = new DataGridViewCellStyle();
+
+                    columnHeaderStyle.BackColor = Color.Beige;
+                    columnHeaderStyle.Font = new Font("Verdana", 10, FontStyle.Bold);
+                    this.dataGridView1.ColumnHeadersDefaultCellStyle = columnHeaderStyle;
+
+                    foreach (var _mail in  _listaMail)
                     {
-                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        if (_mail != null)
                         {
-                            dataGridView1.Rows[i].Cells[0].Value = _listaMail[i].Destinatario;
-                            dataGridView1.Rows[i].Cells[1].Value = _listaMail[i].Remitente;
-                            dataGridView1.Rows[i].Cells[2].Value = _listaMail[i].Asunto;
-                            dataGridView1.Rows[i].Cells[3].Value = _listaMail[i].Fecha;
+                            String[] row = new String[] { "fernando", "gomez", "albornoz" };// _mail.Remitente, _mail.Asunto, _mail.Fecha };
+                            this.dataGridView1.Rows.Add(row);
                         }
                     }
                 }
