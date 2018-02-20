@@ -43,6 +43,7 @@
             this.textBox_contraseña = new System.Windows.Forms.TextBox();
             this.textBox_direccion = new System.Windows.Forms.TextBox();
             this.comboBox_servicio = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -148,6 +149,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.GrayText;
+            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.textBox_contraseña);
             this.groupBox2.Controls.Add(this.textBox_direccion);
             this.groupBox2.Controls.Add(this.comboBox_servicio);
@@ -167,10 +169,10 @@
             this.textBox_contraseña.BackColor = System.Drawing.SystemColors.ControlDark;
             this.textBox_contraseña.Enabled = false;
             this.textBox_contraseña.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBox_contraseña.Location = new System.Drawing.Point(90, 73);
+            this.textBox_contraseña.Location = new System.Drawing.Point(79, 73);
             this.textBox_contraseña.Name = "textBox_contraseña";
             this.textBox_contraseña.PasswordChar = '♦';
-            this.textBox_contraseña.Size = new System.Drawing.Size(163, 20);
+            this.textBox_contraseña.Size = new System.Drawing.Size(174, 20);
             this.textBox_contraseña.TabIndex = 8;
             this.textBox_contraseña.TextChanged += new System.EventHandler(this.textBox_contraseña_TextChanged);
             this.textBox_contraseña.GotFocus += new System.EventHandler(this.textBox_contraseña_Focus);
@@ -181,9 +183,9 @@
             this.textBox_direccion.BackColor = System.Drawing.SystemColors.ControlDark;
             this.textBox_direccion.Enabled = false;
             this.textBox_direccion.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBox_direccion.Location = new System.Drawing.Point(90, 45);
+            this.textBox_direccion.Location = new System.Drawing.Point(79, 45);
             this.textBox_direccion.Name = "textBox_direccion";
-            this.textBox_direccion.Size = new System.Drawing.Size(162, 20);
+            this.textBox_direccion.Size = new System.Drawing.Size(97, 20);
             this.textBox_direccion.TabIndex = 7;
             this.textBox_direccion.TextChanged += new System.EventHandler(this.textBox_direccion_TextChanged);
             // 
@@ -193,10 +195,21 @@
             this.comboBox_servicio.Enabled = false;
             this.comboBox_servicio.ForeColor = System.Drawing.SystemColors.Window;
             this.comboBox_servicio.FormattingEnabled = true;
-            this.comboBox_servicio.Location = new System.Drawing.Point(90, 18);
+            this.comboBox_servicio.Location = new System.Drawing.Point(79, 18);
             this.comboBox_servicio.Name = "comboBox_servicio";
-            this.comboBox_servicio.Size = new System.Drawing.Size(163, 21);
+            this.comboBox_servicio.Size = new System.Drawing.Size(174, 21);
             this.comboBox_servicio.TabIndex = 6;
+            this.comboBox_servicio.SelectedIndexChanged += new System.EventHandler(this.comboBox_servicio_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Window;
+            this.label1.Location = new System.Drawing.Point(176, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "@ejemplo.com";
             // 
             // v_correo
             // 
@@ -240,5 +253,6 @@
         private System.Windows.Forms.TextBox textBox_direccion;
         private System.Windows.Forms.ComboBox comboBox_servicio;
         private System.Windows.Forms.ComboBox comboBox1_nombre;
+        private System.Windows.Forms.Label label1;
     }
 }

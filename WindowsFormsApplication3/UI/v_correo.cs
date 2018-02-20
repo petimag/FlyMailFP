@@ -202,5 +202,10 @@ namespace FlyMail
         {
 
         }
+
+        private void comboBox_servicio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //this.label1.Text = 
+        }
     }
 }
