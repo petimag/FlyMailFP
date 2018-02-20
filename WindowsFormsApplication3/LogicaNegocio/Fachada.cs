@@ -479,6 +479,26 @@ namespace FlyMail
                 factory.FinalizarConexion();
             }
         }
+
+        public string obtenerDominioServicio(string pProveedor)
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+
+            try
+            {
+                factory.IniciarConexion();
+                IServicioDAO _servicioDAO = factory.servicioDAO;
+                return _servicioDAO.obtenerDominio(pProveedor);
+            }
+            catch (Exception)
+            {
+                return String.Empty;
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
         #endregion
 
         #region Metodos para Mail

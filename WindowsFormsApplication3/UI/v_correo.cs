@@ -33,6 +33,7 @@ namespace FlyMail
             this.comboBox_servicio.Text = "Seleccionar";
             this.comboBox_servicio.Items.Clear();
             this.comboBox1_nombre.Items.Clear();
+            this.label1.Text = "@ejemplo.com";
             if (this.Text == "Agregar Casilla")
             {
                 this.label3.Visible = true;
@@ -56,13 +57,13 @@ namespace FlyMail
                 for (int i = 0; i < _listaNombres.Count; i++)
                     this.comboBox1_nombre.Items.Add(_listaNombres[i]);
                 this.textBox_nombre.Visible = false;
+                this.comboBox_servicio.Enabled = false;
+                this.comboBox_servicio.Visible = true;
                 this.comboBox_servicio.Text = "";
                 this.button_verificar.Text = "Buscar";
-                this.comboBox_servicio.Enabled = false;
+                this.textBox_direccion.Visible = true;
                 this.textBox_direccion.Enabled = false;
                 this.textBox_contraseña.Enabled = false;
-                this.comboBox_servicio.Visible = true;
-                this.textBox_direccion.Visible = true;
             }
         }
 
@@ -99,19 +100,19 @@ namespace FlyMail
             }
             if (button_verificar.Text == "Buscar")
             {
-                if (_controlador.ObtenerDireccionCasilla(this.comboBox1_nombre.Text) != String.Empty)
+                string _direccion = _controlador.ObtenerDireccionCasilla(this.comboBox1_nombre.Text);
+                if (_direccion != String.Empty)
                 {
                     this.textBox_direccion.Enabled = true;
-                    this.textBox_direccion.Text = _controlador.ObtenerDireccionCasilla(this.comboBox1_nombre.Text);
+
+                    this.textBox_direccion.Text = obtenerNombreDireccion(_direccion);
+                    this.label1.Text = obtenerDominio(_direccion);
                     this.textBox_contraseña.Enabled = true;
                     this.textBox_contraseña.PasswordChar = '\0';
                     this.textBox_contraseña.Text = "Si desea realizar cambios";
                     this.button_guardar.Enabled = true;
-                    
                 }
             }
-
-
         }
 
         private void textBox_contraseña_Focus(object sender, EventArgs e)
@@ -152,7 +153,8 @@ namespace FlyMail
         {
             if (this.Text == "Agregar Casilla")
             {
-                CasillaCorreo _casilla = new CasillaCorreo(this.textBox_nombre.Text,this.textBox_direccion.Text, this.textBox_contraseña.Text);
+                string _direccion = String.Concat(this.textBox_direccion.Text, this.label1.Text);
+                CasillaCorreo _casilla = new CasillaCorreo(this.textBox_nombre.Text,_direccion, this.textBox_contraseña.Text);
                 int idServicio = _controlador.obtenerIdServicio(comboBox_servicio.Text);
 
                 // éxito
@@ -193,19 +195,38 @@ namespace FlyMail
             this.AcceptButton = this.button_guardar;
         }
 
-        private void comboBox1_nombre_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox_servicio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //this.label1.Text = 
+            this.label1.Text = "@"+ _controlador.obtenerDominioServicio(this.comboBox_servicio.Text);
+        }
+
+        private string obtenerNombreDireccion(string pDireccion)
+        {
+            string _nombre = "";
+            int _i = 0;
+            while (pDireccion[_i] != '@')
+            {
+                _nombre += pDireccion[_i];
+                _i++;
+            }
+            return _nombre;
+        }
+
+        private string obtenerDominio(string pDireccion)
+        {
+            string _dominio = "";
+            int _i = 0;
+            bool encontroDominio = false;
+            while (_i< pDireccion.Length || !encontroDominio)
+            {
+                if (pDireccion[_i] == '@')
+                {
+                    encontroDominio = true;
+                    _dominio = pDireccion.Substring(_i);
+                }
+                _i++;
+            }
+            return _dominio;
         }
     }
 }

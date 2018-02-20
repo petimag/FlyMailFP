@@ -12,9 +12,10 @@ namespace FlyMail
 {
     public partial class v_ingresarPasswordCasilla : Form
     {
-        public v_ingresarPasswordCasilla()
+        public v_ingresarPasswordCasilla(string pNombreUsuario)
         {
             InitializeComponent();
+            textBox2.Text = pNombreUsuario;
             textBox1.Text = string.Empty;
         }
 

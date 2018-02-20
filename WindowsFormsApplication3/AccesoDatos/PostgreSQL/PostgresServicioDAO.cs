@@ -39,6 +39,17 @@ namespace FlyMail
             }
             return _listaServicio;
         }
+
+        public string obtenerDominio(string pProveedor)
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "SELECT dominio FROM \"Servicio\" WHERE \"proveedor\" = '" + pProveedor + "'";
+            NpgsqlDataReader reader = comando.ExecuteReader();
+            if (reader.Read())
+                return reader[0].ToString();
+            else
+                return string.Empty;
+        }
     }
 }
 

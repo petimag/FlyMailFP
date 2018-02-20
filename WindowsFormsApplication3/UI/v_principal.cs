@@ -173,27 +173,15 @@ namespace FlyMail
             {
                 if (this.comboBox1.Text == "Todos")
                 {
-
+                    List<string> nombres = _controlador.ObtenerNombreCasillas();
+                    for (int i = 1; i < nombres.Count; i++)
+                    {
+                        ListarMail(nombres[i], pMailBox);
+                    }
                 }
                 else
                 {
-                    int _idCasilla = _controlador.ObtenerIdCasilla(this.comboBox1.Text);
-                    List<Mail> _listaMail = _controlador.ListarMail(_idCasilla, pMailBox);
-                    this.dataGridView1.ColumnHeadersVisible = true;
-                    DataGridViewCellStyle columnHeaderStyle = new DataGridViewCellStyle();
-
-                    /*columnHeaderStyle.BackColor = Color.Beige;
-                    columnHeaderStyle.Font = new Font("Verdana", 10, FontStyle.Bold);
-                    this.dataGridView1.ColumnHeadersDefaultCellStyle = columnHeaderStyle;*/
-
-                    foreach (var _mail in  _listaMail)
-                    {
-                        if (_mail != null)
-                        {
-                            String[] row = new String[] {Convert.ToString(false), _mail.Remitente, _mail.Asunto, _mail.Fecha };
-                            this.dataGridView1.Rows.Add(row);
-                        }
-                    }
+                    ListarMail(this.comboBox1.Text, pMailBox);
                 }
                 dataGridView1.Refresh();
             }
@@ -343,39 +331,15 @@ namespace FlyMail
             string _user = this.comboBox1.Text;
             if (_user != "Todos")
             {
-                int _idCasilla = _controlador.ObtenerIdCasilla(_user);
-                string _direccion = _controlador.ObtenerDireccionCasilla(_user);
-                string _contraseña = _controlador.ObtenerContraseñaCasilla(_user);
-
-                if (_contraseña == "vacia")
-                {
-                    (new v_ingresarPasswordCasilla()).ShowDialog(this);
-                    _contraseña = this.i_passwordCasilla;
-                    if (this.i_guardarPasswordCasilla)
-                        this.AlmacenarPasswordCasilla(_user, _contraseña);
-
-                    this.i_passwordCasilla = string.Empty;
-                    this.i_guardarPasswordCasilla = false;
-                }
-
-                Pop3 _pop3 = new Pop3(_direccion, _contraseña, 995, "pop.gmail.com", true);
-                List<OpenPop.Mime.Message> _listaMensajes = new List<OpenPop.Mime.Message>();
-                _listaMensajes = _controlador.ObtenerMail(_pop3);
-                if (_listaMensajes.Count >= 1)
-                {
-                    for (int i = 0; i < _listaMensajes.Count; i++)
-                    {
-                        Mail _mail = CrearMail(_listaMensajes[i]);
-                        _controlador.GuardarMail(_mail, _idCasilla);
-                    }
-                }
-
-                refrescarDataGrid(ConvertirMailBox(MailBox.Recibidos));
-                //dataGridView1.DataSource = _listaMensajes;
+                ObtenerMails(_user);
             }
             else // Obtener Todos los mails
             {
-
+                List<string> nombres = _controlador.ObtenerNombreCasillas();
+                for (int i = 1; i < nombres.Count; i++)
+                {
+                    ObtenerMails(nombres[i]);
+                }   
             }
 
         }
@@ -476,5 +440,64 @@ namespace FlyMail
                 return Convert.ToString(MailBox.Papelera);
             }
         }
+
+        /// <summary>
+        /// Obtiene los mail nuevos que tiene una casilla de correo
+        /// </summary>
+        /// <param name="pNombreUsuario">Nombre de Usuario</param>
+        private void ObtenerMails(string pNombreUsuario)
+        {
+            int _idCasilla = _controlador.ObtenerIdCasilla(pNombreUsuario);
+            string _direccion = _controlador.ObtenerDireccionCasilla(pNombreUsuario);
+            string _contraseña = _controlador.ObtenerContraseñaCasilla(pNombreUsuario);
+
+            if (_contraseña == "vacia")
+            {
+                (new v_ingresarPasswordCasilla(pNombreUsuario)).ShowDialog(this);
+                _contraseña = this.i_passwordCasilla;
+                if (this.i_guardarPasswordCasilla)
+                    this.AlmacenarPasswordCasilla(pNombreUsuario, _contraseña);
+
+                this.i_passwordCasilla = string.Empty;
+                this.i_guardarPasswordCasilla = false;
+            }
+
+            Pop3 _pop3 = new Pop3(_direccion, _contraseña, 995, "pop.gmail.com", true);
+            List<OpenPop.Mime.Message> _listaMensajes = new List<OpenPop.Mime.Message>();
+            _listaMensajes = _controlador.ObtenerMail(_pop3);
+            if (_listaMensajes.Count >= 1)
+            {
+                for (int i = 0; i < _listaMensajes.Count; i++)
+                {
+                    Mail _mail = CrearMail(_listaMensajes[i]);
+                    _controlador.GuardarMail(_mail, _idCasilla);
+                }
+            }
+
+            refrescarDataGrid(ConvertirMailBox(MailBox.Recibidos));
+        }
+
+        /// <summary>
+        /// Lista los mail almacenados
+        /// </summary>
+        /// <param name="pNombreUsuario">Nombre de Usuario</param>
+        /// <param name="pMailBox">Tipo de Mail</param>
+        private void ListarMail(string pNombreUsuario, string pMailBox)
+        {
+            int _idCasilla = _controlador.ObtenerIdCasilla(pNombreUsuario);
+            List<Mail> _listaMail = _controlador.ListarMail(_idCasilla, pMailBox);
+            this.dataGridView1.ColumnHeadersVisible = true;
+            DataGridViewCellStyle columnHeaderStyle = new DataGridViewCellStyle();
+
+            foreach (var _mail in _listaMail)
+            {
+                if (_mail != null)
+                {
+                    String[] row = new String[] { Convert.ToString(false), _mail.Remitente, _mail.Asunto, _mail.Fecha };
+                    this.dataGridView1.Rows.Add(row);
+                }
+            }
+        }
+
     }
 }
