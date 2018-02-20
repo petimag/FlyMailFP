@@ -168,7 +168,7 @@ namespace FlyMail
 
             if (this.Text=="Modificar Casilla")
             {
-                CasillaCorreo _casilla = new CasillaCorreo(this.comboBox1_nombre.Text, this.textBox_direccion.Text, this.textBox_contraseña.Text);
+                CasillaCorreo _casilla = new CasillaCorreo(this.comboBox1_nombre.Text, string.Concat(this.textBox_direccion.Text, label1.Text), this.textBox_contraseña.Text);
                 if (this.textBox_contraseña.Text=="Si desea realizar cambios")
                 {
                     _casilla.Contraseña = String.Empty;
