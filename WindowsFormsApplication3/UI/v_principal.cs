@@ -47,11 +47,17 @@ namespace FlyMail
                 this.comboBox1.Items.Add(_listaDirecciones[i]);
         }
 
+        /// <summary>
+        /// Asignación de la contraseña a una determinada casilla
+        /// </summary>
         public string PasswordCasilla
         {
             set { this.i_passwordCasilla = value; }
         }
 
+        /// <summary>
+        /// Variable para verificar si se desea guardar la contraseña 
+        /// </summary>
         public bool GuardarPasswordCasilla
         {
             set { this.i_guardarPasswordCasilla = value; }
@@ -193,6 +199,7 @@ namespace FlyMail
             }
         }
 
+        #region Opciones del Menú principal
         /// <summary>
         /// Modificar el nombre de la cuenta
         /// </summary>
@@ -305,6 +312,7 @@ namespace FlyMail
         {
             MessageBox.Show("Los íconos fueron tomados de http://dryicons.com");
         }
+        #endregion
 
         /// <summary>
         /// Al cerrrar la ventana asigna los valores por defecto a la misma
@@ -325,6 +333,11 @@ namespace FlyMail
             this.Height = 529;
         }
 
+        /// <summary>
+        /// Analiza que mail se desea listar teniendo encuenta la opción seleccionada
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string _user = this.comboBox1.Text;
@@ -367,6 +380,11 @@ namespace FlyMail
 
         }
 
+        /// <summary>
+        /// Almacena la contraseña de una determinada casilla
+        /// </summary>
+        /// <param name="user">Nombre de usuario de casilla de correo</param>
+        /// <param name="pass">Cotraseña de casilla de correo</param>
         private void AlmacenarPasswordCasilla(string user, string pass)
         {
             string dir = _controlador.ObtenerDireccionCasilla(user);
@@ -374,6 +392,11 @@ namespace FlyMail
             _controlador.ModificarCasilla(_casilla);
         }
 
+        /// <summary>
+        /// Crea un formato mail
+        /// </summary>
+        /// <param name="pMensaje">Mensaje obtenido</param>
+        /// <returns></returns>
         private Mail CrearMail(OpenPop.Mime.Message pMensaje)
         {
             //Remiente del Mail
@@ -429,6 +452,11 @@ namespace FlyMail
             return _mail;
         }
 
+        /// <summary>
+        /// Analiza el tipo de mail y devuelve un string
+        /// </summary>
+        /// <param name="pMailBox"></param>
+        /// <returns></returns>
         private string ConvertirMailBox(MailBox pMailBox)
         {
             if (pMailBox == MailBox.Recibidos)
