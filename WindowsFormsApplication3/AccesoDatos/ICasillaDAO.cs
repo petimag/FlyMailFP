@@ -16,5 +16,6 @@ namespace FlyMail
         void Agregar(CasillaCorreo pCasilla, int pServicio, int pUsuario);
         void Modificar(CasillaCorreo pCasilla, int pIDUsuario);
         void Eliminar(string pNombreCasilla, int pIDUsaruio);
+        int ObtenerIdServicio(int idCasilla);
     }
 }

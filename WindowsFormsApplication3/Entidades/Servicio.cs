@@ -12,7 +12,7 @@ namespace FlyMail
         string _dominio;
         string _ip;
         int _puerto;
-
+        bool _ssl;
 
         /// <summary>
         /// Representa un Servicio de Correo Electrónico, como ser Gmail o Yahoo.
@@ -20,12 +20,13 @@ namespace FlyMail
         /// <param name="pProveedor">Nombre del servicio</param>
         /// <param name="pIp">Dirección IP del servidor de Correo Electrónico</param>
         /// <param name="pPuerto">Puerto donde atiende el servidor de Correo Electrónico</param>
-        public Servicio(string pProveedor, string pDominio, string pIp, int pPuerto)
+        public Servicio(string pProveedor, string pDominio, string pIp, int pPuerto, bool pSsl)
         {
             _proveedor = pProveedor;
             _dominio = pDominio;
             _ip = pIp;
             _puerto = pPuerto;
+            _ssl = pSsl;
         }
 
         /// <summary>
@@ -62,6 +63,12 @@ namespace FlyMail
         {
             get { return _puerto; }
             set { _puerto = value; }
+        }
+
+        public bool SSL
+        {
+            get { return _ssl; }
+            set { _ssl = value; }
         }
     }
 }

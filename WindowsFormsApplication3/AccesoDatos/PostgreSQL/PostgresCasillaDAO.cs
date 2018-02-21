@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Npgsql;
+using System.Data;
 
 namespace FlyMail
 {
@@ -199,6 +200,21 @@ namespace FlyMail
             if (comando.ExecuteNonQuery() == -1)
             {
                 throw new DAOException("No se pudo eliminar la Casilla, intentelo nuevamente");
+            }
+        }
+
+        public int ObtenerIdServicio(int idCasilla)
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "SELECT servicio FROM \"CasillaEmail\" WHERE \"idCasillaEmail\" = '" + idCasilla + "'";
+            NpgsqlDataReader reader = comando.ExecuteReader();
+            if (reader.Read())
+            {
+                return Int32.Parse(reader[0].ToString());
+            }
+            else
+            {
+                throw new DAOException("Servicio no encontrado");
             }
         }
     }

@@ -26,7 +26,7 @@ namespace FlyMail
 
                 comando.Transaction = transaccion;
 
-                comando.CommandText = "INSERT INTO \"Email\"(\"cabRemitente\",\"cabDestinatario\",\"cabFecha\",\"cabCC\",\"cabCCO\",cuerpo,mailbox,casilla,asunto) VALUES(@remitente,@destinatario,@fecha,@cabCC,@cabCCO,@cuerpo,@mailbox,@casilla,@asunto)";
+                comando.CommandText = "INSERT INTO \"Email\"(\"cabRemitente\",\"cabDestinatario\",\"cabFecha\",\"cabCC\",\"cabCCO\",cuerpo,mailbox,casilla,asunto,leido) VALUES(@remitente,@destinatario,@fecha,@cabCC,@cabCCO,@cuerpo,@mailbox,@casilla,@asunto,@leido)";
                 comando.Parameters.AddWithValue("@remitente", pMail.Remitente);
                 comando.Parameters.AddWithValue("@destinatario ", pMail.Destinatario);
                 comando.Parameters.AddWithValue("@fecha ", pMail.Fecha);
@@ -36,6 +36,8 @@ namespace FlyMail
                 comando.Parameters.AddWithValue("@mailbox", pMail.TipoMail);
                 comando.Parameters.AddWithValue("@casilla", idCasilla);
                 comando.Parameters.AddWithValue("@asunto", pMail.Asunto);
+                comando.Parameters.AddWithValue("@asunto", pMail.Asunto);
+                comando.Parameters.AddWithValue("@leido", pMail.Leido);
 
                 comando.ExecuteNonQuery();
 
@@ -56,7 +58,7 @@ namespace FlyMail
                 adaptador.Fill(tabla);
                 foreach (DataRow fila in tabla.Rows)
                 {
-                    _listaMail.Add(new Mail(Convert.ToString(fila["cabRemitente"]), Convert.ToString(fila["cabDestinatario"]), Convert.ToString(fila["asunto"]), Convert.ToString(fila["cabCC"]), Convert.ToString(fila["cabCCO"]), Convert.ToString(fila["cabFecha"]), Convert.ToString(fila["cuerpo"]), Convert.ToString(fila["mailbox"])));
+                    _listaMail.Add(new Mail(Convert.ToString(fila["cabRemitente"]), Convert.ToString(fila["cabDestinatario"]), Convert.ToString(fila["asunto"]), Convert.ToString(fila["cabCC"]), Convert.ToString(fila["cabCCO"]), Convert.ToString(fila["cabFecha"]), Convert.ToString(fila["cuerpo"]), Convert.ToString(fila["mailbox"]), Convert.ToBoolean(fila["leido"])));
                 }
             }
             return _listaMail ;

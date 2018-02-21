@@ -411,8 +411,9 @@ namespace FlyMail
 
             //Asunto del mail
             string _asunto = pMensaje.Headers.Subject;
+
             string _mailBox = ConvertirMailBox(MailBox.Recibidos);
-            Mail _mail = new Mail(_remitente, _destinatario,_asunto,_cc,_cco,_fecha,_mensaje,_mailBox);
+            Mail _mail = new Mail(_remitente, _destinatario,_asunto,_cc,_cco,_fecha,_mensaje,_mailBox,false);
             return _mail;
         }
 
@@ -462,7 +463,9 @@ namespace FlyMail
                 this.i_guardarPasswordCasilla = false;
             }
 
-            Pop3 _pop3 = new Pop3(_direccion, _contraseña, 995, "pop.gmail.com", true);
+            int _idServicio = _controlador.ObtenerIdServicio(_idCasilla);
+            Servicio _servicio = _controlador.ObtenerServicioPop3(_idServicio);
+            Pop3 _pop3 = new Pop3(_direccion, _contraseña, _servicio.Puerto, _servicio.Ip, _servicio.SSL);
             List<OpenPop.Mime.Message> _listaMensajes = new List<OpenPop.Mime.Message>();
             _listaMensajes = _controlador.ObtenerMail(_pop3);
             if (_listaMensajes.Count >= 1)

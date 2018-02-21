@@ -434,6 +434,29 @@ namespace FlyMail
                 factory.FinalizarConexion();
             }
         }
+
+        public int ObtenerIdServicio(int idCasilla)
+        {
+            {
+                DAOFactory factory = DAOFactory.Instancia();
+
+                try
+                {
+                    factory.IniciarConexion();
+                    ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
+                    return _casillaDAO.ObtenerIdServicio(idCasilla);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                    return -1;
+                }
+                finally
+                {
+                    factory.FinalizarConexion();
+                }
+            }
+        }
         #endregion
 
         #region Métodos para Servicio
@@ -493,6 +516,26 @@ namespace FlyMail
             catch (Exception)
             {
                 return String.Empty;
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
+
+        public Servicio ObtenerServicioPop3(int pIdServicio)
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+
+            try
+            {
+                factory.IniciarConexion();
+                IServicioDAO _servicioDAO = factory.servicioDAO;
+                return _servicioDAO.obtenerServicioPop3(pIdServicio);
+            }
+            catch (Exception)
+            {
+                return null;
             }
             finally
             {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Npgsql;
+using System.Data;
 
 namespace FlyMail
 {
@@ -49,6 +50,29 @@ namespace FlyMail
                 return reader[0].ToString();
             else
                 return string.Empty;
+        }
+
+        public Servicio obtenerServicioPop3(int pIdServicio)
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "SELECT * FROM \"Servicio\" WHERE \"idServicio\" = '" + pIdServicio + "'";
+            Servicio _servicio = new Servicio("", "", "", 0, false);
+
+            using (NpgsqlDataAdapter adaptador = new NpgsqlDataAdapter(comando))
+            {
+                DataTable tabla = new DataTable();
+                adaptador.Fill(tabla);
+
+                foreach (DataRow fila in tabla.Rows)
+                {
+                    _servicio.Proveedor = Convert.ToString(fila["proveedor"]);
+                    _servicio.Dominio = Convert.ToString(fila["dominio"]);
+                    _servicio.Ip = Convert.ToString(fila["hostPOP"]);
+                    _servicio.Puerto = Convert.ToInt32(fila["portPOP"]);
+                    _servicio.SSL = Convert.ToBoolean(fila["sslPOP"]);
+                }
+            }
+            return _servicio;
         }
     }
 }

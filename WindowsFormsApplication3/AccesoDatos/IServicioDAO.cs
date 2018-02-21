@@ -11,5 +11,6 @@ namespace FlyMail
         int obtenerId(string pProveedor);
         List<string> listaServicio();
         string obtenerDominio(string pProveedor);
+        Servicio obtenerServicioPop3(int pIdServicio);
     }
 }

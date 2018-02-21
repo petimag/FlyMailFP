@@ -16,6 +16,7 @@ namespace FlyMail
         string _fecha;
         string _mensaje;
         string _tipoMail;
+        bool _leido;
         
        /// <summary>
        /// Representa un E-Mail con sus respectivos campos.
@@ -27,7 +28,7 @@ namespace FlyMail
        /// <param name="pCCO">Destinatarios en copia oculta</param>
        /// <param name="pFecha">Fecha y hora del mensaje</param>
        /// <param name="pMensaje">Cuerpo del mensaje en texto plano</param>
-       public Mail(string pRemitente, string pDestinatario, string pAsunto, string pCC, string pCCO, string pFecha, string pMensaje, string pTipoMail)
+       public Mail(string pRemitente, string pDestinatario, string pAsunto, string pCC, string pCCO, string pFecha, string pMensaje, string pTipoMail, bool pLeido)
         {
             _remitente = pRemitente;
             _destinatario = pDestinatario;
@@ -37,6 +38,7 @@ namespace FlyMail
             _fecha = pFecha;
             _mensaje = pMensaje;
             _tipoMail = pTipoMail;
+            _leido = pLeido;
         }
 
         /// <summary>
@@ -98,6 +100,11 @@ namespace FlyMail
         public string TipoMail
         {
             get { return _tipoMail; }
+        }
+
+        public bool Leido
+        {
+            get { return _leido; }
         }
     }
 }
