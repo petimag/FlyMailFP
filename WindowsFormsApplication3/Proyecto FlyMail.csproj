@@ -72,6 +72,7 @@
     <Compile Include="LogicaNegocio\ControladorSMTP.cs" />
     <Compile Include="LogicaNegocio\Fachada.cs" />
     <Compile Include="LogicaNegocio\Pop3.cs" />
+    <Compile Include="LogicaNegocio\SMTP.cs" />
     <Compile Include="LogicaNegocio\Utilidades.cs" />
     <Compile Include="UI\v_correo.cs">
       <SubType>Form</SubType>
