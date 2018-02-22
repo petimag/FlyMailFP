@@ -47,6 +47,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +55,7 @@
             // 
             this.label_de.AutoSize = true;
             this.label_de.ForeColor = System.Drawing.SystemColors.Window;
-            this.label_de.Location = new System.Drawing.Point(5, 23);
+            this.label_de.Location = new System.Drawing.Point(6, 22);
             this.label_de.Name = "label_de";
             this.label_de.Size = new System.Drawing.Size(24, 13);
             this.label_de.TabIndex = 0;
@@ -64,7 +65,7 @@
             // 
             this.label_para.AutoSize = true;
             this.label_para.ForeColor = System.Drawing.SystemColors.Window;
-            this.label_para.Location = new System.Drawing.Point(5, 55);
+            this.label_para.Location = new System.Drawing.Point(6, 51);
             this.label_para.Name = "label_para";
             this.label_para.Size = new System.Drawing.Size(32, 13);
             this.label_para.TabIndex = 1;
@@ -74,7 +75,7 @@
             // 
             this.label_asunto.AutoSize = true;
             this.label_asunto.ForeColor = System.Drawing.SystemColors.Window;
-            this.label_asunto.Location = new System.Drawing.Point(5, 81);
+            this.label_asunto.Location = new System.Drawing.Point(6, 80);
             this.label_asunto.Name = "label_asunto";
             this.label_asunto.Size = new System.Drawing.Size(43, 13);
             this.label_asunto.TabIndex = 2;
@@ -112,7 +113,7 @@
             this.button_eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_eliminar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("button_eliminar.Image")));
-            this.button_eliminar.Location = new System.Drawing.Point(499, 71);
+            this.button_eliminar.Location = new System.Drawing.Point(580, 99);
             this.button_eliminar.Name = "button_eliminar";
             this.button_eliminar.Size = new System.Drawing.Size(40, 40);
             this.button_eliminar.TabIndex = 7;
@@ -126,7 +127,7 @@
             this.button_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_guardar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_guardar.Image = ((System.Drawing.Image)(resources.GetObject("button_guardar.Image")));
-            this.button_guardar.Location = new System.Drawing.Point(453, 71);
+            this.button_guardar.Location = new System.Drawing.Point(534, 99);
             this.button_guardar.Name = "button_guardar";
             this.button_guardar.Size = new System.Drawing.Size(40, 40);
             this.button_guardar.TabIndex = 6;
@@ -141,7 +142,7 @@
             this.button_responder.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_responder.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_responder.Image = ((System.Drawing.Image)(resources.GetObject("button_responder.Image")));
-            this.button_responder.Location = new System.Drawing.Point(218, 476);
+            this.button_responder.Location = new System.Drawing.Point(218, 458);
             this.button_responder.Name = "button_responder";
             this.button_responder.Size = new System.Drawing.Size(102, 40);
             this.button_responder.TabIndex = 5;
@@ -213,6 +214,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.GrayText;
+            this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Controls.Add(this.comboBox_de);
             this.groupBox1.Controls.Add(this._fecha);
             this.groupBox1.Controls.Add(this.label_de);
@@ -229,6 +231,17 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(421, 51);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(48, 13);
+            this.linkLabel1.TabIndex = 10;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "CC/CCO";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // v_mail
             // 
@@ -276,5 +289,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
