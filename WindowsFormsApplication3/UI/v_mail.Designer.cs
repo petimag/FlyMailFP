@@ -36,18 +36,16 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button_enviar = new System.Windows.Forms.Button();
             this.textBox_para = new System.Windows.Forms.TextBox();
-            this.button_eliminar = new System.Windows.Forms.Button();
             this.button_guardar = new System.Windows.Forms.Button();
-            this.button_responder = new System.Windows.Forms.Button();
-            this._fecha = new System.Windows.Forms.Label();
+            this.textBox_direccion = new System.Windows.Forms.TextBox();
             this.richTextBox_texto = new System.Windows.Forms.RichTextBox();
             this.textBox_asunto = new System.Windows.Forms.TextBox();
             this.comboBox_de = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_cancelar = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,6 +98,8 @@
             // 
             // textBox_para
             // 
+            this.textBox_para.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_para.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox_para.Location = new System.Drawing.Point(51, 48);
             this.textBox_para.Name = "textBox_para";
@@ -107,61 +107,31 @@
             this.textBox_para.TabIndex = 2;
             this.toolTip1.SetToolTip(this.textBox_para, "Destinatario del Mail");
             // 
-            // button_eliminar
-            // 
-            this.button_eliminar.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.button_eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_eliminar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("button_eliminar.Image")));
-            this.button_eliminar.Location = new System.Drawing.Point(580, 99);
-            this.button_eliminar.Name = "button_eliminar";
-            this.button_eliminar.Size = new System.Drawing.Size(40, 40);
-            this.button_eliminar.TabIndex = 7;
-            this.button_eliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip1.SetToolTip(this.button_eliminar, "Eliminar mail");
-            this.button_eliminar.UseVisualStyleBackColor = false;
-            // 
             // button_guardar
             // 
+            this.button_guardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button_guardar.BackColor = System.Drawing.SystemColors.ControlDark;
             this.button_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_guardar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_guardar.Image = ((System.Drawing.Image)(resources.GetObject("button_guardar.Image")));
-            this.button_guardar.Location = new System.Drawing.Point(534, 99);
+            this.button_guardar.Location = new System.Drawing.Point(580, 69);
             this.button_guardar.Name = "button_guardar";
             this.button_guardar.Size = new System.Drawing.Size(40, 40);
-            this.button_guardar.TabIndex = 6;
+            this.button_guardar.TabIndex = 11;
             this.button_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.button_guardar, "Guardar Mail");
             this.button_guardar.UseVisualStyleBackColor = false;
             // 
-            // button_responder
+            // textBox_direccion
             // 
-            this.button_responder.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button_responder.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.button_responder.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_responder.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_responder.Image = ((System.Drawing.Image)(resources.GetObject("button_responder.Image")));
-            this.button_responder.Location = new System.Drawing.Point(218, 458);
-            this.button_responder.Name = "button_responder";
-            this.button_responder.Size = new System.Drawing.Size(102, 40);
-            this.button_responder.TabIndex = 5;
-            this.button_responder.Text = " Responder";
-            this.button_responder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip1.SetToolTip(this.button_responder, "Responder Mail");
-            this.button_responder.UseVisualStyleBackColor = false;
-            this.button_responder.Click += new System.EventHandler(this.button_responder_Click);
-            // 
-            // _fecha
-            // 
-            this._fecha.AutoSize = true;
-            this._fecha.ForeColor = System.Drawing.SystemColors.Window;
-            this._fecha.Location = new System.Drawing.Point(421, 20);
-            this._fecha.Name = "_fecha";
-            this._fecha.Size = new System.Drawing.Size(34, 13);
-            this._fecha.TabIndex = 9;
-            this._fecha.Text = "fecha";
-            this.toolTip1.SetToolTip(this._fecha, "Fecha del mail");
+            this.textBox_direccion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_direccion.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.textBox_direccion.Location = new System.Drawing.Point(206, 20);
+            this.textBox_direccion.Name = "textBox_direccion";
+            this.textBox_direccion.Size = new System.Drawing.Size(414, 20);
+            this.textBox_direccion.TabIndex = 12;
+            this.toolTip1.SetToolTip(this.textBox_direccion, "Destinatario del Mail");
             // 
             // richTextBox_texto
             // 
@@ -169,14 +139,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox_texto.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.richTextBox_texto.Location = new System.Drawing.Point(12, 163);
+            this.richTextBox_texto.Location = new System.Drawing.Point(12, 133);
             this.richTextBox_texto.Name = "richTextBox_texto";
-            this.richTextBox_texto.Size = new System.Drawing.Size(626, 307);
+            this.richTextBox_texto.Size = new System.Drawing.Size(626, 337);
             this.richTextBox_texto.TabIndex = 4;
             this.richTextBox_texto.Text = "";
             // 
             // textBox_asunto
             // 
+            this.textBox_asunto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_asunto.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox_asunto.Location = new System.Drawing.Point(51, 77);
             this.textBox_asunto.Name = "textBox_asunto";
@@ -187,53 +159,54 @@
             // 
             this.comboBox_de.BackColor = System.Drawing.Color.WhiteSmoke;
             this.comboBox_de.FormattingEnabled = true;
-            this.comboBox_de.Items.AddRange(new object[] {
-            "petimag@gmail.com",
-            "petimag@yahoo.com"});
             this.comboBox_de.Location = new System.Drawing.Point(51, 19);
             this.comboBox_de.Name = "comboBox_de";
-            this.comboBox_de.Size = new System.Drawing.Size(359, 21);
+            this.comboBox_de.Size = new System.Drawing.Size(145, 21);
             this.comboBox_de.TabIndex = 1;
+            this.comboBox_de.SelectedIndexChanged += new System.EventHandler(this.comboBox_de_SelectedIndexChanged);
             // 
-            // button1
+            // button_cancelar
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(326, 476);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 40);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "    Cancelar";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button_cancelar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button_cancelar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button_cancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_cancelar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button_cancelar.Image = ((System.Drawing.Image)(resources.GetObject("button_cancelar.Image")));
+            this.button_cancelar.Location = new System.Drawing.Point(326, 476);
+            this.button_cancelar.Name = "button_cancelar";
+            this.button_cancelar.Size = new System.Drawing.Size(102, 40);
+            this.button_cancelar.TabIndex = 6;
+            this.button_cancelar.Text = "    Cancelar";
+            this.button_cancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button_cancelar.UseVisualStyleBackColor = false;
+            this.button_cancelar.Click += new System.EventHandler(this.button_cancelar_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.SystemColors.GrayText;
+            this.groupBox1.Controls.Add(this.textBox_direccion);
+            this.groupBox1.Controls.Add(this.button_guardar);
             this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Controls.Add(this.comboBox_de);
-            this.groupBox1.Controls.Add(this._fecha);
             this.groupBox1.Controls.Add(this.label_de);
             this.groupBox1.Controls.Add(this.label_para);
-            this.groupBox1.Controls.Add(this.button_guardar);
             this.groupBox1.Controls.Add(this.label_asunto);
-            this.groupBox1.Controls.Add(this.button_eliminar);
             this.groupBox1.Controls.Add(this.textBox_para);
             this.groupBox1.Controls.Add(this.textBox_asunto);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(626, 145);
+            this.groupBox1.Size = new System.Drawing.Size(626, 115);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
             // linkLabel1
             // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(421, 51);
             this.linkLabel1.Name = "linkLabel1";
@@ -249,10 +222,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.CancelButton = this.button_cancelar;
             this.ClientSize = new System.Drawing.Size(650, 528);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button_responder);
+            this.Controls.Add(this.button_cancelar);
             this.Controls.Add(this.button_enviar);
             this.Controls.Add(this.richTextBox_texto);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -281,14 +254,12 @@
         private System.Windows.Forms.TextBox textBox_asunto;
         private System.Windows.Forms.ComboBox comboBox_de;
         private System.Windows.Forms.Button button_enviar;
-        private System.Windows.Forms.Button button_eliminar;
-        private System.Windows.Forms.Button button_guardar;
-        private System.Windows.Forms.Button button_responder;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label _fecha;
+        private System.Windows.Forms.Button button_cancelar;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Button button_guardar;
+        private System.Windows.Forms.TextBox textBox_direccion;
     }
 }

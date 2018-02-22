@@ -7,7 +7,7 @@ using System.Net.Mail;
 
 namespace FlyMail
 {
-    class SMTP
+    public class SMTP
     {
         //usuario/mail de gmail
         private string _usuario;
