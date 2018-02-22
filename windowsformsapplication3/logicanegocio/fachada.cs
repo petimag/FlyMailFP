@@ -611,15 +611,18 @@ namespace FlyMail
             }
         }
 
-        #endregion
-        public List<OpenPop.Mime.Message> ObtenerMail(Pop3 pPop3)
+        public List<OpenPop.Mime.Message> ObtenerMail(ControladorPOP3 _pop3)
         {
-            Pop3 _POP3 = new Pop3(pPop3.Usuario, pPop3.Contraseña, pPop3.Puerto, pPop3.Ip, pPop3.SSL);
-            ControladorPOP3 _controladorPop3 = new ControladorPOP3();
             List<OpenPop.Mime.Message> lista = new List<OpenPop.Mime.Message>();
-            lista = _controladorPop3.obtenerMensajes(_POP3);
+            lista = _pop3.ObtenerMensajes();
             return lista;
-            
+
         }
+
+        public void EnviarMail(ControladorSMTP _smtp, Mail pMail)
+        {
+            _smtp.EnviarMail(pMail);
+        }
+        #endregion
     }
 }
