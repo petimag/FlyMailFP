@@ -19,8 +19,12 @@ namespace FlyMail
 
         private Fachada _controlador = Fachada.Instancia;
 
+        private bool _estado_cc_cco;
+
         private void v_mail_Load(object sender, EventArgs e)
         {
+            this._estado_cc_cco = false;
+            CambiarCC_CCO();
             this.comboBox_de.Items.Clear();
             this.comboBox_de.Text = "Seleccionar";
             List<string> _listaNombres = new List<string>();
@@ -43,8 +47,14 @@ namespace FlyMail
             else
             {
                 int idCasilla = _controlador.ObtenerIdCasilla(this.comboBox_de.Text);
-                /*_controlador.GuardarMail();
-                _controlador.enviarMail();*/
+                Mail _mail = new Mail(this.textBox_direccion.Text, textBox_para.Text,textBox_asunto.Text, "","",Convert.ToString(DateTime.Today),this.richTextBox_texto.Text,Convert.ToString(MailBox.Enviados),true);
+                _controlador.GuardarMail(_mail, idCasilla);
+                string _contraseña = _controlador.ObtenerContraseñaCasilla(this.comboBox_de.Text);
+                int idServicio = _controlador.ObtenerIdServicio(idCasilla);
+                Servicio _servicio = _controlador.ObtenerServicio(idServicio,"smtp");
+                //Console.WriteLine(this.textBox_direccion.Text+_contraseña+ _servicio.Ip+ _servicio.Puerto+ _servicio.SSL);
+                ControladorSMTP _controladorSMTP = new ControladorSMTP(this.textBox_direccion.Text, _contraseña, _servicio.Ip, _servicio.Puerto, _servicio.SSL);
+                _controlador.EnviarMail(_controladorSMTP, _mail);
                 MessageBox.Show("Mail Enviado");
                 this.Close();
             }
@@ -68,12 +78,40 @@ namespace FlyMail
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            _estado_cc_cco = !_estado_cc_cco;
+            CambiarCC_CCO();
         }
 
         private void comboBox_de_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.textBox_direccion.Text = _controlador.ObtenerDireccionCasilla(this.comboBox_de.Text);
+        }
+
+        private void CambiarCC_CCO()
+        {
+            int _valorX = this.richTextBox_texto.Size.Width;
+            if (_estado_cc_cco)
+            {
+                this.groupBox1.Height = 160;
+                this.label_CC.Visible = true;
+                this.textBox_CC.Visible = true;
+                this.label_CCO.Visible = true;
+                this.textBox_CCO.Visible = true;
+                this.richTextBox_texto.Location = new System.Drawing.Point(12, 178);
+                int _valorY = this.Height - this.richTextBox_texto.Location.Y-97;
+                this.richTextBox_texto.Size = new System.Drawing.Size(_valorX, _valorY);
+            }
+            else
+            {
+                this.groupBox1.Height = 115;
+                this.label_CC.Visible = false;
+                this.textBox_CC.Visible = false;
+                this.label_CCO.Visible = false;
+                this.textBox_CCO.Visible = false;
+                this.richTextBox_texto.Location = new System.Drawing.Point(12, 133);
+                int _valorY = this.Height - this.richTextBox_texto.Location.Y - 97;
+                this.richTextBox_texto.Size = new System.Drawing.Size(_valorX, _valorY);
+            }
         }
     }
 }

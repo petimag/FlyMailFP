@@ -46,6 +46,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.label_CC = new System.Windows.Forms.Label();
+            this.textBox_CC = new System.Windows.Forms.TextBox();
+            this.label_CCO = new System.Windows.Forms.Label();
+            this.textBox_CCO = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,8 +133,9 @@
             this.textBox_direccion.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox_direccion.Location = new System.Drawing.Point(206, 20);
             this.textBox_direccion.Name = "textBox_direccion";
+            this.textBox_direccion.ReadOnly = true;
             this.textBox_direccion.Size = new System.Drawing.Size(414, 20);
-            this.textBox_direccion.TabIndex = 12;
+            this.textBox_direccion.TabIndex = 0;
             this.toolTip1.SetToolTip(this.textBox_direccion, "Destinatario del Mail");
             // 
             // richTextBox_texto
@@ -139,9 +144,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox_texto.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.richTextBox_texto.Location = new System.Drawing.Point(12, 133);
+            this.richTextBox_texto.Location = new System.Drawing.Point(12, 178);
             this.richTextBox_texto.Name = "richTextBox_texto";
-            this.richTextBox_texto.Size = new System.Drawing.Size(626, 337);
+            this.richTextBox_texto.Size = new System.Drawing.Size(626, 292);
             this.richTextBox_texto.TabIndex = 4;
             this.richTextBox_texto.Text = "";
             // 
@@ -199,7 +204,7 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(626, 115);
+            this.groupBox1.Size = new System.Drawing.Size(626, 160);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -216,6 +221,50 @@
             this.linkLabel1.Text = "CC/CCO";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // label_CC
+            // 
+            this.label_CC.AutoSize = true;
+            this.label_CC.ForeColor = System.Drawing.SystemColors.Window;
+            this.label_CC.Location = new System.Drawing.Point(18, 118);
+            this.label_CC.Name = "label_CC";
+            this.label_CC.Size = new System.Drawing.Size(24, 13);
+            this.label_CC.TabIndex = 12;
+            this.label_CC.Text = "CC:";
+            this.label_CC.Visible = false;
+            // 
+            // textBox_CC
+            // 
+            this.textBox_CC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_CC.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.textBox_CC.Location = new System.Drawing.Point(63, 115);
+            this.textBox_CC.Name = "textBox_CC";
+            this.textBox_CC.Size = new System.Drawing.Size(359, 20);
+            this.textBox_CC.TabIndex = 13;
+            this.textBox_CC.Visible = false;
+            // 
+            // label_CCO
+            // 
+            this.label_CCO.AutoSize = true;
+            this.label_CCO.ForeColor = System.Drawing.SystemColors.Window;
+            this.label_CCO.Location = new System.Drawing.Point(18, 144);
+            this.label_CCO.Name = "label_CCO";
+            this.label_CCO.Size = new System.Drawing.Size(32, 13);
+            this.label_CCO.TabIndex = 14;
+            this.label_CCO.Text = "CCO:";
+            this.label_CCO.Visible = false;
+            // 
+            // textBox_CCO
+            // 
+            this.textBox_CCO.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_CCO.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.textBox_CCO.Location = new System.Drawing.Point(63, 141);
+            this.textBox_CCO.Name = "textBox_CCO";
+            this.textBox_CCO.Size = new System.Drawing.Size(359, 20);
+            this.textBox_CCO.TabIndex = 15;
+            this.textBox_CCO.Visible = false;
+            // 
             // v_mail
             // 
             this.AcceptButton = this.button_enviar;
@@ -224,10 +273,14 @@
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.CancelButton = this.button_cancelar;
             this.ClientSize = new System.Drawing.Size(650, 528);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.label_CCO);
+            this.Controls.Add(this.textBox_CCO);
+            this.Controls.Add(this.label_CC);
+            this.Controls.Add(this.textBox_CC);
             this.Controls.Add(this.button_cancelar);
             this.Controls.Add(this.button_enviar);
             this.Controls.Add(this.richTextBox_texto);
+            this.Controls.Add(this.groupBox1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(500, 340);
@@ -240,6 +293,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -261,5 +315,9 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Button button_guardar;
         private System.Windows.Forms.TextBox textBox_direccion;
+        private System.Windows.Forms.Label label_CC;
+        private System.Windows.Forms.TextBox textBox_CC;
+        private System.Windows.Forms.Label label_CCO;
+        private System.Windows.Forms.TextBox textBox_CCO;
     }
 }
