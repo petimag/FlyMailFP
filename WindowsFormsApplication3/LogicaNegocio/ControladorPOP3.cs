@@ -8,9 +8,31 @@ using OpenPop.Pop3;
 
 namespace FlyMail
 {
-    public class ControladorPOP3
+    public class ControladorPOP3: ProtocoloEMail
     {
-        public List<Message> obtenerMensajes(Pop3 pop3)
+        /// <summary>
+        /// Constructor. Requiere los parámetros de conexión
+        /// </summary>
+        /// <param name="pUser"></param>
+        /// <param name="pPass"></param>
+        /// <param name="pHost"></param>
+        /// <param name="pPort"></param>
+        /// <param name="pSSL"></param>
+        public ControladorPOP3(string pUser, string pPass, string pHost, int pPort, bool pSSL)
+        {
+            this.Usuario = pUser;
+            this.Contraseña = pPass;
+            this.IP = pHost;
+            this.Puerto = pPort;
+            this.SSL = pSSL;
+        }
+
+        /// <summary>
+        /// Obtiene el listado de los nuevos e-mails desde el servidor POP3
+        /// </summary>
+        /// <param name="pop3"></param>
+        /// <returns></returns>
+        public List<Message> ObtenerMensajes()
         {
             try
             {
@@ -18,11 +40,11 @@ namespace FlyMail
                 using (Pop3Client client = new Pop3Client())
                 {
                     // conectamos al servidor
-                    client.Connect(pop3.Ip, pop3.Puerto, pop3.SSL);
-                    Console.WriteLine("1 "+pop3.Usuario+" "+pop3.Contraseña);
+                    client.Connect(this.IP, this.Puerto, this.SSL);
+                    Console.WriteLine("1 " + this.Usuario + " " + this.Contraseña);
 
                     // Autentificación
-                    client.Authenticate(pop3.Usuario, pop3.Contraseña);
+                    client.Authenticate(this.Usuario, this.Contraseña);
                     Console.WriteLine("2");
                     // Obtenemos los Uids mensajes
                     List<string> uids = client.GetMessageUids();
@@ -50,10 +72,8 @@ namespace FlyMail
                 }
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
-                //si ocurre una excepción regresamos null, es importante que cachen las excepciones, yo
-                //lo hice general por modo de ejemplo
                 return null;
             }
         }

@@ -617,7 +617,7 @@ namespace FlyMail
             Pop3 _POP3 = new Pop3(pPop3.Usuario, pPop3.Contraseña, pPop3.Puerto, pPop3.Ip, pPop3.SSL);
             ControladorPOP3 _controladorPop3 = new ControladorPOP3();
             List<OpenPop.Mime.Message> lista = new List<OpenPop.Mime.Message>();
-            lista = _controladorPop3.obtenerMensajes(_POP3);
+            lista = _controladorPop3.ObtenerMensajes(_POP3);
             return lista;
             
         }

@@ -7,19 +7,41 @@ using System.Net.Mail;
 
 namespace FlyMail
 {
-    class ControladorSMTP
+    class ControladorSMTP: ProtocoloEMail
     {
-        public void EnviarMail(SMTP pSmtp, Mail pMail)
+        /// <summary>
+        /// Constructor. Requiere los parámetros de conexión
+        /// </summary>
+        /// <param name="pUser"></param>
+        /// <param name="pPass"></param>
+        /// <param name="pHost"></param>
+        /// <param name="pPort"></param>
+        /// <param name="pSSL"></param>
+        public ControladorSMTP(string pUser, string pPass, string pHost, int pPort, bool pSSL)
+        {
+            this.Usuario = pUser;
+            this.Contraseña = pPass;
+            this.IP = pHost;
+            this.Puerto = pPort;
+            this.SSL = pSSL;
+        }
+
+        /// <summary>
+        /// Envia un e-mail utilizando el servidor SMTP
+        /// </summary>
+        /// <param name="pSmtp"></param>
+        /// <param name="pMail"></param>
+        public void EnviarMail(Mail pMail)
         {
             try
             {
-                SmtpClient _cliente = new SmtpClient(pSmtp.Ip, pSmtp.Puerto)
+                SmtpClient _cliente = new SmtpClient(this.IP, this.Puerto)
                 {
                     EnableSsl = true,
                     Timeout = 100000,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,
-                    Credentials = new System.Net.NetworkCredential(pSmtp.Usuario, pSmtp.Contraseña)
+                    Credentials = new System.Net.NetworkCredential(this.Usuario, this.Contraseña)
                 };
 
                 MailMessage _mensaje = new MailMessage(pMail.Remitente, pMail.Destinatario, pMail.Asunto, pMail.Mensaje);
@@ -29,10 +51,9 @@ namespace FlyMail
                 _cliente.Send(_mensaje);
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
-                //si ocurre una excepción regresamos null, es importante que cachen las excepciones, yo
-                //lo hice general por modo de ejemplo
+                
             }
         }
     }
