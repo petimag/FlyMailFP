@@ -74,6 +74,29 @@ namespace FlyMail
             }
             return _servicio;
         }
+
+        public Servicio obtenerServicioSMTP(int pIdServicio)
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "SELECT * FROM \"Servicio\" WHERE \"idServicio\" = '" + pIdServicio + "'";
+            Servicio _servicio = new Servicio("", "", "", 0, false);
+
+            using (NpgsqlDataAdapter adaptador = new NpgsqlDataAdapter(comando))
+            {
+                DataTable tabla = new DataTable();
+                adaptador.Fill(tabla);
+
+                foreach (DataRow fila in tabla.Rows)
+                {
+                    _servicio.Proveedor = Convert.ToString(fila["proveedor"]);
+                    _servicio.Dominio = Convert.ToString(fila["dominio"]);
+                    _servicio.Ip = Convert.ToString(fila["hostSMTP"]);
+                    _servicio.Puerto = Convert.ToInt32(fila["portSMTP"]);
+                    _servicio.SSL = Convert.ToBoolean(fila["sslSMTP"]);
+                }
+            }
+            return _servicio;
+        }
     }
 }
 
