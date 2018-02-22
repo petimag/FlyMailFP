@@ -20,6 +20,10 @@ namespace FlyMail
         private void button_enviar_Click(object sender, EventArgs e)
         {
             //Verificar si se puede enviar
+           /* if()
+            {
+
+            }*/
             MessageBox.Show("Mail Enviado");
             this.Close();
         }
@@ -58,6 +62,11 @@ namespace FlyMail
         }
 
         private void button_responder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
         }
