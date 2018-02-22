@@ -465,7 +465,7 @@ namespace FlyMail
 
             int _idServicio = _controlador.ObtenerIdServicio(_idCasilla);
             Servicio _servicio = _controlador.ObtenerServicio(_idServicio,"pop");
-            Pop3 _pop3 = new Pop3(_direccion, _contraseña, _servicio.Puerto, _servicio.Ip, _servicio.SSL);
+            ControladorPOP3 _pop3 = new ControladorPOP3(_direccion, _contraseña, _servicio.Ip, _servicio.Puerto, _servicio.SSL);
             List<OpenPop.Mime.Message> _listaMensajes = new List<OpenPop.Mime.Message>();
             _listaMensajes = _controlador.ObtenerMail(_pop3);
             if (_listaMensajes.Count >= 1)

@@ -7,7 +7,7 @@ using System.Net.Mail;
 
 namespace FlyMail
 {
-    class ControladorSMTP: ProtocoloEMail
+    public class ControladorSMTP: ProtocoloEMail
     {
         /// <summary>
         /// Constructor. Requiere los parámetros de conexión
