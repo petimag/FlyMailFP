@@ -523,7 +523,7 @@ namespace FlyMail
             }
         }
 
-        public Servicio ObtenerServicioPop3(int pIdServicio)
+        public Servicio ObtenerServicio(int pIdServicio, string pTipoProtocolo)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -531,7 +531,20 @@ namespace FlyMail
             {
                 factory.IniciarConexion();
                 IServicioDAO _servicioDAO = factory.servicioDAO;
-                return _servicioDAO.obtenerServicioPop3(pIdServicio);
+                Servicio _servicio;
+                if (pTipoProtocolo == "pop")
+                {
+                    _servicio = _servicioDAO.obtenerServicioPop3(pIdServicio);
+                }
+                else if (pTipoProtocolo == "smtp")
+                {
+                    _servicio = _servicioDAO.obtenerServicioSMTP(pIdServicio);
+                }
+                else
+                {
+                    _servicio = null;
+                }
+                return _servicio;
             }
             catch (Exception)
             {

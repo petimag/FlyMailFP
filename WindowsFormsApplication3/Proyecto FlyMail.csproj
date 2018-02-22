@@ -98,6 +98,12 @@
     <Compile Include="UI\v_ingresarPasswordCasilla.Designer.cs">
       <DependentUpon>v_ingresarPasswordCasilla.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\v_leerMail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\v_leerMail.Designer.cs">
+      <DependentUpon>v_leerMail.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\v_login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\v_ingresarPasswordCasilla.resx">
       <DependentUpon>v_ingresarPasswordCasilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\v_leerMail.resx">
+      <DependentUpon>v_leerMail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\v_login.resx">
       <DependentUpon>v_login.cs</DependentUpon>
