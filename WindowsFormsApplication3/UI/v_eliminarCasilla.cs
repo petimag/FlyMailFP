@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace FlyMail
 {
-    public partial class v_eliminarCasilla : Form
+    public partial class V_eliminarCasilla : Form
     {
 
         private Fachada _controlador = Fachada.Instancia;
 
-        public v_eliminarCasilla()
+        public V_eliminarCasilla()
         {
             InitializeComponent();
         }
@@ -25,7 +25,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void v_eliminarCasilla_Load(object sender, EventArgs e)
+        private void V_eliminarCasilla_Load(object sender, EventArgs e)
         {
             List<string> _listaNombres = new List<string>();
             _listaNombres = _controlador.ObtenerNombreCasillas();
@@ -47,7 +47,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button_guardar_Click(object sender, EventArgs e)
+        private void Button_guardar_Click(object sender, EventArgs e)
         {
             if (this.comboBox1_nombre.Text != String.Empty)
             {

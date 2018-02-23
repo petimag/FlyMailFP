@@ -1,6 +1,6 @@
 ﻿namespace FlyMail
 {
-    partial class v_correo
+    partial class V_correo
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(v_correo));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_correo));
             this.button_guardar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button_verificar = new System.Windows.Forms.Button();
@@ -63,7 +63,7 @@
             this.button_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.button_guardar, "Guardar correo");
             this.button_guardar.UseVisualStyleBackColor = false;
-            this.button_guardar.Click += new System.EventHandler(this.button_guardar_Click);
+            this.button_guardar.Click += new System.EventHandler(this.Button_guardar_Click);
             // 
             // button_verificar
             // 
@@ -79,7 +79,7 @@
             this.button_verificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.button_verificar, "Verifica si el nombre de correo ya existe");
             this.button_verificar.UseVisualStyleBackColor = false;
-            this.button_verificar.Click += new System.EventHandler(this.button_verificar_Click);
+            this.button_verificar.Click += new System.EventHandler(this.Button_verificar_Click);
             // 
             // label2
             // 
@@ -172,9 +172,9 @@
             this.textBox_contraseña.PasswordChar = '♦';
             this.textBox_contraseña.Size = new System.Drawing.Size(174, 20);
             this.textBox_contraseña.TabIndex = 8;
-            this.textBox_contraseña.TextChanged += new System.EventHandler(this.textBox_contraseña_TextChanged);
-            this.textBox_contraseña.GotFocus += new System.EventHandler(this.textBox_contraseña_Focus);
-            this.textBox_contraseña.LostFocus += new System.EventHandler(this.textBox_contraseña_noFocus);
+            this.textBox_contraseña.TextChanged += new System.EventHandler(this.TextBox_contraseña_TextChanged);
+            this.textBox_contraseña.GotFocus += new System.EventHandler(this.TextBox_contraseña_Focus);
+            this.textBox_contraseña.LostFocus += new System.EventHandler(this.TextBox_contraseña_noFocus);
             // 
             // textBox_direccion
             // 
@@ -185,7 +185,7 @@
             this.textBox_direccion.Name = "textBox_direccion";
             this.textBox_direccion.Size = new System.Drawing.Size(97, 20);
             this.textBox_direccion.TabIndex = 7;
-            this.textBox_direccion.TextChanged += new System.EventHandler(this.textBox_direccion_TextChanged);
+            this.textBox_direccion.TextChanged += new System.EventHandler(this.TextBox_direccion_TextChanged);
             // 
             // comboBox_servicio
             // 
@@ -197,7 +197,7 @@
             this.comboBox_servicio.Name = "comboBox_servicio";
             this.comboBox_servicio.Size = new System.Drawing.Size(174, 21);
             this.comboBox_servicio.TabIndex = 6;
-            this.comboBox_servicio.SelectedIndexChanged += new System.EventHandler(this.comboBox_servicio_SelectedIndexChanged);
+            this.comboBox_servicio.SelectedIndexChanged += new System.EventHandler(this.ComboBox_servicio_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -226,8 +226,8 @@
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Casilla de Correo";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.v_correo_FormClosing);
-            this.Load += new System.EventHandler(this.v_correo_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.V_correo_FormClosing);
+            this.Load += new System.EventHandler(this.V_correo_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication3.UI
 {
-    public partial class v_leerMail : Form
+    public partial class V_leerMail : Form
     {
-        public v_leerMail()
+        public V_leerMail()
         {
             InitializeComponent();
         }

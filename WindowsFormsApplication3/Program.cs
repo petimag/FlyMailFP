@@ -19,7 +19,7 @@ namespace FlyMail
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            (new v_login()).Show();
+            (new V_login()).Show();
             Application.Run();
         }
     }

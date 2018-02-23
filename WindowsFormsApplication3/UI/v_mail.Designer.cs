@@ -1,6 +1,6 @@
 ﻿namespace FlyMail
 {
-    partial class v_mail
+    partial class V_mail
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(v_mail));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_mail));
             this.label_de = new System.Windows.Forms.Label();
             this.label_para = new System.Windows.Forms.Label();
             this.label_asunto = new System.Windows.Forms.Label();
@@ -98,11 +98,11 @@
             this.button_enviar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.button_enviar, "Enviar Mail");
             this.button_enviar.UseVisualStyleBackColor = false;
-            this.button_enviar.Click += new System.EventHandler(this.button_enviar_Click);
+            this.button_enviar.Click += new System.EventHandler(this.Button_enviar_Click);
             // 
             // textBox_para
             // 
-            this.textBox_para.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBox_para.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_para.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox_para.Location = new System.Drawing.Point(51, 48);
@@ -128,7 +128,7 @@
             // 
             // textBox_direccion
             // 
-            this.textBox_direccion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBox_direccion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_direccion.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox_direccion.Location = new System.Drawing.Point(206, 20);
@@ -140,8 +140,8 @@
             // 
             // richTextBox_texto
             // 
-            this.richTextBox_texto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.richTextBox_texto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox_texto.BackColor = System.Drawing.Color.WhiteSmoke;
             this.richTextBox_texto.Location = new System.Drawing.Point(12, 178);
@@ -152,7 +152,7 @@
             // 
             // textBox_asunto
             // 
-            this.textBox_asunto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBox_asunto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_asunto.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox_asunto.Location = new System.Drawing.Point(51, 77);
@@ -168,7 +168,7 @@
             this.comboBox_de.Name = "comboBox_de";
             this.comboBox_de.Size = new System.Drawing.Size(145, 21);
             this.comboBox_de.TabIndex = 1;
-            this.comboBox_de.SelectedIndexChanged += new System.EventHandler(this.comboBox_de_SelectedIndexChanged);
+            this.comboBox_de.SelectedIndexChanged += new System.EventHandler(this.ComboBox_de_SelectedIndexChanged);
             // 
             // button_cancelar
             // 
@@ -185,11 +185,11 @@
             this.button_cancelar.Text = "    Cancelar";
             this.button_cancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_cancelar.UseVisualStyleBackColor = false;
-            this.button_cancelar.Click += new System.EventHandler(this.button_cancelar_Click);
+            this.button_cancelar.Click += new System.EventHandler(this.Button_cancelar_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.SystemColors.GrayText;
             this.groupBox1.Controls.Add(this.textBox_direccion);
@@ -219,7 +219,7 @@
             this.linkLabel1.TabIndex = 10;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "CC/CCO";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
             // 
             // label_CC
             // 
@@ -234,7 +234,7 @@
             // 
             // textBox_CC
             // 
-            this.textBox_CC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBox_CC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_CC.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox_CC.Location = new System.Drawing.Point(63, 115);
@@ -256,7 +256,7 @@
             // 
             // textBox_CCO
             // 
-            this.textBox_CCO.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBox_CCO.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_CCO.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox_CCO.Location = new System.Drawing.Point(63, 141);
@@ -288,8 +288,7 @@
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Correo";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.v_mail_FormClosing);
-            this.Load += new System.EventHandler(this.v_mail_Load);
+            this.Load += new System.EventHandler(this.V_mail_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

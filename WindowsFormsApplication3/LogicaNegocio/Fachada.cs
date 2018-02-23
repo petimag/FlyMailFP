@@ -32,7 +32,11 @@ namespace FlyMail
         #endregion
 
         #region Métodos para Cuenta
-        public void agregarCuenta(Cuenta pCuenta)
+        /// <summary>
+        /// Agrega una cuenta de Usuario
+        /// </summary>
+        /// <param name="pCuenta">Cuenta de usuario</param>
+        public void AgregarCuenta(Cuenta pCuenta)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -52,7 +56,12 @@ namespace FlyMail
             }
         }
 
-        public bool nombreExistenteCuenta(string pNombre)
+        /// <summary>
+        /// Verifica si ya existe el nombre de Usuario
+        /// </summary>
+        /// <param name="pNombre">Nombre de usuario</param>
+        /// <returns>Devuelve True si encuentra el nombre</returns>
+        public bool NombreExistenteCuenta(string pNombre)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -72,7 +81,12 @@ namespace FlyMail
             }
         }
 
-        public int verificarCuenta(Cuenta pCuenta)
+        /// <summary>
+        /// Verifica si la cuenta de usuario es correcta
+        /// </summary>
+        /// <param name="pCuenta">Cuenta de usuario</param>
+        /// <returns>Devuelve el Id de usuario, -1 en caso de error </returns>
+        public int VerificarCuenta(Cuenta pCuenta)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -93,7 +107,12 @@ namespace FlyMail
             }
         }
 
-        public bool verificarContraseña(String pContraseña)
+        /// <summary>
+        /// Verifica que la contraseña sea correcta
+        /// </summary>
+        /// <param name="pContraseña">Contraseña de Usuario</param>
+        /// <returns>Devuelve True si es correcta. False en caso contrario</returns>
+        public bool VerificarContraseña(String pContraseña)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -113,7 +132,11 @@ namespace FlyMail
             }
         }
 
-        public string obtenerNombreCuenta()
+        /// <summary>
+        /// Devuelve el Nombre de usuario logeado
+        /// </summary>
+        /// <returns>Nombre de Usuario</returns>
+        public string ObtenerNombreCuenta()
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -133,7 +156,11 @@ namespace FlyMail
             }
         }
 
-        public string obtenerContrasenaCuenta()
+        /// <summary>
+        /// Devuelve la Contraseña del usuario logeado
+        /// </summary>
+        /// <returns>Contraseña del Usuario</returns>
+        public string ObtenerContraseñaCuenta()
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -153,7 +180,11 @@ namespace FlyMail
             }
         }
 
-        public void modificarNombreCuenta(Cuenta pCuenta)
+        /// <summary>
+        /// Modificar el nombre de la cuenta del usuario
+        /// </summary>
+        /// <param name="pCuenta">Cuenta del usuario</param>
+        public void ModificarNombreCuenta(Cuenta pCuenta)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -173,7 +204,11 @@ namespace FlyMail
             }
         }
 
-        public void modificarContraseñaCuenta(string pContraseña)
+        /// <summary>
+        /// Modificar la contraseña de la cuenta del usuario
+        /// </summary>
+        /// <param name="pContraseña">Contraseña a modificar</param>
+        public void ModificarContraseñaCuenta(string pContraseña)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -200,7 +235,7 @@ namespace FlyMail
         /// Determina si existe o no un nombre de Casilla para un usuario (Cuenta) logeado
         /// </summary>
         /// <param name="pNombre">Nombre de la Casilla de correo</param>
-        /// <returns>true si el nombre existe, false en caso contrario. Devuelve false y un aviso en caso de error</returns>
+        /// <returns>True si el nombre existe, false en caso contrario. Devuelve false y un aviso en caso de error</returns>
         public bool NombreExistenteCasilla(string pNombre)
         {
             DAOFactory factory = DAOFactory.Instancia();
@@ -435,6 +470,11 @@ namespace FlyMail
             }
         }
 
+        /// <summary>
+        /// Devuelve el Id del servicio de una determinada casilla
+        /// </summary>
+        /// <param name="idCasilla">ID de casilla seleccionada</param>
+        /// <returns>ID de servicio</returns>
         public int ObtenerIdServicio(int idCasilla)
         {
             {
@@ -460,7 +500,12 @@ namespace FlyMail
         #endregion
 
         #region Métodos para Servicio
-        public int obtenerIdServicio(string pProveedor)
+        /// <summary>
+        /// Devuelve el Id del Servicio
+        /// </summary>
+        /// <param name="pProveedor">Proveedor del Servicio</param>
+        /// <returns>ID del servicio</returns>
+        public int ObtenerIdServicio(string pProveedor)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -480,7 +525,11 @@ namespace FlyMail
             }
         }
 
-        public List<string> obtenerProveedorServicio()
+        /// <summary>
+        /// Obtener lista de Proveedores
+        /// </summary>
+        /// <returns>Lista de proveedores</returns>
+        public List<string> ObtenerProveedorServicio()
         {
             DAOFactory factory = DAOFactory.Instancia();
             List<string> _listaProveedor = new List<string>();
@@ -503,7 +552,12 @@ namespace FlyMail
             }
         }
 
-        public string obtenerDominioServicio(string pProveedor)
+        /// <summary>
+        /// Obtener dominio de un determinado proveedor
+        /// </summary>
+        /// <param name="pProveedor">Proveedor de servicio</param>
+        /// <returns>Dominio del Servicio</returns>
+        public string ObtenerDominioServicio(string pProveedor)
         {
             DAOFactory factory = DAOFactory.Instancia();
 
@@ -523,6 +577,12 @@ namespace FlyMail
             }
         }
 
+        /// <summary>
+        /// Obtiene un determinado Dominio
+        /// </summary>
+        /// <param name="pIdServicio">Id del servicio</param>
+        /// <param name="pTipoProtocolo">Tipo de protocolo</param>
+        /// <returns>Servicio buscado</returns>
         public Servicio ObtenerServicio(int pIdServicio, string pTipoProtocolo)
         {
             DAOFactory factory = DAOFactory.Instancia();
@@ -558,6 +618,12 @@ namespace FlyMail
         #endregion
 
         #region Metodos para Mail
+        /// <summary>
+        /// Guardar un mail en la base de datos
+        /// </summary>
+        /// <param name="pMail">Mail a guardar</param>
+        /// <param name="idCasilla">Id de la casilla</param>
+        /// <returns>Devuelve True si se envió correctamente. False en caso contrario</returns>
         public bool GuardarMail(Mail pMail, int idCasilla)
         {
             DAOFactory factory = DAOFactory.Instancia();
@@ -586,6 +652,12 @@ namespace FlyMail
             }
         }
 
+        /// <summary>
+        /// Lista los mail de una determinada casilla y tipo de lista
+        /// </summary>
+        /// <param name="idCasilla">Id de casilla</param>
+        /// <param name="pMailBox">Tipo de lista</param>
+        /// <returns>Lista de mails</returns>
         public List<Mail> ListarMail(int idCasilla,String pMailBox)
         {
             DAOFactory factory = DAOFactory.Instancia();
@@ -611,17 +683,27 @@ namespace FlyMail
             }
         }
 
-        public List<OpenPop.Mime.Message> ObtenerMail(ControladorPOP3 _pop3)
+        /// <summary>
+        /// Obtiene los mail del servidor de la casilla
+        /// </summary>
+        /// <param name="pPop3">POP3 al que se conecta</param>
+        /// <returns>Lista de mails</returns>
+        public List<OpenPop.Mime.Message> ObtenerMail(ControladorPOP3 pPop3)
         {
             List<OpenPop.Mime.Message> lista = new List<OpenPop.Mime.Message>();
-            lista = _pop3.ObtenerMensajes();
+            lista = pPop3.ObtenerMensajes();
             return lista;
 
         }
 
-        public void EnviarMail(ControladorSMTP _smtp, Mail pMail)
+        /// <summary>
+        /// Envia un determinado mail
+        /// </summary>
+        /// <param name="pSmtp">SMTP al que se conecta</param>
+        /// <param name="pMail">Mail a enviar</param>
+        public void EnviarMail(ControladorSMTP pSmtp, Mail pMail)
         {
-            _smtp.EnviarMail(pMail);
+            pSmtp.EnviarMail(pMail);
         }
         #endregion
     }

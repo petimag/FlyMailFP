@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication3.UI
 {
-    partial class v_leerMail
+    partial class V_leerMail
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(v_leerMail));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_leerMail));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.comboBox_de = new System.Windows.Forms.ComboBox();

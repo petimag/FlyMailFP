@@ -1,6 +1,6 @@
 ﻿namespace FlyMail
 {
-    partial class v_eliminarCasilla
+    partial class V_eliminarCasilla
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(v_eliminarCasilla));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_eliminarCasilla));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBox1_nombre = new System.Windows.Forms.ComboBox();
             this.button_guardar = new System.Windows.Forms.Button();
@@ -73,7 +73,7 @@
             this.button_guardar.Text = "Eliminar";
             this.button_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_guardar.UseVisualStyleBackColor = false;
-            this.button_guardar.Click += new System.EventHandler(this.button_guardar_Click);
+            this.button_guardar.Click += new System.EventHandler(this.Button_guardar_Click);
             // 
             // textBox_nombre
             // 
@@ -98,7 +98,7 @@
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "v_eliminarCasilla";
-            this.Load += new System.EventHandler(this.v_eliminarCasilla_Load);
+            this.Load += new System.EventHandler(this.V_eliminarCasilla_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

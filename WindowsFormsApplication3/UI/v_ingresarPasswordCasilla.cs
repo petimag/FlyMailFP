@@ -10,28 +10,42 @@ using System.Windows.Forms;
 
 namespace FlyMail
 {
-    public partial class v_ingresarPasswordCasilla : Form
+    public partial class V_ingresarPasswordCasilla : Form
     {
-        public v_ingresarPasswordCasilla(string pNombreUsuario)
+        /// <summary>
+        /// Inicializa la ventana
+        /// </summary>
+        /// <param name="pNombreUsuario">Nombre de usuario de casilla</param>
+        public V_ingresarPasswordCasilla(string pNombreUsuario)
         {
             InitializeComponent();
             textBox2.Text = pNombreUsuario;
             textBox1.Text = string.Empty;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Aceptar los cambios realizados
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonAceptar_Click(object sender, EventArgs e)
         {
             if (this.textBox1.Text != string.Empty)
             {
-                v_principal v_pri = (v_principal)this.Owner;
+                V_principal v_pri = (V_principal)this.Owner;
                 v_pri.PasswordCasilla = this.textBox1.Text;
                 if (this.checkBox1.Checked == true)
                     v_pri.GuardarPasswordCasilla = true;
             }
             this.Close();
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        
+        /// <summary>
+        /// Cancela la operación
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }

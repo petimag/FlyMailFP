@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace FlyMail
 {
-    public partial class v_login : Form
+    public partial class V_login : Form
     {
         private bool app_access = false;
 
         private Fachada _controlador = Fachada.Instancia;
 
-        public v_login()
+        public V_login()
         {
             InitializeComponent();
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UI_iniciarFormClosed);
@@ -27,7 +27,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void textBox_iniciar_Focus(object sender, EventArgs e)
+        private void TextBox_iniciar_Focus(object sender, EventArgs e)
         {
             this.AcceptButton = this.button_iniciar;
         }
@@ -37,7 +37,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void textBox_crear_nombre_Focus(object sender, EventArgs e)
+        private void TextBox_crear_nombre_Focus(object sender, EventArgs e)
         {
             this.textBox_crear_nombre.Text = "";
             this.textBox_crear_nombre.ForeColor = Color.Black;
@@ -49,7 +49,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void textBox_crear_nombre_noFocus(object sender, EventArgs e)
+        private void TextBox_crear_nombre_noFocus(object sender, EventArgs e)
         {
             if (this.textBox_crear_nombre.Text == "")
             {
@@ -64,7 +64,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void textBox_Contraseña_Focus(object sender, EventArgs e)
+        private void TextBox_Contraseña_Focus(object sender, EventArgs e)
         {
             this.textBox_crear_contraseña.Text = "";
             this.textBox_crear_contraseña.ForeColor = Color.Black;
@@ -76,7 +76,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void textBox_Contraseña_noFocus(object sender, EventArgs e)
+        private void TextBox_Contraseña_noFocus(object sender, EventArgs e)
         {
             if (this.textBox_crear_contraseña.Text == "")
             {
@@ -91,7 +91,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void textBox_repetir_Focus(object sender, EventArgs e)
+        private void TextBox_repetir_Focus(object sender, EventArgs e)
         {
             this.textBox_crear_repetir.Text = "";
             this.textBox_crear_repetir.ForeColor = Color.Black;
@@ -103,7 +103,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void textBox_repetir_noFocus(object sender, EventArgs e)
+        private void TextBox_repetir_noFocus(object sender, EventArgs e)
         {
             if (this.textBox_crear_repetir.Text == "")
             {
@@ -118,7 +118,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button_iniciar_Click(object sender, EventArgs e)
+        private void Button_iniciar_Click(object sender, EventArgs e)
         {
             //Verifica que se ingrese nombre de usuario
             if (this.textBox_iniciar_contraseña.Text == "") 
@@ -138,9 +138,9 @@ namespace FlyMail
 
                     //Verifica si el usuario esta en la bd
                     Cuenta _cuenta = new Cuenta(this.textBox_iniciar_nombre.Text, hash);
-                    if (_controlador.verificarCuenta(_cuenta) != -1)
+                    if (_controlador.VerificarCuenta(_cuenta) != -1)
                     {
-                        _controlador.IDCuentaLogeado = _controlador.verificarCuenta(_cuenta);
+                        _controlador.IDCuentaLogeado = _controlador.VerificarCuenta(_cuenta);
                         app_access = true;
                         this.Close();
                     }
@@ -158,7 +158,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button_crear_Click(object sender, EventArgs e)
+        private void Button_crear_Click(object sender, EventArgs e)
         {
             //Comprueba que se ingrese nombre de usuario
             if ((this.textBox_crear_nombre.Text == "") || (this.textBox_crear_nombre.Text == "Nombre"))
@@ -189,7 +189,7 @@ namespace FlyMail
                         else
                         {
                             //Verifica si el nombre de usuario ya existe
-                            if (!(_controlador.nombreExistenteCuenta(this.textBox_crear_nombre.Text)))
+                            if (!(_controlador.NombreExistenteCuenta(this.textBox_crear_nombre.Text)))
                             {
                                 this.DialogResult = DialogResult.Yes;
 
@@ -197,9 +197,9 @@ namespace FlyMail
 
                                 //Agregar usuario
                                 Cuenta _cuenta = new Cuenta(this.textBox_crear_nombre.Text, hash);
-                                _controlador.agregarCuenta(_cuenta);
+                                _controlador.AgregarCuenta(_cuenta);
 
-                                _controlador.IDCuentaLogeado = _controlador.verificarCuenta(_cuenta);
+                                _controlador.IDCuentaLogeado = _controlador.VerificarCuenta(_cuenta);
                                 app_access = true;
                                 this.Close();
                             }
@@ -220,7 +220,7 @@ namespace FlyMail
         {
             if (this.app_access)
             {
-                (new v_principal()).Show();
+                (new V_principal()).Show();
             }
             else
             {
@@ -234,7 +234,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void textBox_iniciar_Click(object sender, EventArgs e)
+        private void TextBox_iniciar_Click(object sender, EventArgs e)
         {
             this.AcceptButton = this.button_iniciar;
         }
@@ -244,7 +244,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void textBox_crear_contraseña_TextChanged(object sender, EventArgs e)
+        private void TextBox_crear_contraseña_TextChanged(object sender, EventArgs e)
         {
             this.AcceptButton = this.button_crear;
         }
@@ -254,7 +254,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void textBox_crear_repetir_TextChanged(object sender, EventArgs e)
+        private void TextBox_crear_repetir_TextChanged(object sender, EventArgs e)
         {
             this.AcceptButton = this.button_crear;
         }

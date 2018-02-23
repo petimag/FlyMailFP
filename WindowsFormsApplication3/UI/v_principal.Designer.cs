@@ -1,6 +1,6 @@
 ﻿namespace FlyMail
 {
-    partial class v_principal
+    partial class V_principal
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(v_principal));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_principal));
             this.picture_main = new System.Windows.Forms.PictureBox();
             this.button_recibidos = new System.Windows.Forms.Button();
             this.button_enviados = new System.Windows.Forms.Button();
@@ -90,7 +90,7 @@
             this.button_recibidos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.button_recibidos, "Mails Recibidos");
             this.button_recibidos.UseVisualStyleBackColor = false;
-            this.button_recibidos.Click += new System.EventHandler(this.button_recibidos_Click);
+            this.button_recibidos.Click += new System.EventHandler(this.Button_recibidos_Click);
             // 
             // button_enviados
             // 
@@ -106,7 +106,7 @@
             this.button_enviados.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.button_enviados, "Mails Enviados");
             this.button_enviados.UseVisualStyleBackColor = false;
-            this.button_enviados.Click += new System.EventHandler(this.button_enviados_Click);
+            this.button_enviados.Click += new System.EventHandler(this.Button_enviados_Click);
             // 
             // panel1
             // 
@@ -187,7 +187,7 @@
             this.button_papelera.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.button_papelera, "Mails Eliminados");
             this.button_papelera.UseVisualStyleBackColor = false;
-            this.button_papelera.Click += new System.EventHandler(this.button_papelera_Click);
+            this.button_papelera.Click += new System.EventHandler(this.Button_papelera_Click);
             // 
             // button_enviar
             // 
@@ -203,7 +203,7 @@
             this.button_enviar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolTip1.SetToolTip(this.button_enviar, "Enviar Mail");
             this.button_enviar.UseVisualStyleBackColor = false;
-            this.button_enviar.Click += new System.EventHandler(this.button_enviar_Click);
+            this.button_enviar.Click += new System.EventHandler(this.Button_enviar_Click);
             // 
             // button_eliminar
             // 
@@ -220,7 +220,7 @@
             this.button_eliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolTip1.SetToolTip(this.button_eliminar, "Eliminar Mail");
             this.button_eliminar.UseVisualStyleBackColor = false;
-            this.button_eliminar.Click += new System.EventHandler(this.button_eliminar_Click);
+            this.button_eliminar.Click += new System.EventHandler(this.Button_eliminar_Click);
             // 
             // button_actualizar
             // 
@@ -236,7 +236,7 @@
             this.button_actualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolTip1.SetToolTip(this.button_actualizar, "Actualizar Página");
             this.button_actualizar.UseVisualStyleBackColor = false;
-            this.button_actualizar.Click += new System.EventHandler(this.button_actualizar_Click);
+            this.button_actualizar.Click += new System.EventHandler(this.Button_actualizar_Click);
             // 
             // button_responder
             // 
@@ -253,7 +253,7 @@
             this.button_responder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolTip1.SetToolTip(this.button_responder, "Responder Mail");
             this.button_responder.UseVisualStyleBackColor = false;
-            this.button_responder.Click += new System.EventHandler(this.button_responder_Click);
+            this.button_responder.Click += new System.EventHandler(this.Button_responder_Click);
             // 
             // menuStrip1
             // 
@@ -301,7 +301,7 @@
             this.modificarNombreToolStripMenuItem1.Name = "modificarNombreToolStripMenuItem1";
             this.modificarNombreToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.modificarNombreToolStripMenuItem1.Text = "Modificar Nombre";
-            this.modificarNombreToolStripMenuItem1.Click += new System.EventHandler(this.modificarNombreToolStripMenuItem1_Click);
+            this.modificarNombreToolStripMenuItem1.Click += new System.EventHandler(this.ModificarNombreToolStripMenuItem1_Click);
             // 
             // modificarContraseñaToolStripMenuItem1
             // 
@@ -311,7 +311,7 @@
             this.modificarContraseñaToolStripMenuItem1.Name = "modificarContraseñaToolStripMenuItem1";
             this.modificarContraseñaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.modificarContraseñaToolStripMenuItem1.Text = "Modificar Contraseña";
-            this.modificarContraseñaToolStripMenuItem1.Click += new System.EventHandler(this.modificarContraseñaToolStripMenuItem1_Click);
+            this.modificarContraseñaToolStripMenuItem1.Click += new System.EventHandler(this.ModificarContraseñaToolStripMenuItem1_Click);
             // 
             // agregarCorreoToolStripMenuItem
             // 
@@ -334,7 +334,7 @@
             this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
             this.agregarToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.agregarToolStripMenuItem.Text = "Agregar";
-            this.agregarToolStripMenuItem.Click += new System.EventHandler(this.agregarToolStripMenuItem_Click);
+            this.agregarToolStripMenuItem.Click += new System.EventHandler(this.AgregarToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem
             // 
@@ -344,7 +344,7 @@
             this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
             this.modificarToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.modificarToolStripMenuItem.Text = "Modificar";
-            this.modificarToolStripMenuItem.Click += new System.EventHandler(this.modificarToolStripMenuItem_Click);
+            this.modificarToolStripMenuItem.Click += new System.EventHandler(this.ModificarToolStripMenuItem_Click);
             // 
             // eliminarToolStripMenuItem
             // 
@@ -354,7 +354,7 @@
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
             this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
-            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.EliminarToolStripMenuItem_Click);
             // 
             // cerrarSesiónToolStripMenuItem
             // 
@@ -364,7 +364,7 @@
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
             this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar Sesión";
-            this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem_Click);
+            this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.CerrarSesiónToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -374,7 +374,7 @@
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.salirToolStripMenuItem.Text = "Salir";
-            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.SalirToolStripMenuItem_Click);
             // 
             // acercaDeToolStripMenuItem
             // 
@@ -394,7 +394,7 @@
             this.informaciónToolStripMenuItem.Name = "informaciónToolStripMenuItem";
             this.informaciónToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.informaciónToolStripMenuItem.Text = "Información";
-            this.informaciónToolStripMenuItem.Click += new System.EventHandler(this.informaciónToolStripMenuItem_Click);
+            this.informaciónToolStripMenuItem.Click += new System.EventHandler(this.InformaciónToolStripMenuItem_Click);
             // 
             // comboBox1
             // 
@@ -406,7 +406,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(248, 21);
             this.comboBox1.TabIndex = 11;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -445,8 +445,8 @@
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FlyMail";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.v_principal_FormClosing);
-            this.Load += new System.EventHandler(this.v_principal_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.V_principal_FormClosing);
+            this.Load += new System.EventHandler(this.V_principal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picture_main)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

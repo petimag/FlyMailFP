@@ -1,6 +1,6 @@
 ﻿namespace FlyMail
 {
-    partial class v_ingresarPasswordCasilla
+    partial class V_ingresarPasswordCasilla
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(v_ingresarPasswordCasilla));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_ingresarPasswordCasilla));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonAceptar = new System.Windows.Forms.Button();
+            this.buttonCancelar = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -70,27 +70,27 @@
             this.textBox1.Size = new System.Drawing.Size(287, 20);
             this.textBox1.TabIndex = 0;
             // 
-            // button1
+            // buttonAceptar
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(156, 125);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Aceptar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonAceptar.Location = new System.Drawing.Point(156, 125);
+            this.buttonAceptar.Name = "buttonAceptar";
+            this.buttonAceptar.Size = new System.Drawing.Size(75, 23);
+            this.buttonAceptar.TabIndex = 1;
+            this.buttonAceptar.Text = "Aceptar";
+            this.buttonAceptar.UseVisualStyleBackColor = true;
+            this.buttonAceptar.Click += new System.EventHandler(this.ButtonAceptar_Click);
             // 
-            // button2
+            // buttonCancelar
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(237, 125);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonCancelar.Location = new System.Drawing.Point(237, 125);
+            this.buttonCancelar.Name = "buttonCancelar";
+            this.buttonCancelar.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancelar.TabIndex = 2;
+            this.buttonCancelar.Text = "Cancelar";
+            this.buttonCancelar.UseVisualStyleBackColor = true;
+            this.buttonCancelar.Click += new System.EventHandler(this.ButtonCancelar_Click);
             // 
             // textBox2
             // 
@@ -109,21 +109,21 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Nombre:";
             // 
-            // v_ingresarPasswordCasilla
+            // V_ingresarPasswordCasilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(324, 160);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonAceptar);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(340, 199);
             this.MinimumSize = new System.Drawing.Size(340, 199);
-            this.Name = "v_ingresarPasswordCasilla";
+            this.Name = "V_ingresarPasswordCasilla";
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FlyMail";
@@ -139,8 +139,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonAceptar;
+        private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
     }

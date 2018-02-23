@@ -1,6 +1,6 @@
 ﻿namespace FlyMail
 {
-    partial class v_cuenta
+    partial class V_cuenta
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(v_cuenta));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_cuenta));
             this.button_aceptar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -54,7 +54,7 @@
             this.button_aceptar.Text = "Aceptar";
             this.button_aceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_aceptar.UseVisualStyleBackColor = false;
-            this.button_aceptar.Click += new System.EventHandler(this.buttonAceptar_Click);
+            this.button_aceptar.Click += new System.EventHandler(this.ButtonAceptar_Click);
             // 
             // groupBox1
             // 
@@ -137,7 +137,7 @@
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificar Cuenta";
-            this.Load += new System.EventHandler(this.v_cuenta_Load);
+            this.Load += new System.EventHandler(this.V_cuenta_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FlyMail
 {
-    public partial class v_mail : Form
+    public partial class V_mail : Form
     {
-        public v_mail()
+        public V_mail()
         {
             InitializeComponent();
         }
@@ -21,8 +21,15 @@ namespace FlyMail
 
         private bool _estado_cc_cco;
 
-        private void v_mail_Load(object sender, EventArgs e)
+        /// <summary>
+        /// Establece los valores por defecto de la ventana
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void V_mail_Load(object sender, EventArgs e)
         {
+            this.Width = 666;
+            this.Height = 567;
             this._estado_cc_cco = false;
             CambiarCC_CCO();
             this.comboBox_de.Items.Clear();
@@ -37,7 +44,13 @@ namespace FlyMail
             this.richTextBox_texto.Text = "";
             this.button_guardar.Visible = false;
         }
-        private void button_enviar_Click(object sender, EventArgs e)
+
+        /// <summary>
+        /// Método para enviar el mail
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_enviar_Click(object sender, EventArgs e)
         {
             //Verificar si se puede enviar
             if((this.comboBox_de.Text == String.Empty)||(this.textBox_para.Text == String.Empty)||(this.textBox_asunto.Text==String.Empty)||(this.richTextBox_texto.Text==String.Empty))
@@ -46,47 +59,68 @@ namespace FlyMail
             }
             else
             {
-                int idCasilla = _controlador.ObtenerIdCasilla(this.comboBox_de.Text);
-                Mail _mail = new Mail(this.textBox_direccion.Text, textBox_para.Text,textBox_asunto.Text, "","",Convert.ToString(DateTime.Today),this.richTextBox_texto.Text,Convert.ToString(MailBox.Enviados),true);
-                _controlador.GuardarMail(_mail, idCasilla);
-                string _contraseña = _controlador.ObtenerContraseñaCasilla(this.comboBox_de.Text);
-                int idServicio = _controlador.ObtenerIdServicio(idCasilla);
-                Servicio _servicio = _controlador.ObtenerServicio(idServicio,"smtp");
-                //Console.WriteLine(this.textBox_direccion.Text+_contraseña+ _servicio.Ip+ _servicio.Puerto+ _servicio.SSL);
-                ControladorSMTP _controladorSMTP = new ControladorSMTP(this.textBox_direccion.Text, _contraseña, _servicio.Ip, _servicio.Puerto, _servicio.SSL);
-                _controlador.EnviarMail(_controladorSMTP, _mail);
-                MessageBox.Show("Mail Enviado");
-                this.Close();
+                DialogResult result = MessageBox.Show("¿Seguro que desea enviar el mail?", "Confirmación", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    int idCasilla = _controlador.ObtenerIdCasilla(this.comboBox_de.Text);
+                    Mail _mail;
+                    if (_estado_cc_cco)
+                    {
+                        _mail = new Mail(this.textBox_direccion.Text, textBox_para.Text, textBox_asunto.Text, this.textBox_CC.Text, this.textBox_CCO.Text, Convert.ToString(DateTime.Today), this.richTextBox_texto.Text, Convert.ToString(MailBox.Enviados), true);
+                    }
+                    else
+                    {
+                        _mail = new Mail(this.textBox_direccion.Text, textBox_para.Text, textBox_asunto.Text, "", "", Convert.ToString(DateTime.Today), this.richTextBox_texto.Text, Convert.ToString(MailBox.Enviados), true);
+                    }
+                    _controlador.GuardarMail(_mail, idCasilla);
+                    string _contraseña = _controlador.ObtenerContraseñaCasilla(this.comboBox_de.Text);
+                    int idServicio = _controlador.ObtenerIdServicio(idCasilla);
+                    Servicio _servicio = _controlador.ObtenerServicio(idServicio, "smtp");
+                    ControladorSMTP _controladorSMTP = new ControladorSMTP(this.textBox_direccion.Text, _contraseña, _servicio.Ip, _servicio.Puerto, _servicio.SSL);
+                    _controlador.EnviarMail(_controladorSMTP, _mail);
+                    MessageBox.Show("Mail Enviado");
+                    this.Close();
+                }
             }
             
         }
 
-
-
-        private void v_mail_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            this.Width = 666;
-            this.Height = 567;
-        }
-
-        private void button_cancelar_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Método que cancela el envío de mail
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_cancelar_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("¿Seguro que desea descartar el mail?","Confirmación", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
                 this.Close();
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        /// <summary>
+        /// Activa o desactiva la opción de CC y CCO
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             _estado_cc_cco = !_estado_cc_cco;
             CambiarCC_CCO();
         }
 
-        private void comboBox_de_SelectedIndexChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Método que muestra la dirección de mail de la cuenta seleccionada
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ComboBox_de_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.textBox_direccion.Text = _controlador.ObtenerDireccionCasilla(this.comboBox_de.Text);
         }
 
+        /// <summary>
+        /// Oculta o muestra las opciones CCC/CCO y cambia el formato de la ventana 
+        /// </summary>
         private void CambiarCC_CCO()
         {
             int _valorX = this.richTextBox_texto.Size.Width;

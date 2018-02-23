@@ -12,9 +12,9 @@ using OpenPop.Pop3;
 
 namespace FlyMail
 {
-    public partial class v_principal : Form
+    public partial class V_principal : Form
     {
-        public v_principal()
+        public V_principal()
         {
             InitializeComponent();
         }
@@ -23,20 +23,25 @@ namespace FlyMail
 
         private bool _cerrarSesion = false;
 
-        private v_mail i_mail = new v_mail();
+        private V_mail i_mail = new V_mail();
 
-        private v_correo i_correo = new v_correo();
+        private V_correo i_correo = new V_correo();
 
-        private v_login i_login = new v_login();
+        private V_login i_login = new V_login();
 
-        private v_cuenta i_cuenta = new v_cuenta();
+        private V_cuenta i_cuenta = new V_cuenta();
 
-        private v_eliminarCasilla i_eliminarCasilla = new v_eliminarCasilla();
+        private V_eliminarCasilla i_eliminarCasilla = new V_eliminarCasilla();
 
         private string i_passwordCasilla = string.Empty;
         private bool i_guardarPasswordCasilla = false;
 
-        private void v_principal_Load(object sender, EventArgs e)
+        /// <summary>
+        /// Establece los valores por defecto a la ventana
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void V_principal_Load(object sender, EventArgs e)
         {
             this.comboBox1.Items.Clear();
             this.comboBox1.Text = "Seleccionar";
@@ -68,14 +73,14 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button_recibidos_Click(object sender, EventArgs e)
+        private void Button_recibidos_Click(object sender, EventArgs e)
         {
             button_recibidos.BackColor = Color.LightSkyBlue;
             button_enviados.BackColor = Color.PowderBlue;
             button_papelera.BackColor = Color.PowderBlue;
 
             //listar en el dataGridView1 los mail recibidos
-            refrescarDataGrid(ConvertirMailBox(MailBox.Recibidos));
+            RefrescarDataGrid(ConvertirMailBox(MailBox.Recibidos));
         }
 
         /// <summary>
@@ -83,14 +88,14 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button_enviados_Click(object sender, EventArgs e)
+        private void Button_enviados_Click(object sender, EventArgs e)
         {
             button_recibidos.BackColor = Color.PowderBlue;
             button_enviados.BackColor = Color.LightSkyBlue;
             button_papelera.BackColor = Color.PowderBlue;
 
             //listar en el dataGridView1 los mail enviados
-            refrescarDataGrid(ConvertirMailBox(MailBox.Enviados));
+            RefrescarDataGrid(ConvertirMailBox(MailBox.Enviados));
         }
 
         /// <summary>
@@ -98,14 +103,14 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button_papelera_Click(object sender, EventArgs e)
+        private void Button_papelera_Click(object sender, EventArgs e)
         {
             button_recibidos.BackColor = Color.PowderBlue;
             button_enviados.BackColor = Color.PowderBlue;
             button_papelera.BackColor = Color.LightSkyBlue;
 
             //listar en el dataGridView1 los mail de la papelera
-            refrescarDataGrid(ConvertirMailBox(MailBox.Papelera));
+            RefrescarDataGrid(ConvertirMailBox(MailBox.Papelera));
         }
 
         /// <summary>
@@ -113,7 +118,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button_actualizar_Click(object sender, EventArgs e)
+        private void Button_actualizar_Click(object sender, EventArgs e)
         {
             string tipoMailBox = "";
             if (button_recibidos.BackColor == Color.LightSkyBlue)
@@ -122,7 +127,7 @@ namespace FlyMail
                 tipoMailBox = ConvertirMailBox(MailBox.Enviados);
             else if (button_papelera.BackColor == Color.LightSkyBlue)
                 tipoMailBox = ConvertirMailBox(MailBox.Papelera);
-            this.refrescarDataGrid(tipoMailBox);
+            this.RefrescarDataGrid(tipoMailBox);
         }
 
         /// <summary>
@@ -130,7 +135,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button_enviar_Click(object sender, EventArgs e)
+        private void Button_enviar_Click(object sender, EventArgs e)
         {
             this.i_mail.Text = "Enviar Mail";
             this.i_mail.ShowDialog(this);
@@ -141,7 +146,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button_eliminar_Click(object sender, EventArgs e)
+        private void Button_eliminar_Click(object sender, EventArgs e)
         {
             //    string pISBN = ((Libro)dataGridView1.CurrentRow.DataBoundItem).ISBN;
             //    this.iBiblioteca.BajaLibro(pISBN);
@@ -153,7 +158,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button_responder_Click(object sender, EventArgs e)
+        private void Button_responder_Click(object sender, EventArgs e)
         {
             this.i_mail.Text = "Enviar Mail";
             this.i_mail.ShowDialog(this);
@@ -162,7 +167,7 @@ namespace FlyMail
         /// <summary>
         /// Actualizar la lista de los mail
         /// </summary>
-        private void refrescarDataGrid(string pMailBox)
+        private void RefrescarDataGrid(string pMailBox)
         {
             this.dataGridView1.Rows.Clear();
             if (this.comboBox1.Text == "Seleccionar")
@@ -193,7 +198,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void modificarNombreToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void ModificarNombreToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.i_cuenta.Text = "Modificar Nombre";
             this.i_cuenta.ShowDialog(this);
@@ -204,7 +209,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void modificarContraseñaToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void ModificarContraseñaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.i_cuenta.Text = "Modificar Contraseña";
             this.i_cuenta.ShowDialog(this);
@@ -215,7 +220,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AgregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.i_correo.Text = "Agregar Casilla";
             this.i_correo.ShowDialog(this);
@@ -226,7 +231,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ModificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             List<string> _listaNombres = new List<string>();
             _listaNombres = _controlador.ObtenerNombreCasillas();
@@ -246,7 +251,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             List<string> _listaNombres = new List<string>();
             _listaNombres = _controlador.ObtenerNombreCasillas();
@@ -267,7 +272,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("¿Seguro que desea Cerrar Sesión?", "Confirmación", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
@@ -282,7 +287,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SalirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("¿Seguro que desea Salir?", "Confirmación", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
@@ -296,7 +301,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void informaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        private void InformaciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Los íconos fueron tomados de http://dryicons.com");
         }
@@ -307,11 +312,11 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void v_principal_FormClosing(object sender, FormClosingEventArgs e)
+        private void V_principal_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (this._cerrarSesion)
             {
-                (new v_login()).Show();
+                (new V_login()).Show();
             }
             else
             {
@@ -326,7 +331,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string _user = this.comboBox1.Text;
             if (_user != "Todos")
@@ -454,7 +459,7 @@ namespace FlyMail
 
             if (_contraseña == "vacia")
             {
-                (new v_ingresarPasswordCasilla(pNombreUsuario)).ShowDialog(this);
+                (new V_ingresarPasswordCasilla(pNombreUsuario)).ShowDialog(this);
                 _contraseña = this.i_passwordCasilla;
                 if (this.i_guardarPasswordCasilla)
                     this.AlmacenarPasswordCasilla(pNombreUsuario, _contraseña);
@@ -477,7 +482,7 @@ namespace FlyMail
                 }
             }
 
-            refrescarDataGrid(ConvertirMailBox(MailBox.Recibidos));
+            RefrescarDataGrid(ConvertirMailBox(MailBox.Recibidos));
         }
 
         /// <summary>

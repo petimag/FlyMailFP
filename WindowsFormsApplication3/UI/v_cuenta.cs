@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FlyMail
 {
-    public partial class v_cuenta : Form
+    public partial class V_cuenta : Form
     {
-        public v_cuenta()
+        public V_cuenta()
         {
             InitializeComponent();
         }
@@ -24,7 +24,7 @@ namespace FlyMail
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void v_cuenta_Load(object sender, EventArgs e)
+        private void V_cuenta_Load(object sender, EventArgs e)
         {
             this.textBox1.Text = "";
             this.textBox2.Text = "";
@@ -50,78 +50,94 @@ namespace FlyMail
         }
         
         /// <summary>
-        /// Guardo los cambios realizados
+        /// Guarda los cambios realizados en la cuenta del usuario
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonAceptar_Click(object sender, EventArgs e)
+        private void ButtonAceptar_Click(object sender, EventArgs e)
         {
             //Controla si se desea midificar el nombre del usuario
             if (this.Text == "Modificar Nombre")
             {
-                if ((this.textBox1.Text=="")||(this.textBox3.Text == ""))
-                {
-                    MessageBox.Show("Falta completar campos obligatorios");
-                }
-                else
-                {
-                    //Verifica si ya existe en nombre de cuenta
-                    if (_controlador.nombreExistenteCuenta(this.textBox1.Text))
-                    {
-                        MessageBox.Show("Nombre ya existente");
-                    }
-                    else
-                    {
-                        string _hash = Utilidades.Encriptar(string.Concat(_controlador.obtenerNombreCuenta(), this.textBox3.Text));
-                        //Verifica si la contraseña es correcta
-                        if (_controlador.obtenerContrasenaCuenta() !=_hash)
-                        {
-                            MessageBox.Show("Contraseña incorrecta");
-                        }
-                        else
-                        {
-                            _hash = Utilidades.Encriptar(string.Concat(this.textBox1.Text, this.textBox3.Text));
-                            Cuenta _cuenta = new Cuenta(this.textBox1.Text, _hash);
-                            _controlador.modificarNombreCuenta(_cuenta);
-                            this.Close();
-                        }
-                        
-                    }
-                }
+                ModificarNombre();
             }
 
             //Controla si se desea midificar la contraseña del usuario
             if (this.Text == "Modificar Contraseña")
             {
-                if ((textBox1.Text=="")||(textBox2.Text == "")||(textBox3.Text == ""))
+                ModificarContraseña();
+
+            }
+        }
+
+        /// <summary>
+        /// Modifica el nombre de la cuenta
+        /// </summary>
+        private void ModificarNombre()
+        {
+            if ((this.textBox1.Text == "") || (this.textBox3.Text == ""))
+            {
+                MessageBox.Show("Falta completar campos obligatorios");
+            }
+            else
+            {
+                //Verifica si ya existe en nombre de cuenta
+                if (_controlador.NombreExistenteCuenta(this.textBox1.Text))
                 {
-                    MessageBox.Show("Falta completar campos obligatorios");
+                    MessageBox.Show("Nombre ya existente");
                 }
                 else
                 {
-                    //Nueva contraseña y repetir contraseña no coinciden
-                    if (textBox2.Text != textBox3.Text)
+                    string _hash = Utilidades.Encriptar(string.Concat(_controlador.ObtenerNombreCuenta(), this.textBox3.Text));
+                    //Verifica si la contraseña es correcta
+                    if (_controlador.ObtenerContraseñaCuenta() != _hash)
                     {
-                        MessageBox.Show("La nueva contraseña no coincide");
+                        MessageBox.Show("Contraseña incorrecta");
                     }
                     else
                     {
-                        string hash1 = Utilidades.Encriptar(string.Concat(_controlador.obtenerNombreCuenta(), this.textBox1.Text));
+                        _hash = Utilidades.Encriptar(string.Concat(this.textBox1.Text, this.textBox3.Text));
+                        Cuenta _cuenta = new Cuenta(this.textBox1.Text, _hash);
+                        _controlador.ModificarNombreCuenta(_cuenta);
+                        this.Close();
+                    }
 
-                        //No coincide con la contraseña actual
-                        if (!_controlador.verificarContraseña(hash1))
-                        {
-                            MessageBox.Show("La contraseña actual no coincide");
-                        }
-                        else
-                        {
-                            string hash2 = Utilidades.Encriptar(string.Concat(_controlador.obtenerNombreCuenta(), this.textBox2.Text));
-                            _controlador.modificarContraseñaCuenta(hash2);
-                            this.Close();
-                        }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Modifica la contraseña de la cuenta
+        /// </summary>
+        private void ModificarContraseña()
+        {
+            if ((textBox1.Text == "") || (textBox2.Text == "") || (textBox3.Text == ""))
+            {
+                MessageBox.Show("Falta completar campos obligatorios");
+            }
+            else
+            {
+                //Nueva contraseña y repetir contraseña no coinciden
+                if (textBox2.Text != textBox3.Text)
+                {
+                    MessageBox.Show("La nueva contraseña no coincide");
+                }
+                else
+                {
+                    string hash1 = Utilidades.Encriptar(string.Concat(_controlador.ObtenerNombreCuenta(), this.textBox1.Text));
+
+                    //No coincide con la contraseña actual
+                    if (!_controlador.VerificarContraseña(hash1))
+                    {
+                        MessageBox.Show("La contraseña actual no coincide");
+                    }
+                    else
+                    {
+                        string hash2 = Utilidades.Encriptar(string.Concat(_controlador.ObtenerNombreCuenta(), this.textBox2.Text));
+                        _controlador.ModificarContraseñaCuenta(hash2);
+                        this.Close();
                     }
                 }
-
             }
         }
     }
