@@ -12,16 +12,28 @@ namespace FlyMail
 {
     public partial class V_mail : Form
     {
-        public V_mail()
-        {
-            InitializeComponent();
-        }
+        private Mail _mail;
 
         private Fachada _controlador = Fachada.Instancia;
 
         private bool _estado_cc_cco;
 
-        private int idCasilla;
+        private int idCasilla = -1;
+
+        private bool _responder;
+
+        public V_mail()
+        {
+            InitializeComponent();
+            _responder = false;
+        }
+
+        public V_mail(string pDestinatario, string pRemitente)
+        {
+            InitializeComponent();
+            _responder = true;
+            _mail = new Mail(pRemitente, pDestinatario, "", "", "", "", "", "", true);
+        }
 
         /// <summary>
         /// Establece los valores por defecto de la ventana
@@ -30,21 +42,38 @@ namespace FlyMail
         /// <param name="e"></param>
         private void V_mail_Load(object sender, EventArgs e)
         {
-            idCasilla = _controlador.ObtenerIdCasilla(this.comboBox_de.Text);
             this.Width = 666;
             this.Height = 567;
             this._estado_cc_cco = false;
             CambiarCC_CCO();
+
+            if (_responder)
+            {
+                this.comboBox_de.Enabled = false;
+                this.textBox_direccion.Text = _mail.Remitente;
+                this.textBox_direccion.ReadOnly = true;
+                this.textBox_para.Text = _mail.Destinatario;
+                this.textBox_para.ReadOnly = true;
+            }
+            else
+            {
+                ListarNombresCasillas();
+                this.textBox_direccion.ReadOnly = false;
+                this.textBox_direccion.Text = "";
+                this.textBox_para.Text = "";
+            }
+            this.textBox_asunto.Text = "";
+            this.richTextBox_texto.Text = "";
+        }
+
+        private void ListarNombresCasillas()
+        {
             this.comboBox_de.Items.Clear();
             this.comboBox_de.Text = "Seleccionar";
             List<string> _listaNombres = new List<string>();
             _listaNombres = _controlador.ObtenerNombreCasillas();
-            for (int i = 0; i < _listaNombres.Count; i++)
+            for (int i = 0; i<_listaNombres.Count; i++)
                 this.comboBox_de.Items.Add(_listaNombres[i]);
-            this.textBox_direccion.Text = "";
-            this.textBox_para.Text = "";
-            this.textBox_asunto.Text = "";
-            this.richTextBox_texto.Text = "";
         }
 
         /// <summary>

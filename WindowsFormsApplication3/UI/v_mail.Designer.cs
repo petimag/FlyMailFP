@@ -39,7 +39,6 @@
             this.textBox_direccion = new System.Windows.Forms.TextBox();
             this.richTextBox_texto = new System.Windows.Forms.RichTextBox();
             this.textBox_asunto = new System.Windows.Forms.TextBox();
-            this.comboBox_de = new System.Windows.Forms.ComboBox();
             this.button_cancelar = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -49,6 +48,7 @@
             this.textBox_CC = new System.Windows.Forms.TextBox();
             this.label_CCO = new System.Windows.Forms.Label();
             this.textBox_CCO = new System.Windows.Forms.TextBox();
+            this.comboBox_de = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -144,16 +144,6 @@
             this.textBox_asunto.Size = new System.Drawing.Size(359, 20);
             this.textBox_asunto.TabIndex = 3;
             // 
-            // comboBox_de
-            // 
-            this.comboBox_de.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.comboBox_de.FormattingEnabled = true;
-            this.comboBox_de.Location = new System.Drawing.Point(51, 19);
-            this.comboBox_de.Name = "comboBox_de";
-            this.comboBox_de.Size = new System.Drawing.Size(145, 21);
-            this.comboBox_de.TabIndex = 1;
-            this.comboBox_de.SelectedIndexChanged += new System.EventHandler(this.ComboBox_de_SelectedIndexChanged);
-            // 
             // button_cancelar
             // 
             this.button_cancelar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -248,6 +238,16 @@
             this.textBox_CCO.TabIndex = 15;
             this.textBox_CCO.Visible = false;
             // 
+            // comboBox_de
+            // 
+            this.comboBox_de.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.comboBox_de.FormattingEnabled = true;
+            this.comboBox_de.Location = new System.Drawing.Point(51, 19);
+            this.comboBox_de.Name = "comboBox_de";
+            this.comboBox_de.Size = new System.Drawing.Size(145, 21);
+            this.comboBox_de.TabIndex = 1;
+            this.comboBox_de.SelectedIndexChanged += new System.EventHandler(this.ComboBox_de_SelectedIndexChanged);
+            // 
             // V_mail
             // 
             this.AcceptButton = this.button_enviar;
@@ -288,7 +288,6 @@
         private System.Windows.Forms.RichTextBox richTextBox_texto;
         private System.Windows.Forms.TextBox textBox_para;
         private System.Windows.Forms.TextBox textBox_asunto;
-        private System.Windows.Forms.ComboBox comboBox_de;
         private System.Windows.Forms.Button button_enviar;
         private System.Windows.Forms.Button button_cancelar;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
@@ -300,5 +299,6 @@
         private System.Windows.Forms.TextBox textBox_CC;
         private System.Windows.Forms.Label label_CCO;
         private System.Windows.Forms.TextBox textBox_CCO;
+        private System.Windows.Forms.ComboBox comboBox_de;
     }
 }

@@ -45,12 +45,16 @@
             this.richTextBox_texto = new System.Windows.Forms.RichTextBox();
             this.button_cancelar = new System.Windows.Forms.Button();
             this.button_responder = new System.Windows.Forms.Button();
+            this.textBox_fecha = new System.Windows.Forms.TextBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.GrayText;
+            this.groupBox1.Controls.Add(this.linkLabel1);
+            this.groupBox1.Controls.Add(this.textBox_fecha);
             this.groupBox1.Controls.Add(this.textBox_de);
             this.groupBox1.Controls.Add(this.label_CCO);
             this.groupBox1.Controls.Add(this.textBox_CCO);
@@ -116,11 +120,11 @@
             // 
             this._fecha.AutoSize = true;
             this._fecha.ForeColor = System.Drawing.SystemColors.Window;
-            this._fecha.Location = new System.Drawing.Point(421, 20);
+            this._fecha.Location = new System.Drawing.Point(438, 20);
             this._fecha.Name = "_fecha";
-            this._fecha.Size = new System.Drawing.Size(34, 13);
+            this._fecha.Size = new System.Drawing.Size(37, 13);
             this._fecha.TabIndex = 9;
-            this._fecha.Text = "fecha";
+            this._fecha.Text = "fecha:";
             // 
             // textBox_CC
             // 
@@ -236,6 +240,26 @@
             this.button_responder.UseVisualStyleBackColor = false;
             this.button_responder.Click += new System.EventHandler(this.Button_responder_Click);
             // 
+            // textBox_fecha
+            // 
+            this.textBox_fecha.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.textBox_fecha.Location = new System.Drawing.Point(481, 17);
+            this.textBox_fecha.Name = "textBox_fecha";
+            this.textBox_fecha.Size = new System.Drawing.Size(129, 20);
+            this.textBox_fecha.TabIndex = 21;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(416, 51);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(48, 13);
+            this.linkLabel1.TabIndex = 22;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "CC/CCO";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // V_leerMail
             // 
             this.AcceptButton = this.button_responder;
@@ -276,5 +300,7 @@
         private System.Windows.Forms.Label label_CC;
         private System.Windows.Forms.TextBox textBox_CC;
         private System.Windows.Forms.TextBox textBox_de;
+        private System.Windows.Forms.TextBox textBox_fecha;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
