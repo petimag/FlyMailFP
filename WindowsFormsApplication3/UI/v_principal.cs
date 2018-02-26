@@ -516,11 +516,9 @@ namespace FlyMail
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Mail _mail = new Mail(_listaMail[e.RowIndex].Remitente, _listaMail[e.RowIndex].Destinatario, _listaMail[e.RowIndex].Asunto, _listaMail[e.RowIndex].CC, _listaMail[e.RowIndex].CCO, _listaMail[e.RowIndex].Fecha, _listaMail[e.RowIndex].Mensaje, _listaMail[e.RowIndex].TipoMail, _listaMail[e.RowIndex].Leido);
+            Mail _mail = new Mail(_listaMail[e.RowIndex].IdMail, _listaMail[e.RowIndex].Remitente, _listaMail[e.RowIndex].Destinatario, _listaMail[e.RowIndex].Asunto, _listaMail[e.RowIndex].CC, _listaMail[e.RowIndex].CCO, _listaMail[e.RowIndex].Fecha, _listaMail[e.RowIndex].Mensaje, _listaMail[e.RowIndex].TipoMail, _listaMail[e.RowIndex].Leido);
             v_LeerMail = new V_leerMail(_mail);
-            this.v_LeerMail.Show();
-
-            
+            this.v_LeerMail.Show();            
         }
     }
 }

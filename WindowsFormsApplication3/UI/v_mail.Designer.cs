@@ -43,12 +43,12 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.comboBox_de = new System.Windows.Forms.ComboBox();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.label_CC = new System.Windows.Forms.Label();
             this.textBox_CC = new System.Windows.Forms.TextBox();
             this.label_CCO = new System.Windows.Forms.Label();
             this.textBox_CCO = new System.Windows.Forms.TextBox();
-            this.comboBox_de = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -180,7 +180,7 @@
             this.groupBox1.Size = new System.Drawing.Size(626, 160);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Datos";
             // 
             // linkLabel1
             // 
@@ -193,6 +193,16 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "CC/CCO";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
+            // 
+            // comboBox_de
+            // 
+            this.comboBox_de.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.comboBox_de.FormattingEnabled = true;
+            this.comboBox_de.Location = new System.Drawing.Point(51, 19);
+            this.comboBox_de.Name = "comboBox_de";
+            this.comboBox_de.Size = new System.Drawing.Size(145, 21);
+            this.comboBox_de.TabIndex = 1;
+            this.comboBox_de.SelectedIndexChanged += new System.EventHandler(this.ComboBox_de_SelectedIndexChanged);
             // 
             // label_CC
             // 
@@ -237,16 +247,6 @@
             this.textBox_CCO.Size = new System.Drawing.Size(359, 20);
             this.textBox_CCO.TabIndex = 15;
             this.textBox_CCO.Visible = false;
-            // 
-            // comboBox_de
-            // 
-            this.comboBox_de.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.comboBox_de.FormattingEnabled = true;
-            this.comboBox_de.Location = new System.Drawing.Point(51, 19);
-            this.comboBox_de.Name = "comboBox_de";
-            this.comboBox_de.Size = new System.Drawing.Size(145, 21);
-            this.comboBox_de.TabIndex = 1;
-            this.comboBox_de.SelectedIndexChanged += new System.EventHandler(this.ComboBox_de_SelectedIndexChanged);
             // 
             // V_mail
             // 

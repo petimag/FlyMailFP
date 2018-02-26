@@ -14,8 +14,6 @@ namespace FlyMail
     {
         private Mail _mail;
 
-        private int idMail;
-
         private bool _estado_cc_cco;
 
         private Fachada _controlador = Fachada.Instancia;
@@ -28,7 +26,14 @@ namespace FlyMail
             CambiarCC_CCO();
             this.textBox_de.Text = _mail.Remitente;
             this.textBox_de.ReadOnly = true;
-            this.textBox_para.Text = _mail.Destinatario;
+            this.textBox_fecha.Text = Convert.ToString(Convert.ToDateTime(_mail.Fecha).Date);
+            this.textBox_fecha.ReadOnly = true;
+            string _destinatario = "";
+            for (int i = 0; i < _mail.Destinatario.Count() - 1; i++)
+            {
+                _destinatario += _mail.Destinatario[i];
+            }
+            this.textBox_para.Text = _destinatario;
             this.textBox_para.ReadOnly = true;
             this.textBox_asunto.Text = _mail.Asunto;
             this.textBox_asunto.ReadOnly = true;
@@ -56,7 +61,8 @@ namespace FlyMail
 
         private void Button_responder_Click(object sender, EventArgs e)
         {
-            V_mail v_mail = new V_mail(_mail.Remitente,_mail.Destinatario);
+            V_mail v_mail = new V_mail(_mail.Remitente,this.textBox_para.Text, "Re: " + this.textBox_asunto.Text);
+            Console.WriteLine("Re: "+ this.textBox_asunto.Text);
             v_mail.Show();
         }
 
@@ -98,7 +104,8 @@ namespace FlyMail
             DialogResult result = MessageBox.Show("¿Seguro que desea eliminar el mail?", "Confirmación", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                if (_controlador.EliminarMail(idMail))
+                Console.WriteLine(_mail.IdMail);
+                if (_controlador.EliminarMail(_mail.IdMail))
                 {
                     MessageBox.Show("Mail eliminado con éxito");
                     this.Close();

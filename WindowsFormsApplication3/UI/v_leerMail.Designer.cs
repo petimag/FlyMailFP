@@ -73,7 +73,7 @@
             this.groupBox1.Size = new System.Drawing.Size(626, 156);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Datos";
             // 
             // linkLabel1
             // 
@@ -193,7 +193,7 @@
             this.button_eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_eliminar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("button_eliminar.Image")));
-            this.button_eliminar.Location = new System.Drawing.Point(580, 110);
+            this.button_eliminar.Location = new System.Drawing.Point(570, 53);
             this.button_eliminar.Name = "button_eliminar";
             this.button_eliminar.Size = new System.Drawing.Size(40, 40);
             this.button_eliminar.TabIndex = 7;
@@ -276,6 +276,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "V_leerMail";
             this.Opacity = 0.9D;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Leer Mail";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

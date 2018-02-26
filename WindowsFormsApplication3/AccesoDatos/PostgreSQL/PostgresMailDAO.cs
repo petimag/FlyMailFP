@@ -58,7 +58,7 @@ namespace FlyMail
                 adaptador.Fill(tabla);
                 foreach (DataRow fila in tabla.Rows)
                 {
-                    _listaMail.Add(new Mail(Convert.ToString(fila["cabRemitente"]), Convert.ToString(fila["cabDestinatario"]), Convert.ToString(fila["asunto"]), Convert.ToString(fila["cabCC"]), Convert.ToString(fila["cabCCO"]), Convert.ToString(fila["cabFecha"]), Convert.ToString(fila["cuerpo"]), Convert.ToString(fila["mailbox"]), Convert.ToBoolean(fila["leido"])));
+                    _listaMail.Add(new Mail(Convert.ToInt32(fila["idEmail"]), Convert.ToString(fila["cabRemitente"]), Convert.ToString(fila["cabDestinatario"]), Convert.ToString(fila["asunto"]), Convert.ToString(fila["cabCC"]), Convert.ToString(fila["cabCCO"]), Convert.ToString(fila["cabFecha"]), Convert.ToString(fila["cuerpo"]), Convert.ToString(fila["mailbox"]), Convert.ToBoolean(fila["leido"])));
                 }
             }
             return _listaMail ;

@@ -22,17 +22,25 @@ namespace FlyMail
 
         private bool _responder;
 
+        /// <summary>
+        /// Inicializador de la ventana para enviar un mail
+        /// </summary>
         public V_mail()
         {
             InitializeComponent();
             _responder = false;
         }
 
-        public V_mail(string pDestinatario, string pRemitente)
+        /// <summary>
+        /// Inicializador de la ventana para responder un mail
+        /// </summary>
+        /// <param name="pDestinatario"></param>
+        /// <param name="pRemitente"></param>
+        public V_mail(string pDestinatario, string pRemitente, string pAsunto)
         {
             InitializeComponent();
             _responder = true;
-            _mail = new Mail(pRemitente, pDestinatario, "", "", "", "", "", "", true);
+            _mail = new Mail(pRemitente, pDestinatario,pAsunto, "", "", "", "", "", true);
         }
 
         /// <summary>
@@ -54,6 +62,7 @@ namespace FlyMail
                 this.textBox_direccion.ReadOnly = true;
                 this.textBox_para.Text = _mail.Destinatario;
                 this.textBox_para.ReadOnly = true;
+                this.textBox_asunto.Text = _mail.Asunto;
             }
             else
             {
@@ -61,8 +70,8 @@ namespace FlyMail
                 this.textBox_direccion.ReadOnly = false;
                 this.textBox_direccion.Text = "";
                 this.textBox_para.Text = "";
+                this.textBox_asunto.Text = "";
             }
-            this.textBox_asunto.Text = "";
             this.richTextBox_texto.Text = "";
         }
 
