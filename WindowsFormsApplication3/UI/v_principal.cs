@@ -25,6 +25,8 @@ namespace FlyMail
 
         private V_mail i_mail = new V_mail();
 
+        private V_leerMail v_LeerMail;
+
         private V_correo i_correo = new V_correo();
 
         private V_login i_login = new V_login();
@@ -35,6 +37,7 @@ namespace FlyMail
 
         private string i_passwordCasilla = string.Empty;
         private bool i_guardarPasswordCasilla = false;
+        private List<Mail> _listaMail;
 
         /// <summary>
         /// Establece los valores por defecto a la ventana
@@ -43,6 +46,10 @@ namespace FlyMail
         /// <param name="e"></param>
         private void V_principal_Load(object sender, EventArgs e)
         {
+            button_recibidos.BackColor = Color.LightSkyBlue;
+            button_enviados.BackColor = Color.PowderBlue;
+            button_papelera.BackColor = Color.PowderBlue;
+
             this.comboBox1.Items.Clear();
             this.comboBox1.Text = "Seleccionar";
             this.comboBox1.Items.Add("Todos");
@@ -493,7 +500,7 @@ namespace FlyMail
         private void ListarMail(string pNombreUsuario, string pMailBox)
         {
             int _idCasilla = _controlador.ObtenerIdCasilla(pNombreUsuario);
-            List<Mail> _listaMail = _controlador.ListarMail(_idCasilla, pMailBox);
+            _listaMail = _controlador.ListarMail(_idCasilla, pMailBox);
             this.dataGridView1.ColumnHeadersVisible = true;
             DataGridViewCellStyle columnHeaderStyle = new DataGridViewCellStyle();
 
@@ -507,5 +514,13 @@ namespace FlyMail
             }
         }
 
+        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Mail _mail = new Mail(_listaMail[e.RowIndex].Remitente, _listaMail[e.RowIndex].Destinatario, _listaMail[e.RowIndex].Asunto, _listaMail[e.RowIndex].CC, _listaMail[e.RowIndex].CCO, _listaMail[e.RowIndex].Fecha, _listaMail[e.RowIndex].Mensaje, _listaMail[e.RowIndex].TipoMail, _listaMail[e.RowIndex].Leido);
+            v_LeerMail = new V_leerMail(_mail);
+            this.v_LeerMail.Show();
+
+            
+        }
     }
 }

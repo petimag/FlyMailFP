@@ -21,6 +21,8 @@ namespace FlyMail
 
         private bool _estado_cc_cco;
 
+        private int idCasilla;
+
         /// <summary>
         /// Establece los valores por defecto de la ventana
         /// </summary>
@@ -28,6 +30,7 @@ namespace FlyMail
         /// <param name="e"></param>
         private void V_mail_Load(object sender, EventArgs e)
         {
+            idCasilla = _controlador.ObtenerIdCasilla(this.comboBox_de.Text);
             this.Width = 666;
             this.Height = 567;
             this._estado_cc_cco = false;
@@ -42,7 +45,6 @@ namespace FlyMail
             this.textBox_para.Text = "";
             this.textBox_asunto.Text = "";
             this.richTextBox_texto.Text = "";
-            this.button_guardar.Visible = false;
         }
 
         /// <summary>
@@ -53,7 +55,7 @@ namespace FlyMail
         private void Button_enviar_Click(object sender, EventArgs e)
         {
             //Verificar si se puede enviar
-            if((this.comboBox_de.Text == String.Empty)||(this.textBox_para.Text == String.Empty)||(this.textBox_asunto.Text==String.Empty)||(this.richTextBox_texto.Text==String.Empty))
+            if((this.textBox_direccion.Text == String.Empty)||(this.textBox_para.Text == String.Empty)||(this.textBox_asunto.Text==String.Empty)||(this.richTextBox_texto.Text==String.Empty))
             {
                 MessageBox.Show("Hay campos obligatorios nulos");
             }
@@ -62,16 +64,7 @@ namespace FlyMail
                 DialogResult result = MessageBox.Show("¿Seguro que desea enviar el mail?", "Confirmación", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    int idCasilla = _controlador.ObtenerIdCasilla(this.comboBox_de.Text);
-                    Mail _mail;
-                    if (_estado_cc_cco)
-                    {
-                        _mail = new Mail(this.textBox_direccion.Text, textBox_para.Text, textBox_asunto.Text, this.textBox_CC.Text, this.textBox_CCO.Text, Convert.ToString(DateTime.Today), this.richTextBox_texto.Text, Convert.ToString(MailBox.Enviados), true);
-                    }
-                    else
-                    {
-                        _mail = new Mail(this.textBox_direccion.Text, textBox_para.Text, textBox_asunto.Text, "", "", Convert.ToString(DateTime.Today), this.richTextBox_texto.Text, Convert.ToString(MailBox.Enviados), true);
-                    }
+                    Mail _mail = CrearMail(MailBox.Enviados);
                     _controlador.GuardarMail(_mail, idCasilla);
                     string _contraseña = _controlador.ObtenerContraseñaCasilla(this.comboBox_de.Text);
                     int idServicio = _controlador.ObtenerIdServicio(idCasilla);
@@ -81,8 +74,7 @@ namespace FlyMail
                     MessageBox.Show("Mail Enviado");
                     this.Close();
                 }
-            }
-            
+            }   
         }
 
         /// <summary>
@@ -92,9 +84,25 @@ namespace FlyMail
         /// <param name="e"></param>
         private void Button_cancelar_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Seguro que desea descartar el mail?","Confirmación", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
+            if ((this.textBox_direccion.Text == String.Empty) & (this.textBox_para.Text == String.Empty) & (this.textBox_asunto.Text == String.Empty) & (this.richTextBox_texto.Text == String.Empty))
+            {
                 this.Close();
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("¿Desea guardar el mail en la papelera?", "Confirmación", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes)
+                {
+                    Mail _mail = CrearMail(MailBox.Papelera);
+                    _controlador.GuardarMail(_mail, idCasilla);
+                    this.Close();
+                }
+                else if (result == DialogResult.No)
+                {
+                    this.Close();
+                }
+            }
+            
         }
 
         /// <summary>
@@ -146,6 +154,25 @@ namespace FlyMail
                 int _valorY = this.Height - this.richTextBox_texto.Location.Y - 97;
                 this.richTextBox_texto.Size = new System.Drawing.Size(_valorX, _valorY);
             }
+        }
+
+        /// <summary>
+        /// Crea un Mail a enviar o almacenar en la papelera
+        /// </summary>
+        /// <param name="_mailBox">Tipo de mail</param>
+        /// <returns></returns>
+        private Mail CrearMail(MailBox _mailBox)
+        {
+            Mail _mail;
+            if (_estado_cc_cco)
+            {
+                _mail = new Mail(this.textBox_direccion.Text, textBox_para.Text, textBox_asunto.Text, this.textBox_CC.Text, this.textBox_CCO.Text, Convert.ToString(DateTime.Today), this.richTextBox_texto.Text, Convert.ToString(_mailBox), true);
+            }
+            else
+            {
+                _mail = new Mail(this.textBox_direccion.Text, textBox_para.Text, textBox_asunto.Text, "", "", Convert.ToString(DateTime.Today), this.richTextBox_texto.Text, Convert.ToString(_mailBox), true);
+            }
+            return _mail;
         }
     }
 }

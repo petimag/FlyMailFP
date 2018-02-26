@@ -147,32 +147,6 @@
         ej9R17h/gPgXJYnWEe+V6KQAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="button_guardar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAASpSURBVEhLtVRLbJRVFL5UjIUICi1awACJlZigLpRI
-        ghsXxvhYSAwsTFi4MaYJCzcmLEgwxkRjCEpNalBsLCpUpTEifcBQwMbO859OH/PutPPoTDvPdqad6YtO
-        P79z2yJKNyZl8c38955zvu+ec+65CsB9xaqbawnVebH5dWdoqN/uMBw2i9VhtzuWYHM4bDb7P+DevyB7
-        yxDflTib1eawkcsZCPZ1tbbVqY76r+Zaj5+AezCEwFgSbrcHHo8HXp8PPp9/Cf6Ahn8ZK+sVu/h6GOce
-        cMOXGIUnEkb7R5+g/dRpKFdoKNd19hwuPv8ijAvNSDKvKIUi4QiisRhisRGMjMRXhdjER/uSeIyxritt
-        aD5wEDe+qEff8FBWMZ1MKJeD569u/LjlMVw78g7SxRLydM5mc8hkMkQW2f9A9sSWpo/4ZmbnceO9Onxf
-        uRmuy60ITUzAMJwZJT9ejw/xfAHJwiT+ePYFXGDvg8xmjoFFIk9bgba7kZ/Io7i4iFnah9s68PP6h/Db
-        nqcQHx1DfKoIr9cHw9lDAaczI3WVNLM0TDPA+n4dzlHk5ksvo5AdxwL3SrcXMDU5pVGam9d7xelpdL3x
-        Fr6jb9fbR/RhMsw+PBzWvXL2uDLKQZVAIMhajiCdTiNfKqFMx8HGJvzAwGZi4NPPdTa3lyHf/oZv8Att
-        5wn3Z6f0/gQFk2MpRKIx+MnplAwcBgWCQd00qauUY2p6BosMGLMbaKmoRBNJ2vc+g2j7VSRudeHac/s1
-        8a9E3HRD+0rMeG4cqWSah41CDt2jM1hNgKUSyKlykRha9+zFTySTEwvk+3JVDVJur85WfCdZuvHxCWTY
-        3Hgqfa9AbGREC0yweSsCU4WiLscM0fXqm7pcFwnT/oO6F2LTfvyWxk8ulpHiFR/2+hHi/3KTDTaZPWDd
-        UlSWU4jzHREGi4BkY9Qdg/Xou/rmaHLaxEdOX+J6fLKIll21+oL0sZS9/sDSNZWpDEciGOUVkyxE5O6r
-        OSllm5nVpILi7BwKK3ZmrMkZ83vtPk1+fsvjcPf0wuXxskQcNA/vbGhoWE+miEgmIiSDJsixeXcg6+U9
-        sRVInuGgtuyuRSPJG1UF+jtvYjCbgUFuxQcqPeB266YMUSQcierxl6bH4wkk+ASMsp4pliJVmka2vIAx
-        iidoT8/OIDGaxKW9+/QsfEv8efJjRGem0c93iYdPK76Giy5XLwa4IZnI4yVDEggOIijgIxjN52H64EM0
-        1TyB7oazCPIgCZ7cx1vUVLMLX5NY0PLKaxhi6frJIZzkXlBmi+UMn1vwuYbDcJbZkzK7X+aQaLCOZZvZ
-        Ml+v1uNLkpwWsk1b0HbiJM49+TTOqHVo2LAZZ3fuhrO3b84VCJZZlbJwWizWS8pitSqz1aK4WBU2Z4/q
-        dhiqtWr7IdPmapi27UTHw1txRT2Ajo2P4jrXV9dV4tahwwccowll7jbrOOG0Wm1KCwhkcQ/uEuBgqc5N
-        VduuV++IEugksfwLTBseOd556LCyJ+IUWCJe4fy/AspUvUPQSGAZhmlrjbqqKpQ9lVRm89oICI5q8uod
-        G01V2ynwoLKnU/cK8DLcV6y6uXaA+hsIP9O7isGH6QAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="button_cancelar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m

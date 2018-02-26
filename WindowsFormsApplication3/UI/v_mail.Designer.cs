@@ -36,7 +36,6 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button_enviar = new System.Windows.Forms.Button();
             this.textBox_para = new System.Windows.Forms.TextBox();
-            this.button_guardar = new System.Windows.Forms.Button();
             this.textBox_direccion = new System.Windows.Forms.TextBox();
             this.richTextBox_texto = new System.Windows.Forms.RichTextBox();
             this.textBox_asunto = new System.Windows.Forms.TextBox();
@@ -102,7 +101,7 @@
             // 
             // textBox_para
             // 
-            this.textBox_para.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.textBox_para.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_para.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox_para.Location = new System.Drawing.Point(51, 48);
@@ -111,24 +110,9 @@
             this.textBox_para.TabIndex = 2;
             this.toolTip1.SetToolTip(this.textBox_para, "Destinatario del Mail");
             // 
-            // button_guardar
-            // 
-            this.button_guardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_guardar.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.button_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_guardar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_guardar.Image = ((System.Drawing.Image)(resources.GetObject("button_guardar.Image")));
-            this.button_guardar.Location = new System.Drawing.Point(580, 69);
-            this.button_guardar.Name = "button_guardar";
-            this.button_guardar.Size = new System.Drawing.Size(40, 40);
-            this.button_guardar.TabIndex = 11;
-            this.button_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip1.SetToolTip(this.button_guardar, "Guardar Mail");
-            this.button_guardar.UseVisualStyleBackColor = false;
-            // 
             // textBox_direccion
             // 
-            this.textBox_direccion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.textBox_direccion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_direccion.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox_direccion.Location = new System.Drawing.Point(206, 20);
@@ -140,8 +124,8 @@
             // 
             // richTextBox_texto
             // 
-            this.richTextBox_texto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.richTextBox_texto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox_texto.BackColor = System.Drawing.Color.WhiteSmoke;
             this.richTextBox_texto.Location = new System.Drawing.Point(12, 178);
@@ -152,7 +136,7 @@
             // 
             // textBox_asunto
             // 
-            this.textBox_asunto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.textBox_asunto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_asunto.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox_asunto.Location = new System.Drawing.Point(51, 77);
@@ -189,11 +173,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.SystemColors.GrayText;
             this.groupBox1.Controls.Add(this.textBox_direccion);
-            this.groupBox1.Controls.Add(this.button_guardar);
             this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Controls.Add(this.comboBox_de);
             this.groupBox1.Controls.Add(this.label_de);
@@ -234,7 +217,7 @@
             // 
             // textBox_CC
             // 
-            this.textBox_CC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.textBox_CC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_CC.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox_CC.Location = new System.Drawing.Point(63, 115);
@@ -256,7 +239,7 @@
             // 
             // textBox_CCO
             // 
-            this.textBox_CCO.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.textBox_CCO.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_CCO.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox_CCO.Location = new System.Drawing.Point(63, 141);
@@ -265,7 +248,7 @@
             this.textBox_CCO.TabIndex = 15;
             this.textBox_CCO.Visible = false;
             // 
-            // v_mail
+            // V_mail
             // 
             this.AcceptButton = this.button_enviar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,7 +267,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(500, 340);
-            this.Name = "v_mail";
+            this.Name = "V_mail";
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Correo";
@@ -312,7 +295,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Button button_guardar;
         private System.Windows.Forms.TextBox textBox_direccion;
         private System.Windows.Forms.Label label_CC;
         private System.Windows.Forms.TextBox textBox_CC;
