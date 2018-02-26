@@ -63,5 +63,19 @@ namespace FlyMail
             }
             return _listaMail ;
         }
+
+        public void EliminarMail(int idMail)
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+
+            comando.CommandText = "DELETE FROM \"Email\" WHERE \"idEmail\" = @idEmail";
+            comando.Parameters.AddWithValue("@idEmail", idMail);
+
+            // ExecuteNonQuery = -1 si no se modificaron filas
+            if (comando.ExecuteNonQuery() == -1)
+            {
+                throw new DAOException("No se pudo eliminar la Casilla, intentelo nuevamente");
+            }
+        }
     }
 }

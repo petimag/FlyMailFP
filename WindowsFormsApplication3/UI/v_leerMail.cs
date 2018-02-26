@@ -14,7 +14,11 @@ namespace FlyMail
     {
         private Mail _mail;
 
+        private int idMail;
+
         private bool _estado_cc_cco;
+
+        private Fachada _controlador = Fachada.Instancia;
 
         public V_leerMail(Mail pMail)
         {
@@ -56,7 +60,7 @@ namespace FlyMail
             v_mail.Show();
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             _estado_cc_cco = !_estado_cc_cco;
             CambiarCC_CCO();
@@ -86,6 +90,19 @@ namespace FlyMail
                 this.richTextBox_texto.Location = new System.Drawing.Point(12, 133);
                 int _valorY = this.Height - this.richTextBox_texto.Location.Y - 97;
                 this.richTextBox_texto.Size = new System.Drawing.Size(_valorX, _valorY);
+            }
+        }
+
+        private void Button_eliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Seguro que desea eliminar el mail?", "Confirmación", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                if (_controlador.EliminarMail(idMail))
+                {
+                    MessageBox.Show("Mail eliminado con éxito");
+                    this.Close();
+                }
             }
         }
     }

@@ -199,10 +199,15 @@ namespace FlyMail
             // ExecuteNonQuery = -1 si no se modificaron filas
             if (comando.ExecuteNonQuery() == -1)
             {
-                throw new DAOException("No se pudo eliminar la Casilla, intentelo nuevamente");
+                throw new DAOException("No se pudo eliminar el mail, intentelo nuevamente");
             }
         }
 
+        /// <summary>
+        /// Devuelve el Id de un servicio para una determinada casilla
+        /// </summary>
+        /// <param name="idCasilla">Id de la Casilla</param>
+        /// <returns>Id de servicio</returns>
         public int ObtenerIdServicio(int idCasilla)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();

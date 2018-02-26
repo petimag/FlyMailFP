@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_leerMail));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.textBox_fecha = new System.Windows.Forms.TextBox();
             this.textBox_de = new System.Windows.Forms.TextBox();
             this.label_CCO = new System.Windows.Forms.Label();
             this.textBox_CCO = new System.Windows.Forms.TextBox();
@@ -45,8 +47,6 @@
             this.richTextBox_texto = new System.Windows.Forms.RichTextBox();
             this.button_cancelar = new System.Windows.Forms.Button();
             this.button_responder = new System.Windows.Forms.Button();
-            this.textBox_fecha = new System.Windows.Forms.TextBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,6 +74,26 @@
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(416, 51);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(48, 13);
+            this.linkLabel1.TabIndex = 22;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "CC/CCO";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
+            // 
+            // textBox_fecha
+            // 
+            this.textBox_fecha.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.textBox_fecha.Location = new System.Drawing.Point(481, 17);
+            this.textBox_fecha.Name = "textBox_fecha";
+            this.textBox_fecha.Size = new System.Drawing.Size(129, 20);
+            this.textBox_fecha.TabIndex = 21;
             // 
             // textBox_de
             // 
@@ -179,6 +199,7 @@
             this.button_eliminar.TabIndex = 7;
             this.button_eliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_eliminar.UseVisualStyleBackColor = false;
+            this.button_eliminar.Click += new System.EventHandler(this.Button_eliminar_Click);
             // 
             // textBox_para
             // 
@@ -239,26 +260,6 @@
             this.button_responder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_responder.UseVisualStyleBackColor = false;
             this.button_responder.Click += new System.EventHandler(this.Button_responder_Click);
-            // 
-            // textBox_fecha
-            // 
-            this.textBox_fecha.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox_fecha.Location = new System.Drawing.Point(481, 17);
-            this.textBox_fecha.Name = "textBox_fecha";
-            this.textBox_fecha.Size = new System.Drawing.Size(129, 20);
-            this.textBox_fecha.TabIndex = 21;
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(416, 51);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(48, 13);
-            this.linkLabel1.TabIndex = 22;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "CC/CCO";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // V_leerMail
             // 

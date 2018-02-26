@@ -705,6 +705,33 @@ namespace FlyMail
         {
             pSmtp.EnviarMail(pMail);
         }
+
+        public bool EliminarMail(int pIdCasilla)
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+
+            try
+            {
+                factory.IniciarConexion();
+                IMailDAO mailDAO = factory.mailDAO;
+                mailDAO.EliminarMail(pIdCasilla);
+                return true;
+            }
+            catch (DAOException e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
         #endregion
     }
 }
