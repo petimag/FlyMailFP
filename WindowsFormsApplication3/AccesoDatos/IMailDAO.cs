@@ -11,5 +11,6 @@ namespace FlyMail
         void Guardar(Mail pMail,int idCasilla);
         List<Mail> ListarMail(int idCasilla,string pMailBox);
         void EliminarMail(int idMail);
+        void ModificarEstadoLeido(int idMail);
     }
 }

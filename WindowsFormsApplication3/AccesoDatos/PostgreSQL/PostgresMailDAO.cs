@@ -48,7 +48,7 @@ namespace FlyMail
         public List<Mail> ListarMail(int idCasilla, string pMailBox)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
-            comando.CommandText = "SELECT * FROM \"Email\" WHERE casilla = '" + idCasilla + "' and mailbox = '" + pMailBox + "'";
+            comando.CommandText = "SELECT * FROM \"Email\" WHERE casilla = '" + idCasilla + "' and mailbox = '" + pMailBox + "' ORDER by \"cabFecha\" desc";
 
             List<Mail> _listaMail = new List<Mail>();
             
@@ -76,6 +76,15 @@ namespace FlyMail
             {
                 throw new DAOException("No se pudo eliminar la Casilla, intentelo nuevamente");
             }
+        }
+
+        public void ModificarEstadoLeido(int idMail)
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "UPDATE \"Email\" SET leido  = @leido WHERE \"idEmail\" = '" + idMail + "'";
+
+            comando.Parameters.AddWithValue("@leido", true);
+            comando.ExecuteNonQuery();
         }
     }
 }

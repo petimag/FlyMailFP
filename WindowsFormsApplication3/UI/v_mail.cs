@@ -22,6 +22,8 @@ namespace FlyMail
 
         private bool _responder;
 
+        private bool _reenviar;
+
         /// <summary>
         /// Inicializador de la ventana para enviar un mail
         /// </summary>
@@ -29,6 +31,7 @@ namespace FlyMail
         {
             InitializeComponent();
             _responder = false;
+            _reenviar = false;
         }
 
         /// <summary>
@@ -40,9 +43,17 @@ namespace FlyMail
         {
             InitializeComponent();
             _responder = true;
+            _reenviar = false;
             _mail = new Mail("", pDestinatario,pAsunto, "", "", "", "", "", true);
         }
 
+        public V_mail(Mail pMail)
+        {
+            InitializeComponent();
+            _responder = false;
+            _reenviar = true;
+            _mail = new Mail("","", "Fwd: " + pMail.Asunto, "", "", "", "-*-*-*-*- Mensaje Reenviado -*-*-*-*- \n De: " + pMail.Remitente + "\n Fecha: " + pMail.Fecha + "\n Asunto: "+ pMail.Asunto + "\n Para: " +pMail.Destinatario + "\n \n" + pMail.Mensaje,"", true);
+        }
         /// <summary>
         /// Establece los valores por defecto de la ventana
         /// </summary>
@@ -60,16 +71,23 @@ namespace FlyMail
                 this.textBox_para.Text = _mail.Destinatario;
                 this.textBox_para.ReadOnly = true;
                 this.textBox_asunto.Text = _mail.Asunto;
+                this.richTextBox_texto.Text = "";
+            }
+            else if (_reenviar)
+            {
+                this.textBox_asunto.Text = _mail.Asunto;
+                this.richTextBox_texto.Text = _mail.Mensaje;
             }
             else
             {             
                 this.textBox_para.Text = "";
                 this.textBox_asunto.Text = "";
+                this.richTextBox_texto.Text = "";
             }
             ListarNombresCasillas();
             this.textBox_direccion.ReadOnly = true;
             this.textBox_direccion.Text = "";
-            this.richTextBox_texto.Text = "";
+            
         }
 
         /// <summary>

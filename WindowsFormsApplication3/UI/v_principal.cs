@@ -506,6 +506,7 @@ namespace FlyMail
             _listaMail = _controlador.ListarMail(_idCasilla, pMailBox);
             this.dataGridView1.ColumnHeadersVisible = true;
             DataGridViewCellStyle columnHeaderStyle = new DataGridViewCellStyle();
+            columnHeaderStyle.Font = new Font(dataGridView1.Font, FontStyle.Bold);
 
             foreach (var _mail in _listaMail)
             {
@@ -513,16 +514,27 @@ namespace FlyMail
                 {
                     String[] row = new String[] { Convert.ToString(false), _mail.Remitente, _mail.Asunto, _mail.Fecha };
                     this.dataGridView1.Rows.Add(row);
+                    if (!_mail.Leido)
+                    {
+                        dataGridView1.Rows[dataGridView1.Rows.Count - 1].DefaultCellStyle = columnHeaderStyle;
+                    }
                 }
             }
         }
 
+        /// <summary>
+        /// Método que se activa al seleccionar una o varias filas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridView1.CurrentCell.ColumnIndex != 0)
             {
                 Mail _mail = new Mail(_listaMail[e.RowIndex].IdMail, _listaMail[e.RowIndex].Remitente, _listaMail[e.RowIndex].Destinatario, _listaMail[e.RowIndex].Asunto, _listaMail[e.RowIndex].CC, _listaMail[e.RowIndex].CCO, _listaMail[e.RowIndex].Fecha, _listaMail[e.RowIndex].Mensaje, _listaMail[e.RowIndex].TipoMail, _listaMail[e.RowIndex].Leido);
                 v_LeerMail = new V_leerMail(_mail);
+                if (!_mail.Leido)
+                    _controlador.ModificarEstadoLeido(_mail.IdMail);
                 this.v_LeerMail.Show();
             }
             if (dataGridView1.CurrentCell.ColumnIndex == 0)

@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_leerMail));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button_reenviar = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.textBox_fecha = new System.Windows.Forms.TextBox();
             this.textBox_de = new System.Windows.Forms.TextBox();
@@ -47,12 +49,14 @@
             this.richTextBox_texto = new System.Windows.Forms.RichTextBox();
             this.button_cancelar = new System.Windows.Forms.Button();
             this.button_responder = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.GrayText;
+            this.groupBox1.Controls.Add(this.button_reenviar);
             this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Controls.Add(this.textBox_fecha);
             this.groupBox1.Controls.Add(this.textBox_de);
@@ -74,6 +78,21 @@
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos";
+            // 
+            // button_reenviar
+            // 
+            this.button_reenviar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.button_reenviar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_reenviar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button_reenviar.Image = ((System.Drawing.Image)(resources.GetObject("button_reenviar.Image")));
+            this.button_reenviar.Location = new System.Drawing.Point(524, 53);
+            this.button_reenviar.Name = "button_reenviar";
+            this.button_reenviar.Size = new System.Drawing.Size(40, 40);
+            this.button_reenviar.TabIndex = 23;
+            this.button_reenviar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.button_reenviar, "Reenviar Mail");
+            this.button_reenviar.UseVisualStyleBackColor = false;
+            this.button_reenviar.Click += new System.EventHandler(this.Button_reenviar_Click);
             // 
             // linkLabel1
             // 
@@ -198,6 +217,7 @@
             this.button_eliminar.Size = new System.Drawing.Size(40, 40);
             this.button_eliminar.TabIndex = 7;
             this.button_eliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.button_eliminar, "Eliminar Mail");
             this.button_eliminar.UseVisualStyleBackColor = false;
             this.button_eliminar.Click += new System.EventHandler(this.Button_eliminar_Click);
             // 
@@ -244,6 +264,7 @@
             this.button_cancelar.Text = "    Cancelar";
             this.button_cancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_cancelar.UseVisualStyleBackColor = false;
+            this.button_cancelar.Click += new System.EventHandler(this.Button_cancelar_Click);
             // 
             // button_responder
             // 
@@ -304,5 +325,7 @@
         private System.Windows.Forms.TextBox textBox_de;
         private System.Windows.Forms.TextBox textBox_fecha;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Button button_reenviar;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -18,6 +18,10 @@ namespace FlyMail
 
         private Fachada _controlador = Fachada.Instancia;
 
+        /// <summary>
+        /// Inicializador de la ventana LeerMail
+        /// </summary>
+        /// <param name="pMail">Mail a leer</param>
         public V_leerMail(Mail pMail)
         {
             InitializeComponent();
@@ -59,21 +63,33 @@ namespace FlyMail
             }
         }
 
+        /// <summary>
+        /// Metódo para responder el mail
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_responder_Click(object sender, EventArgs e)
         {
             V_mail v_mail = new V_mail(_mail.Remitente, "Re: " + this.textBox_asunto.Text);
-            Console.WriteLine("Re: "+ this.textBox_asunto.Text);
             this.Hide();
             v_mail.ShowDialog(this);
             this.Show();
         }
 
+        /// <summary>
+        /// Activa o desactiva los campos CC/CCO
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             _estado_cc_cco = !_estado_cc_cco;
             CambiarCC_CCO();
         }
 
+        /// <summary>
+        /// Muestra u oculta los campos CC/CCO
+        /// </summary>
         private void CambiarCC_CCO()
         {
             int _valorX = this.richTextBox_texto.Size.Width;
@@ -101,6 +117,11 @@ namespace FlyMail
             }
         }
 
+        /// <summary>
+        /// Método para eliminar un determinado mail
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_eliminar_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("¿Seguro que desea eliminar el mail?", "Confirmación", MessageBoxButtons.YesNo);
@@ -113,6 +134,29 @@ namespace FlyMail
                     this.Close();
                 }
             }
+        }
+
+        /// <summary>
+        /// Método para reenviar un mail
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_reenviar_Click(object sender, EventArgs e)
+        {
+            V_mail v_mail = new V_mail(_mail);
+            this.Hide();
+            v_mail.ShowDialog(this);
+            this.Show();
+        }
+
+        /// <summary>
+        /// Cancela la operaciones en la ventana y la cierra
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_cancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
