@@ -35,10 +35,6 @@
             this.button_enviados = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Remitente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Asunto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_papelera = new System.Windows.Forms.Button();
             this.button_enviar = new System.Windows.Forms.Button();
             this.button_eliminar = new System.Windows.Forms.Button();
@@ -60,6 +56,10 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Remitente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Asunto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.picture_main)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -137,41 +137,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(781, 390);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
-            // 
-            // Check
-            // 
-            this.Check.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Check.FillWeight = 1F;
-            this.Check.HeaderText = "";
-            this.Check.MinimumWidth = 50;
-            this.Check.Name = "Check";
-            this.Check.ReadOnly = true;
-            this.Check.Width = 50;
-            // 
-            // Remitente
-            // 
-            this.Remitente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Remitente.HeaderText = "Remitente";
-            this.Remitente.MinimumWidth = 150;
-            this.Remitente.Name = "Remitente";
-            this.Remitente.ReadOnly = true;
-            this.Remitente.Width = 150;
-            // 
-            // Asunto
-            // 
-            this.Asunto.HeaderText = "Asunto";
-            this.Asunto.MinimumWidth = 150;
-            this.Asunto.Name = "Asunto";
-            this.Asunto.ReadOnly = true;
-            this.Asunto.Width = 300;
-            // 
-            // Fecha
-            // 
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.MinimumWidth = 100;
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            this.Fecha.Width = 200;
             // 
             // button_papelera
             // 
@@ -419,6 +384,40 @@
             this.label1.Size = new System.Drawing.Size(121, 16);
             this.label1.TabIndex = 12;
             this.label1.Text = "Mostrar correos de:";
+            // 
+            // Check
+            // 
+            this.Check.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Check.FillWeight = 1F;
+            this.Check.HeaderText = "";
+            this.Check.MinimumWidth = 50;
+            this.Check.Name = "Check";
+            this.Check.Width = 50;
+            // 
+            // Remitente
+            // 
+            this.Remitente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Remitente.HeaderText = "Remitente";
+            this.Remitente.MinimumWidth = 150;
+            this.Remitente.Name = "Remitente";
+            this.Remitente.ReadOnly = true;
+            this.Remitente.Width = 150;
+            // 
+            // Asunto
+            // 
+            this.Asunto.HeaderText = "Asunto";
+            this.Asunto.MinimumWidth = 150;
+            this.Asunto.Name = "Asunto";
+            this.Asunto.ReadOnly = true;
+            this.Asunto.Width = 300;
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.MinimumWidth = 100;
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            this.Fecha.Width = 200;
             // 
             // V_principal
             // 

@@ -29,13 +29,15 @@ namespace FlyMail
         {
             List<string> _listaNombres = new List<string>();
             _listaNombres = _controlador.ObtenerNombreCasillas();
+            this.comboBox1_nombre.Items.Clear();
+            this.comboBox1_nombre.Text = string.Empty;
+            this.comboBox1_nombre.DropDownStyle = ComboBoxStyle.DropDownList;
             if (_listaNombres.Count == 0)
             {
                 MessageBox.Show("No tiene Casilla de Correo agregadas");
             }
             else
             {
-                this.comboBox1_nombre.Items.Clear();
                 for (int i = 0; i < _listaNombres.Count; i++)
                     this.comboBox1_nombre.Items.Add(_listaNombres[i]);
             }
@@ -49,7 +51,7 @@ namespace FlyMail
         /// <param name="e"></param>
         private void Button_guardar_Click(object sender, EventArgs e)
         {
-            if (this.comboBox1_nombre.Text != String.Empty)
+            if (this.comboBox1_nombre.Text != string.Empty)
             {
                 DialogResult result = MessageBox.Show("¿Seguro que desea eliminar?", "Confirmación", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)

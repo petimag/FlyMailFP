@@ -45,6 +45,7 @@ namespace FlyMail
                 this.textBox_direccion.Enabled = false;
                 this.textBox_contraseña.Enabled = false;
                 this.comboBox_servicio.Visible = true;
+                this.comboBox_servicio.DropDownStyle = ComboBoxStyle.DropDownList;
                 this.textBox_direccion.Visible = true;
             }
             if (this.Text == "Modificar Casilla")
@@ -52,6 +53,7 @@ namespace FlyMail
                 this.label3.Visible = true;
                 this.label2.Visible = true;
                 this.comboBox1_nombre.Visible = true;
+                this.comboBox1_nombre.DropDownStyle = ComboBoxStyle.DropDownList;
                 List<string> _listaNombres = new List<string>();
                 _listaNombres = _controlador.ObtenerNombreCasillas();
                 for (int i = 0; i < _listaNombres.Count; i++)
@@ -59,7 +61,7 @@ namespace FlyMail
                 this.textBox_nombre.Visible = false;
                 this.comboBox_servicio.Enabled = false;
                 this.comboBox_servicio.Visible = true;
-                this.comboBox_servicio.Text = "";
+                this.comboBox_servicio.Text = string.Empty;
                 this.button_verificar.Text = "Buscar";
                 this.textBox_direccion.Visible = true;
                 this.textBox_direccion.Enabled = false;

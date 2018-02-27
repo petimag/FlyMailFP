@@ -84,7 +84,7 @@
             this.textBox_nombre.Size = new System.Drawing.Size(244, 20);
             this.textBox_nombre.TabIndex = 5;
             // 
-            // v_eliminarCasilla
+            // V_eliminarCasilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -94,7 +94,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(300, 142);
             this.MinimumSize = new System.Drawing.Size(300, 142);
-            this.Name = "v_eliminarCasilla";
+            this.Name = "V_eliminarCasilla";
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "v_eliminarCasilla";

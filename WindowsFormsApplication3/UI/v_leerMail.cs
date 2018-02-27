@@ -26,7 +26,7 @@ namespace FlyMail
             CambiarCC_CCO();
             this.textBox_de.Text = _mail.Remitente;
             this.textBox_de.ReadOnly = true;
-            this.textBox_fecha.Text = Convert.ToString(Convert.ToDateTime(_mail.Fecha).Date);
+            this.textBox_fecha.Text = Convert.ToString(Convert.ToDateTime(_mail.Fecha));
             this.textBox_fecha.ReadOnly = true;
             string _destinatario = "";
             for (int i = 0; i < _mail.Destinatario.Count() - 1; i++)
@@ -37,7 +37,7 @@ namespace FlyMail
             this.textBox_para.ReadOnly = true;
             this.textBox_asunto.Text = _mail.Asunto;
             this.textBox_asunto.ReadOnly = true;
-            this.richTextBox_texto.Text = _mail.Asunto;
+            this.richTextBox_texto.Text = _mail.Mensaje;
             this.richTextBox_texto.ReadOnly = true;
             if ((_mail.CC == string.Empty)&&(_mail.CCO == string.Empty))
             {
@@ -61,9 +61,11 @@ namespace FlyMail
 
         private void Button_responder_Click(object sender, EventArgs e)
         {
-            V_mail v_mail = new V_mail(_mail.Remitente,this.textBox_para.Text, "Re: " + this.textBox_asunto.Text);
+            V_mail v_mail = new V_mail(_mail.Remitente, "Re: " + this.textBox_asunto.Text);
             Console.WriteLine("Re: "+ this.textBox_asunto.Text);
-            v_mail.Show();
+            this.Hide();
+            v_mail.ShowDialog(this);
+            this.Show();
         }
 
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

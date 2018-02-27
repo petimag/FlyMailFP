@@ -36,11 +36,11 @@ namespace FlyMail
         /// </summary>
         /// <param name="pDestinatario"></param>
         /// <param name="pRemitente"></param>
-        public V_mail(string pDestinatario, string pRemitente, string pAsunto)
+        public V_mail(string pDestinatario, string pAsunto)
         {
             InitializeComponent();
             _responder = true;
-            _mail = new Mail(pRemitente, pDestinatario,pAsunto, "", "", "", "", "", true);
+            _mail = new Mail("", pDestinatario,pAsunto, "", "", "", "", "", true);
         }
 
         /// <summary>
@@ -57,24 +57,24 @@ namespace FlyMail
 
             if (_responder)
             {
-                this.comboBox_de.Enabled = false;
-                this.textBox_direccion.Text = _mail.Remitente;
-                this.textBox_direccion.ReadOnly = true;
                 this.textBox_para.Text = _mail.Destinatario;
                 this.textBox_para.ReadOnly = true;
                 this.textBox_asunto.Text = _mail.Asunto;
             }
             else
-            {
-                ListarNombresCasillas();
-                this.textBox_direccion.ReadOnly = false;
-                this.textBox_direccion.Text = "";
+            {             
                 this.textBox_para.Text = "";
                 this.textBox_asunto.Text = "";
             }
+            ListarNombresCasillas();
+            this.textBox_direccion.ReadOnly = true;
+            this.textBox_direccion.Text = "";
             this.richTextBox_texto.Text = "";
         }
 
+        /// <summary>
+        /// Lista los nombre de la casilla
+        /// </summary>
         private void ListarNombresCasillas()
         {
             this.comboBox_de.Items.Clear();
@@ -102,6 +102,7 @@ namespace FlyMail
                 DialogResult result = MessageBox.Show("¿Seguro que desea enviar el mail?", "Confirmación", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
+                    idCasilla = _controlador.ObtenerIdCasilla(this.comboBox_de.Text);
                     Mail _mail = CrearMail(MailBox.Enviados);
                     _controlador.GuardarMail(_mail, idCasilla);
                     string _contraseña = _controlador.ObtenerContraseñaCasilla(this.comboBox_de.Text);

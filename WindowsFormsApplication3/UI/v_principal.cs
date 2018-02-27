@@ -53,6 +53,7 @@ namespace FlyMail
             this.comboBox1.Items.Clear();
             this.comboBox1.Text = "Seleccionar";
             this.comboBox1.Items.Add("Todos");
+            this.comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             List<string> _listaDirecciones = new List<string>();
             _listaDirecciones = _controlador.ObtenerNombreCasillas();
             for (int i = 0; i < _listaDirecciones.Count; i++)
@@ -387,7 +388,9 @@ namespace FlyMail
             }
 
             //Fecha del Mail
-             string _fecha = pMensaje.Headers.Date.ToString();
+            string _fecha = string.Empty;
+            if (pMensaje.Headers.Date != null)
+                _fecha = pMensaje.Headers.Date.ToString();
 
             string _cc = string.Empty;
             //Si hay 1 o mas CC
@@ -516,9 +519,20 @@ namespace FlyMail
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Mail _mail = new Mail(_listaMail[e.RowIndex].IdMail, _listaMail[e.RowIndex].Remitente, _listaMail[e.RowIndex].Destinatario, _listaMail[e.RowIndex].Asunto, _listaMail[e.RowIndex].CC, _listaMail[e.RowIndex].CCO, _listaMail[e.RowIndex].Fecha, _listaMail[e.RowIndex].Mensaje, _listaMail[e.RowIndex].TipoMail, _listaMail[e.RowIndex].Leido);
-            v_LeerMail = new V_leerMail(_mail);
-            this.v_LeerMail.Show();            
+            if (dataGridView1.CurrentCell.ColumnIndex != 0)
+            {
+                Mail _mail = new Mail(_listaMail[e.RowIndex].IdMail, _listaMail[e.RowIndex].Remitente, _listaMail[e.RowIndex].Destinatario, _listaMail[e.RowIndex].Asunto, _listaMail[e.RowIndex].CC, _listaMail[e.RowIndex].CCO, _listaMail[e.RowIndex].Fecha, _listaMail[e.RowIndex].Mensaje, _listaMail[e.RowIndex].TipoMail, _listaMail[e.RowIndex].Leido);
+                v_LeerMail = new V_leerMail(_mail);
+                this.v_LeerMail.Show();
+            }
+            if (dataGridView1.CurrentCell.ColumnIndex == 0)
+            {
+                if (Convert.ToBoolean(((DataGridViewCheckBoxCell)dataGridView1.CurrentCell).Value) == true)
+                {
+                    this.button_eliminar.Enabled = true;
+                }
+                
+            }
         }
     }
 }
