@@ -733,7 +733,7 @@ namespace FlyMail
             }
         }
 
-        public bool ModificarMailBoxMail(int IdMail, string pMailBox)
+        public bool ModificarMailBox(int IdMail, string pMailBox)
         {
             DAOFactory factory = DAOFactory.Instancia();
 

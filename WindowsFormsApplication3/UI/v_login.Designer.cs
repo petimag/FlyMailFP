@@ -187,7 +187,7 @@
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
-            // v_login
+            // V_login
             // 
             this.AcceptButton = this.button_iniciar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -200,8 +200,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(331, 311);
             this.MinimumSize = new System.Drawing.Size(331, 311);
-            this.Name = "v_login";
-            this.Opacity = 0.9D;
+            this.Name = "V_login";
+            this.Opacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FlyMail";
             this.groupBox1.ResumeLayout(false);

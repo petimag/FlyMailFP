@@ -129,7 +129,7 @@ namespace FlyMail
             {
                 if ((_mail.TipoMail == Convert.ToString(MailBox.Enviados)) || (_mail.TipoMail == Convert.ToString(MailBox.Recibidos)))
                 {
-                    if (_controlador.ModificarMailBoxMail(_mail.IdMail, Convert.ToString(MailBox.Papelera)))
+                    if (_controlador.ModificarMailBox(_mail.IdMail, Convert.ToString(MailBox.Papelera)))
                     {
                         MessageBox.Show("Mail enviado a la papelera");
                         this.Close();

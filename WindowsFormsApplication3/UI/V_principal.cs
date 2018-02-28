@@ -53,6 +53,7 @@ namespace FlyMail
             button_papelera.BackColor = Color.PowderBlue;
             _tipoMailBox = ConvertirMailBox(MailBox.Recibidos);
             ListarNombreCasillas();
+            this.button_eliminar.Enabled = false;
         }
 
         /// <summary>
@@ -83,6 +84,8 @@ namespace FlyMail
             button_papelera.BackColor = Color.PowderBlue;
             _tipoMailBox = ConvertirMailBox(MailBox.Recibidos);
 
+            this.button_eliminar.Enabled = false;
+
             //listar en el dataGridView1 los mail recibidos
             RefrescarDataGrid(ConvertirMailBox(MailBox.Recibidos));
         }
@@ -99,6 +102,8 @@ namespace FlyMail
             button_papelera.BackColor = Color.PowderBlue;
             _tipoMailBox = ConvertirMailBox(MailBox.Enviados);
 
+            this.button_eliminar.Enabled = false;
+
             //listar en el dataGridView1 los mail enviados
             RefrescarDataGrid(ConvertirMailBox(MailBox.Enviados));
         }
@@ -114,6 +119,8 @@ namespace FlyMail
             button_enviados.BackColor = Color.PowderBlue;
             button_papelera.BackColor = Color.LightSkyBlue;
             _tipoMailBox = ConvertirMailBox(MailBox.Papelera);
+
+            this.button_eliminar.Enabled = true;
 
             //listar en el dataGridView1 los mail de la papelera
             RefrescarDataGrid(ConvertirMailBox(MailBox.Papelera));
@@ -149,22 +156,32 @@ namespace FlyMail
         /// <param name="e"></param>
         private void Button_eliminar_Click(object sender, EventArgs e)
         {
-            List<int> _lista = new List<int>();
+            bool vaciar = true;
             // Detecta los checkeados
             int count = dataGridView1.RowCount;
             for (int i = 0; i < count; i++)
             {
                 if (Convert.ToBoolean(this.dataGridView1.Rows[i].Cells[0].EditedFormattedValue) == true)
                 {
-                    //_lista.Add(this._listaMail[i].IdMail);
-                    // Eliminar esos IDs
+                    vaciar = false;
+                    if (_tipoMailBox == ConvertirMailBox(MailBox.Papelera))
+                    {
+                            _controlador.EliminarMail(this._listaMail[i].IdMail);
+                    }
+                    else
+                    {
+                        _controlador.ModificarMailBox(this._listaMail[i].IdMail, ConvertirMailBox(MailBox.Papelera));
+                    }
                 }
             }
-
-
-            //    string pISBN = ((Libro)dataGridView1.CurrentRow.DataBoundItem).ISBN;
-            //    this.iBiblioteca.BajaLibro(pISBN);
-            //    this.refrescarDataGrid();
+            if (_tipoMailBox == ConvertirMailBox(MailBox.Papelera) && vaciar)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    _controlador.EliminarMail(this._listaMail[i].IdMail);
+                }
+            }
+            this.RefrescarDataGrid(_tipoMailBox);
         }
 
         /// <summary>
@@ -564,19 +581,22 @@ namespace FlyMail
                 }
                 else
                 {
-                    bool desactivar = true; //Hay que desactivar el boton
-                    int count = dataGridView1.RowCount;
-                    for (int i = 0; i < count; i++)
+                    if (_tipoMailBox != ConvertirMailBox(MailBox.Papelera))
                     {
-                        if (Convert.ToBoolean(this.dataGridView1.Rows[i].Cells[0].EditedFormattedValue) == true)
+                        bool desactivar = true; //Hay que desactivar el boton
+                        int count = dataGridView1.RowCount;
+                        for (int i = 0; i < count; i++)
                         {
-                            desactivar = desactivar && false;
+                            if (Convert.ToBoolean(this.dataGridView1.Rows[i].Cells[0].EditedFormattedValue) == true)
+                            {
+                                desactivar = desactivar && false;
+                            }
                         }
-                    }
-                    
-                    if (desactivar)
-                    {
-                        this.button_eliminar.Enabled = false;
+
+                        if (desactivar)
+                        {
+                            this.button_eliminar.Enabled = false;
+                        }
                     }
                         
                 }
