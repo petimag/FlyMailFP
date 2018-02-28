@@ -155,17 +155,6 @@ namespace FlyMail
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Button_responder_Click(object sender, EventArgs e)
-        {
-            this.v_mail.Text = "Enviar Mail";
-            this.v_mail.ShowDialog(this);
-        }
-
-        /// <summary>
         /// Actualizar la lista de los mail
         /// </summary>
         private void RefrescarDataGrid(string pMailBox)

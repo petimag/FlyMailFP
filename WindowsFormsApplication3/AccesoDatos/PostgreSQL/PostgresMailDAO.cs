@@ -86,5 +86,14 @@ namespace FlyMail
             comando.Parameters.AddWithValue("@leido", true);
             comando.ExecuteNonQuery();
         }
+
+        public void ModificarMailBox(int idMail, string pMailBox)
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "UPDATE \"Email\" SET mailbox  = @mailbox WHERE \"idEmail\" = '" + idMail + "'";
+
+            comando.Parameters.AddWithValue("@mailbox", pMailBox);
+            comando.ExecuteNonQuery();
+        }
     }
 }

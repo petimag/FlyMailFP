@@ -127,12 +127,32 @@ namespace FlyMail
             DialogResult result = MessageBox.Show("¿Seguro que desea eliminar el mail?", "Confirmación", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                Console.WriteLine(_mail.IdMail);
-                if (_controlador.EliminarMail(_mail.IdMail))
+                if ((_mail.TipoMail == Convert.ToString(MailBox.Enviados)) || (_mail.TipoMail == Convert.ToString(MailBox.Recibidos)))
                 {
-                    MessageBox.Show("Mail eliminado con éxito");
-                    this.Close();
+                    if (_controlador.ModificarMailBoxMail(_mail.IdMail, Convert.ToString(MailBox.Papelera)))
+                    {
+                        MessageBox.Show("Mail enviado a la papelera");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Mail no encontrado");
+                    }
                 }
+
+                if (_mail.TipoMail == Convert.ToString(MailBox.Papelera))
+                {
+                    if (_controlador.EliminarMail(_mail.IdMail))
+                    {
+                        MessageBox.Show("Mail eliminado con éxito");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Mail no encontrado");
+                    }
+                }
+                
             }
         }
 

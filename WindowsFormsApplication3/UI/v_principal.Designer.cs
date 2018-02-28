@@ -35,11 +35,14 @@
             this.button_enviados = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Remitente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Asunto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_papelera = new System.Windows.Forms.Button();
             this.button_enviar = new System.Windows.Forms.Button();
             this.button_eliminar = new System.Windows.Forms.Button();
             this.button_actualizar = new System.Windows.Forms.Button();
-            this.button_responder = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menúToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,10 +59,6 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Remitente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Asunto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.picture_main)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -138,6 +137,40 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
             // 
+            // Check
+            // 
+            this.Check.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Check.FillWeight = 1F;
+            this.Check.HeaderText = "";
+            this.Check.MinimumWidth = 50;
+            this.Check.Name = "Check";
+            this.Check.Width = 50;
+            // 
+            // Remitente
+            // 
+            this.Remitente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Remitente.HeaderText = "Remitente";
+            this.Remitente.MinimumWidth = 150;
+            this.Remitente.Name = "Remitente";
+            this.Remitente.ReadOnly = true;
+            this.Remitente.Width = 150;
+            // 
+            // Asunto
+            // 
+            this.Asunto.HeaderText = "Asunto";
+            this.Asunto.MinimumWidth = 150;
+            this.Asunto.Name = "Asunto";
+            this.Asunto.ReadOnly = true;
+            this.Asunto.Width = 300;
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.MinimumWidth = 100;
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            this.Fecha.Width = 200;
+            // 
             // button_papelera
             // 
             this.button_papelera.BackColor = System.Drawing.SystemColors.ControlDark;
@@ -202,23 +235,6 @@
             this.toolTip1.SetToolTip(this.button_actualizar, "Actualizar Página");
             this.button_actualizar.UseVisualStyleBackColor = false;
             this.button_actualizar.Click += new System.EventHandler(this.Button_actualizar_Click);
-            // 
-            // button_responder
-            // 
-            this.button_responder.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.button_responder.Enabled = false;
-            this.button_responder.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_responder.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_responder.Image = ((System.Drawing.Image)(resources.GetObject("button_responder.Image")));
-            this.button_responder.Location = new System.Drawing.Point(351, 32);
-            this.button_responder.Name = "button_responder";
-            this.button_responder.Size = new System.Drawing.Size(67, 51);
-            this.button_responder.TabIndex = 9;
-            this.button_responder.Text = "Responder";
-            this.button_responder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolTip1.SetToolTip(this.button_responder, "Responder Mail");
-            this.button_responder.UseVisualStyleBackColor = false;
-            this.button_responder.Click += new System.EventHandler(this.Button_responder_Click);
             // 
             // menuStrip1
             // 
@@ -385,40 +401,6 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Mostrar correos de:";
             // 
-            // Check
-            // 
-            this.Check.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Check.FillWeight = 1F;
-            this.Check.HeaderText = "";
-            this.Check.MinimumWidth = 50;
-            this.Check.Name = "Check";
-            this.Check.Width = 50;
-            // 
-            // Remitente
-            // 
-            this.Remitente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Remitente.HeaderText = "Remitente";
-            this.Remitente.MinimumWidth = 150;
-            this.Remitente.Name = "Remitente";
-            this.Remitente.ReadOnly = true;
-            this.Remitente.Width = 150;
-            // 
-            // Asunto
-            // 
-            this.Asunto.HeaderText = "Asunto";
-            this.Asunto.MinimumWidth = 150;
-            this.Asunto.Name = "Asunto";
-            this.Asunto.ReadOnly = true;
-            this.Asunto.Width = 300;
-            // 
-            // Fecha
-            // 
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.MinimumWidth = 100;
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            this.Fecha.Width = 200;
-            // 
             // V_principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -427,7 +409,6 @@
             this.ClientSize = new System.Drawing.Size(926, 491);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button_responder);
             this.Controls.Add(this.button_actualizar);
             this.Controls.Add(this.button_eliminar);
             this.Controls.Add(this.button_enviar);
@@ -466,7 +447,6 @@
         private System.Windows.Forms.Button button_enviar;
         private System.Windows.Forms.Button button_eliminar;
         private System.Windows.Forms.Button button_actualizar;
-        private System.Windows.Forms.Button button_responder;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menúToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
