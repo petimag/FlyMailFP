@@ -156,7 +156,7 @@ namespace FlyMail
             {
                 if (Convert.ToBoolean(this.dataGridView1.Rows[i].Cells[0].EditedFormattedValue) == true)
                 {
-                    _lista.Add(this._listaMail[i].IdMail);
+                    //_lista.Add(this._listaMail[i].IdMail);
                     // Eliminar esos IDs
                 }
             }
