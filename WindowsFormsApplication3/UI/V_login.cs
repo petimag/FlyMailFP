@@ -123,7 +123,6 @@ namespace FlyMail
             //Verifica que se ingrese nombre de usuario
             if (this.textBox_iniciar_nombre.Text == "") 
             {
-                //commit
                 MessageBox.Show("Falta ingresar Nombre");
             }
             else
