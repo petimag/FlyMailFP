@@ -149,6 +149,19 @@ namespace FlyMail
         /// <param name="e"></param>
         private void Button_eliminar_Click(object sender, EventArgs e)
         {
+            List<int> _lista = new List<int>();
+            // Detecta los checkeados
+            int count = dataGridView1.RowCount;
+            for (int i = 0; i < count; i++)
+            {
+                if (Convert.ToBoolean(this.dataGridView1.Rows[i].Cells[0].EditedFormattedValue) == true)
+                {
+                    _lista.Add(this._listaMail[i].IdMail);
+                    // Eliminar esos IDs
+                }
+            }
+
+
             //    string pISBN = ((Libro)dataGridView1.CurrentRow.DataBoundItem).ISBN;
             //    this.iBiblioteca.BajaLibro(pISBN);
             //    this.refrescarDataGrid();
@@ -485,9 +498,7 @@ namespace FlyMail
             int _idCasilla = _controlador.ObtenerIdCasilla(pNombreUsuario);
             _listaMail = _controlador.ListarMail(_idCasilla, pMailBox);
             this.dataGridView1.ColumnHeadersVisible = true;
-            DataGridViewCellStyle columnStyle = new DataGridViewCellStyle();
-            columnStyle.Font = new Font(dataGridView1.Font, FontStyle.Bold);
-
+            
             foreach (var _mail in _listaMail)
             {
                 if (_mail != null)
@@ -496,6 +507,8 @@ namespace FlyMail
                     this.dataGridView1.Rows.Add(row);
                     if (!_mail.Leido)
                     {
+                        DataGridViewCellStyle columnStyle = new DataGridViewCellStyle();
+                        columnStyle.Font = new Font(dataGridView1.Font, FontStyle.Bold);
                         dataGridView1.Rows[dataGridView1.Rows.Count - 1].DefaultCellStyle = columnStyle;
                     }
                 }
@@ -534,13 +547,39 @@ namespace FlyMail
                 this.Show();
                 this.RefrescarDataGrid(_tipoMailBox);
             }
-            if (dataGridView1.CurrentCell.ColumnIndex == 0)
+        }
+
+        /// <summary>
+        /// Para desactivar boton eliminar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
             {
-                if (Convert.ToBoolean(((DataGridViewCheckBoxCell)dataGridView1.CurrentCell).Value) == true)
+                if (Convert.ToBoolean(this.dataGridView1.Rows[e.RowIndex].Cells[0].EditedFormattedValue) == true)
                 {
                     this.button_eliminar.Enabled = true;
                 }
-                
+                else
+                {
+                    bool desactivar = true; //Hay que desactivar el boton
+                    int count = dataGridView1.RowCount;
+                    for (int i = 0; i < count; i++)
+                    {
+                        if (Convert.ToBoolean(this.dataGridView1.Rows[i].Cells[0].EditedFormattedValue) == true)
+                        {
+                            desactivar = desactivar && false;
+                        }
+                    }
+                    
+                    if (desactivar)
+                    {
+                        this.button_eliminar.Enabled = false;
+                    }
+                        
+                }
             }
         }
     }
