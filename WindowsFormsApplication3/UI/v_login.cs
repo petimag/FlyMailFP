@@ -121,14 +121,14 @@ namespace FlyMail
         private void Button_iniciar_Click(object sender, EventArgs e)
         {
             //Verifica que se ingrese nombre de usuario
-            if (this.textBox_iniciar_contraseña.Text == "") 
+            if (this.textBox_iniciar_nombre.Text == "") 
             {
                 MessageBox.Show("Falta ingresar Nombre");
             }
             else
             {
                 //Verifica que se ingrese contraseña
-                if (this.textBox_iniciar_nombre.Text == "")
+                if (this.textBox_iniciar_contraseña.Text == "")
                 {
                     MessageBox.Show("Falta ingresar Contraseña");
                 }
