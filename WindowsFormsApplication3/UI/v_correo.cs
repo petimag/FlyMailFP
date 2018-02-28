@@ -30,8 +30,9 @@ namespace FlyMail
             this.comboBox1_nombre.Text = "";
             this.textBox_contraseña.Text = "";
             this.textBox_direccion.Text = "";
-            this.comboBox_servicio.Text = "Seleccionar";
+            this.comboBox_servicio.DropDownStyle = ComboBoxStyle.DropDownList;
             this.comboBox_servicio.Items.Clear();
+            this.comboBox1_nombre.DropDownStyle = ComboBoxStyle.DropDownList;
             this.comboBox1_nombre.Items.Clear();
             this.label1.Text = "@ejemplo.com";
             if (this.Text == "Agregar Casilla")
@@ -86,6 +87,7 @@ namespace FlyMail
                         this.comboBox_servicio.Enabled = true;
                         List<string> _listaServicio = new List<string>();
                         _listaServicio = _controlador.ObtenerProveedorServicio();
+                        this.comboBox_servicio.Items.Clear();
                         for (int i = 0; i < _listaServicio.Count; i++)
                             this.comboBox_servicio.Items.Add(_listaServicio[i]);
                         this.textBox_direccion.Enabled = true;

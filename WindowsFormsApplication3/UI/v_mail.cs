@@ -64,6 +64,7 @@ namespace FlyMail
             this.Width = 666;
             this.Height = 567;
             this._estado_cc_cco = false;
+            this.comboBox_de.DropDownStyle = ComboBoxStyle.DropDownList;
             CambiarCC_CCO();
 
             if (_responder)
@@ -147,14 +148,8 @@ namespace FlyMail
             }
             else
             {
-                DialogResult result = MessageBox.Show("¿Desea guardar el mail en la papelera?", "Confirmación", MessageBoxButtons.YesNoCancel);
+                DialogResult result = MessageBox.Show("¿Desea descartar el mail?", "Confirmación", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
-                {
-                    Mail _mail = CrearMail(MailBox.Papelera);
-                    _controlador.GuardarMail(_mail, idCasilla);
-                    this.Close();
-                }
-                else if (result == DialogResult.No)
                 {
                     this.Close();
                 }
@@ -223,11 +218,11 @@ namespace FlyMail
             Mail _mail;
             if (_estado_cc_cco)
             {
-                _mail = new Mail(this.textBox_direccion.Text, textBox_para.Text, textBox_asunto.Text, this.textBox_CC.Text, this.textBox_CCO.Text, Convert.ToString(DateTime.Today), this.richTextBox_texto.Text, Convert.ToString(_mailBox), true);
+                _mail = new Mail(this.textBox_direccion.Text, textBox_para.Text, textBox_asunto.Text, this.textBox_CC.Text, this.textBox_CCO.Text, Convert.ToString(DateTime.Now), this.richTextBox_texto.Text, Convert.ToString(_mailBox), true);
             }
             else
             {
-                _mail = new Mail(this.textBox_direccion.Text, textBox_para.Text, textBox_asunto.Text, "", "", Convert.ToString(DateTime.Today), this.richTextBox_texto.Text, Convert.ToString(_mailBox), true);
+                _mail = new Mail(this.textBox_direccion.Text, textBox_para.Text, textBox_asunto.Text, "", "", Convert.ToString(DateTime.Now), this.richTextBox_texto.Text, Convert.ToString(_mailBox), true);
             }
             return _mail;
         }

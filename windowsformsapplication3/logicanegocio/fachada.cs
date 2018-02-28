@@ -732,6 +732,31 @@ namespace FlyMail
                 factory.FinalizarConexion();
             }
         }
+
+        public void ModificarEstadoLeido(int idMail)
+        {
+            DAOFactory factory = DAOFactory.Instancia();
+
+            try
+            {
+                factory.IniciarConexion();
+                IMailDAO _mailDAO = factory.mailDAO;
+                _mailDAO.ModificarEstadoLeido(idMail);
+            }
+            catch (DAOException)
+            {
+                factory.RollBack();
+            }
+            catch (Exception e)
+            {
+                factory.RollBack();
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                factory.FinalizarConexion();
+            }
+        }
         #endregion
     }
 }

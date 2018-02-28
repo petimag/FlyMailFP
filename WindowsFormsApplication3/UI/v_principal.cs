@@ -23,21 +23,23 @@ namespace FlyMail
 
         private bool _cerrarSesion = false;
 
-        private V_mail i_mail = new V_mail();
+        private V_mail v_mail = new V_mail();
 
         private V_leerMail v_LeerMail;
 
-        private V_correo i_correo = new V_correo();
+        private V_correo v_correo = new V_correo();
 
-        private V_login i_login = new V_login();
+        private V_login v_login = new V_login();
 
-        private V_cuenta i_cuenta = new V_cuenta();
+        private V_cuenta v_cuenta = new V_cuenta();
 
-        private V_eliminarCasilla i_eliminarCasilla = new V_eliminarCasilla();
+        private V_eliminarCasilla v_eliminarCasilla = new V_eliminarCasilla();
 
-        private string i_passwordCasilla = string.Empty;
-        private bool i_guardarPasswordCasilla = false;
+        private string _passwordCasilla = string.Empty;
+        private bool _guardarPasswordCasilla = false;
         private List<Mail> _listaMail;
+
+        string _tipoMailBox = string.Empty;
 
         /// <summary>
         /// Establece los valores por defecto a la ventana
@@ -49,15 +51,8 @@ namespace FlyMail
             button_recibidos.BackColor = Color.LightSkyBlue;
             button_enviados.BackColor = Color.PowderBlue;
             button_papelera.BackColor = Color.PowderBlue;
-
-            this.comboBox1.Items.Clear();
-            this.comboBox1.Text = "Seleccionar";
-            this.comboBox1.Items.Add("Todos");
-            this.comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            List<string> _listaDirecciones = new List<string>();
-            _listaDirecciones = _controlador.ObtenerNombreCasillas();
-            for (int i = 0; i < _listaDirecciones.Count; i++)
-                this.comboBox1.Items.Add(_listaDirecciones[i]);
+            _tipoMailBox = ConvertirMailBox(MailBox.Recibidos);
+            ListarNombreCasillas();
         }
 
         /// <summary>
@@ -65,7 +60,7 @@ namespace FlyMail
         /// </summary>
         public string PasswordCasilla
         {
-            set { this.i_passwordCasilla = value; }
+            set { this._passwordCasilla = value; }
         }
 
         /// <summary>
@@ -73,7 +68,7 @@ namespace FlyMail
         /// </summary>
         public bool GuardarPasswordCasilla
         {
-            set { this.i_guardarPasswordCasilla = value; }
+            set { this._guardarPasswordCasilla = value; }
         }
 
         /// <summary>
@@ -86,6 +81,7 @@ namespace FlyMail
             button_recibidos.BackColor = Color.LightSkyBlue;
             button_enviados.BackColor = Color.PowderBlue;
             button_papelera.BackColor = Color.PowderBlue;
+            _tipoMailBox = ConvertirMailBox(MailBox.Recibidos);
 
             //listar en el dataGridView1 los mail recibidos
             RefrescarDataGrid(ConvertirMailBox(MailBox.Recibidos));
@@ -101,6 +97,7 @@ namespace FlyMail
             button_recibidos.BackColor = Color.PowderBlue;
             button_enviados.BackColor = Color.LightSkyBlue;
             button_papelera.BackColor = Color.PowderBlue;
+            _tipoMailBox = ConvertirMailBox(MailBox.Enviados);
 
             //listar en el dataGridView1 los mail enviados
             RefrescarDataGrid(ConvertirMailBox(MailBox.Enviados));
@@ -116,6 +113,7 @@ namespace FlyMail
             button_recibidos.BackColor = Color.PowderBlue;
             button_enviados.BackColor = Color.PowderBlue;
             button_papelera.BackColor = Color.LightSkyBlue;
+            _tipoMailBox = ConvertirMailBox(MailBox.Papelera);
 
             //listar en el dataGridView1 los mail de la papelera
             RefrescarDataGrid(ConvertirMailBox(MailBox.Papelera));
@@ -128,14 +126,7 @@ namespace FlyMail
         /// <param name="e"></param>
         private void Button_actualizar_Click(object sender, EventArgs e)
         {
-            string tipoMailBox = "";
-            if (button_recibidos.BackColor == Color.LightSkyBlue)
-                tipoMailBox = ConvertirMailBox(MailBox.Recibidos);
-            else if (button_enviados.BackColor == Color.LightSkyBlue)
-                tipoMailBox = ConvertirMailBox(MailBox.Enviados);
-            else if (button_papelera.BackColor == Color.LightSkyBlue)
-                tipoMailBox = ConvertirMailBox(MailBox.Papelera);
-            this.RefrescarDataGrid(tipoMailBox);
+            this.RefrescarDataGrid(_tipoMailBox);
         }
 
         /// <summary>
@@ -145,8 +136,10 @@ namespace FlyMail
         /// <param name="e"></param>
         private void Button_enviar_Click(object sender, EventArgs e)
         {
-            this.i_mail.Text = "Enviar Mail";
-            this.i_mail.ShowDialog(this);
+            this.v_mail.Text = "Enviar Mail";
+            this.v_mail.ShowDialog(this);
+            this.Show();
+            this.RefrescarDataGrid(_tipoMailBox);
         }
 
         /// <summary>
@@ -168,8 +161,8 @@ namespace FlyMail
         /// <param name="e"></param>
         private void Button_responder_Click(object sender, EventArgs e)
         {
-            this.i_mail.Text = "Enviar Mail";
-            this.i_mail.ShowDialog(this);
+            this.v_mail.Text = "Enviar Mail";
+            this.v_mail.ShowDialog(this);
         }
 
         /// <summary>
@@ -178,11 +171,7 @@ namespace FlyMail
         private void RefrescarDataGrid(string pMailBox)
         {
             this.dataGridView1.Rows.Clear();
-            if (this.comboBox1.Text == "Seleccionar")
-            {
-                MessageBox.Show("Debe seleccionar una casilla de correos");
-            }
-            else
+            if (this.comboBox1.Text != string.Empty)
             {
                 if (this.comboBox1.Text == "Todos")
                 {
@@ -208,8 +197,8 @@ namespace FlyMail
         /// <param name="e"></param>
         private void ModificarNombreToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            this.i_cuenta.Text = "Modificar Nombre";
-            this.i_cuenta.ShowDialog(this);
+            this.v_cuenta.Text = "Modificar Nombre";
+            this.v_cuenta.ShowDialog(this);
         }
 
         /// <summary>
@@ -219,8 +208,8 @@ namespace FlyMail
         /// <param name="e"></param>
         private void ModificarContraseñaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            this.i_cuenta.Text = "Modificar Contraseña";
-            this.i_cuenta.ShowDialog(this);
+            this.v_cuenta.Text = "Modificar Contraseña";
+            this.v_cuenta.ShowDialog(this);
         }
 
         /// <summary>
@@ -230,8 +219,10 @@ namespace FlyMail
         /// <param name="e"></param>
         private void AgregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.i_correo.Text = "Agregar Casilla";
-            this.i_correo.ShowDialog(this);
+            this.v_correo.Text = "Agregar Casilla";
+            this.v_correo.ShowDialog(this);
+            this.Show();
+            this.ListarNombreCasillas();
         }
 
         /// <summary>
@@ -249,8 +240,8 @@ namespace FlyMail
             }
             else
             {
-                this.i_correo.Text = "Modificar Casilla";
-                this.i_correo.ShowDialog(this);
+                this.v_correo.Text = "Modificar Casilla";
+                this.v_correo.ShowDialog(this);
             }
         }
 
@@ -269,8 +260,8 @@ namespace FlyMail
             }
             else
             {
-                this.i_eliminarCasilla.Text = "Eliminar Casilla";
-                this.i_eliminarCasilla.ShowDialog(this);
+                this.v_eliminarCasilla.Text = "Eliminar Casilla";
+                this.v_eliminarCasilla.ShowDialog(this);
             }
 
         }
@@ -470,12 +461,12 @@ namespace FlyMail
             if (_contraseña == "vacia")
             {
                 (new V_ingresarPasswordCasilla(pNombreUsuario)).ShowDialog(this);
-                _contraseña = this.i_passwordCasilla;
-                if (this.i_guardarPasswordCasilla)
+                _contraseña = this._passwordCasilla;
+                if (this._guardarPasswordCasilla)
                     this.AlmacenarPasswordCasilla(pNombreUsuario, _contraseña);
 
-                this.i_passwordCasilla = string.Empty;
-                this.i_guardarPasswordCasilla = false;
+                this._passwordCasilla = string.Empty;
+                this._guardarPasswordCasilla = false;
             }
 
             int _idServicio = _controlador.ObtenerIdServicio(_idCasilla);
@@ -505,8 +496,8 @@ namespace FlyMail
             int _idCasilla = _controlador.ObtenerIdCasilla(pNombreUsuario);
             _listaMail = _controlador.ListarMail(_idCasilla, pMailBox);
             this.dataGridView1.ColumnHeadersVisible = true;
-            DataGridViewCellStyle columnHeaderStyle = new DataGridViewCellStyle();
-            columnHeaderStyle.Font = new Font(dataGridView1.Font, FontStyle.Bold);
+            DataGridViewCellStyle columnStyle = new DataGridViewCellStyle();
+            columnStyle.Font = new Font(dataGridView1.Font, FontStyle.Bold);
 
             foreach (var _mail in _listaMail)
             {
@@ -516,10 +507,25 @@ namespace FlyMail
                     this.dataGridView1.Rows.Add(row);
                     if (!_mail.Leido)
                     {
-                        dataGridView1.Rows[dataGridView1.Rows.Count - 1].DefaultCellStyle = columnHeaderStyle;
+                        dataGridView1.Rows[dataGridView1.Rows.Count - 1].DefaultCellStyle = columnStyle;
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Lista los nombre de casillas de una determinada cuenta
+        /// </summary>
+        private void ListarNombreCasillas()
+        {
+            this.comboBox1.Items.Clear();
+            this.comboBox1.Items.Add("Todos");
+            this.comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            List<string> _listaDirecciones = new List<string>();
+            _listaDirecciones = _controlador.ObtenerNombreCasillas();
+            for (int i = 0; i < _listaDirecciones.Count; i++)
+                this.comboBox1.Items.Add(_listaDirecciones[i]);
         }
 
         /// <summary>
@@ -535,7 +541,9 @@ namespace FlyMail
                 v_LeerMail = new V_leerMail(_mail);
                 if (!_mail.Leido)
                     _controlador.ModificarEstadoLeido(_mail.IdMail);
-                this.v_LeerMail.Show();
+                this.v_LeerMail.ShowDialog(this);
+                this.Show();
+                this.RefrescarDataGrid(_tipoMailBox);
             }
             if (dataGridView1.CurrentCell.ColumnIndex == 0)
             {
