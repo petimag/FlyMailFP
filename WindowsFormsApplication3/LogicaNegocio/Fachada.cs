@@ -15,6 +15,9 @@ namespace LogicaNegocio
 
         private int _idCuentaLogeado;
 
+        /// <summary>
+        /// Singleton
+        /// </summary>
         public static Fachada Instancia
         {
             get
@@ -25,12 +28,18 @@ namespace LogicaNegocio
             }
         }
 
+        /// <summary>
+        /// Accesor
+        /// </summary>
         public int IDCuentaLogeado
         {
             get { return _idCuentaLogeado; }
             set { _idCuentaLogeado = value; }
         }
 
+        /// <summary>
+        /// Controladores de la capa de Dominio
+        /// </summary>
         ControladorCuenta _controladorCuenta = new ControladorCuenta();
         ControladorCasilla _controladorCasilla = new ControladorCasilla();
         ControladorServicio _controladorServicio = new ControladorServicio();
