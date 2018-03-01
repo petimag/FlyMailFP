@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using OpenPop.Mime;
 using OpenPop.Pop3;
+using Entidades;
+using LogicaNegocio;
 
-namespace FlyMail
+namespace UI
 {
     public partial class V_principal : Form
     {
@@ -400,7 +402,7 @@ namespace FlyMail
             //Fecha del Mail
             string _fecha = string.Empty;
             if (pMensaje.Headers.Date != null)
-                _fecha = pMensaje.Headers.Date.ToString();
+                _fecha = pMensaje.Headers.Date;
 
             string _cc = string.Empty;
             //Si hay 1 o mas CC

@@ -32,7 +32,8 @@ namespace UI
             CambiarCC_CCO();
             this.textBox_de.Text = _mail.Remitente;
             this.textBox_de.ReadOnly = true;
-            this.textBox_fecha.Text = Convert.ToString(Convert.ToDateTime(_mail.Fecha));
+            //this.textBox_fecha.Text = Convert.ToString(Convert.ToDateTime(_mail.Fecha));
+            this.textBox_fecha.Text = _mail.Fecha;
             this.textBox_fecha.ReadOnly = true;
             string _destinatario = "";
             for (int i = 0; i < _mail.Destinatario.Count() - 1; i++)

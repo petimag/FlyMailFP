@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Entidades;
+using AccesoDatos;
 
-namespace FlyMail
+namespace LogicaNegocio
 {
     public class Fachada
     {
