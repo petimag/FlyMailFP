@@ -402,7 +402,7 @@ namespace UI
             //Fecha del Mail
             string _fecha = string.Empty;
             if (pMensaje.Headers.Date != null)
-                _fecha = pMensaje.Headers.Date.ToString();
+                _fecha = pMensaje.Headers.Date;
 
             string _cc = string.Empty;
             //Si hay 1 o mas CC
