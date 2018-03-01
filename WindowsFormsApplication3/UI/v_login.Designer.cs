@@ -1,4 +1,4 @@
-﻿namespace FlyMail
+﻿namespace UI
 {
     partial class V_login
     {

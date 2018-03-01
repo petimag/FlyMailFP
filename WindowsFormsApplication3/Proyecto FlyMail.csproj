@@ -59,7 +59,7 @@
     <Compile Include="AccesoDatos\IMailDAO.cs" />
     <Compile Include="AccesoDatos\IServicioDAO.cs" />
     <Compile Include="AccesoDatos\PostgreSQL\PostgresServicioDAO.cs" />
-    <Compile Include="AccesoDatos\PostgreSQL\DAOException.cs" />
+    <Compile Include="AccesoDatos\DAOException.cs" />
     <Compile Include="AccesoDatos\PostgreSQL\PostgresCasillaDAO.cs" />
     <Compile Include="AccesoDatos\PostgreSQL\PostgresCuentaDAO.cs" />
     <Compile Include="AccesoDatos\PostgreSQL\PostgresDAOFactory.cs" />

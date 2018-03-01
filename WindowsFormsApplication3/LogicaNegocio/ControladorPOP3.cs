@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using OpenPop.Mime;
 using OpenPop.Pop3;
 
-namespace FlyMail
+namespace LogicaNegocio
 {
     public class ControladorPOP3: ProtocoloEMail
     {

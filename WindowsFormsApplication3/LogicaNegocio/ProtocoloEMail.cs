@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlyMail
+namespace LogicaNegocio
 {
     /// <summary>
     /// Contiene las configuraciones necesarias para la conexión a un servidor de correo

@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Npgsql;
+using AccesoDatos;
+using Entidades;
 
-namespace FlyMail
+namespace AccesoDatos.PostgreSQL
 {
     public class PostgresCuentaDAO : ICuentaDAO
     {

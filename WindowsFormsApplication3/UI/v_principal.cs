@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using OpenPop.Mime;
 using OpenPop.Pop3;
+using Entidades;
+using LogicaNegocio;
 
-namespace FlyMail
+namespace UI
 {
     public partial class V_principal : Form
     {
