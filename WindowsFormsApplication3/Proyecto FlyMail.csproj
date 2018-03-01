@@ -70,6 +70,10 @@
     <Compile Include="Entidades\Servicio.cs" />
     <Compile Include="LogicaNegocio\ControladorPOP3.cs" />
     <Compile Include="LogicaNegocio\ControladorSMTP.cs" />
+    <Compile Include="LogicaNegocio\Dominio\ControladorCasilla.cs" />
+    <Compile Include="LogicaNegocio\Dominio\ControladorCuenta.cs" />
+    <Compile Include="LogicaNegocio\Dominio\ControladorMail.cs" />
+    <Compile Include="LogicaNegocio\Dominio\ControladorServicio.cs" />
     <Compile Include="LogicaNegocio\Fachada.cs" />
     <Compile Include="LogicaNegocio\ProtocoloEMail.cs" />
     <Compile Include="LogicaNegocio\Utilidades.cs" />
