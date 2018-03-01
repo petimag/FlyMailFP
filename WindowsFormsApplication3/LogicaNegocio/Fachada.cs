@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using Entidades;
+using LogicaNegocio.Dominio;
 
-namespace FlyMail
+namespace LogicaNegocio
 {
     public class Fachada
     {
@@ -29,6 +30,11 @@ namespace FlyMail
             get { return _idCuentaLogeado; }
             set { _idCuentaLogeado = value; }
         }
+
+        ControladorCuenta _controladorCuenta = new ControladorCuenta();
+        ControladorCasilla _controladorCasilla = new ControladorCasilla();
+        ControladorServicio _controladorServicio = new ControladorServicio();
+        ControladorMail _controladorMail = new ControladorMail();
         #endregion
 
         #region Métodos para Cuenta
@@ -38,22 +44,7 @@ namespace FlyMail
         /// <param name="pCuenta">Cuenta de usuario</param>
         public void AgregarCuenta(Cuenta pCuenta)
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                ICuentaDAO _cuentaDAO = factory.cuentaDAO;
-                _cuentaDAO.agregar(pCuenta);
-            }
-            catch (DAOException)
-            {
-                factory.RollBack();
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            _controladorCuenta.Agregar(pCuenta);
         }
 
         /// <summary>
@@ -63,22 +54,7 @@ namespace FlyMail
         /// <returns>Devuelve True si encuentra el nombre</returns>
         public bool NombreExistenteCuenta(string pNombre)
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                ICuentaDAO _cuentaDAO = factory.cuentaDAO;
-                return _cuentaDAO.nombreExistente(pNombre);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorCuenta.NombreExistente(pNombre);
         }
 
         /// <summary>
@@ -88,23 +64,7 @@ namespace FlyMail
         /// <returns>Devuelve el Id de usuario, -1 en caso de error </returns>
         public int VerificarCuenta(Cuenta pCuenta)
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                ICuentaDAO _cuentaDAO = factory.cuentaDAO;
-                //Console.WriteLine(_cuentaDAO.verificarCuenta(pNombre, pContraseña));
-                return _cuentaDAO.verificarCuenta(pCuenta);
-            }
-            catch (Exception)
-            {
-                return -1;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorCuenta.Verificar(pCuenta);
         }
 
         /// <summary>
@@ -114,22 +74,7 @@ namespace FlyMail
         /// <returns>Devuelve True si es correcta. False en caso contrario</returns>
         public bool VerificarContraseña(String pContraseña)
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                ICuentaDAO _cuentaDAO = factory.cuentaDAO;
-                return _cuentaDAO.verificarContraseña(this.IDCuentaLogeado,pContraseña);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorCuenta.VerificarContraseña(this.IDCuentaLogeado, pContraseña);
         }
 
         /// <summary>
@@ -138,22 +83,7 @@ namespace FlyMail
         /// <returns>Nombre de Usuario</returns>
         public string ObtenerNombreCuenta()
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                ICuentaDAO _cuentaDAO = factory.cuentaDAO;
-                return _cuentaDAO.obtenerNombreCuenta(this.IDCuentaLogeado);
-            }
-            catch (Exception)
-            {
-                return string.Empty;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorCuenta.ObtenerNombre(this.IDCuentaLogeado);
         }
 
         /// <summary>
@@ -162,22 +92,7 @@ namespace FlyMail
         /// <returns>Contraseña del Usuario</returns>
         public string ObtenerContraseñaCuenta()
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                ICuentaDAO _cuentaDAO = factory.cuentaDAO;
-                return _cuentaDAO.obtenerContraseñaCuenta(this.IDCuentaLogeado);
-            }
-            catch (Exception)
-            {
-                return string.Empty;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorCuenta.ObtenerContraseña(this.IDCuentaLogeado);
         }
 
         /// <summary>
@@ -186,22 +101,8 @@ namespace FlyMail
         /// <param name="pCuenta">Cuenta del usuario</param>
         public void ModificarNombreCuenta(Cuenta pCuenta)
         {
-            DAOFactory factory = DAOFactory.Instancia();
+            _controladorCuenta.ModificarNombre(this.IDCuentaLogeado, pCuenta);
 
-            try
-            {
-                factory.IniciarConexion();
-                ICuentaDAO _cuentaDAO = factory.cuentaDAO;
-                _cuentaDAO.modificarNombre(this.IDCuentaLogeado, pCuenta);
-            }
-            catch (DAOException)
-            {
-                factory.RollBack();
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
         }
 
         /// <summary>
@@ -210,27 +111,11 @@ namespace FlyMail
         /// <param name="pContraseña">Contraseña a modificar</param>
         public void ModificarContraseñaCuenta(string pContraseña)
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                ICuentaDAO _cuentaDAO = factory.cuentaDAO;
-                _cuentaDAO.modificarContraseña(this.IDCuentaLogeado,pContraseña);
-            }
-            catch (DAOException)
-            {
-                factory.RollBack();
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            _controladorCuenta.ModificarContraseña(this.IDCuentaLogeado, pContraseña);
         }
         #endregion
 
         #region Métodos para Casilla
-
         /// <summary>
         /// Determina si existe o no un nombre de Casilla para un usuario (Cuenta) logeado
         /// </summary>
@@ -238,23 +123,7 @@ namespace FlyMail
         /// <returns>True si el nombre existe, false en caso contrario. Devuelve false y un aviso en caso de error</returns>
         public bool NombreExistenteCasilla(string pNombre)
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
-                return _casillaDAO.NombreExistente(pNombre,this.IDCuentaLogeado);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-                return false;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorCasilla.NombreExistente(this.IDCuentaLogeado, pNombre);
         }
 
         /// <summary>
@@ -264,25 +133,7 @@ namespace FlyMail
         /// <returns>Id de casilla. -1 en caso de error</returns>
         public int ObtenerIdCasilla(string pNombreCasilla)
         {
-            {
-                DAOFactory factory = DAOFactory.Instancia();
-
-                try
-                {
-                    factory.IniciarConexion();
-                    ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
-                    return _casillaDAO.BuscarId(pNombreCasilla, this.IDCuentaLogeado);
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.Message);
-                    return -1;
-                }
-                finally
-                {
-                    factory.FinalizarConexion();
-                }
-            }
+            return _controladorCasilla.ObtenerId(this.IDCuentaLogeado, pNombreCasilla);
         }
 
         /// <summary>
@@ -292,23 +143,7 @@ namespace FlyMail
         /// <returns>String conteniendo la dirección buscada. Cadena vacía en caso de error</returns>
         public string ObtenerDireccionCasilla(string pNombreCasilla)
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
-                return _casillaDAO.BuscarDireccion(pNombreCasilla,this.IDCuentaLogeado);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-                return string.Empty;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorCasilla.ObtenerDireccion(this.IDCuentaLogeado, pNombreCasilla);
         }
 
         /// <summary>
@@ -318,32 +153,7 @@ namespace FlyMail
         /// <returns>String conteniendo la contraseña buscada. Cadena vacía en caso de error o no estar almacenada</returns>
         public string ObtenerContraseñaCasilla(string pNombreCasilla)
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
-                string _contraseña = _casillaDAO.BuscarContraseña(pNombreCasilla, this.IDCuentaLogeado);
-                if (_contraseña == "")
-                {
-                    return "vacia";
-                }
-                else
-                {
-                    return _contraseña;
-                }
-                 
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-                return string.Empty;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorCasilla.ObtenerContraseña(this.IDCuentaLogeado, pNombreCasilla);
         }
 
         /// <summary>
@@ -353,30 +163,7 @@ namespace FlyMail
         /// <param name="pServicio"></param>
         public bool AgregarCasilla(CasillaCorreo pCasilla, int pServicio)
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
-                _casillaDAO.Agregar(pCasilla,pServicio, _idCuentaLogeado);
-                return true;
-            }
-            catch (DAOException)
-            {
-                factory.RollBack();
-                return false;
-            }
-            catch(Npgsql.PostgresException)
-            {
-                factory.RollBack();
-                MessageBox.Show("La dirección de Correo Electrónico tiene un formato incorrecto");
-                return false;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorCasilla.Agregar(this.IDCuentaLogeado, pCasilla, pServicio);
         }
 
         /// <summary>
@@ -385,30 +172,7 @@ namespace FlyMail
         /// <param name="pCasilla"></param>
         public bool ModificarCasilla(CasillaCorreo pCasilla)
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
-                _casillaDAO.Modificar(pCasilla, this.IDCuentaLogeado);
-                return true;
-            }
-            catch (DAOException)
-            {
-                factory.RollBack();
-                return false;
-            }
-            catch (Exception e)
-            {
-                factory.RollBack();
-                MessageBox.Show(e.Message);
-                return false;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorCasilla.Modificar(this.IDCuentaLogeado, pCasilla);
         }
 
         /// <summary>
@@ -417,29 +181,7 @@ namespace FlyMail
         /// <param name="pNombreCasilla"></param>
         public bool EliminarCasilla(string pNombreCasilla)
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                ICasillaDAO casillaDAO = factory.casillaCorreoDAO;
-                casillaDAO.Eliminar(pNombreCasilla, this.IDCuentaLogeado);
-                return true;
-            }
-            catch(DAOException e)
-            {
-                MessageBox.Show(e.Message);
-                return false;
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show(e.Message);
-                return false;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorCasilla.Eliminar(this.IDCuentaLogeado, pNombreCasilla);
         }
 
         /// <summary>
@@ -448,26 +190,7 @@ namespace FlyMail
         /// <returns></returns>
         public List<string> ObtenerNombreCasillas()
         {
-            DAOFactory factory = DAOFactory.Instancia();
-            List<string> _listaNombres = new List<string>();
-
-            try
-            {
-                
-                factory.IniciarConexion();
-                ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
-                _listaNombres = _casillaDAO.ListaNombres(this.IDCuentaLogeado);
-                return _listaNombres;
-            }
-            catch (Exception)
-            {
-                _listaNombres.Clear();
-                return _listaNombres;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorCasilla.ObtenerNombre(this.IDCuentaLogeado);
         }
 
         /// <summary>
@@ -475,27 +198,9 @@ namespace FlyMail
         /// </summary>
         /// <param name="idCasilla">ID de casilla seleccionada</param>
         /// <returns>ID de servicio</returns>
-        public int ObtenerIdServicio(int idCasilla)
+        public int ObtenerIdServicio(int pIdCasilla)
         {
-            {
-                DAOFactory factory = DAOFactory.Instancia();
-
-                try
-                {
-                    factory.IniciarConexion();
-                    ICasillaDAO _casillaDAO = factory.casillaCorreoDAO;
-                    return _casillaDAO.ObtenerIdServicio(idCasilla);
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.Message);
-                    return -1;
-                }
-                finally
-                {
-                    factory.FinalizarConexion();
-                }
-            }
+            return _controladorCasilla.ObtenerIdServicio(pIdCasilla);
         }
         #endregion
 
@@ -507,22 +212,7 @@ namespace FlyMail
         /// <returns>ID del servicio</returns>
         public int ObtenerIdServicio(string pProveedor)
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                IServicioDAO _servicioDAO = factory.servicioDAO;
-                return _servicioDAO.obtenerId(pProveedor);
-            }
-            catch (Exception)
-            {
-                return -1;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorServicio.ObtenerId(pProveedor);
         }
 
         /// <summary>
@@ -531,25 +221,7 @@ namespace FlyMail
         /// <returns>Lista de proveedores</returns>
         public List<string> ObtenerProveedorServicio()
         {
-            DAOFactory factory = DAOFactory.Instancia();
-            List<string> _listaProveedor = new List<string>();
-
-            try
-            {
-
-                factory.IniciarConexion();
-                IServicioDAO _servicioDAO = factory.servicioDAO;
-                _listaProveedor = _servicioDAO.listaServicio();
-                return _listaProveedor;
-            }
-            catch (Exception)
-            {
-                return _listaProveedor;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorServicio.ObtenerProveedor();
         }
 
         /// <summary>
@@ -559,22 +231,7 @@ namespace FlyMail
         /// <returns>Dominio del Servicio</returns>
         public string ObtenerDominioServicio(string pProveedor)
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                IServicioDAO _servicioDAO = factory.servicioDAO;
-                return _servicioDAO.obtenerDominio(pProveedor);
-            }
-            catch (Exception)
-            {
-                return String.Empty;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorServicio.ObtenerDominio(pProveedor);
         }
 
         /// <summary>
@@ -585,35 +242,7 @@ namespace FlyMail
         /// <returns>Servicio buscado</returns>
         public Servicio ObtenerServicio(int pIdServicio, string pTipoProtocolo)
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                IServicioDAO _servicioDAO = factory.servicioDAO;
-                Servicio _servicio;
-                if (pTipoProtocolo == "pop")
-                {
-                    _servicio = _servicioDAO.obtenerServicioPop3(pIdServicio);
-                }
-                else if (pTipoProtocolo == "smtp")
-                {
-                    _servicio = _servicioDAO.obtenerServicioSMTP(pIdServicio);
-                }
-                else
-                {
-                    _servicio = null;
-                }
-                return _servicio;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorServicio.ObtenerServicio(pIdServicio, pTipoProtocolo);
         }
         #endregion
 
@@ -626,30 +255,7 @@ namespace FlyMail
         /// <returns>Devuelve True si se envió correctamente. False en caso contrario</returns>
         public bool GuardarMail(Mail pMail, int idCasilla)
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                IMailDAO _mailDAO = factory.mailDAO;
-                _mailDAO.Guardar(pMail, idCasilla);
-                return true;
-            }
-            catch (DAOException)
-            {
-                factory.RollBack();
-                return false;
-            }
-            catch (Npgsql.PostgresException)
-            {
-                factory.RollBack();
-                MessageBox.Show("La dirección de Correo Electrónico tiene un formato incorrecto");
-                return false;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorMail.Guardar(pMail, idCasilla);
         }
 
         /// <summary>
@@ -660,27 +266,7 @@ namespace FlyMail
         /// <returns>Lista de mails</returns>
         public List<Mail> ListarMail(int idCasilla,String pMailBox)
         {
-            DAOFactory factory = DAOFactory.Instancia();
-            List<Mail> _listaMails = new List<Mail>();
-
-            try
-            {
-
-                factory.IniciarConexion();
-                IMailDAO _mailDAO = factory.mailDAO;
-                _listaMails = _mailDAO.ListarMail(idCasilla, pMailBox);
-                return _listaMails;
-            }
-            catch (Exception)
-            {
-                _listaMails.Clear();
-                Console.WriteLine("entra aca");
-                return _listaMails;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorMail.Listar(idCasilla, pMailBox);
         }
 
         /// <summary>
@@ -690,9 +276,7 @@ namespace FlyMail
         /// <returns>Lista de mails</returns>
         public List<OpenPop.Mime.Message> ObtenerMail(ControladorPOP3 pPop3)
         {
-            List<OpenPop.Mime.Message> lista = new List<OpenPop.Mime.Message>();
-            lista = pPop3.ObtenerMensajes();
-            return lista;
+            return _controladorMail.Obtener(pPop3);
 
         }
 
@@ -706,84 +290,34 @@ namespace FlyMail
             pSmtp.EnviarMail(pMail);
         }
 
-        public bool EliminarMail(int pIdCasilla)
+        /// <summary>
+        /// Eliminar determinado Mail
+        /// </summary>
+        /// <param name="pIdMail">Id Mail</param>
+        /// <returns></returns>
+        public bool EliminarMail(int pIdMail)
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                IMailDAO mailDAO = factory.mailDAO;
-                mailDAO.EliminarMail(pIdCasilla);
-                return true;
-            }
-            catch (DAOException e)
-            {
-                MessageBox.Show(e.Message);
-                return false;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-                return false;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorMail.Eliminar(pIdMail);
         }
 
+        /// <summary>
+        /// Modificar el MailBox del Mail
+        /// </summary>
+        /// <param name="IdMail">ID del mail</param>
+        /// <param name="pMailBox">MailBox a modificar</param>
+        /// <returns></returns>
         public bool ModificarMailBox(int IdMail, string pMailBox)
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                IMailDAO mailDAO = factory.mailDAO;
-                mailDAO.ModificarMailBox(IdMail, pMailBox);
-                return true;
-            }
-            catch (DAOException e)
-            {
-                MessageBox.Show(e.Message);
-                return false;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-                return false;
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            return _controladorMail.ModificarMailBox(IdMail, pMailBox);
         }
 
-
-        public void ModificarEstadoLeido(int idMail)
+        /// <summary>
+        /// Modificar Estado del Mail a Leido
+        /// </summary>
+        /// <param name="idMail">Id Mail</param>
+        public void ModificarEstadoLeido(int pIdMail)
         {
-            DAOFactory factory = DAOFactory.Instancia();
-
-            try
-            {
-                factory.IniciarConexion();
-                IMailDAO _mailDAO = factory.mailDAO;
-                _mailDAO.ModificarEstadoLeido(idMail);
-            }
-            catch (DAOException)
-            {
-                factory.RollBack();
-            }
-            catch (Exception e)
-            {
-                factory.RollBack();
-                MessageBox.Show(e.Message);
-            }
-            finally
-            {
-                factory.FinalizarConexion();
-            }
+            _controladorMail.ModificarEstadoLeido(pIdMail);
         }
         #endregion
     }
