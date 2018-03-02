@@ -421,11 +421,12 @@ namespace UI
                 for (int j = 0; j < pMensaje.Headers.Bcc.Count; j++)
                     _cco = pMensaje.Headers.Bcc[j].Address+",";
             }
-
+            
             string _mensaje = string.Empty;
             //Verifica si el Mail tiene mas de una parte
             if (pMensaje.MessagePart.IsMultiPart)
             {
+                
                 foreach (MessagePart _msgPart in pMensaje.MessagePart.MessageParts)
                     _mensaje += _msgPart.GetBodyAsText();
             }
