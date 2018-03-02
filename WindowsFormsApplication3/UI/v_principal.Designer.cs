@@ -68,10 +68,10 @@
             // picture_main
             // 
             this.picture_main.Image = ((System.Drawing.Image)(resources.GetObject("picture_main.Image")));
-            this.picture_main.InitialImage = ((System.Drawing.Image)(resources.GetObject("picture_main.InitialImage")));
-            this.picture_main.Location = new System.Drawing.Point(-24, 266);
+            this.picture_main.InitialImage = null;
+            this.picture_main.Location = new System.Drawing.Point(2, 276);
             this.picture_main.Name = "picture_main";
-            this.picture_main.Size = new System.Drawing.Size(155, 212);
+            this.picture_main.Size = new System.Drawing.Size(129, 129);
             this.picture_main.TabIndex = 0;
             this.picture_main.TabStop = false;
             // 
@@ -109,8 +109,8 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.ControlText;
             this.panel1.Controls.Add(this.dataGridView1);
