@@ -11,6 +11,7 @@
 		</Feature>
 	</Product>
 
+  <!-- Directorio de Instalación-->
 	<Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="ProgramFilesFolder">
@@ -19,12 +20,9 @@
 		</Directory>
 	</Fragment>
 
+  <!-- Enlaces a ejecutables y DLLs-->
 	<Fragment>
 		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
-			<!-- <Component Id="ProductComponent"> -->
-				<!-- TODO: Insert files, registry keys, and other resources here. -->
-			<!-- </Component> -->
 			<Component Id="FlyMail.exe" Guid="9823d3d9-483b-4b01-af19-8a74179dc77f">
 			  <File Id="FlyMail.exe" Name="FlyMail.exe" Source="$(var.Proyecto FlyMail_TargetDir)FlyMail.exe" />
 			</Component>
