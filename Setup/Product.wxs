@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"><?define Proyecto FlyMail_TargetDir=$(var.Proyecto FlyMail.TargetDir)?>
+	<Product Id="37cbedb2-21d9-4fec-b124-87e095534422" Name="FlyMail" Language="1033" Version="1.0.0.1" Manufacturer="Proyecto Academico" UpgradeCode="68294a7a-f612-42a0-bf5d-694fa1f7d11f">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="FlyMail" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="FlyMail" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+			<!-- <Component Id="ProductComponent"> -->
+				<!-- TODO: Insert files, registry keys, and other resources here. -->
+			<!-- </Component> -->
+			<Component Id="FlyMail.exe" Guid="9823d3d9-483b-4b01-af19-8a74179dc77f">
+			  <File Id="FlyMail.exe" Name="FlyMail.exe" Source="$(var.Proyecto FlyMail_TargetDir)FlyMail.exe" />
+			</Component>
+			<Component Id="FlyMail.exe.config" Guid="8d076fd9-d4b2-4cd6-8113-63afbae05828">
+			  <File Id="FlyMail.exe.config" Name="FlyMail.exe.config" Source="$(var.Proyecto FlyMail_TargetDir)FlyMail.exe.config" />
+			</Component>
+			<Component Id="Npgsql.dll" Guid="945c259b-3241-41f1-962d-cd2da44fee3d">
+			  <File Id="Npgsql.dll" Name="Npgsql.dll" Source="$(var.Proyecto FlyMail_TargetDir)Npgsql.dll" />
+			</Component>
+			<Component Id="OpenPop.dll" Guid="3f9db5c7-954a-4fb2-81be-96797293a216">
+			  <File Id="OpenPop.dll" Name="OpenPop.dll" Source="$(var.Proyecto FlyMail_TargetDir)OpenPop.dll" />
+			</Component>
+			<Component Id="System.Threading.Tasks.Extensions.dll" Guid="7076a6da-747f-48bf-8f2b-cafd81e0718b">
+			  <File Id="System.Threading.Tasks.Extensions.dll" Name="System.Threading.Tasks.Extensions.dll" Source="$(var.Proyecto FlyMail_TargetDir)System.Threading.Tasks.Extensions.dll" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>
