@@ -388,8 +388,10 @@ namespace UI
         /// <returns></returns>
         private Mail CrearMail(OpenPop.Mime.Message pMensaje)
         {
-            //Remiente del Mail
+            #region Remitente
             string _remitente = pMensaje.Headers.From.Address;
+            #endregion
+            #region Destinatario
             string _destinatario = String.Empty;
             //Si hay 1 o mas destinatarios
             if (pMensaje.Headers.To.Count >= 1)
@@ -398,12 +400,13 @@ namespace UI
                 for (int j = 0; j < pMensaje.Headers.To.Count; j++)
                     _destinatario += pMensaje.Headers.To[j].Address + ",";
             }
-
-            //Fecha del Mail
+            #endregion
+            #region Fecha
             string _fecha = string.Empty;
             if (pMensaje.Headers.Date != null)
                 _fecha = pMensaje.Headers.Date;
-
+            #endregion
+            #region CC
             string _cc = string.Empty;
             //Si hay 1 o mas CC
             if (pMensaje.Headers.Cc.Count >= 1)
@@ -412,7 +415,8 @@ namespace UI
                 for (int j = 0; j < pMensaje.Headers.Cc.Count; j++)
                     _cc = pMensaje.Headers.Cc[j].Address+",";
             }
-
+            #endregion
+            #region CCO
             string _cco = string.Empty;
             //Si hay 1 o mas CCO
             if (pMensaje.Headers.Bcc.Count >= 1)
@@ -421,26 +425,20 @@ namespace UI
                 for (int j = 0; j < pMensaje.Headers.Bcc.Count; j++)
                     _cco = pMensaje.Headers.Bcc[j].Address+",";
             }
-            
-            string _mensaje = string.Empty;
-            //Verifica si el Mail tiene mas de una parte
-            if (pMensaje.MessagePart.IsMultiPart)
-            {
-                
-                foreach (MessagePart _msgPart in pMensaje.MessagePart.MessageParts)
-                    _mensaje += _msgPart.GetBodyAsText();
-            }
-            else if (pMensaje.MessagePart.IsText)
-            {
-                foreach (MessagePart _msgPart in pMensaje.MessagePart.MessageParts)
-                    _mensaje += _msgPart.GetBodyAsText();
-            }
-            
-
+            #endregion
+            #region Asunto
             //Asunto del mail
             string _asunto = pMensaje.Headers.Subject;
-
+            #endregion
+            #region Mensaje
+            string _mensaje = string.Empty;
+            MessagePart plainTextPart = null;
+            plainTextPart = pMensaje.FindFirstPlainTextVersion();
+            _mensaje = (plainTextPart == null ? "" : plainTextPart.GetBodyAsText().Trim());
+            #endregion
+            #region MailBox
             string _mailBox = ConvertirMailBox(MailBox.Recibidos);
+            #endregion
             Mail _mail = new Mail(_remitente, _destinatario,_asunto,_cc,_cco,_fecha,_mensaje,_mailBox,false);
             return _mail;
         }
