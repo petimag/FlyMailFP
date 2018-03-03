@@ -3,8 +3,10 @@
 	<Product Id="37cbedb2-21d9-4fec-b124-87e095534422" Name="FlyMail" Language="1033" Version="1.0.0.1" Manufacturer="Proyecto Academico" UpgradeCode="68294a7a-f612-42a0-bf5d-694fa1f7d11f">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
+    <!--
     <Icon Id="icon.ico" SourceFile="$(var.ProjectDir)Icon.ico" />
     <Property Id="ARPPRODUCTION" Value="icon.ico" />
+    -->
     
     <WixVariable Id="WixUIBannerBmp" Value="Images\installer_top-banner.bmp" />
     <WixVariable Id="WixUIDialogBmp" Value="Images\installer_background.bmp" />
@@ -21,13 +23,21 @@
       <ComponentRef Id="ApplicationShortcut"/>
       <ComponentRef Id="ApplicationShortcutDesktop"/>
 		</Feature>
+    <InstallExecuteSequence>
+      <Custom Action='CustomAction' Before='InstallFinalize'>NOT Installed</Custom>
+    </InstallExecuteSequence>
     <!--
     <InstallExecuteSequence>
-      <Custom Action="CustomAction" Before="" />
+      <Custom Action="CustomAction" Before="InstallFinalize" />
     </InstallExecuteSequence>
     -->
 	</Product>
 
+  <Fragment>
+    <Binary Id="CustomAction.CA" SourceFile="$(var.ScriptDB.TargetDir)$(var.ScriptDB.TargetName).CA.dll"/>
+    <CustomAction Id="CustomAction" BinaryKey="CustomAction.CA" DllEntry="CustomAction1" Execute="immediate" Return="check"/>
+  </Fragment>
+  
   <!-- Directorio de Instalación-->
 	<Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
@@ -57,7 +67,13 @@
       </Component>
     </DirectoryRef>
   </Fragment>
-
+  <!--
+  <Fragment>
+    <CustomAction Id='CustomAction' BinaryKey='CustomAction.CA' DllEntry='CustomAction' />
+    <Binary Id='CustomAction.CA' SourceFile='..\CustomAction\bin\Debug\CustomAction.CA.dll' />
+  </Fragment>
+  -->
+  
   <!-- Enlaces a ejecutables y DLLs-->
 	<Fragment>
 		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">

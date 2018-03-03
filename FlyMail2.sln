@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proyecto FlyMail", "Windows
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Setup", "Setup\Setup.wixproj", "{D24D1330-296E-48FB-B7F3-16656C37B310}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptDB", "ScriptDB\ScriptDB.csproj", "{167A7237-8736-4C56-92D0-46A8CADF9866}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,12 @@ Global
 		{D24D1330-296E-48FB-B7F3-16656C37B310}.Release|Any CPU.ActiveCfg = Release|x86
 		{D24D1330-296E-48FB-B7F3-16656C37B310}.Release|x86.ActiveCfg = Release|x86
 		{D24D1330-296E-48FB-B7F3-16656C37B310}.Release|x86.Build.0 = Release|x86
+		{167A7237-8736-4C56-92D0-46A8CADF9866}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{167A7237-8736-4C56-92D0-46A8CADF9866}.Debug|x86.ActiveCfg = Debug|x86
+		{167A7237-8736-4C56-92D0-46A8CADF9866}.Debug|x86.Build.0 = Debug|x86
+		{167A7237-8736-4C56-92D0-46A8CADF9866}.Release|Any CPU.ActiveCfg = Release|x86
+		{167A7237-8736-4C56-92D0-46A8CADF9866}.Release|x86.ActiveCfg = Release|x86
+		{167A7237-8736-4C56-92D0-46A8CADF9866}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
