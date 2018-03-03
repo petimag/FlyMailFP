@@ -37,6 +37,8 @@ namespace UI
 
         private V_eliminarCasilla v_eliminarCasilla = new V_eliminarCasilla();
 
+        private V_about v_about = new V_about();
+
         private string _passwordCasilla = string.Empty;
         private bool _guardarPasswordCasilla = false;
         private List<Mail> _listaMail;
@@ -323,7 +325,7 @@ namespace UI
         /// <param name="e"></param>
         private void InformaciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Los íconos fueron tomados de http://dryicons.com");
+            v_about.ShowDialog();
         }
         #endregion
 
