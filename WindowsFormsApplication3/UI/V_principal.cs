@@ -404,7 +404,7 @@ namespace UI
             #region Fecha
             string _fecha = string.Empty;
             if (pMensaje.Headers.Date != null)
-                _fecha = pMensaje.Headers.Date;
+                _fecha = pMensaje.Headers.Date.Trim();
             #endregion
             #region CC
             string _cc = string.Empty;
