@@ -3,6 +3,15 @@
 	<Product Id="37cbedb2-21d9-4fec-b124-87e095534422" Name="FlyMail" Language="1033" Version="1.0.0.1" Manufacturer="Proyecto Academico" UpgradeCode="68294a7a-f612-42a0-bf5d-694fa1f7d11f">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
+    <Icon Id="icon.ico" SourceFile="$(var.ProjectDir)Icon.ico" />
+    <Property Id="ARPPRODUCTION" Value="icon.ico" />
+    
+    <!-- 
+    <WixVariable Id="WixUIBannerBmp" Value="Images\installer_top-banner.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="Images\installer_background.bmp" />
+    -->
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\license.rtf" />
+    
     <UIRef Id="WixUI_Minimal"/>
     
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
