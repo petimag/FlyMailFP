@@ -174,6 +174,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\V_about.resx">
+      <DependentUpon>V_about.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\V_correo.resx">
       <DependentUpon>V_correo.cs</DependentUpon>
     </EmbeddedResource>

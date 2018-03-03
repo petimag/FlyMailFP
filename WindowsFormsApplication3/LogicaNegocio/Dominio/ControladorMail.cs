@@ -79,6 +79,26 @@ namespace LogicaNegocio.Dominio
         }
 
         /// <summary>
+        /// Establece la conexion
+        /// </summary>
+        /// <param name="pPop3"></param>
+        /// <returns>True si se puede conectar</returns>
+        public bool EstablecerConexion(ControladorPOP3 pPop3)
+        {
+            return pPop3.EstablecerConexión();
+        }
+
+        /// <summary>
+        /// Establece conexión con la casilla de correo
+        /// </summary>
+        /// <param name="pPop3"></param>
+        /// <returns></returns>
+        public bool Autentificacion(ControladorPOP3 pPop3)
+        {
+            return pPop3.Autenticación();
+        }
+
+        /// <summary>
         /// Obtiene los mail del servidor de la casilla
         /// </summary>
         /// <param name="pPop3">POP3 al que se conecta</param>
