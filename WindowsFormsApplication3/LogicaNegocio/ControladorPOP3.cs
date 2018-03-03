@@ -27,13 +27,10 @@ namespace LogicaNegocio
             this.SSL = pSSL;
         }
 
-        /// <summary>
-        /// Obtiene el listado de los nuevos e-mails desde el servidor POP3
-        /// </summary>
-        /// <param name="pop3"></param>
-        /// <returns></returns>
-        public List<Message> ObtenerMensajes()
+        public bool EstablecerConexión()
         {
+            // creamos instancia de mensajes
+            List<Message> lstMessages = new List<Message>();
             try
             {
                 // El cliente se desconecta al terminar el using
@@ -41,32 +38,79 @@ namespace LogicaNegocio
                 {
                     // conectamos al servidor
                     client.Connect(this.IP, this.Puerto, this.SSL);
-                    Console.WriteLine("1 " + this.Usuario + " " + this.Contraseña);
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Establece si logra establecer conexión con la casilla de correo
+        /// </summary>
+        /// <returns></returns>
+        public bool Autenticación()
+        {
+            // creamos instancia de mensajes
+            List<Message> lstMessages = new List<Message>();
+            try
+            {
+                // El cliente se desconecta al terminar el using
+                using (Pop3Client client = new Pop3Client())
+                {
+                    // conectamos al servidor
+                    client.Connect(this.IP, this.Puerto, this.SSL);
 
                     // Autentificación
                     client.Authenticate(this.Usuario, this.Contraseña);
-                    Console.WriteLine("2");
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        
+        /// <summary>
+        /// Obtiene el listado de los nuevos e-mails desde el servidor POP3
+        /// </summary>
+        /// <param name="pop3"></param>
+        /// <returns></returns>
+        public List<Message> ObtenerMensajes()
+        {
+            // creamos instancia de mensajes
+            List<Message> lstMessages = new List<Message>();
+            try
+            {
+                // El cliente se desconecta al terminar el using
+                using (Pop3Client client = new Pop3Client())
+                {
+                    // conectamos al servidor
+                    client.Connect(this.IP, this.Puerto, this.SSL);
+
+                    // Autentificación
+                    client.Authenticate(this.Usuario, this.Contraseña);
+
                     // Obtenemos los Uids mensajes
                     List<string> uids = client.GetMessageUids();
-                    Console.WriteLine("3");
-                    // creamos instancia de mensajes
-                    List<Message> lstMessages = new List<Message>();
-                    Console.WriteLine("4");
+
                     // Recorremos para comparar
                     for (int i = 0; i < uids.Count; i++)
                     {
-                        Console.WriteLine("5");
                         //obtenemos el uid actual, es él id del mensaje
                         string currentUidOnServer = uids[i];
-                        Console.WriteLine("6");
+
                         //por medio del uid obtenemos el mensaje con el siguiente metodo
                         Message oMessage = client.GetMessage(i + 1);
-                        Console.WriteLine("7");
+
                         //agregamos el mensaje a la lista que regresa el metodo
                         lstMessages.Add(oMessage);
 
                     }
-                    Console.WriteLine("8");
                     // regresamos la lista
                     return lstMessages;
                 }
@@ -74,7 +118,7 @@ namespace LogicaNegocio
 
             catch (Exception)
             {
-                return null;
+                return lstMessages;
             }
         }
     }

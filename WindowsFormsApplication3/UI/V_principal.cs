@@ -479,6 +479,7 @@ namespace UI
             int _idCasilla = _controlador.ObtenerIdCasilla(pNombreUsuario);
             string _direccion = _controlador.ObtenerDireccionCasilla(pNombreUsuario);
             string _contraseña = _controlador.ObtenerContraseñaCasilla(pNombreUsuario);
+            bool _datosCorrectos = false;
 
             if (_contraseña == "vacia")
             {
@@ -495,17 +496,40 @@ namespace UI
             Servicio _servicio = _controlador.ObtenerServicio(_idServicio,"pop");
             ControladorPOP3 _pop3 = new ControladorPOP3(_direccion, _contraseña, _servicio.Ip, _servicio.Puerto, _servicio.SSL);
             List<OpenPop.Mime.Message> _listaMensajes = new List<OpenPop.Mime.Message>();
-            _listaMensajes = _controlador.ObtenerMail(_pop3);
-            if (_listaMensajes.Count >= 1)
+            if (!_controlador.EstablecerConexion(_pop3))
             {
-                for (int i = 0; i < _listaMensajes.Count; i++)
-                {
-                    Mail _mail = CrearMail(_listaMensajes[i]);
-                    _controlador.GuardarMail(_mail, _idCasilla);
-                }
+                MessageBox.Show("No se pudo establecer conexión");
             }
-
-            RefrescarDataGrid(ConvertirMailBox(MailBox.Recibidos));
+            else
+            {
+                if(!_controlador.Autentificación(_pop3))
+                {
+                    MessageBox.Show("Nombre o contraseña incorrecta");
+                }
+                else
+                {
+                    _listaMensajes = _controlador.ObtenerMail(_pop3);
+                    _datosCorrectos = true;
+                    if (_listaMensajes.Count >= 1)
+                    {
+                        for (int i = 0; i < _listaMensajes.Count; i++)
+                        {
+                            Mail _mail = CrearMail(_listaMensajes[i]);
+                            _controlador.GuardarMail(_mail, _idCasilla);
+                        }
+                    }
+                }
+                
+            }
+            if (_datosCorrectos)
+            {
+                RefrescarDataGrid(ConvertirMailBox(MailBox.Recibidos));
+            }
+            else
+            {
+                this.dataGridView1.Rows.Clear();
+            }
+            
         }
 
         /// <summary>
