@@ -108,6 +108,12 @@
     <Compile Include="LogicaNegocio\Fachada.cs" />
     <Compile Include="LogicaNegocio\ProtocoloEMail.cs" />
     <Compile Include="LogicaNegocio\Utilidades.cs" />
+    <Compile Include="UI\V_about.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\V_about.Designer.cs">
+      <DependentUpon>V_about.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\V_correo.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -6,22 +6,26 @@
     <Icon Id="icon.ico" SourceFile="$(var.ProjectDir)Icon.ico" />
     <Property Id="ARPPRODUCTION" Value="icon.ico" />
     
-    <!-- 
     <WixVariable Id="WixUIBannerBmp" Value="Images\installer_top-banner.bmp" />
     <WixVariable Id="WixUIDialogBmp" Value="Images\installer_background.bmp" />
-    -->
+    
     <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\license.rtf" />
     
     <UIRef Id="WixUI_Minimal"/>
     
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-		<MediaTemplate />
+		<MediaTemplate EmbedCab="yes" />
 
 		<Feature Id="ProductFeature" Title="FlyMail" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
       <ComponentRef Id="ApplicationShortcut"/>
       <ComponentRef Id="ApplicationShortcutDesktop"/>
 		</Feature>
+    <!--
+    <InstallExecuteSequence>
+      <Custom Action="CustomAction" Before="" />
+    </InstallExecuteSequence>
+    -->
 	</Product>
 
   <!-- Directorio de Instalación-->
