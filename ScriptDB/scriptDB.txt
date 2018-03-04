@@ -217,3 +217,7 @@ ALTER TABLE ONLY "Email"
 
 ALTER TABLE ONLY "CasillaEmail"
     ADD CONSTRAINT servicio_fkey FOREIGN KEY (servicio) REFERENCES "Servicio"("idServicio") MATCH FULL ON UPDATE CASCADE ON DELETE RESTRICT;
+
+INSERT INTO "Servicio" (proveedor, dominio, "portPOP", "hostPOP", "sslPOP", "hostSMTP", "portSMTP", "sslSMTP") values ('Gmail','gmail.com', 995, 'pop.gmail.com', true, 'smtp.gmail.com', 465, true);
+INSERT INTO "Servicio" (proveedor, dominio, "portPOP", "hostPOP", "sslPOP", "hostSMTP", "portSMTP", "sslSMTP") values ('Yahoo','yahoo.com', 995, 'pop.mail.yahoo.com', true, 'smtp.mail.yahoo.com', 465, true);
+INSERT INTO "Servicio" (proveedor, dominio, "portPOP", "hostPOP", "sslPOP", "hostSMTP", "portSMTP", "sslSMTP") values ('Yahoo AR','yahoo.com.ar', 995, 'pop.mail.yahoo.com', true, 'smtp.mail.yahoo.com', 465, true);
