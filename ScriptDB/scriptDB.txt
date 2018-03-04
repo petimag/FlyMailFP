@@ -1,0 +1,219 @@
+﻿SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+COMMENT ON DATABASE flymail IS 'La DB de FlyMail';
+
+--CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+--COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+--CREATE EXTENSION IF NOT EXISTS adminpack WITH SCHEMA pg_catalog;
+
+--COMMENT ON EXTENSION adminpack IS 'administrative functions for PostgreSQL';
+
+SET search_path = public, pg_catalog;
+
+CREATE DOMAIN temail AS character varying(80)
+	CONSTRAINT check_temail CHECK (((VALUE)::text ~ '^[A-Za-z][A-Za-z0-9._%-]*@[A-Za-z][A-Za-z0-9._%-]*[.][A-Za-z][A-Za-z.]+$'::text));
+
+
+ALTER DOMAIN temail OWNER TO flymail;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+CREATE TABLE "CasillaEmail" (
+    "idCasillaEmail" integer NOT NULL,
+    nombre character varying(50) NOT NULL,
+    "contrasenaEmail" character varying,
+    servicio integer NOT NULL,
+    usuario integer NOT NULL,
+    "direccionEmail" temail NOT NULL
+);
+
+
+ALTER TABLE "CasillaEmail" OWNER TO flymail;
+
+CREATE SEQUENCE "CasillaEmail_idCasillaEmail_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "CasillaEmail_idCasillaEmail_seq" OWNER TO flymail;
+
+ALTER SEQUENCE "CasillaEmail_idCasillaEmail_seq" OWNED BY "CasillaEmail"."idCasillaEmail";
+
+CREATE SEQUENCE "CasillaEmail_servicio_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "CasillaEmail_servicio_seq" OWNER TO flymail;
+
+ALTER SEQUENCE "CasillaEmail_servicio_seq" OWNED BY "CasillaEmail".servicio;
+
+CREATE SEQUENCE "CasillaEmail_usuario_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "CasillaEmail_usuario_seq" OWNER TO flymail;
+
+ALTER SEQUENCE "CasillaEmail_usuario_seq" OWNED BY "CasillaEmail".usuario;
+
+CREATE TABLE "Email" (
+    "idEmail" integer NOT NULL,
+    "cabRemitente" temail NOT NULL,
+    "cabDestinatario" text NOT NULL,
+    "cabCC" text,
+    "cabCCO" text,
+    cuerpo text,
+    mailbox character varying(20) NOT NULL,
+    casilla integer NOT NULL,
+    asunto character varying,
+    "cabFecha" character varying NOT NULL,
+    leido boolean NOT NULL,
+    CONSTRAINT mailbox_check CHECK (((mailbox)::text = ANY (ARRAY[('Enviados'::character varying)::text, ('Recibidos'::character varying)::text, ('Borradores'::character varying)::text, ('Papelera'::character varying)::text])))
+);
+
+
+ALTER TABLE "Email" OWNER TO flymail;
+
+COMMENT ON COLUMN "Email"."cabDestinatario" IS 'Se utiliza ";" como separador de destinatarios.';
+
+COMMENT ON COLUMN "Email".cuerpo IS 'Cuerpo del mensaje.';
+
+CREATE SEQUENCE "Email_casilla_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Email_casilla_seq" OWNER TO flymail;
+
+ALTER SEQUENCE "Email_casilla_seq" OWNED BY "Email".casilla;
+
+CREATE SEQUENCE "Email_idEmail_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Email_idEmail_seq" OWNER TO flymail;
+
+ALTER SEQUENCE "Email_idEmail_seq" OWNED BY "Email"."idEmail";
+
+CREATE TABLE "Servicio" (
+    "idServicio" integer NOT NULL,
+    proveedor character varying(30) NOT NULL,
+    dominio character varying(30) NOT NULL,
+    "portPOP" integer NOT NULL,
+    "hostPOP" character varying(50) NOT NULL,
+    "sslPOP" boolean DEFAULT false NOT NULL,
+    "hostSMTP" character varying(50) NOT NULL,
+    "portSMTP" integer NOT NULL,
+    "sslSMTP" boolean DEFAULT false NOT NULL
+);
+
+
+ALTER TABLE "Servicio" OWNER TO flymail;
+
+CREATE SEQUENCE "Servicio_idServicio_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Servicio_idServicio_seq" OWNER TO flymail;
+
+ALTER SEQUENCE "Servicio_idServicio_seq" OWNED BY "Servicio"."idServicio";
+
+CREATE TABLE "Usuario" (
+    "idUsuario" integer NOT NULL,
+    nombre character varying(50) NOT NULL,
+    contrasena character varying NOT NULL
+);
+
+
+ALTER TABLE "Usuario" OWNER TO flymail;
+
+CREATE SEQUENCE "Usuario_idUsuario_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Usuario_idUsuario_seq" OWNER TO flymail;
+
+ALTER SEQUENCE "Usuario_idUsuario_seq" OWNED BY "Usuario"."idUsuario";
+
+ALTER TABLE ONLY "CasillaEmail" ALTER COLUMN "idCasillaEmail" SET DEFAULT nextval('"CasillaEmail_idCasillaEmail_seq"'::regclass);
+
+ALTER TABLE ONLY "CasillaEmail" ALTER COLUMN servicio SET DEFAULT nextval('"CasillaEmail_servicio_seq"'::regclass);
+
+ALTER TABLE ONLY "CasillaEmail" ALTER COLUMN usuario SET DEFAULT nextval('"CasillaEmail_usuario_seq"'::regclass);
+
+ALTER TABLE ONLY "Email" ALTER COLUMN "idEmail" SET DEFAULT nextval('"Email_idEmail_seq"'::regclass);
+
+ALTER TABLE ONLY "Email" ALTER COLUMN casilla SET DEFAULT nextval('"Email_casilla_seq"'::regclass);
+
+
+ALTER TABLE ONLY "Servicio" ALTER COLUMN "idServicio" SET DEFAULT nextval('"Servicio_idServicio_seq"'::regclass);
+
+ALTER TABLE ONLY "Usuario" ALTER COLUMN "idUsuario" SET DEFAULT nextval('"Usuario_idUsuario_seq"'::regclass);
+
+SELECT pg_catalog.setval('"CasillaEmail_idCasillaEmail_seq"', 1, false);
+
+SELECT pg_catalog.setval('"CasillaEmail_servicio_seq"', 1, false);
+
+SELECT pg_catalog.setval('"CasillaEmail_usuario_seq"', 1, false);
+
+SELECT pg_catalog.setval('"Email_casilla_seq"', 1, false);
+
+SELECT pg_catalog.setval('"Email_idEmail_seq"', 1, false);
+
+SELECT pg_catalog.setval('"Servicio_idServicio_seq"', 1, false);
+
+SELECT pg_catalog.setval('"Usuario_idUsuario_seq"', 1, false);
+
+ALTER TABLE ONLY "CasillaEmail"
+    ADD CONSTRAINT casilla_pkey PRIMARY KEY ("idCasillaEmail");
+
+ALTER TABLE ONLY "Email"
+    ADD CONSTRAINT email_pkey PRIMARY KEY ("idEmail");
+
+ALTER TABLE ONLY "Servicio"
+    ADD CONSTRAINT servicio_pkey PRIMARY KEY ("idServicio");
+
+ALTER TABLE ONLY "Usuario"
+    ADD CONSTRAINT usuario_pkey PRIMARY KEY ("idUsuario");
+
+ALTER TABLE ONLY "Email"
+    ADD CONSTRAINT casilla_fkey FOREIGN KEY (casilla) REFERENCES "CasillaEmail"("idCasillaEmail") MATCH FULL ON UPDATE CASCADE ON DELETE CASCADE;
+
+ALTER TABLE ONLY "CasillaEmail"
+    ADD CONSTRAINT servicio_fkey FOREIGN KEY (servicio) REFERENCES "Servicio"("idServicio") MATCH FULL ON UPDATE CASCADE ON DELETE RESTRICT;
