@@ -58,6 +58,7 @@ namespace UI
             _tipoMailBox = ConvertirMailBox(MailBox.Recibidos);
             ListarNombreCasillas();
             this.button_eliminar.Enabled = false;
+            this.dataGridView1.Rows.Clear();
         }
 
         /// <summary>
@@ -91,7 +92,8 @@ namespace UI
             this.button_eliminar.Enabled = false;
 
             //listar en el dataGridView1 los mail recibidos
-            RefrescarDataGrid(ConvertirMailBox(MailBox.Recibidos));
+            this.dataGridView1.Rows.Clear();
+            RefrescarDataGrid(_tipoMailBox);
         }
 
         /// <summary>
@@ -109,7 +111,8 @@ namespace UI
             this.button_eliminar.Enabled = false;
 
             //listar en el dataGridView1 los mail enviados
-            RefrescarDataGrid(ConvertirMailBox(MailBox.Enviados));
+            this.dataGridView1.Rows.Clear();
+            RefrescarDataGrid(_tipoMailBox);
         }
 
         /// <summary>
@@ -127,7 +130,8 @@ namespace UI
             this.button_eliminar.Enabled = true;
 
             //listar en el dataGridView1 los mail de la papelera
-            RefrescarDataGrid(ConvertirMailBox(MailBox.Papelera));
+            this.dataGridView1.Rows.Clear();
+            RefrescarDataGrid(_tipoMailBox);
         }
 
         /// <summary>
@@ -137,7 +141,8 @@ namespace UI
         /// <param name="e"></param>
         private void Button_actualizar_Click(object sender, EventArgs e)
         {
-            this.RefrescarDataGrid(_tipoMailBox);
+            this.dataGridView1.Rows.Clear();
+            RefrescarDataGrid(_tipoMailBox);
         }
 
         /// <summary>
@@ -150,6 +155,7 @@ namespace UI
             this.v_mail.Text = "Enviar Mail";
             this.v_mail.ShowDialog(this);
             this.Show();
+            this.dataGridView1.Rows.Clear();
             this.RefrescarDataGrid(_tipoMailBox);
         }
 
@@ -185,6 +191,7 @@ namespace UI
                     _controlador.EliminarMail(this._listaMail[i].IdMail);
                 }
             }
+            this.dataGridView1.Rows.Clear();
             this.RefrescarDataGrid(_tipoMailBox);
         }
 
@@ -193,20 +200,21 @@ namespace UI
         /// </summary>
         private void RefrescarDataGrid(string pMailBox)
         {
-            this.dataGridView1.Rows.Clear();
             if (this.comboBox1.Text != string.Empty)
             {
                 if (this.comboBox1.Text == "Todos")
                 {
                     List<string> nombres = _controlador.ObtenerNombreCasillas();
-                    for (int i = 1; i < nombres.Count; i++)
+                    for (int i = 0; i < nombres.Count; i++)
                     {
-                        ListarMail(nombres[i], pMailBox);
+                        ObtenerMails(nombres[i]);
+                        CrearListaDeMails(nombres[i], pMailBox);
                     }
                 }
                 else
                 {
-                    ListarMail(this.comboBox1.Text, pMailBox);
+                    ObtenerMails(this.comboBox1.Text);
+                    CrearListaDeMails(this.comboBox1.Text, pMailBox);
                 }
                 dataGridView1.Refresh();
             }
@@ -355,20 +363,8 @@ namespace UI
         /// <param name="e"></param>
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string _user = this.comboBox1.Text;
-            if (_user != "Todos")
-            {
-                ObtenerMails(_user);
-            }
-            else // Obtener Todos los mails
-            {
-                List<string> nombres = _controlador.ObtenerNombreCasillas();
-                for (int i = 1; i < nombres.Count; i++)
-                {
-                    ObtenerMails(nombres[i]);
-                }   
-            }
-
+            this.dataGridView1.Rows.Clear();
+            RefrescarDataGrid(_tipoMailBox);
         }
 
         /// <summary>
@@ -521,15 +517,10 @@ namespace UI
                 }
                 
             }
-            if (_datosCorrectos)
-            {
-                RefrescarDataGrid(ConvertirMailBox(MailBox.Recibidos));
-            }
-            else
+            if (!_datosCorrectos)
             {
                 this.dataGridView1.Rows.Clear();
             }
-            
         }
 
         /// <summary>
@@ -537,7 +528,7 @@ namespace UI
         /// </summary>
         /// <param name="pNombreUsuario">Nombre de Usuario</param>
         /// <param name="pMailBox">Tipo de Mail</param>
-        private void ListarMail(string pNombreUsuario, string pMailBox)
+        private void CrearListaDeMails(string pNombreUsuario, string pMailBox)
         {
             int _idCasilla = _controlador.ObtenerIdCasilla(pNombreUsuario);
             _listaMail = _controlador.ListarMail(_idCasilla, pMailBox);
@@ -589,6 +580,7 @@ namespace UI
                     _controlador.ModificarEstadoLeido(_mail.IdMail);
                 this.v_LeerMail.ShowDialog(this);
                 this.Show();
+                this.dataGridView1.Rows.Clear();
                 this.RefrescarDataGrid(_tipoMailBox);
             }
         }

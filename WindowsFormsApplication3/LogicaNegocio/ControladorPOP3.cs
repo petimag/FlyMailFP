@@ -74,7 +74,6 @@ namespace LogicaNegocio
             }
         }
 
-        
         /// <summary>
         /// Obtiene el listado de los nuevos e-mails desde el servidor POP3
         /// </summary>
@@ -109,6 +108,7 @@ namespace LogicaNegocio
 
                         //agregamos el mensaje a la lista que regresa el metodo
                         lstMessages.Add(oMessage);
+                        client.DeleteMessage(i + 1);
 
                     }
                     // regresamos la lista
@@ -121,5 +121,7 @@ namespace LogicaNegocio
                 return lstMessages;
             }
         }
+
+
     }
 }

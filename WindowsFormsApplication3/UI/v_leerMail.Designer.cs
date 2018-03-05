@@ -50,12 +50,14 @@
             this.button_cancelar = new System.Windows.Forms.Button();
             this.button_responder = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonDescargar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.GrayText;
+            this.groupBox1.Controls.Add(this.buttonDescargar);
             this.groupBox1.Controls.Add(this.button_reenviar);
             this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Controls.Add(this.textBox_fecha);
@@ -282,6 +284,21 @@
             this.button_responder.UseVisualStyleBackColor = false;
             this.button_responder.Click += new System.EventHandler(this.Button_responder_Click);
             // 
+            // buttonDescargar
+            // 
+            this.buttonDescargar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonDescargar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonDescargar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonDescargar.Image = ((System.Drawing.Image)(resources.GetObject("buttonDescargar.Image")));
+            this.buttonDescargar.Location = new System.Drawing.Point(478, 53);
+            this.buttonDescargar.Name = "buttonDescargar";
+            this.buttonDescargar.Size = new System.Drawing.Size(40, 40);
+            this.buttonDescargar.TabIndex = 24;
+            this.buttonDescargar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.buttonDescargar, "Descargar Mail");
+            this.buttonDescargar.UseVisualStyleBackColor = false;
+            this.buttonDescargar.Click += new System.EventHandler(this.ButtonDescargar_Click);
+            // 
             // V_leerMail
             // 
             this.AcceptButton = this.button_responder;
@@ -327,5 +344,6 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Button button_reenviar;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button buttonDescargar;
     }
 }

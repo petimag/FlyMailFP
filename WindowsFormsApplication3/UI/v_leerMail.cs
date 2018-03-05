@@ -181,5 +181,11 @@ namespace UI
         {
             this.Close();
         }
+
+        private void ButtonDescargar_Click(object sender, EventArgs e)
+        {
+            _controlador.DescargarMail(this._mail);
+            
+        }
     }
 }

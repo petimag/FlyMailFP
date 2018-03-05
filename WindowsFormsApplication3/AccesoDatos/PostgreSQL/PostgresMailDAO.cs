@@ -50,7 +50,7 @@ namespace AccesoDatos.PostgreSQL
         public List<Mail> ListarMail(int idCasilla, string pMailBox)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
-            comando.CommandText = "SELECT * FROM \"Email\" WHERE casilla = '" + idCasilla + "' and mailbox = '" + pMailBox + "' ORDER by \"cabFecha\" desc";
+            comando.CommandText = "SELECT * FROM \"Email\" WHERE casilla = '" + idCasilla + "' and mailbox = '" + pMailBox + "' ORDER by \"cabFecha\" asc";
 
             List<Mail> _listaMail = new List<Mail>();
             

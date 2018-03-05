@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AccesoDatos;
 using Entidades;
 using System.Windows.Forms;
+using System.IO;
 
 namespace LogicaNegocio.Dominio
 {
@@ -213,6 +214,30 @@ namespace LogicaNegocio.Dominio
             {
                 factory.FinalizarConexion();
             }
+        }
+
+        /// <summary>
+        /// Descarga un determinado mail
+        /// </summary>
+        /// <param name="pMail"></param>
+        public void Descargar(Mail pMail)
+        {
+            using (StreamWriter escritor = new StreamWriter(@Directory.GetCurrentDirectory() + "\\Mail" + pMail.IdMail + ".txt"))
+            {
+                Directory.GetCurrentDirectory();
+                escritor.WriteLine("De: " + pMail.Remitente);
+                escritor.WriteLine("Para: " + pMail.Destinatario);
+                escritor.WriteLine("Fecha: " + pMail.Fecha);
+                escritor.WriteLine("");
+                escritor.WriteLine("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+                escritor.WriteLine("Asunto: ");
+                escritor.WriteLine(pMail.Asunto);
+                escritor.WriteLine("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+                escritor.WriteLine("");
+                escritor.WriteLine("Mensaje:");
+                escritor.WriteLine(pMail.Mensaje);
+            }
+            MessageBox.Show("Mail descargado en " + Directory.GetCurrentDirectory());
         }
     }
 }

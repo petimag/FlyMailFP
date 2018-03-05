@@ -124,7 +124,7 @@ namespace UI
                 if (result == DialogResult.Yes)
                 {
                     idCasilla = _controlador.ObtenerIdCasilla(this.comboBox_de.Text);
-                    Mail _mail = CrearMail(MailBox.Enviados);
+                    Mail _mail = CrearMail();
                     _controlador.GuardarMail(_mail, idCasilla);
                     string _contraseña = _controlador.ObtenerContraseñaCasilla(this.comboBox_de.Text);
                     int idServicio = _controlador.ObtenerIdServicio(idCasilla);
@@ -215,16 +215,16 @@ namespace UI
         /// </summary>
         /// <param name="_mailBox">Tipo de mail</param>
         /// <returns></returns>
-        private Mail CrearMail(MailBox _mailBox)
+        private Mail CrearMail()
         {
             Mail _mail;
             if (_estado_cc_cco)
             {
-                _mail = new Mail(this.textBox_direccion.Text, textBox_para.Text, textBox_asunto.Text, this.textBox_CC.Text, this.textBox_CCO.Text, Convert.ToString(DateTime.Now), this.richTextBox_texto.Text, Convert.ToString(_mailBox), true);
+                _mail = new Mail(this.textBox_direccion.Text, textBox_para.Text, textBox_asunto.Text, this.textBox_CC.Text, this.textBox_CCO.Text, Convert.ToString(DateTime.Now), this.richTextBox_texto.Text, Convert.ToString(MailBox.Enviados), true);
             }
             else
             {
-                _mail = new Mail(this.textBox_direccion.Text, textBox_para.Text, textBox_asunto.Text, "", "", Convert.ToString(DateTime.Now), this.richTextBox_texto.Text, Convert.ToString(_mailBox), true);
+                _mail = new Mail(this.textBox_direccion.Text, textBox_para.Text, textBox_asunto.Text, "", "", Convert.ToString(DateTime.Now), this.richTextBox_texto.Text, Convert.ToString(MailBox.Enviados), true);
             }
             return _mail;
         }

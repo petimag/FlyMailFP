@@ -339,6 +339,15 @@ namespace LogicaNegocio
         {
             _controladorMail.ModificarEstadoLeido(pIdMail);
         }
+
+        /// <summary>
+        /// Descarga un determinado mail en la PC
+        /// </summary>
+        /// <param name="pMail"></param>
+        public void DescargarMail(Mail pMail)
+        {
+            _controladorMail.Descargar(pMail);
+        }
         #endregion
     }
 }
