@@ -1,6 +1,6 @@
-﻿namespace FlyMail
+﻿namespace UI
 {
-    partial class v_login
+    partial class V_login
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(v_login));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_login));
             this.textBox_iniciar_nombre = new System.Windows.Forms.TextBox();
             this.textBox_iniciar_contraseña = new System.Windows.Forms.TextBox();
             this.label_iniciar_nombre = new System.Windows.Forms.Label();
@@ -52,16 +52,16 @@
             this.textBox_iniciar_nombre.Name = "textBox_iniciar_nombre";
             this.textBox_iniciar_nombre.Size = new System.Drawing.Size(212, 20);
             this.textBox_iniciar_nombre.TabIndex = 0;
-            this.textBox_iniciar_nombre.GotFocus += new System.EventHandler(this.textBox_iniciar_Focus);
+            this.textBox_iniciar_nombre.GotFocus += new System.EventHandler(this.TextBox_iniciar_Focus);
             // 
             // textBox_iniciar_contraseña
             // 
             this.textBox_iniciar_contraseña.Location = new System.Drawing.Point(79, 52);
             this.textBox_iniciar_contraseña.Name = "textBox_iniciar_contraseña";
-            this.textBox_iniciar_contraseña.PasswordChar = '♦';
+            this.textBox_iniciar_contraseña.PasswordChar = '•';
             this.textBox_iniciar_contraseña.Size = new System.Drawing.Size(212, 20);
             this.textBox_iniciar_contraseña.TabIndex = 1;
-            this.textBox_iniciar_contraseña.Click += new System.EventHandler(this.textBox_iniciar_Click);
+            this.textBox_iniciar_contraseña.Click += new System.EventHandler(this.TextBox_iniciar_Click);
             // 
             // label_iniciar_nombre
             // 
@@ -112,7 +112,7 @@
             this.button_iniciar.TabIndex = 2;
             this.button_iniciar.Text = "Iniciar";
             this.button_iniciar.UseVisualStyleBackColor = false;
-            this.button_iniciar.Click += new System.EventHandler(this.button_iniciar_Click);
+            this.button_iniciar.Click += new System.EventHandler(this.Button_iniciar_Click);
             // 
             // groupBox2
             // 
@@ -140,7 +140,7 @@
             this.button_crear.TabIndex = 6;
             this.button_crear.Text = "Crear";
             this.button_crear.UseVisualStyleBackColor = false;
-            this.button_crear.Click += new System.EventHandler(this.button_crear_Click);
+            this.button_crear.Click += new System.EventHandler(this.Button_crear_Click);
             // 
             // textBox_crear_repetir
             // 
@@ -150,9 +150,9 @@
             this.textBox_crear_repetir.Size = new System.Drawing.Size(189, 20);
             this.textBox_crear_repetir.TabIndex = 5;
             this.textBox_crear_repetir.Text = "Repetir Contraseña";
-            this.textBox_crear_repetir.TextChanged += new System.EventHandler(this.textBox_crear_repetir_TextChanged);
-            this.textBox_crear_repetir.GotFocus += new System.EventHandler(this.textBox_repetir_Focus);
-            this.textBox_crear_repetir.LostFocus += new System.EventHandler(this.textBox_repetir_noFocus);
+            this.textBox_crear_repetir.TextChanged += new System.EventHandler(this.TextBox_crear_repetir_TextChanged);
+            this.textBox_crear_repetir.GotFocus += new System.EventHandler(this.TextBox_repetir_Focus);
+            this.textBox_crear_repetir.LostFocus += new System.EventHandler(this.TextBox_repetir_noFocus);
             // 
             // textBox_crear_contraseña
             // 
@@ -162,9 +162,9 @@
             this.textBox_crear_contraseña.Size = new System.Drawing.Size(189, 20);
             this.textBox_crear_contraseña.TabIndex = 4;
             this.textBox_crear_contraseña.Text = "Contraseña";
-            this.textBox_crear_contraseña.TextChanged += new System.EventHandler(this.textBox_crear_contraseña_TextChanged);
-            this.textBox_crear_contraseña.GotFocus += new System.EventHandler(this.textBox_Contraseña_Focus);
-            this.textBox_crear_contraseña.LostFocus += new System.EventHandler(this.textBox_Contraseña_noFocus);
+            this.textBox_crear_contraseña.TextChanged += new System.EventHandler(this.TextBox_crear_contraseña_TextChanged);
+            this.textBox_crear_contraseña.GotFocus += new System.EventHandler(this.TextBox_Contraseña_Focus);
+            this.textBox_crear_contraseña.LostFocus += new System.EventHandler(this.TextBox_Contraseña_noFocus);
             // 
             // textBox_crear_nombre
             // 
@@ -174,20 +174,20 @@
             this.textBox_crear_nombre.Size = new System.Drawing.Size(189, 20);
             this.textBox_crear_nombre.TabIndex = 3;
             this.textBox_crear_nombre.Text = "Nombre";
-            this.textBox_crear_nombre.GotFocus += new System.EventHandler(this.textBox_crear_nombre_Focus);
-            this.textBox_crear_nombre.LostFocus += new System.EventHandler(this.textBox_crear_nombre_noFocus);
+            this.textBox_crear_nombre.GotFocus += new System.EventHandler(this.TextBox_crear_nombre_Focus);
+            this.textBox_crear_nombre.LostFocus += new System.EventHandler(this.TextBox_crear_nombre_noFocus);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(7, 136);
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(6, 152);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(94, 130);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.Size = new System.Drawing.Size(95, 95);
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
-            // v_login
+            // V_login
             // 
             this.AcceptButton = this.button_iniciar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -200,8 +200,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(331, 311);
             this.MinimumSize = new System.Drawing.Size(331, 311);
-            this.Name = "v_login";
-            this.Opacity = 0.9D;
+            this.Name = "V_login";
+            this.Opacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FlyMail";
             this.groupBox1.ResumeLayout(false);
@@ -210,7 +210,6 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

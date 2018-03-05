@@ -1,6 +1,6 @@
-﻿namespace FlyMail
+﻿namespace UI
 {
-    partial class v_correo
+    partial class V_correo
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(v_correo));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_correo));
             this.button_guardar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button_verificar = new System.Windows.Forms.Button();
@@ -43,6 +43,7 @@
             this.textBox_contraseña = new System.Windows.Forms.TextBox();
             this.textBox_direccion = new System.Windows.Forms.TextBox();
             this.comboBox_servicio = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -62,7 +63,7 @@
             this.button_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.button_guardar, "Guardar correo");
             this.button_guardar.UseVisualStyleBackColor = false;
-            this.button_guardar.Click += new System.EventHandler(this.button_guardar_Click);
+            this.button_guardar.Click += new System.EventHandler(this.Button_guardar_Click);
             // 
             // button_verificar
             // 
@@ -78,7 +79,7 @@
             this.button_verificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.button_verificar, "Verifica si el nombre de correo ya existe");
             this.button_verificar.UseVisualStyleBackColor = false;
-            this.button_verificar.Click += new System.EventHandler(this.button_verificar_Click);
+            this.button_verificar.Click += new System.EventHandler(this.Button_verificar_Click);
             // 
             // label2
             // 
@@ -113,7 +114,6 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nombre de Casilla";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // comboBox1_nombre
             // 
@@ -124,7 +124,6 @@
             this.comboBox1_nombre.Name = "comboBox1_nombre";
             this.comboBox1_nombre.Size = new System.Drawing.Size(243, 21);
             this.comboBox1_nombre.TabIndex = 0;
-            this.comboBox1_nombre.SelectedIndexChanged += new System.EventHandler(this.comboBox1_nombre_SelectedIndexChanged);
             // 
             // textBox_nombre
             // 
@@ -148,6 +147,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.GrayText;
+            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.textBox_contraseña);
             this.groupBox2.Controls.Add(this.textBox_direccion);
             this.groupBox2.Controls.Add(this.comboBox_servicio);
@@ -167,24 +167,25 @@
             this.textBox_contraseña.BackColor = System.Drawing.SystemColors.ControlDark;
             this.textBox_contraseña.Enabled = false;
             this.textBox_contraseña.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBox_contraseña.Location = new System.Drawing.Point(90, 73);
+            this.textBox_contraseña.Location = new System.Drawing.Point(79, 73);
             this.textBox_contraseña.Name = "textBox_contraseña";
-            this.textBox_contraseña.Size = new System.Drawing.Size(163, 20);
+            this.textBox_contraseña.PasswordChar = '♦';
+            this.textBox_contraseña.Size = new System.Drawing.Size(174, 20);
             this.textBox_contraseña.TabIndex = 8;
-            this.textBox_contraseña.TextChanged += new System.EventHandler(this.textBox_contraseña_TextChanged);
-            this.textBox_contraseña.GotFocus += new System.EventHandler(this.textBox_contraseña_Focus);
-            this.textBox_contraseña.LostFocus += new System.EventHandler(this.textBox_contraseña_noFocus);
+            this.textBox_contraseña.TextChanged += new System.EventHandler(this.TextBox_contraseña_TextChanged);
+            this.textBox_contraseña.GotFocus += new System.EventHandler(this.TextBox_contraseña_Focus);
+            this.textBox_contraseña.LostFocus += new System.EventHandler(this.TextBox_contraseña_noFocus);
             // 
             // textBox_direccion
             // 
             this.textBox_direccion.BackColor = System.Drawing.SystemColors.ControlDark;
             this.textBox_direccion.Enabled = false;
             this.textBox_direccion.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBox_direccion.Location = new System.Drawing.Point(90, 45);
+            this.textBox_direccion.Location = new System.Drawing.Point(79, 45);
             this.textBox_direccion.Name = "textBox_direccion";
-            this.textBox_direccion.Size = new System.Drawing.Size(162, 20);
+            this.textBox_direccion.Size = new System.Drawing.Size(97, 20);
             this.textBox_direccion.TabIndex = 7;
-            this.textBox_direccion.TextChanged += new System.EventHandler(this.textBox_direccion_TextChanged);
+            this.textBox_direccion.TextChanged += new System.EventHandler(this.TextBox_direccion_TextChanged);
             // 
             // comboBox_servicio
             // 
@@ -192,10 +193,21 @@
             this.comboBox_servicio.Enabled = false;
             this.comboBox_servicio.ForeColor = System.Drawing.SystemColors.Window;
             this.comboBox_servicio.FormattingEnabled = true;
-            this.comboBox_servicio.Location = new System.Drawing.Point(90, 18);
+            this.comboBox_servicio.Location = new System.Drawing.Point(79, 18);
             this.comboBox_servicio.Name = "comboBox_servicio";
-            this.comboBox_servicio.Size = new System.Drawing.Size(163, 21);
+            this.comboBox_servicio.Size = new System.Drawing.Size(174, 21);
             this.comboBox_servicio.TabIndex = 6;
+            this.comboBox_servicio.SelectedIndexChanged += new System.EventHandler(this.ComboBox_servicio_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Window;
+            this.label1.Location = new System.Drawing.Point(176, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "@ejemplo.com";
             // 
             // v_correo
             // 
@@ -213,9 +225,9 @@
             this.Name = "v_correo";
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Correo";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.v_correo_FormClosing);
-            this.Load += new System.EventHandler(this.v_correo_Load);
+            this.Text = "Casilla de Correo";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.V_correo_FormClosing);
+            this.Load += new System.EventHandler(this.V_correo_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -239,5 +251,6 @@
         private System.Windows.Forms.TextBox textBox_direccion;
         private System.Windows.Forms.ComboBox comboBox_servicio;
         private System.Windows.Forms.ComboBox comboBox1_nombre;
+        private System.Windows.Forms.Label label1;
     }
 }

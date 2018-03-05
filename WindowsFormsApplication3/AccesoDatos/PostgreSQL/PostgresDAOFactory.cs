@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Npgsql;
 using System.Data;
+using Entidades;
+using AccesoDatos;
 
-namespace FlyMail
+namespace AccesoDatos.PostgreSQL
 {
     public class PostgresDAOFactory : DAOFactory
     {
-        private String STRING_CONEXION = "Host=localhost;Username=postgres;Password=1234;Database=postgres";
+        private String STRING_CONEXION = "Host=localhost;Username=flymail;Database=flymail";
 
         private NpgsqlConnection _conexion = null;
         private NpgsqlTransaction _transaction = null;

@@ -7,45 +7,62 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LogicaNegocio;
 
-namespace FlyMail
+namespace UI
 {
-    public partial class v_eliminarCasilla : Form
+    public partial class V_eliminarCasilla : Form
     {
 
         private Fachada _controlador = Fachada.Instancia;
 
-        public v_eliminarCasilla()
+        public V_eliminarCasilla()
         {
             InitializeComponent();
         }
 
-        private void v_eliminarCasilla_Load(object sender, EventArgs e)
+        /// <summary>
+        /// Inicializa la ventana, agregando los Nombres de Casilla del usuario al ComboBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void V_eliminarCasilla_Load(object sender, EventArgs e)
         {
             List<string> _listaNombres = new List<string>();
             _listaNombres = _controlador.ObtenerNombreCasillas();
+            this.comboBox1_nombre.Items.Clear();
+            this.comboBox1_nombre.Text = string.Empty;
+            this.comboBox1_nombre.DropDownStyle = ComboBoxStyle.DropDownList;
             if (_listaNombres.Count == 0)
             {
                 MessageBox.Show("No tiene Casilla de Correo agregadas");
             }
             else
             {
-                this.comboBox1_nombre.Items.Clear();
                 for (int i = 0; i < _listaNombres.Count; i++)
                     this.comboBox1_nombre.Items.Add(_listaNombres[i]);
             }
             
         }
 
-        private void button_guardar_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Elimina una Casilla de Correo al hacer click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_guardar_Click(object sender, EventArgs e)
         {
-            if (this.comboBox1_nombre.Text != String.Empty)
+            if (this.comboBox1_nombre.Text != string.Empty)
             {
                 DialogResult result = MessageBox.Show("¿Seguro que desea eliminar?", "Confirmación", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    _controlador.EliminarCasilla(this.comboBox1_nombre.Text);
-                    this.Close();
+                    if (_controlador.EliminarCasilla(this.comboBox1_nombre.Text))
+                    {
+                        MessageBox.Show("Casilla eliminada con éxito", "FlyMail");
+                        this.Close();
+                    }
+                    
                 }
             }
         }

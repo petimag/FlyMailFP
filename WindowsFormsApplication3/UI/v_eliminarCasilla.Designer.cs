@@ -1,6 +1,6 @@
-﻿namespace FlyMail
+﻿namespace UI
 {
-    partial class v_eliminarCasilla
+    partial class V_eliminarCasilla
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(v_eliminarCasilla));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_eliminarCasilla));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBox1_nombre = new System.Windows.Forms.ComboBox();
             this.button_guardar = new System.Windows.Forms.Button();
@@ -73,7 +73,7 @@
             this.button_guardar.Text = "Eliminar";
             this.button_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_guardar.UseVisualStyleBackColor = false;
-            this.button_guardar.Click += new System.EventHandler(this.button_guardar_Click);
+            this.button_guardar.Click += new System.EventHandler(this.Button_guardar_Click);
             // 
             // textBox_nombre
             // 
@@ -84,7 +84,7 @@
             this.textBox_nombre.Size = new System.Drawing.Size(244, 20);
             this.textBox_nombre.TabIndex = 5;
             // 
-            // v_eliminarCasilla
+            // V_eliminarCasilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -92,11 +92,13 @@
             this.ClientSize = new System.Drawing.Size(284, 103);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "v_eliminarCasilla";
+            this.MaximumSize = new System.Drawing.Size(300, 142);
+            this.MinimumSize = new System.Drawing.Size(300, 142);
+            this.Name = "V_eliminarCasilla";
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "v_eliminarCasilla";
-            this.Load += new System.EventHandler(this.v_eliminarCasilla_Load);
+            this.Load += new System.EventHandler(this.V_eliminarCasilla_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

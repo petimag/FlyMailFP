@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FlyMail
+namespace Entidades
 {
 	public class Cuenta
 	{

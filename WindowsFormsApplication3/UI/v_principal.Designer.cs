@@ -1,6 +1,6 @@
-﻿namespace FlyMail
+﻿namespace UI
 {
-    partial class v_principal
+    partial class V_principal
     {
         /// <summary>
         /// Required designer variable.
@@ -29,21 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(v_principal));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_principal));
             this.picture_main = new System.Windows.Forms.PictureBox();
             this.button_recibidos = new System.Windows.Forms.Button();
             this.button_enviados = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Remitente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Asunto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_papelera = new System.Windows.Forms.Button();
             this.button_enviar = new System.Windows.Forms.Button();
             this.button_eliminar = new System.Windows.Forms.Button();
             this.button_actualizar = new System.Windows.Forms.Button();
-            this.button_responder = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menúToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,10 +68,10 @@
             // picture_main
             // 
             this.picture_main.Image = ((System.Drawing.Image)(resources.GetObject("picture_main.Image")));
-            this.picture_main.InitialImage = ((System.Drawing.Image)(resources.GetObject("picture_main.InitialImage")));
-            this.picture_main.Location = new System.Drawing.Point(-24, 266);
+            this.picture_main.InitialImage = null;
+            this.picture_main.Location = new System.Drawing.Point(2, 276);
             this.picture_main.Name = "picture_main";
-            this.picture_main.Size = new System.Drawing.Size(155, 212);
+            this.picture_main.Size = new System.Drawing.Size(129, 129);
             this.picture_main.TabIndex = 0;
             this.picture_main.TabStop = false;
             // 
@@ -90,7 +89,7 @@
             this.button_recibidos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.button_recibidos, "Mails Recibidos");
             this.button_recibidos.UseVisualStyleBackColor = false;
-            this.button_recibidos.Click += new System.EventHandler(this.button_recibidos_Click);
+            this.button_recibidos.Click += new System.EventHandler(this.Button_recibidos_Click);
             // 
             // button_enviados
             // 
@@ -106,7 +105,7 @@
             this.button_enviados.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.button_enviados, "Mails Enviados");
             this.button_enviados.UseVisualStyleBackColor = false;
-            this.button_enviados.Click += new System.EventHandler(this.button_enviados_Click);
+            this.button_enviados.Click += new System.EventHandler(this.Button_enviados_Click);
             // 
             // panel1
             // 
@@ -124,50 +123,54 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlDark;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4});
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.Check,
+            this.Remitente,
+            this.Asunto,
+            this.Fecha});
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(775, 384);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(781, 390);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
-            // Column1
+            // Check
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "De";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.Check.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Check.FillWeight = 1F;
+            this.Check.HeaderText = "";
+            this.Check.MinimumWidth = 50;
+            this.Check.Name = "Check";
+            this.Check.Width = 50;
             // 
-            // Column2
+            // Remitente
             // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Para";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
+            this.Remitente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Remitente.HeaderText = "Remitente";
+            this.Remitente.MinimumWidth = 150;
+            this.Remitente.Name = "Remitente";
+            this.Remitente.ReadOnly = true;
+            this.Remitente.Width = 150;
             // 
-            // Column3
+            // Asunto
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "Asunto";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
+            this.Asunto.HeaderText = "Asunto";
+            this.Asunto.MinimumWidth = 150;
+            this.Asunto.Name = "Asunto";
+            this.Asunto.ReadOnly = true;
+            this.Asunto.Width = 300;
             // 
-            // Column4
+            // Fecha
             // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column4.HeaderText = "Fecha";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.MinimumWidth = 100;
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            this.Fecha.Width = 200;
             // 
             // button_papelera
             // 
@@ -183,7 +186,7 @@
             this.button_papelera.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.toolTip1.SetToolTip(this.button_papelera, "Mails Eliminados");
             this.button_papelera.UseVisualStyleBackColor = false;
-            this.button_papelera.Click += new System.EventHandler(this.button_papelera_Click);
+            this.button_papelera.Click += new System.EventHandler(this.Button_papelera_Click);
             // 
             // button_enviar
             // 
@@ -199,7 +202,7 @@
             this.button_enviar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolTip1.SetToolTip(this.button_enviar, "Enviar Mail");
             this.button_enviar.UseVisualStyleBackColor = false;
-            this.button_enviar.Click += new System.EventHandler(this.button_enviar_Click);
+            this.button_enviar.Click += new System.EventHandler(this.Button_enviar_Click);
             // 
             // button_eliminar
             // 
@@ -216,7 +219,7 @@
             this.button_eliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolTip1.SetToolTip(this.button_eliminar, "Eliminar Mail");
             this.button_eliminar.UseVisualStyleBackColor = false;
-            this.button_eliminar.Click += new System.EventHandler(this.button_eliminar_Click);
+            this.button_eliminar.Click += new System.EventHandler(this.Button_eliminar_Click);
             // 
             // button_actualizar
             // 
@@ -232,24 +235,7 @@
             this.button_actualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolTip1.SetToolTip(this.button_actualizar, "Actualizar Página");
             this.button_actualizar.UseVisualStyleBackColor = false;
-            this.button_actualizar.Click += new System.EventHandler(this.button_actualizar_Click);
-            // 
-            // button_responder
-            // 
-            this.button_responder.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.button_responder.Enabled = false;
-            this.button_responder.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_responder.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_responder.Image = ((System.Drawing.Image)(resources.GetObject("button_responder.Image")));
-            this.button_responder.Location = new System.Drawing.Point(351, 32);
-            this.button_responder.Name = "button_responder";
-            this.button_responder.Size = new System.Drawing.Size(67, 51);
-            this.button_responder.TabIndex = 9;
-            this.button_responder.Text = "Responder";
-            this.button_responder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolTip1.SetToolTip(this.button_responder, "Responder Mail");
-            this.button_responder.UseVisualStyleBackColor = false;
-            this.button_responder.Click += new System.EventHandler(this.button_responder_Click);
+            this.button_actualizar.Click += new System.EventHandler(this.Button_actualizar_Click);
             // 
             // menuStrip1
             // 
@@ -297,7 +283,7 @@
             this.modificarNombreToolStripMenuItem1.Name = "modificarNombreToolStripMenuItem1";
             this.modificarNombreToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.modificarNombreToolStripMenuItem1.Text = "Modificar Nombre";
-            this.modificarNombreToolStripMenuItem1.Click += new System.EventHandler(this.modificarNombreToolStripMenuItem1_Click);
+            this.modificarNombreToolStripMenuItem1.Click += new System.EventHandler(this.ModificarNombreToolStripMenuItem1_Click);
             // 
             // modificarContraseñaToolStripMenuItem1
             // 
@@ -307,7 +293,7 @@
             this.modificarContraseñaToolStripMenuItem1.Name = "modificarContraseñaToolStripMenuItem1";
             this.modificarContraseñaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.modificarContraseñaToolStripMenuItem1.Text = "Modificar Contraseña";
-            this.modificarContraseñaToolStripMenuItem1.Click += new System.EventHandler(this.modificarContraseñaToolStripMenuItem1_Click);
+            this.modificarContraseñaToolStripMenuItem1.Click += new System.EventHandler(this.ModificarContraseñaToolStripMenuItem1_Click);
             // 
             // agregarCorreoToolStripMenuItem
             // 
@@ -328,9 +314,9 @@
             this.agregarToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.agregarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("agregarToolStripMenuItem.Image")));
             this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.agregarToolStripMenuItem.Text = "Agregar";
-            this.agregarToolStripMenuItem.Click += new System.EventHandler(this.agregarToolStripMenuItem_Click);
+            this.agregarToolStripMenuItem.Click += new System.EventHandler(this.AgregarToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem
             // 
@@ -338,9 +324,9 @@
             this.modificarToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.modificarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("modificarToolStripMenuItem.Image")));
             this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.modificarToolStripMenuItem.Text = "Modificar";
-            this.modificarToolStripMenuItem.Click += new System.EventHandler(this.modificarToolStripMenuItem_Click);
+            this.modificarToolStripMenuItem.Click += new System.EventHandler(this.ModificarToolStripMenuItem_Click);
             // 
             // eliminarToolStripMenuItem
             // 
@@ -348,9 +334,9 @@
             this.eliminarToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.eliminarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("eliminarToolStripMenuItem.Image")));
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
-            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.EliminarToolStripMenuItem_Click);
             // 
             // cerrarSesiónToolStripMenuItem
             // 
@@ -360,7 +346,7 @@
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
             this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar Sesión";
-            this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem_Click);
+            this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.CerrarSesiónToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -370,7 +356,7 @@
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.salirToolStripMenuItem.Text = "Salir";
-            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.SalirToolStripMenuItem_Click);
             // 
             // acercaDeToolStripMenuItem
             // 
@@ -390,7 +376,7 @@
             this.informaciónToolStripMenuItem.Name = "informaciónToolStripMenuItem";
             this.informaciónToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.informaciónToolStripMenuItem.Text = "Información";
-            this.informaciónToolStripMenuItem.Click += new System.EventHandler(this.informaciónToolStripMenuItem_Click);
+            this.informaciónToolStripMenuItem.Click += new System.EventHandler(this.InformaciónToolStripMenuItem_Click);
             // 
             // comboBox1
             // 
@@ -402,6 +388,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(248, 21);
             this.comboBox1.TabIndex = 11;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -415,7 +402,7 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Mostrar correos de:";
             // 
-            // v_principal
+            // V_principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -423,7 +410,6 @@
             this.ClientSize = new System.Drawing.Size(926, 491);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button_responder);
             this.Controls.Add(this.button_actualizar);
             this.Controls.Add(this.button_eliminar);
             this.Controls.Add(this.button_enviar);
@@ -436,11 +422,12 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(850, 270);
-            this.Name = "v_principal";
+            this.Name = "V_principal";
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FlyMail";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.v_principal_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.V_principal_FormClosing);
+            this.Load += new System.EventHandler(this.V_principal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picture_main)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -461,7 +448,6 @@
         private System.Windows.Forms.Button button_enviar;
         private System.Windows.Forms.Button button_eliminar;
         private System.Windows.Forms.Button button_actualizar;
-        private System.Windows.Forms.Button button_responder;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menúToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
@@ -479,10 +465,10 @@
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Check;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Remitente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Asunto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
     }
 }
 

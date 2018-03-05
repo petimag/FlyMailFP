@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"><?define Proyecto FlyMail_TargetDir=$(var.Proyecto FlyMail.TargetDir)?>
+	<Product Id="37cbedb2-21d9-4fec-b124-87e095534422" Name="FlyMail" Language="1033" Version="1.0.0.1" Manufacturer="Proyecto Academico" UpgradeCode="68294a7a-f612-42a0-bf5d-694fa1f7d11f">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <!--
+    <Icon Id="icon.ico" SourceFile="$(var.ProjectDir)Icon.ico" />
+    <Property Id="ARPPRODUCTION" Value="icon.ico" />
+    -->
+    
+    <WixVariable Id="WixUIBannerBmp" Value="Images\installer_top-banner.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="Images\installer_background.bmp" />
+    
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\license.rtf" />
+    
+    <UIRef Id="WixUI_Minimal"/>
+    
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes" />
+
+		<Feature Id="ProductFeature" Title="FlyMail" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+      <ComponentRef Id="ApplicationShortcut"/>
+      <ComponentRef Id="ApplicationShortcutDesktop"/>
+		</Feature>
+    <InstallExecuteSequence>
+      <Custom Action='CustomAction' Before='InstallFinalize'>NOT Installed</Custom>
+    </InstallExecuteSequence>
+    <!--
+    <InstallExecuteSequence>
+      <Custom Action="CustomAction" Before="InstallFinalize" />
+    </InstallExecuteSequence>
+    -->
+	</Product>
+
+  <Fragment>
+    <Binary Id="CustomAction.CA" SourceFile="$(var.ScriptDB.TargetDir)$(var.ScriptDB.TargetName).CA.dll"/>
+    <CustomAction Id="CustomAction" BinaryKey="CustomAction.CA" DllEntry="CustomAction1" Execute="immediate" Return="check"/>
+  </Fragment>
+  
+  <!-- Directorio de Instalación-->
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="FlyMail" />
+			</Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="FlyMail"/>
+      </Directory>  
+      <Directory Id="DesktopFolder" Name="Desktop"/>
+		</Directory>
+	</Fragment>
+  
+  <Fragment>
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="3901edb7-96fd-453d-bb84-3da14c56c7fc">
+        <Shortcut Id="ApplicationStartMenuShortcut" Name="FlyMail" Description="Cliente de correo electronico" Target="[INSTALLFOLDER]FlyMail.exe" WorkingDirectory="INSTALLFOLDER" />
+        <RemoveFolder Id="RemoveApplicationProgramsFolder" Directory="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\FlyMail" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="ApplicationShortcutDesktop" Guid="d34841e0-08ac-45ba-9519-ef8bf826f373">
+        <Shortcut Id="ApplicationDesktopShortcut" Name="FlyMail" Description="Cliente de correo electronico" Target="[INSTALLFOLDER]FlyMail.exe" WorkingDirectory="INSTALLFOLDER" />
+        <RemoveFolder Id="RemoveDesktopFolder" Directory="DesktopFolder" On="uninstall" />
+        <RegistryValue Root="HKCU" Key="Software\FlyMail" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <!--
+  <Fragment>
+    <CustomAction Id='CustomAction' BinaryKey='CustomAction.CA' DllEntry='CustomAction' />
+    <Binary Id='CustomAction.CA' SourceFile='..\CustomAction\bin\Debug\CustomAction.CA.dll' />
+  </Fragment>
+  -->
+  
+  <!-- Enlaces a ejecutables y DLLs-->
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<Component Id="FlyMail.exe" Guid="9823d3d9-483b-4b01-af19-8a74179dc77f">
+			  <File Id="FlyMail.exe" Name="FlyMail.exe" Source="$(var.Proyecto FlyMail_TargetDir)FlyMail.exe" />
+			</Component>
+			<Component Id="FlyMail.exe.config" Guid="8d076fd9-d4b2-4cd6-8113-63afbae05828">
+			  <File Id="FlyMail.exe.config" Name="FlyMail.exe.config" Source="$(var.Proyecto FlyMail_TargetDir)FlyMail.exe.config" />
+			</Component>
+			<Component Id="Npgsql.dll" Guid="945c259b-3241-41f1-962d-cd2da44fee3d">
+			  <File Id="Npgsql.dll" Name="Npgsql.dll" Source="$(var.Proyecto FlyMail_TargetDir)Npgsql.dll" />
+			</Component>
+			<Component Id="OpenPop.dll" Guid="3f9db5c7-954a-4fb2-81be-96797293a216">
+			  <File Id="OpenPop.dll" Name="OpenPop.dll" Source="$(var.Proyecto FlyMail_TargetDir)OpenPop.dll" />
+			</Component>
+			<Component Id="System.Threading.Tasks.Extensions.dll" Guid="7076a6da-747f-48bf-8f2b-cafd81e0718b">
+			  <File Id="System.Threading.Tasks.Extensions.dll" Name="System.Threading.Tasks.Extensions.dll" Source="$(var.Proyecto FlyMail_TargetDir)System.Threading.Tasks.Extensions.dll" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>

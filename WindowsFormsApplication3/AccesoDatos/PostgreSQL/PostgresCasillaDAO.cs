@@ -4,8 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Npgsql;
+using System.Data;
+using Entidades;
+using AccesoDatos;
 
-namespace FlyMail
+namespace AccesoDatos.PostgreSQL
 {
     class PostgresCasillaDAO : ICasillaDAO
     {
@@ -40,7 +43,11 @@ namespace FlyMail
                 return false;
         }
 
-
+        /// <summary>
+        /// Busca los nombres de las casillas asociadas
+        /// </summary>
+        /// <param name="idCuenta">ID de Cuenta</param>
+        /// <returns>Lista de Nombres</returns>
         public List<string> ListaNombres(int idCuenta)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
@@ -55,14 +62,57 @@ namespace FlyMail
         }
 
         /// <summary>
-        /// Busca y devuelve un Dirección de Correo a través del nombre
+        /// Busca y devuelve un Id de Correo a través del nombre
         /// </summary>
-        /// <param name="pNombre"></param>
-        /// <returns></returns>
-        public string BuscarDireccion(string pNombre)
+        /// <param name="pNombre">Nombre de casilla</param>
+        /// <param name="pIdUsuario">Id de cuenta</param>
+        /// <returns>Id de casilla</returns>
+        public int BuscarId(string pNombre, int pIdUsuario)
         {
             NpgsqlCommand comando = this._conexion.CreateCommand();
-            comando.CommandText = "SELECT \"direccionEmail\" FROM \"CasillaEmail\" WHERE nombre = '" + pNombre + "'";
+            comando.CommandText = "SELECT \"idCasillaEmail\" FROM \"CasillaEmail\" WHERE nombre = '" + pNombre + "' and usuario = '" + pIdUsuario + "'";
+            NpgsqlDataReader reader = comando.ExecuteReader();
+            if (reader.Read())
+            {
+                return Int32.Parse(reader[0].ToString());
+            }
+            else
+            {
+                throw new DAOException("Nombre de Casilla no encontrado");
+            }
+        }
+
+        /// <summary>
+        /// Busca y devuelve un Dirección de Correo a través del nombre
+        /// </summary>
+        /// <param name="pNombre">Nombre de Casilla</param>
+        /// <param name="pIdUsuario">Id Casilla</param>
+        /// <returns>Direccion de la Casilla</returns>
+        public string BuscarDireccion(string pNombre, int pIdUsuario)
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "SELECT \"direccionEmail\" FROM \"CasillaEmail\" WHERE nombre = '" + pNombre + "' and usuario = '" + pIdUsuario + "'";
+            NpgsqlDataReader reader = comando.ExecuteReader();
+            if (reader.Read())
+            {
+                return reader[0].ToString();
+            }
+            else
+            {
+                throw new DAOException("Nombre de Casilla no encontrado");
+            }
+        }
+
+        /// <summary>
+        /// Busca y devuelve un Dirección de Correo a través del nombre
+        /// </summary>
+        /// <param name="pNombre">Nombre de casilla</param>
+        /// <param name="pIdUsuario">Id de Usuario</param>
+        /// <returns>Contraseña de Casilla</returns>
+        public string BuscarContraseña(string pNombre, int pIdUsuario)
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "SELECT \"contrasenaEmail\" FROM \"CasillaEmail\" WHERE nombre = '" + pNombre + "' and usuario = '" + pIdUsuario + "'";
             NpgsqlDataReader reader = comando.ExecuteReader();
             if (reader.Read())
             {
@@ -112,14 +162,15 @@ namespace FlyMail
         /// <summary>
         /// Modifica la dirección y la contraseña de la Casilla de Correo
         /// </summary>
-        /// <param name="pCasilla"></param>
-        public void Modificar(CasillaCorreo pCasilla, int pIDUSuario)
+        /// <param name="pCasilla">Casilla de correo que se desea modificar</param>
+        /// <param name="pIDUsuario">Id de Usuario</param>
+        public void Modificar(CasillaCorreo pCasilla, int pIDUsuario)
         {
             string cmd = String.Empty;
             if (pCasilla.Contraseña == String.Empty)
-                cmd = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion WHERE nombre = '" + pCasilla.Nombre + "' and usuario = '" + pIDUSuario + "'";
+                cmd = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion WHERE nombre = '" + pCasilla.Nombre + "' and usuario = '" + pIDUsuario + "'";
             else
-                cmd = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion, \"contrasenaEmail\" = @contrasena WHERE nombre = '" + pCasilla.Nombre + "' and usuario = '" + pIDUSuario + "'";
+                cmd = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion, \"contrasenaEmail\" = @contrasena WHERE nombre = '" + pCasilla.Nombre + "' and usuario = '" + pIDUsuario + "'";
 
             NpgsqlCommand comando = this._conexion.CreateCommand();
             comando.CommandText = cmd;
@@ -133,26 +184,6 @@ namespace FlyMail
                 throw new DAOException("No se pudieron actualizar los valores");
             }
         }
-
-        /* ELIMIAR SI NO SE ENCUENTRAN FALLOS EN MODIFICAR
-        /// <summary>
-        /// Modifica la dirección de la Casilla de Correo
-        /// </summary>
-        /// <param name="pCasilla"></param>
-        public void modificarDireccion(CasillaCorreo pCasilla)
-        {
-            NpgsqlCommand comando = this._conexion.CreateCommand();
-            comando.CommandText = "UPDATE \"CasillaEmail\" SET \"direccionEmail\"  = @direccion WHERE nombre = '" + pCasilla.Nombre + "'";
-
-            comando.Parameters.AddWithValue("@direccion", pCasilla.Direccion);
-
-            // ExecuteNonQuery = -1 si no se modificaron filas
-            if (comando.ExecuteNonQuery() == -1)
-            {
-                throw new DAOException("No se pudieron actualizar los valores");
-            }
-        }
-        */
 
         /// <summary>
         /// Elimina una Casilla de Correo
@@ -170,7 +201,27 @@ namespace FlyMail
             // ExecuteNonQuery = -1 si no se modificaron filas
             if (comando.ExecuteNonQuery() == -1)
             {
-                throw new DAOException("No se pudo eliminar la Casilla, intentelo nuevamente");
+                throw new DAOException("No se pudo eliminar el mail, intentelo nuevamente");
+            }
+        }
+
+        /// <summary>
+        /// Devuelve el Id de un servicio para una determinada casilla
+        /// </summary>
+        /// <param name="idCasilla">Id de la Casilla</param>
+        /// <returns>Id de servicio</returns>
+        public int ObtenerIdServicio(int idCasilla)
+        {
+            NpgsqlCommand comando = this._conexion.CreateCommand();
+            comando.CommandText = "SELECT servicio FROM \"CasillaEmail\" WHERE \"idCasillaEmail\" = '" + idCasilla + "'";
+            NpgsqlDataReader reader = comando.ExecuteReader();
+            if (reader.Read())
+            {
+                return Int32.Parse(reader[0].ToString());
+            }
+            else
+            {
+                throw new DAOException("Servicio no encontrado");
             }
         }
     }

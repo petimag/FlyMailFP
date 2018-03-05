@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AccesoDatos.DAOException">
+    <Position X="9.25" Y="14" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AccesoDatos\DAOException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AccesoDatos.DAOFactory">
+    <Position X="5.75" Y="14" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAACAAAAAACEAACAAoAAAAAAAAAAAAACICAA=</HashCode>
+      <FileName>AccesoDatos\DAOFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AccesoDatos.PostgreSQL.PostgresCasillaDAO" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="19.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQABAAAUAAQAAAAACAAAAgAABAAAAAAAAIAAAIAAAAA=</HashCode>
+      <FileName>AccesoDatos\PostgreSQL\PostgresCasillaDAO.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AccesoDatos.PostgreSQL.PostgresCuentaDAO" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="19.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>hBAAAAAAAAAAAAAAAAIEAAAAAAAAgAEAAAAAAIAAQAA=</HashCode>
+      <FileName>AccesoDatos\PostgreSQL\PostgresCuentaDAO.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AccesoDatos.PostgreSQL.PostgresDAOFactory">
+    <Position X="5.75" Y="19.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAACAAAQAAAEAACAAoAAAAAAAAAAAAICIKAA=</HashCode>
+      <FileName>AccesoDatos\PostgreSQL\PostgresDAOFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AccesoDatos.PostgreSQL.PostgresMailDAO" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="19.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgQAAAAAAAAAAAAAAAAAAEAAAAAAAAAAABIAAAEA=</HashCode>
+      <FileName>AccesoDatos\PostgreSQL\PostgresMailDAO.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AccesoDatos.PostgreSQL.PostgresServicioDAO" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="19.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAgAAAgAAAAAAAAAIBAAAAAAAAIAAAAA=</HashCode>
+      <FileName>AccesoDatos\PostgreSQL\PostgresServicioDAO.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UI.V_about" Collapsed="true">
+    <Position X="2" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAQBAAAACBAAACAAAAAAAAACAAAABAAAA=</HashCode>
+      <FileName>UI\V_about.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UI.V_correo" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAgBSAABACIAChAAAACCAgACEAAIAAQAACAAQBAQAQA=</HashCode>
+      <FileName>UI\V_correo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UI.V_cuenta" Collapsed="true">
+    <Position X="5.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAIAAAAECAAABEAAACAAABCAAAEAAAAEKAAAAAQAAA=</HashCode>
+      <FileName>UI\V_cuenta.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UI.V_eliminarCasilla" Collapsed="true">
+    <Position X="3.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACDAgACAAAAAAAAACAAABAQAAA=</HashCode>
+      <FileName>UI\V_eliminarCasilla.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UI.V_ingresarPasswordCasilla" Collapsed="true">
+    <Position X="3.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAIAAIAACAAABAAAAGAAAACAAAAAAAAECEAAAEAAAA=</HashCode>
+      <FileName>UI\V_ingresarPasswordCasilla.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UI.V_leerMail" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>sIAFAgANgCAAAQIAAASARAECYCCAgAAAgCAAAAEQBAI=</HashCode>
+      <FileName>UI\V_leerMail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UI.V_login" Collapsed="true">
+    <Position X="5.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QEAAQBAABGAAAgAAAAiBEAUGYAAAAACAQiAAAABQBAI=</HashCode>
+      <FileName>UI\V_login.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UI.V_mail" Collapsed="true">
+    <Position X="2" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>sAAEAAABgCAAQQKAgAaAVAAiQCKAAAQAkCAAQAIQBAM=</HashCode>
+      <FileName>UI\V_mail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UI.V_principal" Collapsed="true">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EUAKUQqRgCggCBkQgAGGQYLPbKgMAIkSgRAggQBQQBE=</HashCode>
+      <FileName>UI\V_principal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LogicaNegocio.ControladorPOP3">
+    <Position X="9.75" Y="10.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAACAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>LogicaNegocio\ControladorPOP3.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LogicaNegocio.ControladorSMTP">
+    <Position X="12" Y="10.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>LogicaNegocio\ControladorSMTP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LogicaNegocio.Fachada">
+    <Position X="1.75" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>A4RAiQFgAAgAAgQAAgOAACMCERAAABDAgAIAAIBECFA=</HashCode>
+      <FileName>LogicaNegocio\Fachada.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LogicaNegocio.ProtocoloEMail">
+    <Position X="11" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAABAAAAIAIABAAAAAIAAQAAAAAAAEAAAgAAA=</HashCode>
+      <FileName>LogicaNegocio\ProtocoloEMail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LogicaNegocio.Utilidades">
+    <Position X="7.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>LogicaNegocio\Utilidades.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LogicaNegocio.Dominio.ControladorCasilla">
+    <Position X="4.75" Y="9.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AwAAAAAQAAQAQAAACAAAAIgAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>LogicaNegocio\Dominio\ControladorCasilla.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LogicaNegocio.Dominio.ControladorCuenta">
+    <Position X="4.75" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAQAAAAQAEAAACAAAAAAAAEAAAAAIAAEAAAAAA=</HashCode>
+      <FileName>LogicaNegocio\Dominio\ControladorCuenta.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LogicaNegocio.Dominio.ControladorMail">
+    <Position X="7" Y="9.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAiAAAAEQgAEAAAAAAAAAAAAAAAAAAgAAABAAAAUA=</HashCode>
+      <FileName>LogicaNegocio\Dominio\ControladorMail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LogicaNegocio.Dominio.ControladorServicio">
+    <Position X="7" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>LogicaNegocio\Dominio\ControladorServicio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.CasillaCorreo">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAACAAgAAAAAAQAAAAAAAAAEIAAAA=</HashCode>
+      <FileName>Entidades\CasillaCorreo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Cuenta">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAgAAAAAAQAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Entidades\Cuenta.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Mail">
+    <Position X="17.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABABAABAAAAACAEQAAAQAAAhAECAAAEBABAAIAABQBA=</HashCode>
+      <FileName>Entidades\Mail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Servicio">
+    <Position X="20" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAABAAAAAIIABAiAABAAAAAAAAAAAAAAAgIAA=</HashCode>
+      <FileName>Entidades\Servicio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="AccesoDatos.ICasillaDAO">
+    <Position X="11.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQABAAAUAAQAAAAACAAAAgAABAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>AccesoDatos\ICasillaDAO.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AccesoDatos.ICuentaDAO">
+    <Position X="9.25" Y="15.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>hBAAAAAAAAAAAAAAAAIEAAAAAAAAgAEAAAAAAAAAQAA=</HashCode>
+      <FileName>AccesoDatos\ICuentaDAO.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AccesoDatos.IMailDAO">
+    <Position X="13.25" Y="15.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgQAAAAAAAAAAAAAAAAAAEAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>AccesoDatos\IMailDAO.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AccesoDatos.IServicioDAO">
+    <Position X="15.25" Y="15.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAgAAAgAAAAAAAAAIBAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AccesoDatos\IServicioDAO.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Entidades.MailBox">
+    <Position X="20" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Entidades\MailBox.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

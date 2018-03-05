@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
+using UI;
 
 namespace FlyMail
 {
@@ -18,9 +19,9 @@ namespace FlyMail
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            (new v_login()).Show();
+            (new V_login()).Show();
             Application.Run();
+            
         }
     }
 }
